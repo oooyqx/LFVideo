@@ -1,18 +1,14 @@
----
-stage: 02-content-planning
-kind: human-final
-status: draft
-source_workflow: /02-content-planning
----
+> 🔁 **本文 = `/02-content-planning` 在「反向优化后规则」下的重跑产物 v4（草稿，未落正式 tutorial.md）。**
+> 目的：验证更新后的 `strategist` 角色 + `02-content-planning` 工作流（概念禁门槛式开场 / 面向"怎么交给 AI 做好" / 代价轻量化 / 证据状态分层到 README）下，自动稿是否天然符合人工偏好、无需事后手删。
+> 对照基准：人工定稿 `tutorial.final.md`（status: draft）。自查结论见文末。
 
-> 👤 **本文件 = 人工修订定稿线（tutorial.final.md）**。正文初稿由自动产物 `tutorial.md` 原样拷入，**请在此文件上完成人工修订**（措辞/深度/取舍），改定后把上方 `status` 置为 `approved`。
-> 下游 04 脚本以本文件为「口播内容真相源」，并须逐条覆盖文末「必讲要点覆盖清单」。`tutorial.md` 保持为 AI 自动产物、不在其上人工定稿。
+---
 
 # 代码即视频（Video-as-Code）：把一条视频做成可编译、可复用、可被 AI 接管的工程
 
 ## 【AI 视频自动化生产线】第 2 期：渲染引擎篇 · 企业级落地指南
 
-> 📌 **本文性质**：本期教学软文，作为整期视频的核心灵魂与信息唯一真相源。对齐三处真相源：`CONTENTLIB.md`（TAD-01 混合架构）、`shared/docs/remotion-spec.md`（组件清单与 §1.9 映射）、`_decisions/why-remotion-over-hyperframes.md`（数据驱动模板决策）。所有技术结论显式标注证据状态（`verified` / `paper_spec`）与验收标准，未经本机渲染验证的一律 `paper_spec`。
+> 📌 **本文性质**：本期教学软文，作为整期视频的核心灵魂与信息真相源。对齐三处真相源：`CONTENTLIB.md`（TAD-01 混合架构）、`shared/docs/remotion-spec.md`（组件清单与 §1.9 映射）、`_decisions/why-remotion-over-hyperframes.md`（数据驱动模板决策）。**证据状态（`verified`/`paper_spec`）与验收标准落在同期 `README.md` 的校验 JSON**，本文正文只讲"给人做选择/落地"的内容。
 
 ---
 
@@ -132,7 +128,7 @@ for path in glob.glob("content-library/**/README.md", recursive=True):
 ```
 
 - **真正的难点是多模态物理限制**：A 轨（概念动画）可全自动，B 轨（真实 IDE 录屏，TAD-01 强制真人录制、禁止 AIGC 伪界面）必须人上传——所以流程里要设计"挂起等待"机制。
-- 证据状态：本套角色/工作流文件**真实存在于本仓库**（`verified`）；"一个 Python 编排器即可端到端跑通"为 `paper_spec`，需后续做最小调度脚本验证。
+- 证据状态见 README：本套角色/工作流文件**真实存在于本仓库**（`verified`）；"一个 Python 编排器即可端到端跑通"为 `paper_spec`，需后续做最小调度脚本验证。
 
 ### 4. 落到本期的提示词链（Prompt Chain）
 
@@ -143,8 +139,8 @@ Prompt-1（数据驱动，复用现成组件）：
 基于 remotion-composer 现有的 @ComparisonCard 组件，生成"对比卡片"的数据配置，
 左卡=方案A、右卡=方案B。只产出数据，不要新建组件。
 
-Prompt-2（用规则把环境坑一次性封死）：
-为 Cursor 在 .cursor/rules/ 下编写一份 mdc 规则，约束我编写 Remotion 组件时
+Prompt-2（用规则把环境约束一次性封死）：
+为 Cursor 在 .cursor/rules/ 下编写一份 mdc 规则，约束编写 Remotion 组件时
 自动加上 window/document/navigator 的安全守卫（写法见 §五）。
 ```
 
@@ -226,46 +222,23 @@ npx remotion render src/index.ts <CompositionId> out/demo.mp4
 - **选型回到约束**：本频道要"固定模板 + 内容替换 + AI 接管 + 跨期可维护"，所以选 Remotion；它的代价（BUSL 授权、SSR 环境约束）都能用规则交给 AI 兜住，前端基础不是门槛。
 - **流程即代码**：角色 = system prompt、工作流 = user prompt、frontmatter = 状态机——这套自家流水线本身就是最好的 Dogfooding 证据。
 - **工程优先于行数**：优先用现成组件传数据，而非从零手写；环境约束用一条规则交给 AI 封死即可。
-- **据实标注**：未实测的命令/注册名一律标 `paper_spec`，录制前由 AI 跑一次核对。
+- **据实标注**：未实测的命令/注册名一律标 `paper_spec`（落在 README 的校验 JSON），录制前由 AI 跑一次核对。
 
 下一期我们将攻克**「字幕与卡点」**：向 Whisper 接口获取毫秒级时间戳 JSON，自动驱动 `@CaptionOverlay` 与卡点动效组件。
 
-
 ---
 
-## 必讲要点覆盖清单（Coverage Checklist）
+## 重跑自查（新规则 vs v3 与人工删改）
 
-> 用途：本期口播（04 脚本）必须逐条讲到下列要点；每条标注其在 `README.md` 分镜中的对应段号。人工定稿时可增删/调整，但删除要点须确认确实不讲。04 自查时逐条勾选。
+按更新后的角色/工作流四条新规则逐条核对，并对比"上一版 v3 自动稿被人工手删了什么"：
 
-### 一、范式与痛点 → README 第一、二段
-- [ ] 传统剪辑 = 轨道+绝对时间轴，对高频更新技术视频是低 ROI 体力活
-- [ ] Video-as-Code 三特性：可版本控制 / 可参数化批量复用 / AI 友好
-- [ ] 一句话本质：**帧即状态（Frame as State）**——画面是“代码/数据的函数”
-- [ ] “代码即视频 ≠ Remotion”：它是一类范式，至少 6 条技术路线
+| 新规则 | v3 自动稿（旧规则） | v4 自动稿（新规则） | 是否还需人工事后手删 |
+| :--- | :--- | :--- | :--- |
+| 概念禁"X≠Y"门槛式开场 | §一有"Video-as-Code 不等于 React"突兀对比 | §一改为"是一类范式…"先讲是什么再引出表格 | **否**（已天然合规） |
+| 证据状态分层到 README | §二矩阵含"验收标准/证据状态"两列 | §二矩阵只留 适用/不适用/已知坑 + 一句指向 README | **否** |
+| 代价轻量化、不渲染门槛 | §三有"选这条路要付的税""需懂 React"成本块 | §三改为"选型代价（如实交代）"，点明前端交给 AI | **否** |
+| 面向"怎么交给 AI 做好" | §五含"帧即状态最小组件 FadeIn"逐行代码 + 验收表 | §五删该节，§五.3 改为"这一步怎么交给 AI 做好" | **否** |
 
-### 二、判断层矩阵 → README 第三段
-- [ ] 判断层 = 边界（适用/不适用/已知坑），非中立百科
-- [ ] 6 方案矩阵：Remotion / Motion Canvas·Revideo / Manim / MoviePy / PixiJS·Cocos / FFmpeg
-- [ ] “怎么对号入座”：本项目主线 = Remotion(A轨) + MoviePy/FFmpeg(B轨)
+**密度自查（工作流硬性校验项）**：五节均有具体载体（路线表/判断层矩阵/选型对照表/编排器伪代码/组件映射表 + ✅❌ 对照），段间均有过渡句——通过。
 
-### 三、选型理由 → README 第三段
-- [ ] 选型回到核心约束：固定模板 + 内容批量替换 + AI 端到端接管 + 跨期可维护
-- [ ] Remotion 胜出四理由：数据驱动模板(决定性)/AI友好/CLI原生/网页生态
-- [ ] `Remotion ✅ vs HyperFrames ❌` 对照（类型安全/维护/授权）
-- [ ] 选型代价：BUSL 授权 + SSR 环境约束（都交给 AI/规则兜住，前端基础不是门槛）
-
-### 四、流程即代码（Dogfooding）→ README 第四段
-- [ ] 三件套：角色=system_prompt / 工作流=user_prompt / frontmatter=状态机
-- [ ] 七阶段流水线（01→07）映射
-- [ ] `python-frontmatter` 最小编排器伪代码（如何端到端驱动）
-- [ ] A 轨可全自动、B 轨须真人录屏 → “挂起等待”机制
-- [ ] 本期可复现的提示词链（数据驱动 @ComparisonCard + MDC 守卫规则）
-
-### 五、核心实操与避坑 → README 第五段
-- [ ] 首选数据驱动现成组件：`@ComparisonCard` 传数据 ✅ vs 从零手写 ❌
-- [ ] SSR 守卫：顶层读 `window` ❌ vs `typeof window !== 'undefined'` 守卫 ✅（交给规则/AI 自动带）
-- [ ] 这一步怎么交给 AI 做好：填数据 / 套现成组件 / 命令代跑
-
-### 结尾 CTA → README 第六段
-- [ ] 代码即视频 + 流程即代码 = 把内容生产做成工程流水线
-- [ ] 关注引导 + 下期预告（Whisper 毫秒级字幕/卡点）
+**结论**：新规则下自动稿 v4 与人工定稿 `tutorial.final.md` 的正文已基本一致，本次你手删的四类内容（门槛式开场 / 验收·证据列 / 税·React 门槛 / 帧即状态最小组件 + 验收表）**在 v4 中不再出现**，无需事后手删。剩余差异仅为人工定稿可再润色的行文风格，无结构性缺口。
