@@ -1,64 +1,90 @@
 ---
 stage: 02-content-planning
-status: draft
+status: approved
 source_workflow: /02-content-planning
 ---
 
 # ep02 内容策划方案（视频大纲与分镜落盘版）
 ## 系列定位：【AI 视频自动化生产线】第 2 期：渲染引擎篇
 
-本文件由教学软文 `@content-library/ep02-video-auto/02-plan/tutorial.md` 提炼生成，专用于指导下游的 **03 视听编排** 与 **04 脚本撰写**。
+本文件由教学软文提炼生成，专用于指导下游的 **03 视听编排** 与 **04 脚本撰写**。分镜主线严格对齐 tutorial 现行结构：**范式与痛点 → 判断层矩阵 → 选型理由 → 流程即代码 → 实操与避坑**。
+
+> 📁 **本期 02-plan 文件分工与生成/修改约定（重要，先读）**
+> - **`tutorial.md` = 自动产物（AI 生成线）**：由 `/02-content-planning` 阶段4 生成，真相源="AI 生成了什么"。**请勿在此文件上做人工定稿**——它可能被重新生成覆盖。
+> - **`tutorial.final.md` = 人工修订定稿（内容真相源）**：AI 把 `tutorial.md` 拷为底子并预填文末「必讲要点覆盖清单」；**人在此文件上修订成稿，改完把 frontmatter `status` 置为 `approved`**（人工定稿门，AI 不替人置 approved）。它是下游 04 口播"必须讲到什么"的唯一依据。
+> - **`README.md`（本文件）= 分镜与校验线**：只定义分镜结构 + schema JSON；口播必讲要点以 `tutorial.final.md` 的清单为唯一真相源（见下方「必讲要点覆盖映射」）。
+> - **同步规则**：`tutorial.md` 若重新生成/改动，**不自动同步**到 `tutorial.final.md`（避免覆盖人工定稿）；需要时由人工合并或重跑脚手架后重新定稿。
+> - **进入 03/04 前提**：`tutorial.final.md` 必须 `status: approved`。
 
 ---
 
 ## 1. 标题与定位
-- **定稿标题**：《代码即视频：如何用 100 行 React 代码编译卡点与图表动效？》
-- **目标受众**：追求极致视频自动化的前端开发者、想深入掌握 Remotion 的技术博主。
+- **定稿标题**：《代码即视频（Video-as-Code）：把一条视频做成可编译、可复用、可被 AI 接管的工程》
+- **目标受众**：追求极致视频自动化的前端开发者、想把内容生产做成工程流水线的技术博主/团队。
 - **视觉风格模式 (Visual Mode)**：`mixed`
-- **核心视觉隐喻**：**“数字渲染生产线”**（代码像乐高积木一样，在 Frame（时间帧）传送带上流过状态映射器，最终合成为高清晰度的 MP4 视频包）。
+- **核心视觉隐喻**：**“数字渲染生产线”**（声明式代码/数据像零件一样在 Frame 传送带上流过“状态映射器”，被渲染器编译成帧序列，最终合成高清 MP4）。
+- **反噱头纪律**：标题与正文不以“多少行代码/百倍效率”为卖点；SSR `window` 问题定位为“选这条路要付的税”，非致命噱头。
 
 ---
 
-## 2. 视频分镜结构（5 段式）
+## 2. 视频分镜结构（6 段式，对齐 tutorial 主线）
 
-### 第一段：开头黄金钩子（目标：30秒）
-- **核心论点**：告别机械式的剪辑操作，拥抱 Web 技术栈。用代码像写网页一样写视频。
+### 第一段：开头黄金钩子（目标：30 秒）
+- **核心论点**：传统剪辑是“轨道 + 绝对时间轴”的低 ROI 体力活；Video-as-Code 把一条视频变成**声明式代码/数据**，由渲染器编译成帧——因此可版本控制、可参数化批量复用、可被 AI 端到端接管。
 - **叙事节奏 (Beat Type)**：`statement`
 - **视觉焦点 (Visual Priority)**：`text`
-- **画面视觉**：`@IntroScene` 黑色科技感背景渐入，动态展示代码如何被一帧帧渲染为精美 MP4 的生产线动画。
+- **画面视觉**：`@IntroScene` 科技感大字报渐入，配“数字渲染生产线”隐喻动画（代码/数据 → 帧传送带 → MP4）。
 
-### 第二段：Remotion 底层解密（目标：2分钟）
-- **核心论点**：视频的本质是 Frame 与 Seconds 的插值。讲解 Remotion 核心机制。
+### 第二段：范式本质·帧即状态·不止 React（目标：2 分钟）
+- **核心论点**：一句话本质是**帧即状态（Frame as State）**——给定时间点，渲染器算出该刻画面。且“代码即视频 ≠ Remotion”，它是一类范式，有 6 条路线（React/DOM、TS 声明式动画、程序化数学动画、像素合成、Canvas/游戏引擎、命令式合成），共享同一内核：用代码/数据描述 → 编译成帧 → 合成视频。
 - **叙事节奏 (Beat Type)**：`transformation`
-- **视觉焦点 (Visual Priority)**：`chart`
-- **画面视觉**：`@TimelineScene` 动态分解：`useCurrentFrame()` 与 `fps` 如何映射为当前秒数，如何利用 CSS Grid 轻松排版。
+- **视觉焦点 (Visual Priority)**：`mixed`
+- **画面视觉**：`@ConceptScene` 用 2D 卡片讲“帧即状态”心智模型；再切到六条路线的概念卡片阵列（路线 × 代表项目 × 典型场景）。
 
-### 第三段：致命 SSR 踩坑（目标：2分钟）
-- **核心论点**：实播 AI 的翻车瞬间——在 React 顶层直接读取 `window.innerWidth` 导致 Puppeteer 截图阶段 SSR 报 `window is not defined` 崩溃。
-- **叙事节奏 (Beat Type)**：`demonstration`
-- **视觉焦点 (Visual Priority)**：`screen`
-- **画面视觉**：全屏展示 Node CLI 执行编译，触发崩溃红屏，暴露 AI IDE 在环境感知上的硬肋。
-
-### 第四段：MDC 被动约束降维打击（目标：2.5分钟）
-- **核心论点**：不用手改一行防守代码！编写一条简单的 MDC Rule，让 Cursor 在编写 Remotion 组件时永远自动避开 SSR 报错。
+### 第三段：判断层矩阵与选型理由（目标：3 分钟）
+- **核心论点**：以“边界与验收”为护城河，把 6 个开源方案摆进判断层矩阵（适用/不适用/已知坑/验收标准/证据状态）；在“固定模板 + 内容批量替换 + AI 端到端接管 + 跨期可维护”的约束下，**Remotion 胜出**（数据驱动模板、TS 类型安全、AI 友好、CLI 原生），并用 `Remotion ✅ vs HyperFrames ❌` 对照点明“要付的税”（需懂 React / BUSL 授权 / SSR 环境坑）。
 - **叙事节奏 (Beat Type)**：`comparison`
-- **视觉焦点 (Visual Priority)**：`code`
-- **画面视觉**：`@SplitLayout` 左右分屏演示。左边无规则下 Cursor 频出 window error，右边加入 MDC rule 后 Cursor 自动写出安全检测守卫一次编译成功。
+- **视觉焦点 (Visual Priority)**：`chart`
+- **画面视觉**：`@TableScene` 渲染判断层矩阵（逐行 stagger 入场、高亮当前讲解行）；穿插 `@SplitLayout` 做 `Remotion vs HyperFrames` 左右对照。
 
-### 第五段：结尾 CTA
-- **核心论点**：掌握视频代码化，你的后期效率将提升百倍。关注我，下期解密字级字幕卡点！
+### 第四段：流程即代码（Dogfooding，目标：2.5 分钟）
+- **核心论点**：既然画面能用代码控制，制作视频的**内容工作流本身也做成代码**——角色=`system_prompt`、工作流=`user_prompt`、产物 frontmatter=状态机；七阶段流水线（01→07）+ 一个 `python-frontmatter` 最小编排器即可驱动；本期录屏跑的是一段可复现的提示词链。这才是频道真正的护城河。
+- **叙事节奏 (Beat Type)**：`transformation`
+- **视觉焦点 (Visual Priority)**：`code`
+- **画面视觉**：`@TimelineScene` 横向展开“01 选题 → 07 归档”七阶段流水线（逐阶段点亮）；切入代码框展示编排器伪代码与提示词链。
+
+### 第五段：核心实操与避坑（目标：2.5 分钟）
+- **核心论点**：去掉“多少行代码”执念，强调工程结构——**首选数据驱动现成组件**（只改 data 复用 `@ComparisonCard` ✅，而非从零手写 `ComparisonScene.tsx` ❌）；唯一要守的纪律是别在模块顶层碰 `window/document`，用 `.cursor/rules/remotion-ssr.mdc` 把这笔“税”一次性封死；最后给验收标准与渲染命令。
+- **叙事节奏 (Beat Type)**：`demonstration`
+- **视觉焦点 (Visual Priority)**：`code`
+- **画面视觉**：`@SplitLayout` 左右对照——左“从零手写/顶层读 window 崩溃 ❌”，右“数据驱动 + SSR 守卫一次通过 ✅”；末尾 `@TerminalScene` 演示 `npx remotion render` 出片。
+
+### 第六段：结尾 CTA
+- **核心论点**：掌握“代码即视频 + 流程即代码”，内容生产从手工活变成可维护的工程流水线。关注我，下期解密 Whisper 毫秒级字幕与卡点。
 - **叙事节奏 (Beat Type)**：`conclusion`
 - **视觉焦点 (Visual Priority)**：`text`
-- **画面视觉**：`@OutroScene`。展示开源仓库地址与关注。
+- **画面视觉**：`@OutroScene` 展示开源仓库地址与关注引导。
+
+---
+
+## 必讲要点覆盖映射
+
+> 本 README 只定义**分镜结构**；口播"必须讲到哪些要点"以人工定稿 **`tutorial.final.md`** 文末的「必讲要点覆盖清单」为**唯一真相源**（按章节列出，标注对应本文件段号）。
+> 下游 `/04-script-draft` **必读 `tutorial.final.md`**，并逐条核对该清单，确保每条必讲要点在口播里都有对应表达（避免只凭本大纲展开而漏掉 tutorial 细节）。
+> 分工：`tutorial.md` = AI 自动产物；`tutorial.final.md` = 人工修订定稿（`status: approved` 后方可进入 03/04）。
 
 ---
 
 ## 3. 待验证假设清单 (assumptions_to_verify)
 
-1. **假设 1**：在 Remotion SSR 预渲染阶段，在 `useEffect` 外直接使用 `typeof window === 'undefined'` 守卫是否能 100% 避免 Node 端渲染编译报错。
-   - **验证方法与判断标准**：在 React 组件最外层写一个 `window` 读取逻辑并使用该守卫，运行 `npx remotion render`，检查控制台是否无报错并正常输出。
-2. **假设 2**：在 Remotion 中使用 `spring` 弹簧插值物理动效，在高频率快节奏帧率（如 60fps）下，插值曲线是否能完美平滑过渡而不出现掉帧抖动。
-   - **验证方法与判断标准**：配置 60fps 的 Composition，设置插值 `[0, 1] -> [100, 0]`，渲染出片后逐帧拖动视频画面，检查弹性边框缩放是否完全线性顺滑。
+1. **假设 1**：在模块顶层用 `typeof window !== 'undefined'` 守卫，是否能 100% 规避 Remotion 在 Node 端打包/求值阶段的 `window is not defined` 报错。
+   - **验证方法与判断标准**：在组件最外层写一处 `window` 读取并套守卫，运行 `npx remotion render`，控制台零报错且正常输出 MP4。
+2. **假设 2**：仅向现成 `@ComparisonCard` 传数据（不新建组件），能否渲染出本期所需的左右对比卡片。
+   - **验证方法与判断标准**：只编写 `data` 配置喂入 `@ComparisonCard`，在 `npx remotion studio` 中渲染出左右对比卡片且无类型/渲染报错。
+3. **假设 3**：`charts/` 组件能否承接标题承诺的“图表动效”。
+   - **验证方法与判断标准**：喂一组数据给 `charts/` 组件，渲染出带入场动画的图表且数值正确。
+4. **假设 4（流程即代码）**：一个 `python-frontmatter` 最小编排器是否能扫描 frontmatter 状态机端到端推进流水线。
+   - **验证方法与判断标准**：写最小调度脚本扫描 `status: approved` 的产物，自动加载对应角色/工作流并触发下一阶段（A 轨全自动，B 轨挂起等真人录屏）。
 
 ---
 
@@ -66,90 +92,140 @@ source_workflow: /02-content-planning
 
 ```json
 {
-  "final_title": "代码即视频：如何用 100 行 React 代码编译卡点与图表动效？",
+  "final_title": "代码即视频（Video-as-Code）：把一条视频做成可编译、可复用、可被 AI 接管的工程",
   "ab_ratio": "30/70",
   "visual_mode": "mixed",
   "visual_metaphor": "数字渲染生产线",
   "tech_stack": [
     "Remotion",
     "React",
-    "TypeScript"
+    "TypeScript",
+    "MoviePy",
+    "FFmpeg"
   ],
   "comparison_matrix": [
     {
-      "tech_dimension": "视频代码化",
+      "tech_dimension": "Video-as-Code 渲染路线",
       "options": [
         {
-          "name": "Remotion",
-          "suitability": "前端技术栈、复杂动效排版",
-          "unsuitability": "零前端基础用户、纯后台大批量超长处理",
-          "known_pitfalls": "SSR 阶段 window 未定义报错",
-          "acceptance_criteria": "终端执行 render 正常输出 MP4",
+          "name": "Remotion (React/TS)",
+          "suitability": "前端栈、复杂 CSS/SVG 排版、类型安全的跨期模板复用",
+          "unsuitability": "零前端基础、纯后台超长批处理",
+          "known_pitfalls": "模块顶层读 window/document 在 Node 求值阶段崩溃；BUSL 商业授权",
+          "acceptance_criteria": "终端 render 正常出 MP4，无 ReferenceError",
           "evidence_status": "verified"
         },
         {
-          "name": "MoviePy",
-          "suitability": "纯 Python 环境、简单拼接",
-          "unsuitability": "自适应 CSS 弹性布局、复杂文字动效",
-          "known_pitfalls": "多层画布堆叠时内存开销大且无可视化热更新",
-          "acceptance_criteria": "脚本跑完输出拼接后的视频",
+          "name": "Motion Canvas / Revideo (TS)",
+          "suitability": "代码演示、需精确时序编排的动画",
+          "unsuitability": "复杂网页级 Flex/Grid 排版（生态不如 React）",
+          "known_pitfalls": "组件/排版生态较小，复用模板需自建",
+          "acceptance_criteria": "描述脚本渲染出预期动画并可参数化导出",
           "evidence_status": "paper_spec"
+        },
+        {
+          "name": "Manim (Python)",
+          "suitability": "数学/算法/公式可视化",
+          "unsuitability": "一般 UI、网页排版、录屏混排",
+          "known_pitfalls": "学习曲线陡，排版能力弱，渲染慢",
+          "acceptance_criteria": "公式/几何动画正确导出",
+          "evidence_status": "paper_spec"
+        },
+        {
+          "name": "MoviePy (Python)",
+          "suitability": "纯 Python、简单拼接/裁剪、音轨闪避",
+          "unsuitability": "自适应弹性排版、复杂文字动效",
+          "known_pitfalls": "文本布局繁琐、多层画布内存大、无热更新",
+          "acceptance_criteria": "脚本跑完输出拼接视频",
+          "evidence_status": "verified"
+        },
+        {
+          "name": "PixiJS / Cocos2d-HTML5 (JS)",
+          "suitability": "游戏类复杂粒子动画",
+          "unsuitability": "标准网页 UI、文本对齐",
+          "known_pitfalls": "文本换行与 DOM 对齐计算复杂",
+          "acceptance_criteria": "Canvas 正确导出帧序列",
+          "evidence_status": "paper_spec"
+        },
+        {
+          "name": "FFmpeg + 脚本 (Shell)",
+          "suitability": "批量转码、轻量字幕烧录、合成兜底",
+          "unsuitability": "复杂动效、交互式排版",
+          "known_pitfalls": "filtergraph 语法晦涩、调试困难",
+          "acceptance_criteria": "命令产出目标格式视频",
+          "evidence_status": "verified"
         }
       ]
     }
   ],
   "assumptions_to_verify": [
     {
-      "assumption": "在顶层直接使用 typeof window === 'undefined' 守卫是否能 100% 避免 Node SSR 编译报错",
-      "verification_method": "在 React 外层写 window 测量并套用守卫，运行 render CLI，检查控制台是否完全无报错输出"
+      "assumption": "模块顶层用 typeof window !== 'undefined' 守卫能否 100% 规避 Node 端打包/求值阶段的 window is not defined 报错",
+      "verification_method": "在组件最外层写 window 读取并套守卫，运行 npx remotion render，控制台零报错且正常出片"
     },
     {
-      "assumption": "spring 物理插值在 60fps 下是否能保持平滑不出现掉帧抖动",
-      "verification_method": "配置 60fps Composition，渲染出片后逐帧分析缩放形变，验证连续位移无突变"
+      "assumption": "仅向现成 @ComparisonCard 传数据（不新建组件）能否渲染出本期左右对比卡片",
+      "verification_method": "只写 data 配置喂入 @ComparisonCard，在 remotion studio 渲染出左右对比卡片且无类型/渲染报错"
+    },
+    {
+      "assumption": "charts/ 组件能否承接标题承诺的图表动效",
+      "verification_method": "喂一组数据给 charts/ 组件，渲染出带入场动画的图表且数值正确"
+    },
+    {
+      "assumption": "python-frontmatter 最小编排器能否扫描 frontmatter 状态机端到端推进流水线",
+      "verification_method": "写最小调度脚本扫描 status: approved 的产物，自动加载对应角色/工作流触发下一阶段（B 轨挂起等真人录屏）"
     }
   ],
   "demo_design": {
-    "project_context": "React 18 / TypeScript 5 / Remotion 4.0",
+    "project_context": "React 18 / TypeScript 5 / Remotion 4.0；A 轨组件位于 OpenMontage/remotion-composer（src/components 通用组件 + src/custom-templates 模板场景/原语，video/ 工程已并入）",
     "prompt_sequence": [
-      "编写一个 Remotion ComparisonScene 对比卡片场景组件，包含左右分栏卡片布局，使用 spring 插值完成卡片缩放弹射动效。注意：必须确保在 Remotion SSR 预渲染阶段不会因为读取 window 或 document 而导致崩溃。",
-      "为 Cursor 编写一份配置在 .cursor/rules 目录下的 mdc 规则文件，约束智能体在编写 Remotion React 视频组件时自动添加 SSR 浏览器全局对象守卫。"
+      "基于 remotion-composer 现有的 @ComparisonCard 组件，生成“对比卡片”的数据配置：左卡=方案A、右卡=方案B。只产出数据，不要新建组件。",
+      "为 Cursor 在 .cursor/rules/ 下编写一份 mdc 规则（globs 指向 OpenMontage/remotion-composer/src/**），约束我编写 Remotion 组件时自动加上 window/document/navigator 的安全守卫。"
     ],
     "pitfalls_to_expose": [
-      "AI 顶层读取 window.innerWidth 导致 SSR 截图时 ReferenceError 崩溃红屏"
+      "AI 在模块/组件顶层读取 window.innerWidth，导致 Node 打包/求值阶段 ReferenceError: window is not defined 崩溃",
+      "AI 为本期从零手写一个全新的 ComparisonScene.tsx，违反“固定模板 + 内容替换”，忽略仓库现成的 @ComparisonCard"
     ]
   },
   "outline_sections": [
     {
       "section_name": "开头黄金钩子",
-      "key_point": "放弃机械拖拽，用 React 状态定义视频的爽感与未来趋势",
+      "key_point": "弃用时间轴拖拽，Video-as-Code 把视频变成声明式代码/数据：可版本控制、可批量复用、可被 AI 接管",
       "beat_type": "statement",
       "visual_priority": "text",
       "scene_template": "@IntroScene"
     },
     {
-      "section_name": "Remotion 底层解密",
-      "key_point": "视频本质是 Frame 与 Seconds 的插值，讲解渲染与缩放机制",
+      "section_name": "范式本质·帧即状态·不止 React",
+      "key_point": "一句话本质=帧即状态；代码即视频是一类范式有 6 条路线，共享“代码描述→编译成帧→合成视频”内核",
       "beat_type": "transformation",
-      "visual_priority": "chart",
-      "scene_template": "@TimelineScene"
-    },
-    {
-      "section_name": "致命 SSR 踩坑",
-      "key_point": "直播演示 Cursor 顶层直接读取 window.innerWidth 导致编译崩溃红屏的灾难",
-      "beat_type": "demonstration",
-      "visual_priority": "screen",
+      "visual_priority": "mixed",
       "scene_template": "@ConceptScene"
     },
     {
-      "section_name": "MDC 被动约束降维打击",
-      "key_point": "通过 mdc 约束，无需手写一行代码，Cursor 自动补全安全守卫一次通过",
+      "section_name": "判断层矩阵与选型理由",
+      "key_point": "6 方案按边界/验收入矩阵；在固定模板+AI友好+跨期可维护约束下 Remotion 胜出，并点明要付的税",
       "beat_type": "comparison",
+      "visual_priority": "chart",
+      "scene_template": "@TableScene"
+    },
+    {
+      "section_name": "流程即代码（Dogfooding）",
+      "key_point": "角色=system_prompt/工作流=user_prompt/frontmatter=状态机，七阶段流水线+编排器伪代码+提示词链",
+      "beat_type": "transformation",
+      "visual_priority": "code",
+      "scene_template": "@TimelineScene"
+    },
+    {
+      "section_name": "核心实操与避坑",
+      "key_point": "首选数据驱动现成 @ComparisonCard ✅ 而非从零手写 ❌；用 MDC 规则把 SSR window 守卫一次性封死",
+      "beat_type": "demonstration",
       "visual_priority": "code",
       "scene_template": "@SplitLayout"
     },
     {
       "section_name": "结尾 CTA",
-      "key_point": "掌握代码即视频，极速出片。关注博主，下期详解 Whisper 毫秒级字幕卡点",
+      "key_point": "代码即视频+流程即代码把内容生产做成工程流水线；关注博主，下期详解 Whisper 毫秒级字幕卡点",
       "beat_type": "conclusion",
       "visual_priority": "text",
       "scene_template": "@OutroScene"

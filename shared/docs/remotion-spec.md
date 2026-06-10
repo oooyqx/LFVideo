@@ -1,7 +1,11 @@
 # Remotion 视频模板与分镜规范 (Remotion Specification)
 
-本规范定义了当前 Remotion 工程（`video/`）中已经实现、可直接调用的 UI 组件、场景与动画能力。
-在进行 **02 内容策划**与 **04 脚本撰写**时，必须**100% 严格遵守本规范进行画面设计**，确保 AI 编写的脚本画面在本地“一键可渲染”，杜绝幻想不切实际的特效。
+> ⚠️ **真相源对齐（必读，2026-06 更新）**：原"目标态规范"组件（`@IntroScene/@OutroScene/@ConceptScene/@SplitLayout/@VideoSlot/@AnimatedBackground`）**已落地**——原计划的 `video/` 工程已并入 `OpenMontage/remotion-composer`，这些组件现存于 `OpenMontage/remotion-composer/src/custom-templates/`（`scenes/`、`primitives/`、`theme/`，`verified` 存在）。
+> **当前实际落地（两套组件，按用途取用）**：通用组件在 `remotion-composer/src/components/`（`ComparisonCard/TerminalScene/ScreenshotScene/charts/CaptionOverlay/HeroTitle/StatCard...`）；模板场景与原语在 `remotion-composer/src/custom-templates/`（场景 `IntroScene/OutroScene/ConceptScene/TimelineScene/TableScene`，原语 `SplitLayout/VideoSlot/AnimatedBackground/Subtitle/TitleFrame`，及 `theme/tokens`）。详见 §1.9。
+> 因此在 **02 策划 / 04 脚本** 中引用组件时按 §1.9 对照即可（组件存在为 `verified`）；但 `render` 命令、`<CompositionId>` 与具体 props 仍须录制前核对（确认已在 `Root`/`index` 注册），未实跑的命令仍标 `paper_spec`。
+
+本规范定义了 Remotion 工程中可调用的 UI 组件、场景与动画能力。
+在进行 **02 内容策划**与 **04 脚本撰写**时，必须**严格遵守本规范的设计原则与防静止红线进行画面设计**，并按 §1.9 映射到实际组件，确保画面可渲染，杜绝幻想不切实际的特效。
 
 ---
 
@@ -38,9 +42,33 @@
 
 ---
 
-## 2. 现成可用组件库清单
+## 1.9 规范组件名 ↔ 实际组件对照表（录制前必核对 props）
 
-目前在 `video/src/template/` 下已封装好的、可一键在数据源 `data.ts` 里配置的组件：
+实际组件分布在 `OpenMontage/remotion-composer/src/` 下两处：通用组件在 `components/`，模板场景/原语在 `custom-templates/`（均以各自 `index.ts` 导出为准）。**原"目标态"同名组件现已实现**，对照如下（props 以实际组件为准）：
+
+| 规范组件名 | 实际组件位置 | 备注 |
+| :--- | :--- | :--- |
+| `@IntroScene` | `custom-templates/scenes/IntroScene` | 开场大字报（已实现；亦可用 `components/HeroTitle`） |
+| `@OutroScene` | `custom-templates/scenes/OutroScene` | 片尾 CTA（已实现；亦可用 `components/EndTag`） |
+| `@ConceptScene` | `custom-templates/scenes/ConceptScene` | 概念卡片（已实现；亦可用 `components/TextCard/StatCard/CalloutBox` 组合） |
+| `@SplitLayout` | `custom-templates/primitives/SplitLayout` | 左右分屏（已实现） |
+| `@VideoSlot` | `custom-templates/primitives/VideoSlot` | B 轨外部资产嵌入（已实现；截图变焦另有 `components/ScreenshotScene`） |
+| `@AnimatedBackground` | `custom-templates/primitives/AnimatedBackground` | 背景/粒子（已实现；另有 `components/ParticleOverlay`） |
+| （图表） | `components/charts/`、`StatReveal`、`ProgressBar` | 标题承诺的“图表动效” |
+| （字幕） | `components/CaptionOverlay`、`custom-templates/primitives/Subtitle` | 逐字高亮叠层 / 字幕 |
+| （终端） | `components/TerminalScene` | 命令/报错演示 |
+| （对比卡） | `components/ComparisonCard` | 左右对比 |
+| （时间线/表格） | `custom-templates/scenes/TimelineScene`、`TableScene` | 新增模板场景 |
+
+> `components/` 完整清单：`AnimeScene` `CalloutBox` `CaptionOverlay` `ComparisonCard` `EndTag` `HeroTitle` `ParticleOverlay` `ProductReveal` `ProgressBar` `ProviderChip` `ScreenshotScene` `SectionTitle` `StatCard` `StatReveal` `TerminalScene` `TextCard` `charts/`。
+> `custom-templates/` 清单：场景 `IntroScene` `OutroScene` `ConceptScene` `TimelineScene` `TableScene`；原语 `SplitLayout` `VideoSlot` `AnimatedBackground` `Subtitle` `TitleFrame`；主题 `theme/tokens`、`theme/fonts`。
+> 注：仓库内不再有独立 `video/` 目录——模板四层（theme/primitives/scenes/episodes）已并入 `remotion-composer/src/custom-templates/`。组件存在为 `verified`；具体 render 命令与 `<CompositionId>` 仍以录制前实跑为准。
+
+---
+
+## 2. 现成可用组件库清单（名称以 §1.9 映射为准）
+
+下列组件已在 `remotion-composer/src/custom-templates/`（场景/原语/主题）与 `src/components/`（通用组件）下封装，可在数据源里配置（实际调用请按 §1.9 对照到具体路径）：
 
 ### 2.1 基础场景组件 (Scenes)
 

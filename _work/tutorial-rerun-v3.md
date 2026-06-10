@@ -2,7 +2,7 @@
 
 ## 【AI 视频自动化生产线】第 2 期：渲染引擎篇 · 企业级落地指南
 
-> 📌 **本文性质**：本期教学软文，作为整期视频的核心灵魂与信息唯一真相源。对齐三处真相源：`CONTENTLIB.md`（TAD-01 混合架构）、`shared/docs/remotion-spec.md`（组件清单与 §1.9 映射）、`_decisions/why-remotion-over-hyperframes.md`（数据驱动模板决策）。所有技术结论显式标注证据状态（`verified` / `paper_spec`）与验收标准，未经本机渲染验证的一律 `paper_spec`。
+> 📌 **本稿性质**：按更新后的 `strategist(内容策划师)` 角色 + `02-content-planning` 工作流（含新增「每节有料 / 过渡与对照 / 密度自查」三条质量细则）**完整重跑一遍**的产物（v3）。对齐三处真相源：`CONTENTLIB.md`（TAD-01 混合架构）、`shared/docs/remotion-spec.md`（组件清单与 §1.9 映射）、`_decisions/why-remotion-over-hyperframes.md`（数据驱动模板决策）。所有技术结论显式标注证据状态（`verified` / `paper_spec`）与验收标准，未经本机渲染验证的一律 `paper_spec`。
 
 ---
 
