@@ -16,7 +16,7 @@
 |----|---------|---------|------------|---------|----------|--------|---------|--------|-------|--------|--------|--------|--------|------|
 | **系列一：AI 视频自动化** | | | | | | | | | | | | | | |
 | ep01-video-agent-overview | approved | approved | approved | approved | - | - | approved | - | - | - | - | approved | approved | 总体构建：IDE 智能体 + Python 工具 + React 编译器 (已完结) |
-| ep02-video-render | approved | approved | draft | draft | suspended | - | draft | - | suspended | suspended | suspended | suspended | suspended | 渲染引擎：代码即视频 + 流程即代码 (本期) |
+| ep02-video-render | approved | approved | approved | draft | suspended | - | draft | - | suspended | suspended | suspended | suspended | suspended | 渲染引擎：代码即视频 + 流程即代码 (本期) |
 | ep03-video-subtitle | - | - | - | - | - | - | - | - | - | - | - | - | - | 字幕卡点：Whisper 毫秒级时间戳驱动 React 弹跳字幕 |
 | ep04-video-orchestrator | - | - | - | - | - | - | - | - | - | - | - | - | - | 智能体编排：YAML 管道与 Markdown 导演规则指挥 Agent |
 | **系列二：PPT 演示文稿自动化** | | | | | | | | | | | | | | |

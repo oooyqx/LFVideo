@@ -1,6 +1,6 @@
 ---
 stage: 03-video-planning-bilibili
-status: draft
+status: approved
 source_workflow: /03-video-planning-bilibili
 upstream_inputs:
   - 02-plan/README.md (status: approved)
