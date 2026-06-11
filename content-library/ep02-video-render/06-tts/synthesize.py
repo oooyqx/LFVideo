@@ -8,13 +8,48 @@ import os
 import wave
 import json
 import time
+import urllib.request
 from pathlib import Path
 
 # --- 配置 ---
 SCRIPT_DIR = Path(__file__).parent
-MODEL_PATH = SCRIPT_DIR / "models" / "zh_CN-huayan-medium.onnx"
+MODELS_DIR = SCRIPT_DIR / "models"
+MODELS_DIR.mkdir(exist_ok=True)
+MODEL_PATH = MODELS_DIR / "zh_CN-huayan-medium.onnx"
+MODEL_CONFIG_PATH = MODELS_DIR / "zh_CN-huayan-medium.onnx.json"
 ASSETS_DIR = SCRIPT_DIR / "assets"
 ASSETS_DIR.mkdir(exist_ok=True)
+
+# Hugging Face 下载地址
+_HF_BASE = "https://huggingface.co/rhasspy/piper-voices/resolve/main/zh/zh_CN/huayan/medium"
+_MODEL_URL = f"{_HF_BASE}/zh_CN-huayan-medium.onnx"
+_CONFIG_URL = f"{_HF_BASE}/zh_CN-huayan-medium.onnx.json"
+
+
+def ensure_model():
+    """检查模型文件是否存在，缺失则自动从 Hugging Face 下载。"""
+    for path, url, label in [
+        (MODEL_PATH, _MODEL_URL, "模型 (.onnx)"),
+        (MODEL_CONFIG_PATH, _CONFIG_URL, "配置 (.onnx.json)"),
+    ]:
+        if path.exists():
+            continue
+        print(f"[下载] {label} 不存在，正在从 Hugging Face 下载...")
+        print(f"  URL: {url}")
+        print(f"  目标: {path}")
+        try:
+            urllib.request.urlretrieve(url, str(path))
+            size_mb = path.stat().st_size / (1024 * 1024)
+            print(f"  完成 ({size_mb:.1f} MB)")
+        except Exception as e:
+            if path.exists():
+                path.unlink()
+            raise RuntimeError(
+                f"下载失败: {e}\n"
+                f"请手动下载:\n"
+                f"  {url}\n"
+                f"  保存到: {path}"
+            ) from e
 
 # 04 脚本口播文本（按段落 ID 对应）
 # 从 04-script/README.md 提取的完整 [口播] 内容
@@ -159,6 +194,8 @@ NARRATION_SEGMENTS = {
 
 def synthesize_all():
     """使用 Piper TTS 合成所有口播段落"""
+    ensure_model()
+
     from piper import PiperVoice
 
     print(f"Loading model: {MODEL_PATH}")
