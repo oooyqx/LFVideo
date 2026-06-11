@@ -2,136 +2,136 @@
   "engine": "piper-tts",
   "model": "zh_CN-huayan-medium",
   "sample_rate": 22050,
-  "total_duration_seconds": 553.82,
+  "total_duration_seconds": 548.76,
   "total_segments": 16,
   "segments": [
     {
       "segment_id": "S1_intro",
       "output_file": "S1_intro.wav",
       "text_chars": 158,
-      "duration_seconds": 25.59,
-      "file_size_bytes": 1128492,
-      "synthesis_time_seconds": 0.82
+      "duration_seconds": 25.08,
+      "file_size_bytes": 1105964,
+      "synthesis_time_seconds": 0.5
     },
     {
       "segment_id": "S2a_paradigm",
       "output_file": "S2a_paradigm.wav",
       "text_chars": 258,
-      "duration_seconds": 42.97,
-      "file_size_bytes": 1894956,
-      "synthesis_time_seconds": 0.97
+      "duration_seconds": 42.55,
+      "file_size_bytes": 1876524,
+      "synthesis_time_seconds": 0.79
     },
     {
       "segment_id": "S2b_frame_as_state",
       "output_file": "S2b_frame_as_state.wav",
       "text_chars": 120,
-      "duration_seconds": 20.96,
-      "file_size_bytes": 924204,
-      "synthesis_time_seconds": 0.47
+      "duration_seconds": 20.77,
+      "file_size_bytes": 916012,
+      "synthesis_time_seconds": 0.41
     },
     {
       "segment_id": "S2c_six_routes",
       "output_file": "S2c_six_routes.wav",
       "text_chars": 314,
-      "duration_seconds": 44.33,
-      "file_size_bytes": 1954860,
-      "synthesis_time_seconds": 1.07
+      "duration_seconds": 43.37,
+      "file_size_bytes": 1912876,
+      "synthesis_time_seconds": 0.8
     },
     {
       "segment_id": "S3a_judgment_matrix",
       "output_file": "S3a_judgment_matrix.wav",
       "text_chars": 381,
-      "duration_seconds": 60.38,
-      "file_size_bytes": 2662956,
-      "synthesis_time_seconds": 1.35
+      "duration_seconds": 59.73,
+      "file_size_bytes": 2634284,
+      "synthesis_time_seconds": 1.11
     },
     {
       "segment_id": "S3b_remotion_reasons",
       "output_file": "S3b_remotion_reasons.wav",
       "text_chars": 288,
-      "duration_seconds": 41.62,
-      "file_size_bytes": 1835564,
-      "synthesis_time_seconds": 0.91
+      "duration_seconds": 40.97,
+      "file_size_bytes": 1806892,
+      "synthesis_time_seconds": 0.72
     },
     {
       "segment_id": "S3c_comparison",
       "output_file": "S3c_comparison.wav",
       "text_chars": 164,
-      "duration_seconds": 21.04,
-      "file_size_bytes": 927788,
-      "synthesis_time_seconds": 0.5
+      "duration_seconds": 20.91,
+      "file_size_bytes": 922156,
+      "synthesis_time_seconds": 0.39
     },
     {
       "segment_id": "S3d_tradeoffs",
       "output_file": "S3d_tradeoffs.wav",
       "text_chars": 171,
-      "duration_seconds": 27.85,
-      "file_size_bytes": 1228332,
-      "synthesis_time_seconds": 0.66
+      "duration_seconds": 27.27,
+      "file_size_bytes": 1202732,
+      "synthesis_time_seconds": 0.53
     },
     {
       "segment_id": "S4a_pipeline",
       "output_file": "S4a_pipeline.wav",
       "text_chars": 172,
-      "duration_seconds": 30.59,
-      "file_size_bytes": 1349164,
-      "synthesis_time_seconds": 0.83
+      "duration_seconds": 29.56,
+      "file_size_bytes": 1303596,
+      "synthesis_time_seconds": 0.55
     },
     {
       "segment_id": "S4b_three_piece",
       "output_file": "S4b_three_piece.wav",
       "text_chars": 170,
-      "duration_seconds": 24.31,
-      "file_size_bytes": 1072172,
-      "synthesis_time_seconds": 0.74
+      "duration_seconds": 23.78,
+      "file_size_bytes": 1048620,
+      "synthesis_time_seconds": 0.44
     },
     {
       "segment_id": "S4c_orchestrator",
       "output_file": "S4c_orchestrator.wav",
       "text_chars": 199,
-      "duration_seconds": 24.14,
-      "file_size_bytes": 1064492,
-      "synthesis_time_seconds": 0.78
+      "duration_seconds": 23.89,
+      "file_size_bytes": 1053740,
+      "synthesis_time_seconds": 0.44
     },
     {
       "segment_id": "S4d_ab_track",
       "output_file": "S4d_ab_track.wav",
       "text_chars": 300,
-      "duration_seconds": 41.2,
-      "file_size_bytes": 1817132,
-      "synthesis_time_seconds": 0.96
+      "duration_seconds": 41.05,
+      "file_size_bytes": 1810476,
+      "synthesis_time_seconds": 0.74
     },
     {
       "segment_id": "S5a_data_driven",
       "output_file": "S5a_data_driven.wav",
       "text_chars": 246,
-      "duration_seconds": 33.45,
-      "file_size_bytes": 1475116,
-      "synthesis_time_seconds": 0.77
+      "duration_seconds": 34.16,
+      "file_size_bytes": 1506348,
+      "synthesis_time_seconds": 0.61
     },
     {
       "segment_id": "S5b_ssr_guard",
       "output_file": "S5b_ssr_guard.wav",
       "text_chars": 336,
-      "duration_seconds": 43.05,
-      "file_size_bytes": 1898540,
-      "synthesis_time_seconds": 0.93
+      "duration_seconds": 42.93,
+      "file_size_bytes": 1893420,
+      "synthesis_time_seconds": 0.81
     },
     {
       "segment_id": "S5c_ai_render",
       "output_file": "S5c_ai_render.wav",
       "text_chars": 278,
-      "duration_seconds": 39.59,
-      "file_size_bytes": 1745964,
-      "synthesis_time_seconds": 0.88
+      "duration_seconds": 40.28,
+      "file_size_bytes": 1776172,
+      "synthesis_time_seconds": 0.75
     },
     {
       "segment_id": "S6_cta",
       "output_file": "S6_cta.wav",
       "text_chars": 209,
-      "duration_seconds": 32.75,
-      "file_size_bytes": 1444396,
-      "synthesis_time_seconds": 0.72
+      "duration_seconds": 32.45,
+      "file_size_bytes": 1431084,
+      "synthesis_time_seconds": 0.58
     }
   ]
 }

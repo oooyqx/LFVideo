@@ -27,29 +27,95 @@ _CONFIG_URL = f"{_HF_BASE}/zh_CN-huayan-medium.onnx.json"
 
 
 def ensure_model():
-    """检查模型文件是否存在，缺失则自动从 Hugging Face 下载。"""
+    """检查模型文件是否存在，缺失则自动从 Hugging Face 或其镜像源下载。"""
     for path, url, label in [
         (MODEL_PATH, _MODEL_URL, "模型 (.onnx)"),
         (MODEL_CONFIG_PATH, _CONFIG_URL, "配置 (.onnx.json)"),
     ]:
         if path.exists():
             continue
-        print(f"[下载] {label} 不存在，正在从 Hugging Face 下载...")
-        print(f"  URL: {url}")
-        print(f"  目标: {path}")
-        try:
-            urllib.request.urlretrieve(url, str(path))
-            size_mb = path.stat().st_size / (1024 * 1024)
-            print(f"  完成 ({size_mb:.1f} MB)")
-        except Exception as e:
-            if path.exists():
-                path.unlink()
+        
+        # 准备备用下载地址 (hf-mirror.com)
+        urls = [url]
+        if "huggingface.co" in url:
+            mirror_url = url.replace("huggingface.co", "hf-mirror.com")
+            urls.append(mirror_url)
+
+        max_retries = 3
+        success = False
+        
+        for attempt in range(1, max_retries + 1):
+            for current_url in urls:
+                print(f"[下载] 正在尝试下载 {label} (尝试 {attempt}/{max_retries})...")
+                print(f"  URL: {current_url}")
+                print(f"  目标: {path}")
+                
+                try:
+                    req = urllib.request.Request(
+                        current_url,
+                        headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+                    )
+                    
+                    with urllib.request.urlopen(req, timeout=30) as response:
+                        content_length = response.headers.get('Content-Length')
+                        total_size = int(content_length) if content_length else None
+                        
+                        bytes_downloaded = 0
+                        chunk_size = 1024 * 1024  # 1MB chunks
+                        
+                        # 使用临时文件下载，避免网络中断导致残缺文件被识别为已下载
+                        tmp_path = path.with_suffix(path.suffix + ".tmp")
+                        with open(tmp_path, "wb") as f:
+                            while True:
+                                chunk = response.read(chunk_size)
+                                if not chunk:
+                                    break
+                                f.write(chunk)
+                                bytes_downloaded += len(chunk)
+                                
+                                if total_size:
+                                    percent = (bytes_downloaded / total_size) * 100
+                                    print(f"\r  进度: {percent:.1f}% ({bytes_downloaded / (1024*1024):.1f}MB / {total_size / (1024*1024):.1f}MB)", end="", flush=True)
+                                else:
+                                    print(f"\r  进度: {bytes_downloaded / (1024*1024):.1f}MB", end="", flush=True)
+                        
+                        print()  # 换行
+                        
+                        if total_size and bytes_downloaded < total_size:
+                            raise ValueError(f"下载不完整: 仅获取到 {bytes_downloaded} 字节 (共 {total_size} 字节)")
+                        
+                        # 成功下载，重命名临时文件
+                        if tmp_path.exists():
+                            if path.exists():
+                                path.unlink()
+                            tmp_path.rename(path)
+                        
+                        size_mb = path.stat().st_size / (1024 * 1024)
+                        print(f"  [成功] {label} 下载完成 ({size_mb:.1f} MB)\n")
+                        success = True
+                        break  # 跳出 URL 循环
+                        
+                except Exception as e:
+                    print(f"\n  [警告] 尝试失败: {e}")
+                    tmp_path = path.with_suffix(path.suffix + ".tmp")
+                    if tmp_path.exists():
+                        try:
+                            tmp_path.unlink()
+                        except Exception:
+                            pass
+                    time.sleep(2)  # 等待后重试
+            
+            if success:
+                break  # 跳出重试循环
+                
+        if not success:
             raise RuntimeError(
-                f"下载失败: {e}\n"
+                f"下载失败: 历经 {max_retries} 次尝试和镜像源后仍无法下载 {label}。\n"
                 f"请手动下载:\n"
                 f"  {url}\n"
+                f"  或镜像: {url.replace('huggingface.co', 'hf-mirror.com')}\n"
                 f"  保存到: {path}"
-            ) from e
+            )
 
 # 04 脚本口播文本（按段落 ID 对应）
 # 从 04-script/README.md 提取的完整 [口播] 内容
