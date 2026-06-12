@@ -1,11 +1,14 @@
 ---
 stage: 12-distribute-adapt
-status: draft
+status: suspended
 source_workflow: /12-distribute-adapt
 upstream_inputs:
   - 04-script/README.md (status: approved)
   - 07-assembly/README.md (status: approved)
 ---
+
+> ⏸️ **本阶段已挂起（suspended）**：当前专注视频本体（04→07 渲染主线），其他平台分发暂不推进。
+> 文案已按当前 04 重写、可随时启用；恢复时把状态改回 `draft` 并在 `PIPELINE.md` 同步即可。
 
 # ep02 多平台分发方案：《代码即视频（Video-as-Code）：把一条视频做成可编译、可复用、可被 AI 接管的工程》
 
