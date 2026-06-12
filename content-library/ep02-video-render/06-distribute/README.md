@@ -1,17 +1,17 @@
 ---
 stage: 06-distribute-adapt
-status: draft
+status: superseded
 source_workflow: /06-distribute-adapt
+superseded_by: 12-distribute/README.md
 upstream_inputs:
   - 04-script/README.md (status: approved)
 ---
 
-> ⚠️ **本分发文案已过时（stale），需基于当前 04 脚本重新生成，请勿直接发布。**
+> ⚠️ **本文件已作废（superseded），仅作历史留存，请勿发布。**
 > 它产出于 04 脚本**改写之前**的旧叙事（"100 行 React / SSR 报错 / MDC 解法"），
 > 与当前 04 的内容模型（《代码即视频 Video-as-Code》：六条技术路线 + 判断层矩阵 + Remotion 选型 + 七阶段流水线）**完全不是同一条视频**。
-> 例如本页 Timeline（00:00 原理 / 02:30 SSR 翻车 / 04:30 MDC 解法）对应的是旧脚本，04 现有 16 段里并没有"MDC 解法"这条线。
-> 另外，"分发改写"在当前流水线看板里是 **12 阶段**，本文件落在 `06` 槽位属于历史编号遗留（06 槽位现为 TTS）。
-> 待办：按当前 04 重写三平台标题/简介/卡片，并移到正确的 `12-distribute/` 槽位。`pipeline_lint.py` 已据 04 的 `anti_hype_forbidden` 标出本页标题中的违规噱头。
+> 此外，"分发改写"在当前流水线看板里是 **12 阶段**，本文件落在 `06` 槽位属于历史编号遗留（06 槽位现为 TTS）。
+> 已按当前 04 重写并迁移到正确槽位：**`12-distribute/README.md`**（status: draft）。本文件不参与门禁（`pipeline_lint.py` 按 `status: superseded` 跳过）。
 
 # ep02 多平台分发方案：《代码即视频：如何用 100 行 React 代码编译卡点与图表动效？》
 
