@@ -247,30 +247,39 @@ const VRMModel: React.FC<VRMModelProps> = ({
       spine.rotation.z = -sway * 0.015;
     }
 
-    // Lower the arms from the default T-pose into a natural rest, with a
-    // sway-driven swing and a small right-arm emphasis gesture while speaking.
+    // Slow, deliberate "point at the table" gesture: a smooth bump that raises
+    // the host's right arm (screen-left, toward the slide content) on a ~13s
+    // cycle, holds, then lowers. Kept low-frequency so it never looks jittery.
+    const point = Math.max(0, Math.sin((2 * Math.PI * timeSec) / 13 - Math.PI / 2));
+
+    // Lower the arms from the default T-pose into a natural rest, with a slow
+    // sway-driven swing (no per-word jitter), then layer the pointing gesture.
     const lUpper = h.getNormalizedBoneNode(VRMHumanBoneName.LeftUpperArm);
     const rUpper = h.getNormalizedBoneNode(VRMHumanBoneName.RightUpperArm);
     const lLower = h.getNormalizedBoneNode(VRMHumanBoneName.LeftLowerArm);
     const rLower = h.getNormalizedBoneNode(VRMHumanBoneName.RightLowerArm);
     if (lUpper) {
       lUpper.rotation.z = -1.2 - breath * 0.02;
-      lUpper.rotation.y = -0.05 + sway * 0.05;
-      lUpper.rotation.x = Math.sin(swayP + 0.5) * 0.04;
+      lUpper.rotation.y = -0.05 + sway * 0.03;
+      lUpper.rotation.x = Math.sin(swayP + 0.5) * 0.02;
     }
     if (rUpper) {
-      rUpper.rotation.z = 1.2 + breath * 0.02;
-      rUpper.rotation.y = 0.05 + sway * 0.05;
-      rUpper.rotation.x = Math.sin(swayP + 0.9) * 0.04 + speaking * 0.1;
+      // Rest + slow swing, then raise toward the table while pointing.
+      rUpper.rotation.z = 1.2 + breath * 0.02 - point * 0.82;
+      rUpper.rotation.y = 0.05 + sway * 0.03 - point * 0.15;
+      rUpper.rotation.x = Math.sin(swayP + 0.9) * 0.02 + point * 0.15;
     }
-    if (lLower) lLower.rotation.z = -0.2 + Math.sin(swayP + 1.1) * 0.03;
-    if (rLower)
-      rLower.rotation.z = 0.2 - Math.sin(swayP + 1.3) * 0.03 - speaking * 0.12;
+    if (lLower) lLower.rotation.z = -0.2 + Math.sin(swayP + 1.1) * 0.015;
+    if (rLower) rLower.rotation.z = 0.2 - point * 0.32;
 
     const lHand = h.getNormalizedBoneNode(VRMHumanBoneName.LeftHand);
     const rHand = h.getNormalizedBoneNode(VRMHumanBoneName.RightHand);
-    if (lHand) lHand.rotation.z = Math.sin(swayP + 1.6) * 0.06;
-    if (rHand) rHand.rotation.z = -Math.sin(swayP + 1.9) * 0.06;
+    if (lHand) lHand.rotation.z = Math.sin(swayP + 1.6) * 0.03;
+    if (rHand) {
+      // Settle the hand flat while pointing; gentle, slow idle otherwise.
+      rHand.rotation.z = -Math.sin(swayP + 1.9) * 0.03 * (1 - point);
+      rHand.rotation.x = point * 0.1;
+    }
 
     // Breathing on the chest.
     const chest =
