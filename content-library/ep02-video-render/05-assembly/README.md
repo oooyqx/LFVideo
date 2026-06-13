@@ -1,8 +1,17 @@
 ---
 stage: 05-video-assembly
-status: draft
+status: superseded
 source_workflow: /05-video-assembly
+superseded_by: 07-assembly/README.md
+upstream_inputs:
+  - 04-script/README.md (status: approved)
 ---
+
+> ⚠️ **本文件已作废（superseded），仅作历史留存，请勿作为依据。**
+> 这是一份**越权**的早期"视频组装"草稿：它跑在 `05` 槽位（该槽位的正确职责是 **B 轨录屏 `05-b-roll/`**），
+> 且未对齐 04 脚本契约——擅自把标题退回噱头版（"100 行 React"）、把总时长砍到 7:30、删掉了「六条路线」「判断层矩阵」两张核心对比表，只剩 5 段。
+> 真正的视频组装见 **`07-assembly/README.md`**（已 approved，16 段忠实对齐 04 契约）。
+> 此处保留是为了可追溯，不参与流水线门禁（`pipeline_lint.py` 会按 `status: superseded` 跳过）。
 
 # ep02 视频组装记录：《代码即视频：如何用 100 行 React 代码编译卡点与图表动效？》
 

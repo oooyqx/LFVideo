@@ -3,7 +3,7 @@ stage: 06-tts-synthesis
 status: approved
 source_workflow: /06-tts-synthesis
 upstream_inputs:
-  - 04-script/README.md (status: draft)
+  - 04-script/README.md (status: approved)
   - shared/docs/remotion-spec.md
 engine: cosyvoice3 / piper-tts
 model: Fun-CosyVoice3-0.5B / zh_CN-huayan-medium

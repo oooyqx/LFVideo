@@ -494,6 +494,7 @@ upstream_inputs:
   "platform": "bilibili",
   "estimated_duration_seconds": 645,
   "total_word_count": 2800,
+  "anti_hype_forbidden": ["100 行", "百倍", "千倍", "一键生成"],
   "sections": [
     {
       "id": "1",

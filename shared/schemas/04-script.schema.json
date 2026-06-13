@@ -14,6 +14,16 @@
       "type": "string",
       "minLength": 1
     },
+    "platform": { "type": "string" },
+    "estimated_duration_seconds": { "type": "number", "minimum": 1 },
+    "total_word_count": { "type": "integer", "minimum": 1 },
+    "anti_hype_forbidden": {
+      "type": "array",
+      "description": "Marketing/clickbait phrases the 04 script bans; downstream stages (TTS, assembly, subtitle) must not re-introduce them. Enforced by scripts/pipeline_lint.py.",
+      "items": { "type": "string" }
+    },
+    "b_track_assets_required": { "type": "array" },
+    "coverage_checklist": { "type": "object" },
     "sections": {
       "type": "array",
       "minItems": 3,
@@ -22,10 +32,12 @@
         "required": ["id", "track", "voice", "visual_instructions", "duration_hint_seconds"],
         "properties": {
           "id": { "type": "string" },
+          "section_ref": { "type": "string" },
+          "scene_template": { "type": "string" },
           "track": {
             "type": "string",
-            "enum": ["A", "B", "A/B"],
-            "description": "A-rail (Concept animation), B-rail (OS screen recording), or A/B split"
+            "enum": ["A", "B", "A/B", "A+B"],
+            "description": "A-rail (Concept animation), B-rail (OS screen recording), or A/B (split) / A+B (composited) mix"
           },
           "voice": { "type": "string", "description": "The exact spoken voiceover script" },
           "visual_instructions": { "type": "string", "description": "Visual scene prompt or Remotion code instructions" },

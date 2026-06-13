@@ -4,7 +4,7 @@ status: draft
 source_workflow: /08-subtitle-gen
 upstream_inputs:
   - 06-tts/assets/*.wav (status: approved)
-  - 07-assembly/README.md (status: draft)
+  - 07-assembly/README.md (status: approved)
 whisper_model: base
 ---
 

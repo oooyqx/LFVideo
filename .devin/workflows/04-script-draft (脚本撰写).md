@@ -103,10 +103,12 @@ source_workflow: /04-script-draft
 
 - 创建目录：`content-library/<epNN-slug>/04-script/`
 - 将脚本写入：`04-script/README.md`。
-- **MANDATORY**: 脚本末尾必须追加符合 `shared/schemas/04-script.schema.json` 规范的 ` ```json ` 结构化块，示例如下：
+- **MANDATORY**: 脚本末尾必须追加符合 `shared/schemas/04-script.schema.json` 规范的 ` ```json ` 结构化块。
+- **该 JSON 块是下游全部阶段（TTS/组装/字幕/分发）的唯一真源（SSOT），一旦 approve 即冻结**：其中 `title`、`sections[].id`/`voice`/`duration_hint_seconds`、以及 `anti_hype_forbidden`（噱头黑名单）是下游**不得改写**的硬契约；下游只能逐条映射，不能增删段落、重写标题/口播或重新引入噱头。示例：
   ```json
   {
     "title": "定稿视频标题",
+    "anti_hype_forbidden": ["100 行", "百倍"],
     "sections": [
       {
         "id": "1",
@@ -138,10 +140,10 @@ source_workflow: /04-script-draft
   }
   ```
 - 阶段状态头部 frontmatter 置 `status: draft`（待人工评审通过后方可改为 `approved`）。
-- 执行 Schema 校验。后续自动化校验命令：
+- 执行机器校验（Schema + 跨阶段防漂移）：
   ```bash
-  # 校验定稿 script 是否符合 04-script 规范
-  npx ajv validate -s shared/schemas/04-script.schema.json -d content-library/<epNN-slug>/04-script/README.md
+  # 校验本期全链路：Schema 契约 + provenance + 门禁 + 04↔组装一致性 + 噱头黑名单
+  python scripts/pipeline_lint.py content-library/<epNN-slug>
   ```
 - 更新 `content-library/PIPELINE.md` 看板：该期 04 脚本列置为 `draft`。
 

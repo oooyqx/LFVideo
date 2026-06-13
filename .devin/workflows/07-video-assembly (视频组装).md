@@ -45,8 +45,10 @@ video/src/
 ### 2. 初始化每期 Remotion 数据层 (data.ts)
 
 在 `video/src/episodes/epNN-slug/` 目录下创建 `data.ts`：
-- 读取 `04-script/README.md`
-- 将每一段的口播（`voice`）、画面配置（`animType`）、画面文字等提炼为 Remotion 的 JSON 数据格式。
+- 读取 `04-script/README.md` 末尾的 JSON 契约块——**它是唯一真源（SSOT）**。
+- 将每一段**逐条映射**为 Remotion 的 JSON 数据格式：`sections[]` 与 `data.ts` 的场景**一一对应**，`voice` 口播**逐字搬运**，`scene_template` / `duration_hint_seconds` / `visual_beats` 照搬。
+- **禁止改写**：不得增删、合并、拆分段落，不得改写标题或口播，不得自创 04 里没有的内容线。本阶段只做"映射"，不做"创作/提炼"。
+- 若发现 04 确有问题需要改动，回到 `/04-script-draft` 修订并重新 approve，再回来组装——不要在本阶段就地改稿（否则下游全部漂移）。
 
 ### 3. 配置 B 轨人工录制素材（若有）
 

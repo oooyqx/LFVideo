@@ -9,6 +9,7 @@
 - `reviewed` 审核中
 - `approved` 通过，可进下一阶段
 - `suspended` 暂时挂起（阶段定义已就绪，当前不执行）
+- `superseded` 已作废（产物被其他阶段取代或基于旧叙事，仅留存追溯，不参与门禁）
 
 ## 进度表
 
@@ -31,9 +32,10 @@
 每阶段在看板变更为 `approved`（允许进入下一阶段）的前置条件是：**Schema 校验通过 + 人工确认**。
 
 1. **工作流产出**：各阶段工作流执行完毕，在产出 README.md 尾部附加 ` ```json ` 结构块，初始状态置为 `draft`。
-2. **第一核：Schema 机器校验**：
+2. **第一核：机器校验（`scripts/pipeline_lint.py`）**：
    - 验证末尾的 JSON 结构块是否完全符合对应阶段的 JSON Schema 契约（`shared/schemas/`）。
-   - 若校验失败，不可更新看板，直接退回重构。
+   - **跨阶段防漂移**：04 脚本是唯一真源（SSOT）。校验同时检查：①`upstream_inputs` 记录的状态与上游实际状态是否一致（provenance）；②`approved`/`reviewed` 阶段的上游是否均为 `approved`/`suspended`（门禁）；③组装阶段场景数是否与 04 段落数一致（结构一致性）；④下游标题是否触犯 04 `anti_hype_forbidden` 噱头清单。
+   - 运行：`python scripts/pipeline_lint.py [content-library/<epNN-slug>]`。退出码非 0（有 error）即不可更新看板，直接退回重构。
 <!-- 第二核已挂起，恢复时取消本块注释
 3. **第二核：判断层人工/AI 评审 (CHAI 质量门)**：
    - 调用 `shared/roles/meta/judgment-layer(判断层评审).md` 角色。
