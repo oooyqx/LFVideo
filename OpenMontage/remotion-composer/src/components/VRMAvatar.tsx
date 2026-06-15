@@ -411,6 +411,11 @@ export const VRMAvatar: React.FC<VRMAvatarProps> = ({
           height: layout.height,
           overflow: "hidden",
           opacity: layout.opacity,
+          boxSizing: "border-box",
+          borderRadius: layout.clipRadius,
+          border: layout.border,
+          background: layout.background,
+          boxShadow: layout.shadow,
         }}
       >
         <div

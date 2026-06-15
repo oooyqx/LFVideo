@@ -58,6 +58,12 @@ full body on the side, etc.). Override only when needed.
 | `full-right` | full body | right side | intros/outros/empty-side beats |
 | `full-left` | full body | left side | title cards with right-side space |
 | `presenter` | large ¾ body | bottom-center | host-only beats with no centered title |
+| `corner-circle-tr` | head in a **circular** badge (amber ring) | top-right corner | dense info, when a framed "webcam bubble" look is wanted |
+| `corner-rounded-tr` | head+shoulders in a **rounded-rect** badge (amber ring) | top-right corner | same, slightly larger card-style frame |
+
+`corner-circle-tr` / `corner-rounded-tr` are clipped **badge** frames (border + soft
+fill + shadow); the crop is cover-fit and centered. They're opt-in (not in the
+built-in mapping) — set them via `cut.avatar` or `avatar.byType`.
 
 ### Default `cut.type → preset` mapping (built-in)
 

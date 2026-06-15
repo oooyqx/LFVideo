@@ -29,6 +29,21 @@ export interface AvatarCrop {
   h: number;
 }
 
+/** Optional clipped "badge" frame drawn around a placed avatar. */
+export interface AvatarFrame {
+  shape: "circle" | "rounded";
+  /** Corner radius in px for `rounded` (ignored for `circle`). */
+  radius?: number;
+  /** Ring border shorthand, e.g. "4px solid rgba(255,179,71,0.9)". */
+  border?: string;
+  /** Fill behind the (transparent) cutout so it reads as a solid badge. */
+  background?: string;
+  /** Drop shadow shorthand, e.g. "0 10px 30px rgba(0,0,0,0.4)". */
+  shadow?: string;
+  /** Scale the crop to COVER the frame (centered). Defaults to true. */
+  cover?: boolean;
+}
+
 export interface AvatarPreset {
   /** Semantic label; also documents intent. */
   mode: "hidden" | "corner" | "bust" | "full" | "presenter";
@@ -42,6 +57,8 @@ export interface AvatarPreset {
   margin: number;
   /** 1 normally; 0 for hidden. */
   opacity: number;
+  /** Optional clipped badge frame (circle / rounded-rect). */
+  frame?: AvatarFrame;
 }
 
 /** Per-cut override: a preset name, or a partial preset (with optional `preset`). */
@@ -53,6 +70,8 @@ export type AvatarOverride = { preset?: string } & Partial<
 // VRMAvatar). They are calibrated against that framing; if the canonical camera
 // changes, re-tune these.
 const CROP_HEAD: AvatarCrop = { x: 0.16, y: 0.04, w: 0.68, h: 0.32 };
+// Tighter head crop for badge frames so the face fills the circle / card.
+const CROP_HEADSHOT: AvatarCrop = { x: 0.24, y: 0.035, w: 0.52, h: 0.46 };
 const CROP_BUST: AvatarCrop = { x: 0.08, y: 0.03, w: 0.84, h: 0.62 };
 const CROP_FULL: AvatarCrop = { x: 0.0, y: 0.0, w: 1.0, h: 1.0 };
 const CROP_PRESENTER: AvatarCrop = { x: 0.05, y: 0.02, w: 0.9, h: 0.7 };
@@ -121,6 +140,36 @@ export const AVATAR_PRESETS: Record<string, AvatarPreset> = {
     screenWidth: 0.42,
     margin: 0,
     opacity: 1,
+  },
+  // Clipped badge frames anchored top-right (opt-in via cut.avatar).
+  "corner-circle-tr": {
+    mode: "corner",
+    crop: CROP_HEADSHOT,
+    anchor: "top-right",
+    screenWidth: 0.135,
+    margin: 28,
+    opacity: 1,
+    frame: {
+      shape: "circle",
+      border: "4px solid rgba(255,179,71,0.92)",
+      background: "rgba(40,26,44,0.72)",
+      shadow: "0 10px 30px rgba(0,0,0,0.4)",
+    },
+  },
+  "corner-rounded-tr": {
+    mode: "corner",
+    crop: CROP_HEADSHOT,
+    anchor: "top-right",
+    screenWidth: 0.155,
+    margin: 28,
+    opacity: 1,
+    frame: {
+      shape: "rounded",
+      radius: 28,
+      border: "3px solid rgba(255,179,71,0.88)",
+      background: "rgba(40,26,44,0.72)",
+      shadow: "0 10px 30px rgba(0,0,0,0.4)",
+    },
   },
 };
 
@@ -210,6 +259,11 @@ export interface AvatarLayout {
   tx: number;
   ty: number;
   opacity: number;
+  // Frame styling (passthrough, not interpolated): undefined = plain window.
+  clipRadius?: string;
+  border?: string;
+  background?: string;
+  shadow?: string;
 }
 
 export function computeAvatarLayout(
@@ -222,8 +276,13 @@ export function computeAvatarLayout(
   const cropPxW = preset.crop.w * canonW;
   const cropPxH = preset.crop.h * canonH;
 
+  const frame = preset.frame;
+  const isCircle = frame?.shape === "circle";
+  const cover = frame ? frame.cover !== false : false;
+
   const width = preset.screenWidth * compW;
-  const height = width * (cropPxH / cropPxW);
+  // A circle badge needs a square window; otherwise derive height from the crop.
+  const height = isCircle ? width : width * (cropPxH / cropPxW);
 
   const m = preset.margin;
   let left: number;
@@ -252,11 +311,40 @@ export function computeAvatarLayout(
       break;
   }
 
-  const scale = width / cropPxW;
-  const tx = -preset.crop.x * canonW * scale;
-  const ty = -preset.crop.y * canonH * scale;
+  let scale: number;
+  let tx: number;
+  let ty: number;
+  if (cover) {
+    // Scale so the crop fills the window, then center it (object-fit: cover).
+    scale = Math.max(width / cropPxW, height / cropPxH);
+    tx = -preset.crop.x * canonW * scale + (width - cropPxW * scale) / 2;
+    ty = -preset.crop.y * canonH * scale + (height - cropPxH * scale) / 2;
+  } else {
+    scale = width / cropPxW;
+    tx = -preset.crop.x * canonW * scale;
+    ty = -preset.crop.y * canonH * scale;
+  }
 
-  return { left, top, width, height, scale, tx, ty, opacity: preset.opacity };
+  const clipRadius = frame
+    ? frame.shape === "circle"
+      ? "50%"
+      : `${frame.radius ?? 20}px`
+    : undefined;
+
+  return {
+    left,
+    top,
+    width,
+    height,
+    scale,
+    tx,
+    ty,
+    opacity: preset.opacity,
+    clipRadius,
+    border: frame?.border,
+    background: frame?.background,
+    shadow: frame?.shadow,
+  };
 }
 
 export function lerp(a: number, b: number, t: number): number {
@@ -273,5 +361,10 @@ export function lerpLayout(a: AvatarLayout, b: AvatarLayout, t: number): AvatarL
     tx: lerp(a.tx, b.tx, t),
     ty: lerp(a.ty, b.ty, t),
     opacity: lerp(a.opacity, b.opacity, t),
+    // Frame styling is discrete — snap to the incoming (target) preset.
+    clipRadius: b.clipRadius,
+    border: b.border,
+    background: b.background,
+    shadow: b.shadow,
   };
 }
