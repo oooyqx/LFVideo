@@ -1722,8 +1722,10 @@
   ],
   "avatar": {
     "enabled": true,
-    "widthFraction": 0.24,
-    "cameraDistance": 2.8,
-    "modelX": 0.2
+    "widthFraction": 0.4,
+    "cameraDistance": 1.95,
+    "modelX": 0.0,
+    "modelY": -1.26,
+    "pose": "desk"
   }
 }
