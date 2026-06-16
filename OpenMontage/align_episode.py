@@ -178,13 +178,13 @@ def _terminal_lines(code: str) -> list[dict[str, Any]]:
 SCENE_CONTENT: dict[str, dict[str, Any]] = {
     # 1 · @IntroScene — 开场钩子
     "1": {
-        "title": "不写代码，用 Vibe Coding 搭一套能自动出片的视频渲染引擎",
+        "title": "用 Vibe Coding 搭一套能自动出片的视频渲染引擎",
         "subtitle": "《Vibe Coding 造一条自动化视频生产线》EP02 · 视频渲染",
         "background": "particles",
     },
-    # 2 · @ConceptScene — 选路线①·让 AI 把路摆出来（共同内核）
+    # 2 · @ConceptScene — 找技术路径·让 AI 把路摆出来（共同内核）
     "2": {
-        "eyebrow": "第一步 · 选路线",
+        "eyebrow": "找技术路径",
         "title": "先让 AI 把「能把视频写成代码」的路都摆出来",
         "background": "gradient",
         "items": [
@@ -198,7 +198,7 @@ SCENE_CONTENT: dict[str, dict[str, Any]] = {
     # array as a 3-column TableScene (路线/代表/适合) for legibility.
     "3": {
         "type": "table_scene",
-        "eyebrow": "选路线 · 同一内核：把画面编译成帧",
+        "eyebrow": "找技术路径 · 同一内核：把画面编译成帧",
         "title": "AI 摆出的六条路线",
         "background": "grid",
         "headers": ["技术路线", "代表项目", "适合场景"],
@@ -213,7 +213,7 @@ SCENE_CONTENT: dict[str, dict[str, Any]] = {
     },
     # 4 · @TableScene — 逼 AI 给「不适用+坑」（判断层矩阵，highlight 坑列）
     "4": {
-        "eyebrow": "人盯着「坑」那列做减法",
+        "eyebrow": "技术选型 · 人盯着「坑」那列做减法",
         "title": "六个方案的适合 / 不适合 & 已知坑",
         "background": "gradient",
         "headers": ["方案", "适合场景", "不适合 & 已知的坑"],
@@ -228,7 +228,7 @@ SCENE_CONTENT: dict[str, dict[str, Any]] = {
     },
     # 5 · @ConceptScene — 回到约束，为什么选 Remotion
     "5": {
-        "eyebrow": "回到我自己的约束",
+        "eyebrow": "技术选型 · 回到我自己的约束",
         "title": "为什么是 Remotion",
         "background": "gradient",
         "items": [
@@ -239,7 +239,7 @@ SCENE_CONTENT: dict[str, dict[str, Any]] = {
     },
     # 6 · @SplitLayout — Remotion vs 复制粘贴 HTML
     "6": {
-        "eyebrow": "Remotion vs 复制粘贴 HTML",
+        "eyebrow": "技术选型 · Remotion vs 复制粘贴 HTML",
         "title": "模板复用 / 让 AI 接手 / 长期维护",
         "background": "gradient",
         "headers": ["维度", "✅ Remotion", "❌ 复制粘贴 HTML"],
@@ -255,7 +255,7 @@ SCENE_CONTENT: dict[str, dict[str, Any]] = {
     # A-rail renders it as a TableScene (type / 现成组件 / 用途).
     "7": {
         "type": "table_scene",
-        "eyebrow": "第二步 · 搭引擎：一份配置 按 type 分发",
+        "eyebrow": "技术落地 · 一份配置 按 type 分发",
         "title": "Explainer 把 type 派发给现成组件",
         "background": "gradient",
         "headers": ["配置 type", "现成组件", "用途"],
@@ -286,7 +286,7 @@ SCENE_CONTENT: dict[str, dict[str, Any]] = {
     },
     # 9 · @SplitLayout（两个 @TerminalScene）— 造组件 ❌ vs 填数据 ✅
     "9": {
-        "eyebrow": "搭引擎 · 配置即内容",
+        "eyebrow": "技术落地 · 配置即内容",
         "title": "❌ 从零手写组件  vs  ✅ 只填数据复用",
         "background": "gradient",
         "headers": ["维度", "❌ 从零手写组件", "✅ 只填数据"],
@@ -315,7 +315,7 @@ SCENE_CONTENT: dict[str, dict[str, Any]] = {
     },
     # 11 · @SplitLayout — SSR 避坑，把规则写死交给 AI
     "11": {
-        "eyebrow": "搭引擎 · SSR 避坑",
+        "eyebrow": "技术落地 · SSR 避坑",
         "title": "❌ 打包阶段就崩  vs  ✅ 守卫 + 规则一次写死",
         "background": "gradient",
         "headers": ["对比", "❌ 顶层读 window", "✅ typeof 守卫 + 规则"],
@@ -340,7 +340,7 @@ SCENE_CONTENT: dict[str, dict[str, Any]] = {
     },
     # 13 · @OutroScene — 结尾 CTA
     "13": {
-        "headline": "整期就两步：用 Vibe Coding 选路线 + 搭引擎",
+        "headline": "整期三步：找技术路径 + 技术选型 + 技术落地",
         "cta": "关注 · 下期 EP03 字幕匹配：Whisper 让字幕踩着话音跳",
         "background": "gradient",
     },
