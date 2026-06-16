@@ -106,6 +106,8 @@ upstream_inputs:
 
 ## 运行 / 渲染命令
 
+> **渲染按需、预览优先（团队约定，见 `AGENT_GUIDE.md` 铁律二·4）**：出整片很耗时，**默认不要自动 `remotion render`**。日常迭代只跑「生成 props」+ `npx remotion studio` 在浏览器里预览核对；**只有人类明确给出渲染命令时**才导出 mp4。
+
 ```bash
 # 1) 生成 props + 嵌入 13 段整轨（按 06 manifest 实测时长；改 04 后必重跑）
 cd OpenMontage
@@ -117,9 +119,11 @@ python align_episode.py
 # 1'') 用单个整轨走 WhisperX 字级对齐（需 transcriber 环境）
 python align_episode.py --audio ../path/to/combined.wav
 
-# 2) 预览 / 出片（吃 props JSON，已注册为专用 composition）
+# 2) 预览（默认；吃 props JSON，已注册为专用 composition）
 cd remotion-composer
 npx remotion studio
+
+# 3) 出片：仅在人类明确要求时执行
 npx remotion render ep02-video-render ../renders/ep02-rendered.mp4
 ```
 
