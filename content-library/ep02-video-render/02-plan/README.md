@@ -7,7 +7,7 @@ source_workflow: /02-content-planning
 # ep02 内容策划方案（视频大纲与分镜落盘版）
 ## 系列定位：【AI 视频自动化生产线】第 2 期：渲染引擎篇
 
-本文件由教学软文提炼生成，专用于指导下游的 **03 视听编排** 与 **04 脚本撰写**。分镜主线严格对齐 `tutorial.final.md`的「教人用 Vibe Coding」两步主线：**开场（结果先行） → 用 Vibe Coding 选路线（多路线/不适用+坑/为什么 Remotion） → 用 Vibe Coding 搭引擎（配置分发/配置即内容/主持人/避坑/出片） → 总结+EP03 预告**。流程即代码/角色编排已按分期移出本期（归 EP05/EP06）。
+本文件由教学软文提炼生成，专用于指导下游的 **03 视听编排** 与 **04 脚本撰写**。分镜主线严格对齐 `tutorial.final.md`的「教人用 Vibe Coding」三段主线：**开场（钩子） → 找技术路径（AI 罗列现成路线） → 技术选型（不适用+坑对比/为什么 Remotion） → 技术落地（配置分发/配置即内容/主持人/避坑/出片） → 总结+EP03 预告**。流程即代码/角色编排已按分期移出本期（归 EP05/EP06）。
 
 > 📁 **本期 02-plan 文件分工与生成/修改约定（重要，先读）**
 > - **`tutorial.md` = 自动产物（AI 生成线）**：由 `/02-content-planning` 阶段4 生成，真相源="AI 生成了什么"。**请勿在此文件上做人工定稿**——它可能被重新生成覆盖。
@@ -19,7 +19,7 @@ source_workflow: /02-content-planning
 ---
 
 ## 1. 标题与定位
-- **定稿标题**：《代码即视频（Video-as-Code）：把一条视频做成可编译、可复用、可被 AI 接管的工程》
+- **定稿标题**：《用 Vibe Coding 搭一套能自动出片的视频渲染引擎》
 - **目标受众**：追求极致视频自动化的前端开发者、想把内容生产做成工程流水线的技术博主/团队。
 - **视觉风格模式 (Visual Mode)**：`mixed`
 - **核心视觉隐喻**：**“数字渲染生产线”**（声明式代码/数据像零件一样在 Frame 传送带上流过“状态映射器”，被渲染器编译成帧序列，最终合成高清 MP4）。
@@ -27,43 +27,43 @@ source_workflow: /02-content-planning
 
 ---
 
-## 2. 视频分镜结构（对齐 tutorial「教人用 Vibe Coding」两步主线）
+## 2. 视频分镜结构（对齐 tutorial「教人用 Vibe Coding」三段主线）
 
-### 第一段：开场钒子（目标：30 秒）
-- **核心论点**：传统剪辑是在时间轴上一帧帧拖、改一处要回去重排的体力活；我没有前后端基础，靠 Vibe Coding（讲需求、AI 写、人判断）把视频写成一份配置，改一行就重新自动出片。本期拆两步：① 用 Vibe Coding 选技术路线；② 用 Vibe Coding 搭 Remotion 渲染引擎。
+### 第一段：开场钩子（目标：30 秒）
+- **核心论点**：本期用 Vibe Coding 解决自动化视频生产线最核心的一环——视频自动渲染。关键认知：AI 最强的是处理文本和代码，所以渲染最好用文本/代码/数据驱动，改数据就改片。我没有前后端基础，全程用大白话指挥 AI（讲需求、AI 写、人判断）。本期分三步：① 找技术路径；② 技术选型；③ 技术落地。
 - **叙事节奏 (Beat Type)**：`statement`
 - **视觉焦点 (Visual Priority)**：`text`
-- **画面视觉**：`@IntroScene` 大字报渐入主副标题；配“改一行配置→重新编译出片”的隐喻动画，末尾给出“第一步选路线 / 第二步搭引擎”两步路线图。
+- **画面视觉**：`@IntroScene` 大字报渐入主副标题；配"改数据→重新编译出片"的隐喻动画，末尾给出"找路径 / 选型 / 落地"三步路线图。
 
-### 第二段：用 Vibe Coding 选路线①——让 AI 把路都摆出来（目标：50 秒）
-- **核心论点**：没基础的人最容易卡在“工具那么多选哪个”。做法不是自己啼文档，而是把选择题丢给 AI：让它摆出“把视频写成代码”的多条路线（Remotion / Motion Canvas·Revideo / Manim / MoviePy / PixiJS·Cocos / FFmpeg），点明它们内核都一样——用代码/数据描述画面 → 程序编译成帧 → 合成视频。
+### 第二段：找技术路径——让 AI 把路都摆出来（目标：50 秒）
+- **核心论点**：把"有哪些用代码/数据渲染成视频的现成路线"丢给 AI，让它罗列 Remotion / Motion Canvas·Revideo / Manim / MoviePy / PixiJS·Cocos / FFmpeg，点明它们内核都一样——用代码/数据描述画面 → 程序编译成帧 → 合成视频。此处只列不评。
 - **叙事节奏 (Beat Type)**：`transformation`
 - **视觉焦点 (Visual Priority)**：`mixed`
-- **画面视觉**：`@ConceptScene` 用一句话讲清“代码描述→编译成帧→合成”的共同内核；切到六条路线的卡片阵列（路线 × 代表工具 × 适合干什么）。
+- **画面视觉**：`@ConceptScene` 用一句话讲清共同内核；切到六条路线的卡片阵列（路线 × 代表工具 × 适合干什么）。
 
-### 第三段：用 Vibe Coding 选路线②——逼 AI 给“不适用 + 坑”，回到约束定 Remotion（目标：90 秒）
-- **核心论点**：AI 默认给四平八稳的“百科式”好话对比，没用；真正帮你决策的是每条路“什么时候不好使、会在哪翻车”。所以追问“各自不适用场景 + 已知坑”，人盯着“坑”那一列做减法。再把自己的约束讲清楚（一期一个固定模板、换数据批量出几十期 / 让 AI 改内容不易错 / 跨期好维护），Remotion 胜出；并和“复制粘贴 HTML”土办法对照，代价（React 栈 + BUSL 授权）如实说。
+### 第三段：技术选型——逼 AI 给"不适用 + 坑"，回到约束定 Remotion（目标：90 秒）
+- **核心论点**：AI 默认给四平八稳的"百科式"好话对比，没用；真正帮你决策的是每条路"什么时候不好使、会在哪翻车"。所以追问"不适用场景 + 已知坑"，人盯着"坑"那一列做减法。再把自己的约束讲清楚（一期一个固定模板、换数据批量出几十期 / 让 AI 改内容不易错 / 跨期好维护），Remotion 胜出；并和"复制粘贴 HTML"土办法对照，代价（React 栈 + BUSL 授权）如实说、不渲染成门槛。
 - **叙事节奏 (Beat Type)**：`comparison`
 - **视觉焦点 (Visual Priority)**：`chart`
-- **画面视觉**：`@TableScene` 渲染“方案 / 适合 / 不适合 / 已知坑”判断层矩阵（逐行 stagger 入场、高亮当前行、重点高亮“坑”列）；穿插 `@SplitLayout` 做 `Remotion ✅ vs 复制粘贴 HTML ❌` 左右对照。
+- **画面视觉**：`@TableScene` 渲染"方案 / 适合 / 不适合 / 已知坑"判断层矩阵（逐行 stagger 入场、高亮当前行、重点高亮"坑"列）；穿插 `@SplitLayout` 做 `Remotion ✅ vs 复制粘贴 HTML ❌` 左右对照。
 
-### 第四段：用 Vibe Coding 搭引擎①——配置分发 + 配置即内容（目标：90 秒）
-- **核心论点**：搭引擎也不靠手写，靠和 AI 把“配置”和“现成组件”对上。仓库渲染引擎 `OpenMontage/remotion-composer` 的干活方式：写一份配置说清“这段是什么画面、上面叠什么”，主程序 `Explainer` 按 `type` 字段自动分发到对应组件（`comparison`/`terminal_scene`/`screenshot_scene`/`charts`/`ConceptScene`·`SplitLayout`…）。做内容 = 挑组件、填字段；让 AI 填数据、别造组件，TypeScript 字段类型兑底，填错即编译报错。
+### 第四段：技术落地①——配置分发 + 配置即内容（目标：90 秒）
+- **核心论点**：搭引擎也不靠手写，靠和 AI 把"配置"和"现成组件"对上。仓库渲染引擎 `OpenMontage/remotion-composer` 的干活方式：写一份配置说清"这段是什么画面、上面叠什么"，主程序 `Explainer` 按 `type` 字段自动分发到对应组件（`comparison`/`terminal_scene`/`screenshot_scene`/`charts`/`ConceptScene`·`SplitLayout`…）。做内容 = 挑组件、填字段；让 AI 填数据、别造组件，TypeScript 字段类型兜底，填错即编译报错。（另：现成组件之上可扩"自有风格组件库"，是更大话题、后续单独一期，本期一句带过。）
 - **叙事节奏 (Beat Type)**：`demonstration`
 - **视觉焦点 (Visual Priority)**：`code`
-- **画面视觉**：`@ConceptScene`/图示讲“配置 → Explainer 按 type 分发 → 组件”的流向；`@TerminalScene` 展示一份 `comparison` 配置 JSON；`@SplitLayout` 左“让 AI 从零手写组件 ❌”右“只填数据复用现成组件 ✅”。
+- **画面视觉**：`@ConceptScene`/图示讲"配置 → Explainer 按 type 分发 → 组件"的流向；`@TerminalScene` 展示一份 `comparison` 配置 JSON；`@SplitLayout` 左"让 AI 从零手写组件 ❌"右"只填数据复用现成组件 ✅"。
 
-### 第五段：用 Vibe Coding 搭引擎②——数字主持人 + 避坑 + 一行出片（目标：90 秒）
-- **核心论点**：① 数字主持人 `VRMAvatar` 只做陪衷、不是主角：渲一次按场景取景、要站得稳（修法=在大腿上反向抵消高部摆动让脚踩稳）、坚决不做对口型数字人；② 唯一反复踩的坑——别在组件顶层直接读 `window`，否则打包阶段崩，用 `.cursor/rules/remotion-ssr.mdc` 把守卫规则一次写死交给 AI；③ 出片就是一行 `npx remotion render`，交给 AI/终端跑。
+### 第五段：技术落地②——数字主持人 + 避坑 + 一行出片（目标：90 秒）
+- **核心论点**：① 数字主持人 `VRMAvatar` 只做陪衬、不是主角：渲一次按场景取景、要站得稳（修法=在大腿上反向抵消髋部摆动让脚踩稳）、坚决不做对口型数字人；② 唯一反复踩的坑——别在组件顶层直接读 `window`，否则打包阶段崩，用 `.cursor/rules/remotion-ssr.mdc` 把守卫规则一次写死交给 AI；③ 出片就是一行 `npx remotion render`，交给 AI/终端跑。
 - **叙事节奏 (Beat Type)**：`demonstration`
 - **视觉焦点 (Visual Priority)**：`code`
-- **画面视觉**：主持人“脚踩稳”取景示意；`@SplitLayout` 左“顶层读 window 打包崩溃 ❌”右“typeof 守卫 + MDC 规则一次通过 ✅”（A 轨 `@TerminalScene` 兑底）；末尾 `@TerminalScene` 演示 `npx remotion render` 出片进度。
+- **画面视觉**：主持人"脚踩稳"取景示意；`@SplitLayout` 左"顶层读 window 打包崩溃 ❌"右"typeof 守卫 + MDC 规则一次通过 ✅"（A 轨 `@TerminalScene` 兜底）；末尾 `@TerminalScene` 演示 `npx remotion render` 出片进度。
 
 ### 第六段：结尾 CTA
-- **核心论点**：整期就两步——用 Vibe Coding 选路线（AI 铺信息+列坑，人对约束拍板）、用 Vibe Coding 搭引擎（填配置、套组件、规则兑底、AI 跑渲染）；没有编程基础也能复制。关注我，下期 EP03 字幕匹配：用 Whisper 字级时间戳驱动 `CaptionOverlay`，让字幕踩着话音跳。
+- **核心论点**：整期三步——找技术路径（AI 罗列）、技术选型（人对约束拍板）、技术落地（填配置、套组件、规则兜底、AI 跑渲染）；没有编程基础也能复制。关注我，下期 EP03 字幕匹配：用 Whisper 字级时间戳驱动 `CaptionOverlay`，让字幕踩着话音跳。
 - **叙事节奏 (Beat Type)**：`conclusion`
 - **视觉焦点 (Visual Priority)**：`text`
-- **画面视觉**：`@OutroScene` 展示开源仓库地址与关注引导，回扣“两步法 + 没基础也能复制”。
+- **画面视觉**：`@OutroScene` 展示开源仓库地址与关注引导，回扣"三步法 + 没基础也能复制"。
 
 ---
 
@@ -89,7 +89,7 @@ source_workflow: /02-content-planning
 
 ```json
 {
-  "final_title": "代码即视频（Video-as-Code）：把一条视频做成可编译、可复用、可被 AI 接管的工程",
+  "final_title": "用 Vibe Coding 搭一套能自动出片的视频渲染引擎",
   "ab_ratio": "30/70",
   "visual_mode": "mixed",
   "visual_metaphor": "数字渲染生产线",
@@ -182,43 +182,43 @@ source_workflow: /02-content-planning
   },
   "outline_sections": [
     {
-      "section_name": "开场钒子",
-      "key_point": "没前后端基础，靠 Vibe Coding 把视频写成配置、改一行就自动出片；本期两步：选路线、搭引擎",
+      "section_name": "开场钩子",
+      "key_point": "本期用 Vibe Coding 解决视频自动渲染；AI 强在文本/代码→渲染用数据驱动；没基础也能复制；本期三步：找路径/选型/落地",
       "beat_type": "statement",
       "visual_priority": "text",
       "scene_template": "@IntroScene"
     },
     {
-      "section_name": "选路线①·让 AI 摆出多条路线",
-      "key_point": "把选择题丢给 AI：Remotion/Motion Canvas·Revideo/Manim/MoviePy/PixiJS·Cocos/FFmpeg，内核都是“代码描述→编译成帧→合成”",
+      "section_name": "找技术路径·让 AI 罗列现成路线",
+      "key_point": "把选择题丢给 AI：Remotion/Motion Canvas·Revideo/Manim/MoviePy/PixiJS·Cocos/FFmpeg，内核都是“代码/数据描述→编译成帧→合成”；只列不评",
       "beat_type": "transformation",
       "visual_priority": "mixed",
       "scene_template": "@ConceptScene"
     },
     {
-      "section_name": "选路线②·逼 AI 给不适用+坑，回到约束定 Remotion",
-      "key_point": "追问每条路的不适用与已知坑、人盯坑做减法；按固定模板批量/AI友好/跨期维护约束选定 Remotion，vs 复制粘贴 HTML，代价如实说",
+      "section_name": "技术选型·逼 AI 给不适用+坑，回到约束定 Remotion",
+      "key_point": "追问每条路的不适用与已知坑、人盯坑做减法；按固定模板批量/AI友好/跨期维护约束选定 Remotion，vs 复制粘贴 HTML，代价如实说不渲染成门槛",
       "beat_type": "comparison",
       "visual_priority": "chart",
       "scene_template": "@TableScene"
     },
     {
-      "section_name": "搭引擎①·配置分发与配置即内容",
-      "key_point": "一份配置→Explainer 按 type 分发到现成组件；做内容=挑组件填字段，让 AI 填数据别造组件，TS 类型兑底",
+      "section_name": "技术落地①·配置分发与配置即内容",
+      "key_point": "一份配置→Explainer 按 type 分发到现成组件；做内容=挑组件填字段，让 AI 填数据别造组件，TS 类型兜底；自有风格组件库留作后续单独一期",
       "beat_type": "demonstration",
       "visual_priority": "code",
       "scene_template": "@SplitLayout"
     },
     {
-      "section_name": "搭引擎②·数字主持人+避坑+一行出片",
-      "key_point": "VRMAvatar 只做陪衷要站得稳、坚决不做对口；顶层读 window 会崩→MDC 规则封死；出片一行 npx remotion render",
+      "section_name": "技术落地②·数字主持人+避坑+一行出片",
+      "key_point": "VRMAvatar 只做陪衬要站得稳、坚决不做对口；顶层读 window 会崩→MDC 规则封死；出片一行 npx remotion render",
       "beat_type": "demonstration",
       "visual_priority": "code",
       "scene_template": "@SplitLayout"
     },
     {
       "section_name": "结尾 CTA",
-      "key_point": "两步法回顾+没基础也能复制；下期 EP03 字幕匹配用 Whisper 字级时间戳驱动 CaptionOverlay",
+      "key_point": "三步法回顾+没基础也能复制；下期 EP03 字幕匹配用 Whisper 字级时间戳驱动 CaptionOverlay",
       "beat_type": "conclusion",
       "visual_priority": "text",
       "scene_template": "@OutroScene"
