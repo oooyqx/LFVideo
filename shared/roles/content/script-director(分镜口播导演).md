@@ -57,7 +57,7 @@
 
 - **逐字一致**：markdown 每段 `[口播]` 必须与 JSON `sections[].voice` 逐字一致；叙述区镜头列表（编号/组件/Props/时长/voice_slice）与 `shots[]` 一一对应（含表格行数、字段值）。任何一处修改必须两区同步，禁止只改一处。
 - **voice_slice 完整性**：同一 section 内所有 `voice_slice` 按镜头顺序拼接必须等于该段 `voice` 全文，无遗漏、无重叠。
-- **时长-字数一致**：`duration_seconds ≈ voice_slice 字数 / 4.5`（误差 ±20%）；任一 `voice_slice` 折算时长 > 15s 必须继续拆镜头，不得靠标小 `duration_seconds` 糊弄防静止检查。
+- **时长-字数一致**：`duration_seconds` 应落在 `字数/5.5` ~ `字数/3.5` 秒区间内（对应 4-5 字/秒语速 + 停顿余量）；超出区间为 advisory warning（最终时长由 TTS 音频决定，脚本值为预估）。单个 shot 允许到 20s（动态模板有内部动画不算静止），但 section 级 >15s 仍必须切 shots。
 - **人工修订回写**：用户在 04 draft 上修改措辞/裁剪内容后，必须：① 两区同步落实；② 若波及镜头切分（删句/删段）同步重切 shots 与时长；③ 若裁掉了 `tutorial.final.md` 必讲要点，在覆盖清单标 ⚠（含日期与「经人工决定」）并提醒用户回写上游清单，保持上下游一致。
 
 ---
