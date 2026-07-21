@@ -82,7 +82,7 @@
 | 长期维护 | 改一处全期生效 | 10 期后困难 | ✅ Remotion |
 | 授权 | BUSL（规模化付费） | Apache 2.0 | ⚠️ HyperFrames 更宽松 |
 
-> 证据状态：决策结论 `verified`（见 `_decisions/why-remotion-over-hyperframes.md`，2026-06-01 已确认推进 Remotion A 轨）。
+> 证据状态：决策结论 `verified`（见 `_decisions/why-remotion-over-hyperframes.md`，2026-06-01 已确认推进 Remotion 自动渲染）。
 
 ---
 
@@ -118,7 +118,7 @@
 
 - **角色 = system_prompt，工作流 = user_prompt 模板**：天然解耦，直接可喂给 LLM。
 - **frontmatter 状态机**：一个读 `status: approved` 就自动触发下一阶段的小脚本（配 `python-frontmatter`）即可当编排器。
-- **真正的难点是多模态物理限制**：A 轨（概念动画）可全自动，B 轨（真实录屏）必须人上传——所以流程里要设计"挂起等待"机制。
+- **真正的难点是多模态物理限制**：自动渲染画面（概念动画）可全自动，录屏（真实录屏）必须人上传——所以流程里要设计"挂起等待"机制。
 
 > 证据状态：本套角色/工作流文件**真实存在于本仓库**（`verified`）。"一个 Python 编排器即可端到端跑通"目前是 `paper_spec`，需后续做一个最小调度脚本验证。
 
@@ -144,7 +144,7 @@ Prompt-2（用规则把环境坑一次性封死）：
 
 ### 1. 首选：数据驱动现成组件（符合"固定模板 + 内容替换"）
 
-A 轨组件已封装在 `OpenMontage/remotion-composer/src/components/`（节选，`verified` 存在）：
+自动渲染组件已封装在 `OpenMontage/remotion-composer/src/components/`（节选，`verified` 存在）：
 
 | 组件 | 用途 | 本期用法 |
 | :--- | :--- | :--- |
@@ -204,7 +204,7 @@ npx remotion studio                                   # 可视化调试
 npx remotion render src/index.ts <CompositionId> out/demo.mp4
 ```
 
-> ⚠️ 仓库当前无独立 `video/` 工程，A 轨组件在 `OpenMontage/remotion-composer/`。`remotion-spec.md` 里 `video/src/template/` 的组件名（`@IntroScene/@ConceptScene/@SplitLayout`）属**目标态规范**，与 composer 实际组件名对不上，需录制前对齐——故命令标 `paper_spec`。
+> ⚠️ 仓库当前无独立 `video/` 工程，自动渲染组件在 `OpenMontage/remotion-composer/`。`remotion-spec.md` 里 `video/src/template/` 的组件名（`@IntroScene/@ConceptScene/@SplitLayout`）属**目标态规范**，与 composer 实际组件名对不上，需录制前对齐——故命令标 `paper_spec`。
 
 ---
 
@@ -214,8 +214,8 @@ npx remotion render src/index.ts <CompositionId> out/demo.mp4
 
 - **概念段（Video-as-Code 范式）**：用 `@ConceptScene`/卡片 stagger 入场逐条展开多条技术路线，避免长口播配静止画面。
 - **选型段（为什么选 React）**：`@ComparisonCard`（Remotion vs HyperFrames）+ 决策五理由逐行高亮。
-- **流程段（角色/工作流）**：`charts/` 或拓扑图动态展示七阶段流水线；`[B 轨占位：pipeline_demo.mp4]` 可选真实跑流程录屏。
-- **实操段**：`@TerminalScene` 演示 `render`；`[B 轨占位：ide_record.mp4]` 真实 IDE 录屏，禁止 AIGC 伪界面。
+- **流程段（角色/工作流）**：`charts/` 或拓扑图动态展示七阶段流水线；`[录屏占位：pipeline_demo.mp4]` 可选真实跑流程录屏。
+- **实操段**：`@TerminalScene` 演示 `render`；`[录屏占位：ide_record.mp4]` 真实 IDE 录屏，禁止 AIGC 伪界面。
 
 > 注：README 的 5 段式分镜是据 `tutorial.md` 提取的旧主线（SSR 钩子 + MDC 对比）。若采纳本对比稿主线，README 分镜需据此重新提取。
 

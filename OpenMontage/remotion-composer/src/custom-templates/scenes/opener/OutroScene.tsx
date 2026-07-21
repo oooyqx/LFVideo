@@ -11,6 +11,8 @@ import {useTheme} from '../../theme/ThemeContext';
 import {withAlpha} from '../../theme/util';
 import {glowBlob} from '../../theme/surfaces';
 import {textStyles} from '../../theme/textStyles';
+import {HoloTitle} from '../../primitives/HoloTitle';
+import {osc01} from '../../animation/presence';
 
 export const outroSchema = z.object({
 	headline: z.string(),
@@ -23,7 +25,7 @@ export const OutroScene: React.FC<OutroProps> = ({
 	cta = '关注 · 一起验证 AI IDE 的真实能力',
 }) => {
 	const frame = useCurrentFrame();
-	const {fps} = useVideoConfig();
+	const {fps, durationInFrames} = useVideoConfig();
 	const theme = useTheme();
 	const {colors, fonts, FONT_SIZE, SPACING, RADIUS} = theme;
 	const t = textStyles(theme);
@@ -31,8 +33,17 @@ export const OutroScene: React.FC<OutroProps> = ({
 	const opacity = interpolate(enter, [0, 1], [0, 1]);
 	const translateY = interpolate(enter, [0, 1], [30, 0]);
 
-	// frame 驱动的按钮脉冲（取代 CSS `button-pulse ... infinite`，3.5s 一循环）。
-	const pulse = (1 - Math.cos((frame / fps / 3.5) * Math.PI * 2)) / 2; // 0→1→0
+	const fadeOut = interpolate(
+		frame,
+		[durationInFrames - 15, durationInFrames],
+		[1, 0],
+		{extrapolateLeft: 'clamp'},
+	);
+
+	const breath = osc01(frame, fps, 5);
+	const scanShift = (frame / fps / 6) % 1;
+
+	const pulse = (1 - Math.cos((frame / fps / 3.5) * Math.PI * 2)) / 2;
 	const btnScale = 1 + 0.03 * pulse;
 	const btnBlur = 30 + 5 * pulse;
 	const btnSpread = -4 + 8 * pulse;
@@ -45,31 +56,44 @@ export const OutroScene: React.FC<OutroProps> = ({
 				justifyContent: 'center',
 				alignItems: 'center',
 				textAlign: 'center',
-				opacity,
+				opacity: opacity * fadeOut,
 				transform: `translateY(${translateY}px)`,
 			}}
 		>
 			<div
 				style={glowBlob(colors.accent[3] ?? colors.accent[1], {
-					width: 500,
-					height: 200,
-					intensity: 0.08,
+					width: 600,
+					height: 240,
+					intensity: 0.10 + breath * 0.08,
 					blur: 70,
 				})}
 			/>
-
 			<div
 				style={{
-					...t.sceneTitle,
-					fontSize: FONT_SIZE.title + 4,
-					marginBottom: SPACING.xl,
-					maxWidth: 1400,
-					lineHeight: 1.25,
-					letterSpacing: -0.5,
-					zIndex: 1,
+					position: 'absolute',
+					inset: 0,
+					zIndex: 0,
+					pointerEvents: 'none',
+					backgroundImage: `repeating-linear-gradient(0deg, ${withAlpha(
+						colors.accent[0],
+						0.05,
+					)} 0px, ${withAlpha(colors.accent[0], 0.05)} 1px, transparent 1px, transparent 4px)`,
+					backgroundPositionY: `${scanShift * 4}px`,
+					maskImage:
+						'radial-gradient(ellipse 70% 55% at 50% 45%, #000 0%, transparent 75%)',
+					WebkitMaskImage:
+						'radial-gradient(ellipse 70% 55% at 50% 45%, #000 0%, transparent 75%)',
 				}}
-			>
-				{headline}
+			/>
+
+			<div style={{zIndex: 1, padding: '0 80px', maxWidth: 1400, marginBottom: SPACING.xl}}>
+				<HoloTitle
+					title={headline}
+					align="center"
+					size="title"
+					maxWidth={1280}
+					underlineWidth={180}
+				/>
 			</div>
 			<div
 				style={{
@@ -84,7 +108,7 @@ export const OutroScene: React.FC<OutroProps> = ({
 					letterSpacing: 1.5,
 					textShadow: `0 1px 4px rgba(0,0,0,0.4)`,
 					zIndex: 1,
-					border: '1px solid rgba(255,255,255,0.1)',
+					border: '1.5px solid rgba(255,255,255,0.45)',
 				}}
 			>
 				{cta}

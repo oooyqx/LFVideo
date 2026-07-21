@@ -7,7 +7,7 @@ description: 视频组装 - 调用视频工程师角色，用 Remotion 把脚本
 
 # 视频组装 Workflow (07-video-assembly)
 
-基于上游定稿脚本（04）、B 轨录屏素材（05）、TTS 语音音频（06），调用 `视频工程师` 角色，用 Remotion（`OpenMontage/remotion-composer` 工程）把脚本组装成片：A 轨概念动画全自动，B 轨套模板合成录屏素材。
+基于上游定稿脚本（04）、录屏素材（05）、TTS 语音音频（06），调用 `视频工程师` 角色，用 Remotion（`OpenMontage/remotion-composer` 工程）把脚本组装成片：自动渲染的概念动画全自动生成，录屏画面套模板合成。
 
 ---
 
@@ -15,8 +15,8 @@ description: 视频组装 - 调用视频工程师角色，用 Remotion 把脚本
 
 本工作流假设已完成 `/04-script-draft`、`/05-b-roll-recording`、`/06-tts-synthesis`，已具备：
 - 处于 `approved` 状态的 `content-library/<epNN-slug>/04-script/README.md`
-- 每段含 **A/B 轨标识** 与分镜画面
-- （B 轨）录屏素材已就绪：`content-library/<epNN-slug>/05-b-roll/assets/`
+- 每段含 **自动渲染 / 录屏画面标识** 与分镜画面
+- 录屏素材已就绪：`content-library/<epNN-slug>/05-b-roll/assets/`
 - TTS 口播音频已就绪：`content-library/<epNN-slug>/06-tts/assets/`
 
 如果缺少上述输入，先提示用户回到对应上游阶段。
@@ -49,7 +49,7 @@ OpenMontage/remotion-composer/
 
 读取 `shared/roles/execution/motion-engineer(视频工程师).md`（若无则加载默认视频组装心智），理解：
 - 尽量复用组件，不重复造轮子。
-- 保证 A/B 轨拼装时的时间轴绝对对齐。
+- 保证自动渲染画面与录屏画面拼装时的时间轴绝对对齐。
 
 ### 2. 生成每期 Remotion props JSON（`public/demo-props/<slug>.json`）
 
@@ -62,11 +62,11 @@ OpenMontage/remotion-composer/
 - **禁止改写**：不得增删、合并、拆分段落或镜头，不得改写标题或口播，不得自创 04 里没有的内容线。本阶段只做"映射"，不做"创作/提炼"。
 - 若发现 04 确有问题需要改动，回到 `/04-script-draft` 修订并重新 approve，再回来组装——不要在本阶段就地改稿（否则下游全部漂移）。
 
-### 3. 配置 B 轨人工录制素材（若有）
+### 3. 配置人工录屏素材（若有）
 
-如果脚本中包含 B 轨录屏/口播：
+如果脚本中包含录屏/口播素材：
 - 将录好的口播音频（`voice.wav`）和录屏视频（`screen.mp4`）放在 `OpenMontage/remotion-composer/public/` 下（如 `public/assets/<slug>/`）。
-- 在 `<slug>.json` 里对应 cut 的 `props`（如 `videoSrc`）指向该素材并对齐时间区间；B 轨缺失时该 cut 自动走 A 轨兜底 `cut.type`。
+- 在 `<slug>.json` 里对应 cut 的 `props`（如 `videoSrc`）指向该素材并对齐时间区间；录屏素材缺失时该 cut 自动走自动渲染兜底 `cut.type`。
 
 ### 4. 复用渲染器（`Explainer` 按 cut.type 分发）
 
@@ -108,7 +108,7 @@ OpenMontage/remotion-composer/
 
 ### 8. 自我检查（不输出，仅约束）
 
-- A 轨是否真正零/少录屏？B 轨人工素材是否已列清？
+- 自动渲染画面是否真正零/少录屏？人工录屏素材是否已列清？
 - 是否复用了模板库，而非每期从零造场景？
 - 是否覆盖脚本的"操作层 + 判断层"？判断层是否如实呈现了边界、坑和验收标准？
 - 文字是否存在 < 24px 的违规？

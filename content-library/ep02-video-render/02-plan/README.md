@@ -7,7 +7,7 @@ source_workflow: /02-content-planning
 # ep02 内容策划方案（视频大纲与分镜落盘版）
 ## 系列定位：【AI 视频自动化生产线】第 2 期：渲染引擎篇
 
-本文件由教学软文提炼生成，专用于指导下游的 **04 分镜口播稿**（已合并原 03 视听编排 + 04 脚本撰写为一份「画面+口播」一体产物）。分镜主线严格对齐 `tutorial.final.md` 的六章结构：**开场（钩子） → 找技术路径（AI 罗列现成路线） → 技术选型（不适用+坑对比/为什么 Remotion） → 技术落地（Remotion 怎么工作·为何 AI 能驱动 / 配置分发·配置即内容 / 数字人选型） → 场景适配（适合纯 A 轨 / 搭配透明叠层 / 不适合） → 总结+EP03 预告**。流程即代码/角色编排已按分期移出本期（归 EP05/EP06）。
+本文件由教学软文提炼生成，专用于指导下游的 **04 分镜口播稿**（已合并原 03 视听编排 + 04 脚本撰写为一份「画面+口播」一体产物）。分镜主线严格对齐 `tutorial.final.md` 的六章结构：**开场（钩子） → 找技术路径（AI 罗列现成路线） → 技术选型（不适用+坑对比/为什么 Remotion） → 技术落地（Remotion 怎么工作·为何 AI 能驱动 / 配置分发·配置即内容 / 数字人选型） → 场景适配（适合纯自动渲染 / 搭配透明叠层 / 不适合） → 总结+EP03 预告**。流程即代码/角色编排已按分期移出本期（归 EP05/EP06）。
 
 > 📁 **本期 02-plan 文件分工与生成/修改约定（重要，先读）**
 > - **`tutorial.md` = 自动产物（AI 生成线）**：由 `/02-content-planning` 阶段4 生成，真相源="AI 生成了什么"。**请勿在此文件上做人工定稿**——它可能被重新生成覆盖。
@@ -66,10 +66,10 @@ source_workflow: /02-content-planning
 - **画面视觉**：`@TableScene` 渲染「形象方案 / 适合 / 坑·代价」选型矩阵（真人·写实·二次元三行 stagger 入场、高亮选定的 VRM 行）；切到主持人"脚踩稳"取景示意（角落/半身/全身预设）作落地呈现。
 
 ### 第七段：场景适配——适合 / 搭配 / 不适合（目标：53 秒）
-- **核心论点**：比把引擎跑通更值钱的判断是「什么场景该用、什么场景别硬上」。① 适合纯 A 轨自动出片：概念讲解、要点流程、数据图表/对比/核心指标、开场/章节/片尾、合成终端演示命令报错——画面用文本/数据就能说清、换数据批量复用。② 搭配着用：主体是真人口播/真实录屏时，Remotion 渲透明背景悬浮叠层（数据卡/字幕/角标/箭头/Zoom 标注），退居叠层不独占整屏。③ 不适合：实拍人物产品 Vlog、写实对口型数字人（恐怖谷、可信度反崩，本项目排除）、影视级特效/逐帧手绘、纯后台超长批处理（FFmpeg 更划算）。一句话：主体真实→退居叠层，主体讲解/数据→独占整屏。
+- **核心论点**：比把引擎跑通更值钱的判断是「什么场景该用、什么场景别硬上」。① 适合纯自动渲染出片：概念讲解、要点流程、数据图表/对比/核心指标、开场/章节/片尾、合成终端演示命令报错——画面用文本/数据就能说清、换数据批量复用。② 搭配着用：主体是真人口播/真实录屏时，Remotion 渲透明背景悬浮叠层（数据卡/字幕/角标/箭头/Zoom 标注），退居叠层不独占整屏。③ 不适合：实拍人物产品 Vlog、写实对口型数字人（恐怖谷、可信度反崩，本项目排除）、影视级特效/逐帧手绘、纯后台超长批处理（FFmpeg 更划算）。一句话：主体真实→退居叠层，主体讲解/数据→独占整屏。
 - **叙事节奏 (Beat Type)**：`comparison`
 - **视觉焦点 (Visual Priority)**：`mixed`
-- **画面视觉**：`@ConceptScene` 列适合纯 A 轨的四类；`@SplitLayout` 做「独占整屏 vs 退居叠层」对照；`@CalloutScene`(warning) 列不适合的四类；`@QuoteScene` 收口诀。
+- **画面视觉**：`@ConceptScene` 列适合纯自动渲染的四类；`@SplitLayout` 做「独占整屏 vs 退居叠层」对照；`@CalloutScene`(warning) 列不适合的四类；`@QuoteScene` 收口诀。
 
 ### 第八段：结尾 CTA
 - **核心论点**：整期三步——找技术路径（AI 罗列）、技术选型（人对约束拍板）、技术落地（填配置、套组件、规则兜底、AI 跑渲染）；没有编程基础也能复制。关注我，下期 EP03 字幕匹配：用 Whisper 字级时间戳驱动 `CaptionOverlay`，让字幕踩着话音跳。
@@ -182,7 +182,7 @@ source_workflow: /02-content-planning
     },
   ],
   "demo_design": {
-    "project_context": "React 18 / TypeScript 5 / Remotion 4.0；A 轨组件位于 OpenMontage/remotion-composer（src/components 通用组件 + src/custom-templates 模板场景/原语，video/ 工程已并入）",
+    "project_context": "React 18 / TypeScript 5 / Remotion 4.0；自动渲染组件位于 OpenMontage/remotion-composer（src/components 通用组件 + src/custom-templates 模板场景/原语，video/ 工程已并入）",
     "prompt_sequence": [
       "基于 remotion-composer 现有的 @ComparisonCard 组件，生成“对比卡片”的数据配置：左卡=方案A、右卡=方案B。只产出数据，不要新建组件。",
       "为 Cursor 在 .cursor/rules/ 下编写一份 mdc 规则（globs 指向 OpenMontage/remotion-composer/src/**），约束我编写 Remotion 组件时自动加上 window/document/navigator 的安全守卫。"
@@ -237,7 +237,7 @@ source_workflow: /02-content-planning
     },
     {
       "section_name": "场景适配·适合/搭配/不适合",
-      "key_point": "适合纯 A 轨自动出片（讲解/数据/包装/合成终端）；可搭配着用（真人口播/录屏为主时 Remotion 渲透明悬浮叠层）；不适合（实拍·对口型·影视特效·后台批处理）；口诀：主体真实→退居叠层，主体讲解→独占整屏",
+      "key_point": "适合纯自动渲染出片（讲解/数据/包装/合成终端）；可搭配着用（真人口播/录屏为主时 Remotion 渲透明悬浮叠层）；不适合（实拍·对口型·影视特效·后台批处理）；口诀：主体真实→退居叠层，主体讲解→独占整屏",
       "beat_type": "comparison",
       "visual_priority": "mixed",
       "scene_template": "@ConceptScene"

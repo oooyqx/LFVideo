@@ -1,15 +1,15 @@
 <!-- AUTO-GENERATED from shared/workflows/05-b-roll-recording.md. Do not edit here; edit the source and run `python scripts/sync_workflows.py`. -->
 
-# B轨录屏 Workflow (05-b-roll-recording)
+# 录屏素材采集 Workflow (05-b-roll-recording)
 
-按 04 分镜口播稿契约中标注 `@VideoSlot` 的场景，录制真实 IDE / 终端操作演示。录屏素材在 07-video-assembly 阶段嵌入 `@VideoSlot` 组件；若录屏缺失，07 阶段将自动降级使用 A 轨兜底方案（`fallback_a_track`）。
+按 04 分镜口播稿契约中标注 `@VideoSlot` 的场景，录制真实 IDE / 终端操作演示。录屏素材在 07-video-assembly 阶段嵌入 `@VideoSlot` 组件；若录屏缺失，07 阶段将自动降级使用自动渲染兜底方案（`fallback_a_track`）。
 
 ---
 
 ## 前置依赖
 
 本工作流假设已完成 `/04-script-draft`，已具备：
-- 处于 `approved` 状态的 `content-library/<epNN-slug>/04-script/README.md`（末尾 JSON 契约含 `zoom_crop_directives` 与各 section 的 `@VideoSlot` / A 轨兜底；自 03+04 合并后，视听蓝图已并入此处）
+- 处于 `approved` 状态的 `content-library/<epNN-slug>/04-script/README.md`（末尾 JSON 契约含 `zoom_crop_directives` 与各 section 的 `@VideoSlot` / 自动渲染兜底；自 03+04 合并后，视听蓝图已并入此处）
 
 如果缺少上述输入，先提示用户回到对应上游阶段。
 
@@ -23,13 +23,13 @@
 - 场景编号（如 S5a、S5b、S5c）
 - `zoom_crop_directives`：录屏时的裁剪/缩放指令
 - `src` 占位描述：录屏内容说明
-- `fallback_a_track`：A 轨兜底方案（用于判断优先级）
+- `fallback_a_track`：自动渲染兜底方案（用于判断优先级）
 
 输出录屏任务清单表：
 
 | # | 场景 | 录屏内容 | zoom_crop | 预估时长 | 优先级 |
 |---|------|---------|-----------|---------|--------|
-| 1 | S5a-left | IDE录屏—AI从零手写组件 | `crop: editor_only` | 25s | 高（有 A 轨兜底但实录更真实） |
+| 1 | S5a-left | IDE录屏—AI从零手写组件 | `crop: editor_only` | 25s | 高（有自动渲染兜底但实录更真实） |
 | ... | ... | ... | ... | ... | ... |
 
 ### 2. 准备录屏环境
@@ -52,7 +52,7 @@
 
 - 三个工具均产出 1920×1080 / 30fps MP4（或 PNG），命名仍按 `b-<scene_id>.mp4` 落 `assets/`，`.provenance.json` 边车一并归档。
 - 依赖：`pip install playwright && python -m playwright install chromium`（另需 ffmpeg 转 MP4）。
-- **红线不变**：凡需要真实 IDE GUI 操作、无法由上述工具真实产出的画面，仍按 F-06 标 `[B 轨占位：请提供 xxx.png/mp4]` 交真人，或降级 A 轨兜底。
+- **红线不变**：凡需要真实 IDE GUI 操作、无法由上述工具真实产出的画面，仍按 F-06 标 `[录屏占位：请提供 xxx.png/mp4]` 交真人，或降级自动渲染兜底。
 
 ### 4. 逐条录制（仅剩余真人任务）
 
@@ -95,21 +95,21 @@ status: draft
 source_workflow: /05-b-roll-recording
 ---
 
-# epNN B轨录屏素材清单
+# epNN 录屏素材清单
 
 | 文件名 | 对应场景 | 时长 | 分辨率 | 状态 |
 |--------|---------|------|--------|------|
 | b-s5a-left.mp4 | S5a 左侧（从零手写） | 25s | 1920×1080 | ✅ 已录 |
 | ... | ... | ... | ... | ... |
 
-> 未录制的场景将在 07 组装阶段使用 A 轨兜底方案（`fallback_a_track`）渲染。
+> 未录制的场景将在 07 组装阶段使用自动渲染兜底方案（`fallback_a_track`）渲染。
 ```
 
 - 更新 `PIPELINE.md`：该期 05 列置 `draft`
 
 ### 7. 自我检查
 
-- ❌ 所有 `@VideoSlot` 场景是否都有对应录屏（或明确标注使用 A 轨兜底）？
+- ❌ 所有 `@VideoSlot` 场景是否都有对应录屏（或明确标注使用自动渲染兜底）？
 - ❌ 自动化采集的素材是否都有 `.provenance.json` 边车（来源可审计）？
 - ❌ 录屏分辨率/帧率是否统一？
 - ❌ 录屏内容是否与脚本 `[画面]` 描述一致？

@@ -5,6 +5,7 @@ import {AutoFit} from '../../primitives';
 import {useTheme} from '../../theme/ThemeContext';
 import {TechPanel, techIconChip} from '../../theme/surfaces';
 import {textStyles} from '../../theme/textStyles';
+import {lighten} from '../../theme/util';
 import {Animated} from '../../animation';
 import {osc01, proportionalTiming} from '../../animation/presence';
 import {TRANSITION_IDS, type TransitionId} from '../../animation/types';
@@ -98,7 +99,8 @@ const ItemCard: React.FC<{
 				<div
 					style={{
 						...t.eyebrow,
-						color,
+						color: lighten(color, 0.35),
+						textShadow: `0 0 12px ${color}60, 0 2px 6px rgba(0,0,0,0.8)`,
 						marginBottom: SPACING.xs - 2,
 						opacity: 0.9,
 					}}

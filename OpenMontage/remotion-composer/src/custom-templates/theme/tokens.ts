@@ -50,9 +50,9 @@ export const GLOW = {
 	// 标题文字辉光：accent 色弥散 + 暗色描边保可读。
 	text: {blur: 18, alpha: 0.5},
 	// 元素框（techPanel）描边的「常驻」辉光基线（呼吸辉光在此之上叠加）。
-	border: {blur: 16, alpha: 0.22},
+	border: {blur: 16, alpha: 0.34},
 	// Icon / 序号方片的 accent 辉光。
-	icon: {blur: 18, alpha: 0.3},
+	icon: {blur: 18, alpha: 0.45},
 	// 强调光条（标题下划线 / 分隔条）的 accent 辉光。
 	bar: {blur: 14, alpha: 0.6},
 	// 标题解码入场时长（帧）。统一所有 HoloTitle 的入场节奏。

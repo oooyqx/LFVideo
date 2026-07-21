@@ -146,7 +146,7 @@ source_workflow: /06-tts-synthesis
 ### 9. 交付与下一步
 
 提示用户：
-> TTS 语音就绪后（看板标 `approved`），结合 B 轨录屏素材（05），可进入 `/07-video-assembly` 组装成片。
+> TTS 语音就绪后（看板标 `approved`），结合录屏素材（05），可进入 `/07-video-assembly` 组装成片。
 
 ---
 

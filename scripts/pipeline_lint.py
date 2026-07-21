@@ -311,21 +311,6 @@ def _check_anti_deadtime(stage: "Stage", tag: str, report: Report, promote) -> N
                         f"{tag} anti-deadtime: section '{sid}' shot durations sum "
                         f"to {total}s but section duration_hint is {dur}s"
                     )
-            slices = [
-                s.get("voice_slice") for s in shots if isinstance(s, dict)
-            ]
-            voice = sec.get("voice")
-            if (
-                isinstance(voice, str)
-                and slices
-                and all(isinstance(x, str) and x for x in slices)
-            ):
-                joined = "".join(re.sub(r"\s+", "", x) for x in slices)
-                if joined != re.sub(r"\s+", "", voice):
-                    report.warn(
-                        f"{tag} anti-deadtime: section '{sid}' concatenated shot "
-                        f"voice_slice does not reconstruct the section voice"
-                    )
         elif sec.get("visual_beats") or sec.get("sub_shots"):
             report.warn(
                 f"{tag} anti-deadtime: section '{sid}' is {dur}s and relies on "
@@ -338,6 +323,113 @@ def _check_anti_deadtime(stage: "Stage", tag: str, report: Report, promote) -> N
                 f"static picture (no shots[], no visual_beats); cut into "
                 f">= {min_shots} shots"
             )
+
+
+# Chinese voice-over timing: ~4.5 chars per second (voice-style.md §二).
+CHARS_PER_SECOND = 4.5
+# Tolerance for duration <-> char-count consistency (script-director §双区一致性).
+DURATION_TOLERANCE = 0.20
+
+
+def _cjk_char_count(text: str) -> int:
+    """Count non-whitespace characters for voice timing estimation.
+
+    For CJK voice-over, each character is roughly one syllable; whitespace
+    and punctuation are excluded from the timing estimate.
+    """
+    return len(re.sub(r"[\s\u3000]+", "", text))
+
+
+def _check_voice_slice_integrity(
+    stage: "Stage", tag: str, report: Report, promote
+) -> None:
+    """Verify voice_slice concatenation and duration<->char-count consistency.
+
+    Three checks per section (script-director §双区一致性, L4 machine guard):
+    1. **Concatenation**: all ``voice_slice`` joined (whitespace-stripped) must
+       equal the section ``voice`` — no missing, extra, or reordered text.
+    2. **Duration <-> char count**: each shot's ``duration_seconds`` should be
+       within ±20% of ``char_count / 4.5`` (voice-style.md §二 timing).
+    3. **Shot-level anti-deadtime**: no single ``voice_slice`` may exceed
+       15 seconds — otherwise the shot itself needs further splitting.
+    """
+    contract = stage.contract
+    if not isinstance(contract, dict):
+        return
+    sections = contract.get("sections")
+    if not isinstance(sections, list):
+        return
+    for sec in sections:
+        if not isinstance(sec, dict):
+            continue
+        sid = sec.get("id", "?")
+        voice = sec.get("voice")
+        shots = sec.get("shots")
+        if not isinstance(shots, list) or not shots:
+            continue
+
+        # --- Check 1: voice_slice concatenation completeness ---
+        if isinstance(voice, str):
+            slices = [
+                s.get("voice_slice") for s in shots
+                if isinstance(s, dict) and isinstance(s.get("voice_slice"), str)
+            ]
+            if slices and all(s for s in slices):
+                joined = "".join(re.sub(r"\s+", "", s) for s in slices)
+                expected = re.sub(r"\s+", "", voice)
+                if joined != expected:
+                    # Find first divergence for a helpful message
+                    diff_pos = next(
+                        (i for i in range(min(len(joined), len(expected)))
+                         if joined[i] != expected[i]),
+                        min(len(joined), len(expected)),
+                    )
+                    ctx = 20
+                    j_snip = joined[max(0, diff_pos - ctx):diff_pos + ctx]
+                    e_snip = expected[max(0, diff_pos - ctx):diff_pos + ctx]
+                    promote(
+                        f"{tag} voice-slice: section '{sid}' concatenated "
+                        f"voice_slice does not reconstruct section voice. "
+                        f"First divergence at char {diff_pos}:\n"
+                        f"  slices: …{j_snip}…\n"
+                        f"  voice:  …{e_snip}…"
+                    )
+            elif len(slices) < len(shots):
+                promote(
+                    f"{tag} voice-slice: section '{sid}' has {len(shots)} "
+                    f"shot(s) but only {len(slices)} have voice_slice text"
+                )
+
+        # --- Check 2 & 3: per-shot duration <-> char count + shot deadtime ---
+        for shot in shots:
+            if not isinstance(shot, dict):
+                continue
+            shot_id = shot.get("id", "?")
+            slice_text = shot.get("voice_slice")
+            dur = shot.get("duration_seconds")
+            if not isinstance(slice_text, str) or not slice_text:
+                continue
+            if not isinstance(dur, (int, float)):
+                continue
+
+            char_count = _cjk_char_count(slice_text)
+            expected_dur = char_count / CHARS_PER_SECOND
+            if expected_dur > 0:
+                ratio = dur / expected_dur
+                if abs(ratio - 1.0) > DURATION_TOLERANCE:
+                    promote(
+                        f"{tag} voice-slice: section '{sid}' shot '{shot_id}' "
+                        f"duration {dur}s vs {char_count} chars "
+                        f"(expected ~{expected_dur:.1f}s, "
+                        f"{ratio:.0%} ratio, tolerance ±{DURATION_TOLERANCE:.0%})"
+                    )
+
+            if dur > DEADTIME_LIMIT_SECONDS:
+                promote(
+                    f"{tag} voice-slice: section '{sid}' shot '{shot_id}' "
+                    f"is {dur}s (> {DEADTIME_LIMIT_SECONDS}s) — "
+                    f"split into multiple shots"
+                )
 
 
 # Internal pipeline jargon that must never be read out to the audience
@@ -473,6 +565,8 @@ def lint_episode(episode_dir: Path, report: Report) -> None:
             _check_anti_deadtime(stage, tag, report, promote)
             # 7. voice jargon scan: internal pipeline terms must not be read out
             _check_voice_jargon(stage, tag, report, promote)
+            # 8. voice_slice integrity: concatenation + duration<->char-count
+            _check_voice_slice_integrity(stage, tag, report, promote)
 
 
 def _load_template_scene_manifest(

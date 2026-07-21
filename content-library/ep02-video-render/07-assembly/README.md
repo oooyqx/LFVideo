@@ -66,8 +66,8 @@ cut 数按类型：`intro_scene×3, concept_scene×11, table_scene×5, compariso
 | shot-5.4 | S5 | code_scene | 268–283 | 15 |
 | shot-5.5 | S5 | comparison_scene | 283–301 | 18 |
 | shot-5.6 | S5 | concept_scene | 301–313 | 12 |
-| shot-6.1 | S6 | code_scene (B 轨兜底) | 313–327 | 14 |
-| shot-6.2 | S6 | code_scene (B 轨兜底) | 327–339 | 12 |
+| shot-6.1 | S6 | code_scene (自动渲染兜底) | 313–327 | 14 |
+| shot-6.2 | S6 | code_scene (自动渲染兜底) | 327–339 | 12 |
 | shot-6.3 | S6 | concept_scene | 339–348 | 9 |
 | shot-7.1 | S7 | concept_scene | 348–363 | 15 |
 | shot-7.2 | S7 | table_scene | 363–380 | 17 |

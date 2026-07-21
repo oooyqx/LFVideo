@@ -139,7 +139,32 @@ export const App: React.FC = () => {
 										disabled={!m}
 										title={node.path}
 									>
-										<span className="tree-file">{node.file}.tsx</span>
+										<span className="tree-row">
+											<span className="tree-file">{node.file}.tsx</span>
+											{m && (
+												<span
+													className="copy-btn"
+													role="button"
+													tabIndex={0}
+													title="复制文件名"
+													onClick={(e) => {
+														e.stopPropagation();
+														navigator.clipboard.writeText(`${node.file}.tsx`);
+														e.currentTarget.textContent = `✓`;
+														setTimeout(() => { e.currentTarget.textContent = `⧉`; }, 1000);
+													}}
+													onKeyDown={(e) => {
+														if (e.key === `Enter` || e.key === ` `) {
+															e.preventDefault();
+															e.stopPropagation();
+															navigator.clipboard.writeText(`${node.file}.tsx`);
+															e.currentTarget.textContent = `✓`;
+															setTimeout(() => { e.currentTarget.textContent = `⧉`; }, 1000);
+														}
+													}}
+												>⧉</span>
+											)}
+										</span>
 										{m ? (
 											<span className="tree-label">{m.label}</span>
 										) : (

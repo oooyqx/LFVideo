@@ -26,18 +26,18 @@
 ### 1. 加载角色定义与组件规范
 
 - 读取 `shared/roles/content/script-director(分镜口播导演).md`，理解其两套子标准：
-  - **视觉/Props 子标准**：严谨工程术语、组件覆盖、防静止、干货式钩子（结论先行 + 实质画面，不靠演示噱头）、受众对齐、A/B 轨兜底。
+  - **视觉/Props 子标准**：严谨工程术语、组件覆盖、防静止、干货式钩子（结论先行 + 实质画面，不靠演示噱头）、受众对齐、自动渲染兜底。
   - **口播风格守则·干货紧凑版**：结论先行、干货紧凑、短句口语、情绪克制、对照前提与人设一致、无 AI 味。
 - **读取并遵循** `shared/docs/remotion-spec.md`：
   - `[画面]` 描述必须**严格优先映射到 Remotion 内置组件代号**（如 `@IntroScene`, `@ConceptScene`, `@TableScene`, `@TimelineScene`, `@SplitLayout`）。
   - 复杂概念应设计成 `@ConceptScene` 的 2D 卡片 + 恰当 Emoji 图标。
-  - Remotion 绝对无法自动生成的画面（真实 IDE 报错弹窗、复杂编写过程）必须用 `@VideoSlot` 并打上 `[B 轨占位替换提醒：请用户在此补充 xxx 录屏/截图]`。
-  - **A/B 轨兜底**：含 B 轨录屏的场景，脚本中必须同时给出 `[B 轨]`（`@VideoSlot` + `zoom_crop_directives`）和 `[A 轨兜底]`（对应 Remotion 组件渲染，如 `@TerminalScene` + 代码 Props），确保 B 轨缺失时有可渲染的 A 轨替代画面。
+  - Remotion 绝对无法自动生成的画面（真实 IDE 报错弹窗、复杂编写过程）必须用 `@VideoSlot` 并打上 `[录屏占位替换提醒：请用户在此补充 xxx 录屏/截图]`。
+  - **录屏兜底**：含录屏的场景，脚本中必须同时给出 `[录屏画面]`（`@VideoSlot` + `zoom_crop_directives`）和 `[自动渲染兜底]`（对应 Remotion 组件渲染，如 `@TerminalScene` + 代码 Props），确保录屏缺失时有可渲染的自动渲染替代画面。
 
 ### 2. 加载上游资产与内容真相源
 
 从 `02-plan/README.md` 获取：
-- 定稿标题、`outline_sections`（段落与抽象视觉描述）、视觉隐喻与画面 A/B 轨划分、演示路径 `demo_design`。
+- 定稿标题、`outline_sections`（段落与抽象视觉描述）、视觉隐喻与画面自动渲染/录屏划分、演示路径 `demo_design`。
 - Demo 实操设计：AI 的报错原因与避坑卡点（口播里的「痛点/卡点」）、解决卡点所需的 Rules 规则。
 
 从 `02-plan/tutorial.final.md`（人工定稿）获取**内容真相源**：
@@ -53,9 +53,9 @@
 * **体量要求**：长 5-10 分钟，口播 1500 - 2500 字。
 * **内容深度**：按 `tutorial.final.md` 的两步主线展开——先用大白话讲「怎么选这条技术路线」，再讲「怎么把本期能力搭出来」（主线与讲述人设口径见 `shared/rules/project-context.md`《频道配置》）；把声明的模板组件（如 `@TableScene`、`@TimelineScene`）Props 参数填充完整。
 * **镜头切分（防静止的根治手法）**：任何 `duration_hint_seconds > 15` 的 section 必须切成 `≥ ceil(时长/15)` 个 shot；shot 内部组件还需要 stagger/高亮/Zoom 这类微动效时，才用该 shot 的 `visual_beats`（它只描述**单个组件内**的细节动画，不承担切镜职责）。
-* **组件映射决策**：现有组件可表达 → 复用并标注组件名与 Props；无法表达 → 声明 `Template Ticket`（含物理路径建议、Props 接口、动画规范）。
+* **组件映射决策**：现有组件可表达 → 复用并标注组件名与 Props；无法表达 → 声明 `Template Ticket`（含物理路径建议、Props 接口、动画规范）。选哪一个场景按 `shared/docs/remotion-spec.md` §2.1.5「场景选型决策表」的语义信号映射与四条选型硬规则执行（结构映射优先 / 相邻镜头去重 / 首尾呼应 / props 字段名对照 scene-types.json）。
 * **列表型组件逐条踩点（`atSec`）**：`@ConceptScene` / `@BulletScene` / `@FlowScene` / `@TimelineScene` 内含多个 item/step/event，画面默认是均匀错峰（uniform stagger），无法贴合不均匀的口播节奏。当某一条要**精确踩在某句口播上**时，给该条 props 加 `atSec`（数字，单位秒，**相对本镜头/shot 起点**，与 `voice_slice` 同一时间轴）——含义是「该条在镜头开始后第 atSec 秒入场」。不写 `atSec` 的条目自动回退到均匀 stagger，无需逐条都填。注意 `atSec` 不要超过该镜头 `duration_seconds`，否则该条永不出现。
-* **录屏 zoom 指令**：对含 B 轨的场景生成 `zoom_crop_directives`（clip_id / 时间戳 / 缩放倍数 / 焦点坐标）。
+* **录屏 zoom 指令**：对含录屏的场景生成 `zoom_crop_directives`（clip_id / 时间戳 / 缩放倍数 / 焦点坐标）。
 
 #### 3.1 脚本内格式模板
 
@@ -97,18 +97,22 @@ source_workflow: /04-script-draft
 - ❌ **对照前提与人设一致**：方案对照是否被写成「手写/手动 vs 自动/AI」，或拿「省人力、少敲键盘」当卖点？频道讲述人设下两条路都是 AI 写代码，对照轴必须落在工程化复用 / 强类型约束 / 可维护性 / 稳定性等真实差异上，不得用劳动量轴（如「手写拼接、每期复制粘贴」）暗示对手要靠人肉硬干。
 - ❌ **主线与人设（与软文同调）**：开场是否结果先行？技术段是否体现「人讲需求/看坑/定规则 + AI 写和填」的分工？结尾落点是否符合 `project-context.md`《频道配置 · 内容主线与讲述人设》？
 - ❌ **去抽象腔**：是否出现「范式 / 换一套心智模型 / 帧即状态」等抽象标签当讲法？有则改成大白话。
-- ❌ 是否删除了所有「在数字化浪潮中、赋能、打造、全方位」等恶俗 AI 味句式？口播是否短句优先、极具换气感？
+- ❌ 是否删除了所有「在数字化浪潮中、赋能、打造」等恶俗 AI 味句式？口播是否短句优先、极具换气感？
 - ❌ **自然度红线**（见 `voice-style.md`《自然度红线》）：有无为凑短句比例造出的伪短句（「路摆全了」「三条一卡」）？拟人隐喻是否 ≤1 处？指录话术（「你看 X 这行」）是否 ≤1 次且画面同步？每句能否过「真人对着镜头会不会这么说」？
 - ❌ **报站不叠用**：段尾过渡和下一段开头是否只报了一次步骤名？（❌「这就到第二步。/ 第二步技术选型，…」）
 - ❌ **术语白话化**：内部流水线术语（A 轨 / B-roll / SSOT / props / 分镜号…）是否零直接入口播？首次出现是否已白话化？（`pipeline_lint.py` 会对 voice 字段做术语扫描）
 
 **视觉侧（[画面] / Props / 录屏指令）：**
 - ❌ **组件覆盖度**：每个 section 是否都映射到具体组件或 Template Ticket？（禁止留下未解决的抽象描述）
-- ❌ **受众对齐与术语专业化**：是否出现面向传统剪辑师的痛点对比（传统剪辑/拖时间轴/手动对字幕）？选型表述是否使用严谨工程术语（适用场景/局限条件/关键约束）而非「不适用+坑/报菜名/复制粘贴土办法」？（口语化只允许出现在 `[口播]`，视觉/Props 字段用工程术语）
+- ❌ **受众对齐与术语专业化**：是否出现面向传统剪辑师的痛点对比（传统剪辑/拖时间轴/手动对字幕）？选型表述是否使用严谨工程术语做全方位对比（核心优势/适用场景 + 局限条件/关键约束），而非单摆缺点、只堆坑或「报菜名/复制粘贴土办法」式片面表达？（口语化只允许出现在 `[口播]`，视觉/Props 字段用工程术语）
 - ❌ **防静止（硬性·镜头级）**：任一 `duration_hint_seconds > 15` 的 section 是否切成了 `≥ ceil(时长/15)` 个 `shots[]`（每个 shot 一个组件 + Props + `voice_slice` + `duration_seconds`）？只写 section 级 `visual_beats`/`sub_shots` 文字注解而不拆 shot = 不合格（`pipeline_lint.py` 在该期 04 置 `approved`/`reviewed` 时会硬报错）。shot 内的 `visual_beats` 仅用于单组件内部微动效，不算切镜（见 `shared/docs/remotion-spec.md` §1.5）。
-- ❌ **A/B 轨兜底完整性**：含 B 轨录屏的场景，脚本是否同时给出了 `[B 轨]`（含 `zoom_crop_directives`）和 `[A 轨兜底]` 画面指示？缺一即判不合格。
+- ❌ **录屏兜底完整性**：含录屏的场景，脚本是否同时给出了 `[录屏画面]`（含 `zoom_crop_directives`）和 `[自动渲染兜底]` 画面指示？缺一即判不合格。
 - ❌ **列表型组件踩点**：`@ConceptScene` / `@BulletScene` / `@FlowScene` / `@TimelineScene` 的某一条若在口播里有明确「念到这条才出现」的对应句，是否给该条 props 标了 `atSec`（相对镜头起点的秒，不超过 `duration_seconds`）？只有「同时一起出现」或节奏无关时才允许省略 `atSec` 走均匀 stagger。
-- ❌ 脚本中是否将声明的新模版组件（如 `@TableScene` 等）Props 参数和数据 Schema 100% 填充完整？
+- ❌ **语义-场景匹配**：口播含「N 步/流程/对比/清单/大数字」等结构信号的镜头，是否都用了对应的结构化场景（见 remotion-spec §2.1.5 决策表）？有没有用 `@IntroScene`/`@OutroScene`/`@QuoteScene` 纯文字硬扛结构化信息？
+- ❌ **相邻镜头去重**：相邻/同段镜头是否用同一场景重放了几乎相同的 props（如同一张表连播两屏）？「全景→聚焦」是否改用不同场景递进（矩阵 → 聚焦赢家 SplitLayout/高亮）？
+- ❌ **首尾呼应**：开场给出的结构骨架（如三步法）在结尾回顾时是否用同一结构场景复现？
+- ❌ **props 字段名对照 schema**：每个镜头的 props 字段名是否逐字段对照过 `scene-types.json` 的 required/optional？（错名不报错，会静默回退成纯文字——如 FlowScene step 用 `label` 不是 `title`。）
+- ❌ 脚本是否将声明的新模版组件（如 `@TableScene` 等）Props 参数和数据 Schema 100% 填充完整？
 
 **通用：**
 - ❌ **必讲要点覆盖**：`tutorial.final.md` 末尾「必讲要点覆盖清单」里的每一条，是否都能在本脚本（口播或画面承载）里找到对应？逐条核对，任一条无对应即判不合格，需补写。**但标 `(内部)` 的条目相反：默认不入口播**，只能收敛为一句结果或交给画面；口播里出现 dev-log 级实现细节（修 bug 的具体手法）即判不合格，除非它本身是本期教学目标。
@@ -125,7 +129,7 @@ source_workflow: /04-script-draft
 
 - 创建目录：`content-library/<epNN-slug>/04-script/`，将脚本写入 `04-script/README.md`。
 - **MANDATORY**：脚本末尾必须追加符合 `shared/schemas/04-script.schema.json` 规范的 ` ```json ` 结构化块。
-- **该 JSON 块是下游全部阶段（B轨录屏/TTS/组装/字幕/分发）的唯一真源（SSOT），一旦 approve 即冻结**：其中 `title`、`sections[].id`/`voice`/`duration_hint_seconds`、以及 `anti_hype_forbidden`（噱头黑名单）是下游**不得改写**的硬契约；`video_spec`、`sections[].shots[]`（含每个 shot 的 `scene_template`/`props`/`voice_slice`/`duration_seconds`）/`scene_template`/`props`/`visual_beats`、`zoom_crop_directives` 由本阶段一并产出，供 05/07 直接读取——**07 组装按「一个 shot ↔ props JSON 里一个 cut」逐条映射**（section 无 shots 时退化为整段一个 cut）。下游只能逐条映射，不能增删段落/镜头、重写标题/口播或重新引入噱头。示例：
+- **该 JSON 块是下游全部阶段（录屏/TTS/组装/字幕/分发）的唯一真源（SSOT），一旦 approve 即冻结**：其中 `title`、`sections[].id`/`voice`/`duration_hint_seconds`、以及 `anti_hype_forbidden`（噱头黑名单）是下游**不得改写**的硬契约；`video_spec`、`sections[].shots[]`（含每个 shot 的 `scene_template`/`props`/`voice_slice`/`duration_seconds`）/`scene_template`/`props`/`visual_beats`、`zoom_crop_directives` 由本阶段一并产出，供 05/07 直接读取——**07 组装按「一个 shot ↔ props JSON 里一个 cut」逐条映射**（section 无 shots 时退化为整段一个 cut）。下游只能逐条映射，不能增删段落/镜头、重写标题/口播或重新引入噱头。示例：
   ```json
   {
     "title": "定稿视频标题",

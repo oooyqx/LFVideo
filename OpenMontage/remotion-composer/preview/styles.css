@@ -100,6 +100,31 @@ body {
 	color: #e6e9ef;
 }
 
+.tree-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+}
+
+.copy-btn {
+	flex-shrink: 0;
+	font-size: 14px;
+	color: #6b7488;
+	cursor: pointer;
+	opacity: 0;
+	transition: opacity 0.15s, color 0.15s;
+	user-select: none;
+}
+
+.tree-item:hover .copy-btn {
+	opacity: 1;
+}
+
+.copy-btn:hover {
+	color: #5b8cff;
+}
+
 .tree-label {
 	font-size: 12px;
 	color: #8b94a7;

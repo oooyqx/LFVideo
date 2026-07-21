@@ -10,9 +10,9 @@
 ## 📌 零号法则：前置对齐 (Rule Zero)
 
 任何新一轮对话、或接到新任务时，你必须**首选执行**以下前置动作：
-1. **核对项目上下文**：读取根目录下的 `@Project Context (项目上下文).md`、`@Content Plan (内容计划).md`。
-2. **核对角色身份**：根据用户任务（例如策划、撰稿、执行），在 `@shared/roles/` 下找到匹配的角色定义文件并阅读，严格按角色的“职责边界”与“输出格式契约”工作。
-3. **核对当前工作流**：读取当前期目录下的 `README.md` 头部的 Frontmatter（如 `stage` 与 `status`），确认所处阶段。工作流真相源在 `@shared/workflows/<slug>.md`（IDE 无关）；各 IDE 也可直接调用生成副本的 slash 命令 `/<slug>`（Windsurf `.windsurf/workflows/`、Cursor `.cursor/commands/`、Devin `.devin/workflows/`）。**改步骤只改 `shared/workflows/`，再跑 `python scripts/sync_workflows.py` 同步**，切勿手改各 IDE 目录下的生成副本。
+1. **核对项目上下文**：读取 `shared/rules/project-context.md`（频道定位、配置、人设）与 `Content Plan (内容计划).md`。
+2. **核对角色身份**：根据用户任务（例如策划、撰稿、执行），在 `shared/roles/` 下找到匹配的角色定义文件并阅读，严格按角色的“职责边界”与“输出格式契约”工作。
+3. **核对当前工作流**：读取当前期目录下的 `README.md` 头部的 Frontmatter（如 `stage` 与 `status`），确认所处阶段。工作流真相源在 `shared/workflows/<slug>.md`（IDE 无关）；各 IDE 也可直接调用生成副本的 slash 命令 `/<slug>`（Windsurf `.windsurf/workflows/`、Cursor `.cursor/commands/`、Devin `.devin/workflows/`）。**改步骤只改 `shared/workflows/`，再跑 `python scripts/sync_workflows.py` 同步**，切勿手改各 IDE 目录下的生成副本。
 
 ---
 
@@ -37,12 +37,12 @@
 
 ---
 
-## 🎨 铁律二：B 轨实操真相与 A 轨 Remotion 约束
+## 🎨 铁律二：录屏实操真相与自动渲染 Remotion 约束
 
 1. **真人实操录屏是最高准则 (TAD-01 规范)**：
-   - 本项目属于“真人实操 B-Rail” + “数字模板 A-Rail”的混合生产线。
+   - 本项目属于「真人实操录屏 + 数字模板自动渲染」的混合生产线。
    - 绝对禁止虚构任何不切实际的 AIGC 虚拟特效。
-   - 凡是 Remotion 无法生成、需要通过实际 IDE 操作展示的画面（如 Cursor 报错弹窗、Terminal 红屏、本地代码运行），一律用 `[B 轨占位：请用户提供 xxx.png/mp4]` 的格式显式标出，后期由人类补充。
+   - 凡是 Remotion 无法生成、需要通过实际 IDE 操作展示的画面（如 Cursor 报错弹窗、Terminal 红屏、本地代码运行），一律用 `[录屏占位：请用户提供 xxx.png/mp4]` 的格式显式标出，后期由人类补充。
 
 2. **避免画面静止 (Anti-Deadtime 红线)**：
    - 同一镜头画面静止时间**不得超过 15 秒**（中文口播约 60-75 字）。

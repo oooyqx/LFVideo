@@ -1,4 +1,5 @@
 import React, {type CSSProperties} from 'react';
+import {staticFile} from 'remotion';
 import {withAlpha, lighten} from './util';
 import {GLOW} from './tokens';
 import {useTheme, type TemplateTheme} from './ThemeContext';
@@ -25,7 +26,64 @@ export interface TechPanelOpts {
 	blur?: number;
 }
 
-// 科技风元素框样式：玻璃底 + 霓虹描边 + 顶部高光 + 辉光投影。
+// ── 霓虹外框贴图（九宫格）──
+// 美术提供的 128×128 圆角霓虹框，四角 52px 保持原样，只拉伸横/纵中段，
+// 线宽不随面板尺寸变化（Unity 9-slice 同款逻辑，用 CSS border-image 实现）。
+const FRAME_SLICE = 52; // 图内四角安全区（px）
+const FRAME_WIDTH = 26; // 渲染时的四角/线条尺寸（= 0.5 倍原图，线芯约 3px）
+const FRAME_OUTSET = 9; // 向外扩出，让线芯骑在面板边缘上、辉光溢到框外
+// 6 张贴图的主色相（deg），按 accent 色相就近选图。
+const FRAME_HUES: Array<[string, number]> = [
+	['red', 0],
+	['orange', 30],
+	['green', 140],
+	['cyan', 180],
+	['blue', 220],
+	['purple', 275],
+];
+function hexHue(hex: string): number {
+	const clean = hex.replace('#', '');
+	const n = parseInt(clean.length === 3 ? clean.split('').map((c) => c + c).join('') : clean, 16);
+	const r = ((n >> 16) & 255) / 255;
+	const g = ((n >> 8) & 255) / 255;
+	const b = (n & 255) / 255;
+	const max = Math.max(r, g, b);
+	const min = Math.min(r, g, b);
+	const d = max - min;
+	if (d === 0) return 220; // 无彩色→蓝
+	let h: number;
+	if (max === r) h = ((g - b) / d) % 6;
+	else if (max === g) h = (b - r) / d + 2;
+	else h = (r - g) / d + 4;
+	return ((h * 60) + 360) % 360;
+}
+export function neonFrameImage(accent: string): string {
+	const hue = hexHue(accent);
+	let best = FRAME_HUES[0];
+	let bestDist = 999;
+	for (const fh of FRAME_HUES) {
+		const dist = Math.min(Math.abs(hue - fh[1]), 360 - Math.abs(hue - fh[1]));
+		if (dist < bestDist) {
+			bestDist = dist;
+			best = fh;
+		}
+	}
+	return staticFile(`frames/frame-${best[0]}.png`);
+}
+// 把霓虹框以 border-image 叠到任意元素上：border 仍是 2.5px 透明占位（不改布局），
+// 绘制宽度/外扩由 border-image-width / outset 控制。
+export function neonFrameBorder(accent: string): CSSProperties {
+	return {
+		border: '2.5px solid transparent',
+		borderImageSource: `url("${neonFrameImage(accent)}")`,
+		borderImageSlice: FRAME_SLICE,
+		borderImageWidth: `${FRAME_WIDTH}px`,
+		borderImageOutset: `${FRAME_OUTSET}px`,
+		borderImageRepeat: 'stretch',
+	};
+}
+
+// 科技风元素框样式：玻璃底 + 霓虹贴图外框（九宫格） + 顶部高光 + 辉光投影。
 export function techPanel(
 	theme: TemplateTheme,
 	opts: TechPanelOpts,
@@ -39,12 +97,11 @@ export function techPanel(
 		borderAlpha = 0.4,
 		blur = 14,
 	} = opts;
-	// 描边核心提亮趋近白色（lighten 0.62）+ 加粗到 2.5px，呈现「霓虹发光」亮芯；
-	// 外侧叠 accent 彩色辉光，内侧叠白色内辉光，强化「线条本身在发光」的观感。
-	const coreColor = lighten(accent, 0.62);
+	void borderAlpha;
 	return {
 		background: withAlpha(colors.bg.to, fill),
-		border: `2.5px solid ${withAlpha(coreColor, Math.min(1, borderAlpha + 0.42 + glow * 0.25))}`,
+		// 外框改用美术霓虹贴图（9-slice，线宽恒定），不再用 CSS 描边。
+		...neonFrameBorder(accent),
 		borderRadius: radius,
 		backdropFilter: `blur(${blur}px)`,
 		WebkitBackdropFilter: `blur(${blur}px)`,
@@ -53,8 +110,7 @@ export function techPanel(
 			`inset 0 1px 0 ${withAlpha('#FFFFFF', 0.1)}`,
 			// 内侧白色辉光：让描边亮芯向内扩散，更像通电发光。
 			`inset 0 0 10px ${withAlpha('#FFFFFF', 0.12 + 0.08 * glow)}`,
-			// 常驻全息辉光基线（GLOW.border，提亮 alpha）+ 呼吸辉光（glow 入参）叠加。
-			`0 0 ${GLOW.border.blur + 6}px ${withAlpha(accent, GLOW.border.alpha + 0.14)}`,
+			// 呼吸辉光（glow 入参）；常驻边框辉光已由霓虹贴图自带。
 			`0 0 ${26 * glow}px ${withAlpha(accent, 0.18 * glow)}`,
 		].join(', '),
 		position: 'relative',
@@ -68,7 +124,7 @@ export const TechCorners: React.FC<{
 	size?: number;
 	inset?: number;
 	alpha?: number;
-}> = ({color, size = 18, inset = 10, alpha = 0.55}) => {
+}> = ({color, size = 18, inset = 10, alpha = 0.85}) => {
 	const c = withAlpha(color, alpha);
 	const base: CSSProperties = {
 		position: 'absolute',
@@ -136,8 +192,8 @@ export function techIconChip(
 		...(size ? {width: size, height: size} : {}),
 		flexShrink: 0,
 		borderRadius: shape === 'circle' ? '50%' : RADIUS.md,
-		background: withAlpha(color, 0.18),
-		border: `1.5px solid ${withAlpha(color, 0.45)}`,
+		background: withAlpha(lighten(color, 0.12), 0.34),
+		border: `2px solid ${withAlpha(lighten(color, 0.35), 0.85)}`,
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -159,8 +215,8 @@ export function techPill(theme: TemplateTheme, color: string): CSSProperties {
 		fontWeight: 800,
 		letterSpacing: 2,
 		color,
-		background: withAlpha(color, 0.15),
-		border: `1.5px solid ${withAlpha(color, 0.45)}`,
+		background: withAlpha(lighten(color, 0.12), 0.28),
+		border: `1.5px solid ${withAlpha(lighten(color, 0.3), 0.8)}`,
 		borderRadius: RADIUS.pill,
 		padding: `6px ${SPACING.md}px`,
 	};

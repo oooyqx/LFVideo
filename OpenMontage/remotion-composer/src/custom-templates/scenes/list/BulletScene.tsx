@@ -45,6 +45,8 @@ export const BulletScene: React.FC<BulletProps> = ({
 	const ROW_FONT = [FONT_SIZE.bodyLg, FONT_SIZE.body][tier];
 	const ROW_GAP = [SPACING.md, SPACING.sm][tier];
 	const MARKER = [64, 56][tier];
+	// 条目 ≥5 时切成 2 列矩阵（2×3 / 2×4），铺满横向画幅，避免纵向长条挤在中间。
+	const grid = items.length >= 5;
 
 	const {durationInFrames} = useVideoConfig();
 	// 比例化：首条 5% 处开始，全部条目在 40% 处完成入场。
@@ -62,9 +64,9 @@ export const BulletScene: React.FC<BulletProps> = ({
 			<div
 				style={{
 					fontFamily: fonts.family,
-					width: 'fit-content',
+					width: grid ? 1480 : 'fit-content',
 					minWidth: 720,
-					maxWidth: 1300,
+					maxWidth: grid ? 1480 : 1300,
 					display: 'flex',
 					flexDirection: 'column',
 				}}
@@ -83,7 +85,17 @@ export const BulletScene: React.FC<BulletProps> = ({
 						</div>
 					</Animated>
 				)}
-				<div style={{display: 'flex', flexDirection: 'column', gap: ROW_GAP}}>
+				<div
+					style={
+						grid
+							? {
+									display: 'grid',
+									gridTemplateColumns: '1fr 1fr',
+									gap: SPACING.md,
+								}
+							: {display: 'flex', flexDirection: 'column', gap: ROW_GAP}
+					}
+				>
 					{items.map((raw, i) => {
 						const item: BulletItem = typeof raw === 'string' ? {text: raw} : raw;
 						const color = colors.accent[i % colors.accent.length];
@@ -106,6 +118,7 @@ export const BulletScene: React.FC<BulletProps> = ({
 										alignItems: 'center',
 										gap: SPACING.md,
 										padding: `${SPACING.sm + 2}px ${SPACING.md}px`,
+										...(grid ? {height: '100%', boxSizing: 'border-box'} : {}),
 									}}
 								>
 									<div

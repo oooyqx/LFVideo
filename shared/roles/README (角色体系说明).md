@@ -41,9 +41,9 @@
 | [选题分析师](./content/topic-analyst(选题分析师).md) | 选题可行性判断、标题候选、受众与传播分析 | ✅ 可用 |
 | [内容策划师](./content/strategist(内容策划师).md) | 导演分镜、Demo 设计、故事大纲（苏格拉底协同） | ✅ 可用 |
 | [分镜口播导演](./content/script-director(分镜口播导演).md) | 一体产出「画面（Remotion 组件映射/Props/动画 Cue/录屏 zoom 指令）+ 口播台词」的分镜口播稿（合并原视听策划师 + 文案撰稿人） | ✅ 可用 |
-| [屏幕录制导演](./content/screen-capture-director(屏幕录制导演).md) | 按 04 分镜口播稿录制 B 轨 IDE/终端操作演示 | ✅ 可用 |
+| [屏幕录制导演](./content/screen-capture-director(屏幕录制导演).md) | 按 04 分镜口播稿录制 IDE/终端操作演示（录屏素材） | ✅ 可用 |
 | [语音合成工程师](./content/tts-engineer(语音合成工程师).md) | TTS 引擎选型、口播文本转语音音频 | ✅ 可用 |
-| [视频工程师](./content/motion-engineer(视频工程师).md) | 用 Remotion 把脚本组装成片（A/B 两轨） | ✅ 可用 |
+| [视频工程师](./content/motion-engineer(视频工程师).md) | 用 Remotion 把脚本组装成片（自动渲染 + 录屏两类画面） | ✅ 可用 |
 | [字幕编辑](./content/subtitle-editor(字幕编辑).md) | Whisper 转录、SRT/VTT 字幕生成与校对 | ✅ 可用 |
 | [音频混音师](./content/audio-mixer(音频混音师).md) | BGM 选曲、音效设计、多轨混音与响度标准化 | ✅ 可用 |
 | [封面设计师](./content/cover-designer(封面设计师).md) | 多平台封面/缩略图设计（16:9/9:16/1:1） | ✅ 可用 |

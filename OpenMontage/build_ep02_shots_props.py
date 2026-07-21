@@ -101,11 +101,7 @@ TEMPLATE_TO_TYPE = {
 # `source` makes the cut a raw media clip that the Explainer media fallback
 # plays full-frame instead of the synthetic scene. Provenance sidecars for the
 # clips live in content-library/ep02-video-render/05-b-roll/assets/.
-SHOT_OVERRIDES: dict[str, dict[str, Any]] = {
-    # SSR 坑（5.4）：scripted_terminal_recorder 真实执行录制——顶层读 window
-    # 崩（exit 1）→ typeof window 守卫 → 重跑通过（exit 0），替换合成终端兜底。
-    "5.4": {"type": None, "source": "broll/b-ssr-crash-fix.mp4"},
-}
+SHOT_OVERRIDES: dict[str, dict[str, Any]] = {}
 
 # ep02 authored look: 'holo' background on every template scene except the
 # ones that manage their own full-bleed layout.
@@ -159,6 +155,19 @@ def build_cuts(
             content = dict(shot.get("props") or {})
             if not content:
                 raise SystemExit(f"shot {sid}: SSOT shot has no props")
+            # FlowScene's step schema keys the card heading as `label`; the SSOT
+            # authors it as `title` (consistent with other scenes). Map it here so
+            # the renderer's zod parse succeeds and the cards actually render.
+            if ctype == "flow_scene" and isinstance(content.get("steps"), list):
+                content["steps"] = [
+                    {**s, "label": s["title"], "title": None}
+                    if isinstance(s, dict) and "title" in s and "label" not in s
+                    else s
+                    for s in content["steps"]
+                ]
+                content["steps"] = [
+                    {k: v for k, v in s.items() if v is not None} for s in content["steps"]
+                ]
             if ctype not in NO_HOLO_TYPES:
                 content.setdefault("background", "holo")
             content.update(SHOT_OVERRIDES.get(sid, {}))

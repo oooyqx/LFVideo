@@ -22,7 +22,7 @@ alwaysApply: true
 
 ## B. 画面与工程
 
-- **F-06 禁止虚构 AIGC 画面**：凡 Remotion 无法生成、需真实 IDE 操作的画面，一律 `[B 轨占位：请用户提供 xxx.png/mp4]` 显式标出，禁止凭空脑补特效。（来源：`AGENT_GUIDE.md` 铁律二 TAD-01）
+- **F-06 禁止虚构 AIGC 画面**：凡 Remotion 无法生成、需真实 IDE 操作的画面，一律 `[录屏占位：请用户提供 xxx.png/mp4]` 显式标出，禁止凭空脑补特效。（来源：`AGENT_GUIDE.md` 铁律二 TAD-01）
 - **F-07 禁止画面静止超 15 秒**：>15s 的口播段必须切多镜头 / `visual_beats`。（来源：`AGENT_GUIDE.md` 铁律二 Anti-Deadtime）
 - **F-08 禁止未经用户明确指令跑出片渲染**（`npx remotion render` / `npm run build` 等）：效果验证一律走 Remotion 预览。（来源：`AGENT_GUIDE.md` 铁律二）
 - **F-09 禁止让 AI 从零发明新场景组件**：只允许在 `SCENE_TYPES.md` 现成模板上填数据；缺组件走 Template Ticket，不留抽象描述。（来源：`04-script-draft` 工作流 / ep02 实践）
@@ -40,6 +40,7 @@ alwaysApply: true
 - **F-15 禁止自谦式人设表达入口播**（「我没有前后端基础」类）；人设只可价值前置、开场点一次。（来源：`project-context.md`《讲述人设》）
 - **F-16 禁止噱头/夸张卖点**：标题与口播不得使用当期 `anti_hype_forbidden` 黑名单词（「一键出片 / 百倍效率 / 碾压」等），对照轴不得写成「手写 vs 自动 / 省人力」。（来源：`01-topic-research` / `04-script-draft` / `voice-style.md`）
 - **F-17 禁止 AI 味禁区词与念大纲式过渡**：「本质上 / 综上所述 / 接下来我们聊聊」等，全量黑名单见 `voice-style.md` 第三节。（来源：`voice-style.md`）
+- **F-19 禁止「A 轨 / B 轨」等内部黑话进任何产出**：工作流、角色、脚本、口播、画面标注等一切产出内容均不得出现「A 轨 / B 轨」这类内部流水线术语，一律用大白话替代——「A 轨」→「自动渲染（画面）」、「B 轨」→「录屏（素材）」、「A/B 轨兜底 / fallback_a_track」→「自动渲染兜底」、「B 轨占位」→「录屏占位」。仅本清单与 `voice-style.md`《术语白话化》为定义/禁用而援引这些词时例外。（来源：`voice-style.md`《术语白话化》）
 
 ## E. 角色边界（各角色只做本职，越界必须显式换角色）
 

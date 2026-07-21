@@ -1,5 +1,6 @@
 import {type CSSProperties} from 'react';
 import {type TemplateTheme} from './ThemeContext';
+import {lighten} from './util';
 
 // ───────────────────────────────────────────────────────────────────────────
 // 文字角色 SSOT：标题 / 卡片标题 / 正文 / 副文 / 角标 / eyebrow。
@@ -79,8 +80,9 @@ export function textStyles(theme: TemplateTheme): TextStyles {
 			fontWeight: 800,
 			letterSpacing: 4,
 			textTransform: 'uppercase',
-			color: colors.accent[0],
-			textShadow: `0 0 12px ${accent}60`,
+			// 提亮到近白 + 暗色投影，保证叠在亮背景（窗外/墙面）上也可读。
+			color: lighten(colors.accent[0], 0.35),
+			textShadow: `0 0 12px ${accent}60, 0 2px 6px rgba(0,0,0,0.8)`,
 		},
 	};
 }

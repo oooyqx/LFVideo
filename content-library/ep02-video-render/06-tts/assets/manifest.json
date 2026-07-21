@@ -8,100 +8,110 @@
   "provider_status": "synthesized",
   "duration_source": "measured edge-tts segment durations (timing source of truth)",
   "narration_audio": "audio/ep02-narration.mp3",
-  "total_duration_seconds": 457.584,
+  "total_duration_seconds": 454.872,
   "shots": [
     {
       "id": "1.1",
       "section_id": "1",
-      "voice_slice": "如何用 Vibe Coding 快速完成自动化视频渲染？",
+      "voice_slice": "如何用 Vibe Coding，快速搞定自动化视频渲染？",
       "audio_file": "assets/1.1.mp3",
       "start_seconds": 0.0,
-      "duration_seconds": 4.488,
+      "duration_seconds": 4.56,
       "captions": [
         {
-          "word": "如何用 Vibe Coding 快速完成自动化视频渲染？",
+          "word": "如何用 Vibe Coding，",
           "startMs": 100,
-          "endMs": 4488
+          "endMs": 1726
+        },
+        {
+          "word": "快速搞定自动化视频渲染？",
+          "startMs": 1726,
+          "endMs": 4550
         }
       ]
     },
     {
       "id": "1.2",
       "section_id": "1",
-      "voice_slice": "先记一个关键认知：AI 最强的本事，是啃文本和代码。所以想让渲染自动化，就得把视频变成代码和数据来驱动。",
+      "voice_slice": "先记住一个关键认知：AI 最能打的本事，是啃文本和代码。所以想让渲染自动化，思路就一条——把视频变成代码和数据，让 AI 按配置出片。",
       "audio_file": "assets/1.2.mp3",
-      "start_seconds": 4.488,
-      "duration_seconds": 11.256,
+      "start_seconds": 4.56,
+      "duration_seconds": 13.968,
       "captions": [
         {
-          "word": "先记一个关键认知：",
+          "word": "先记住一个关键认知：",
           "startMs": 100,
-          "endMs": 2190
+          "endMs": 2360
         },
         {
-          "word": "AI 最强的本事，",
-          "startMs": 2190,
-          "endMs": 3758
+          "word": "AI 最能打的本事，",
+          "startMs": 2360,
+          "endMs": 4117
         },
         {
           "word": "是啃文本和代码。",
-          "startMs": 3758,
-          "endMs": 5588
+          "startMs": 4117,
+          "endMs": 5875
         },
         {
           "word": "所以想让渲染自动化，",
-          "startMs": 5538,
-          "endMs": 7661
+          "startMs": 5825,
+          "endMs": 8173
         },
         {
-          "word": "就得把视频变成代码和数据来驱动。",
-          "startMs": 7661,
-          "endMs": 11200
+          "word": "思路就一条—",
+          "startMs": 8173,
+          "endMs": 9477
+        },
+        {
+          "word": "—把视频变成代码和数据，",
+          "startMs": 9477,
+          "endMs": 12086
+        },
+        {
+          "word": "让 AI 按配置出片。",
+          "startMs": 12086,
+          "endMs": 13913
         }
       ]
     },
     {
       "id": "1.3",
       "section_id": "1",
-      "voice_slice": "让 AI 按配置输出视频，改一行配置，整条片子自动重渲——这就是低成本、高效率的自动化生产。",
+      "voice_slice": "改一行配置，整条片子自动重渲。这就是低成本、高效率的自动化生产。",
       "audio_file": "assets/1.3.mp3",
-      "start_seconds": 15.744,
-      "duration_seconds": 9.648,
+      "start_seconds": 18.528,
+      "duration_seconds": 7.488,
       "captions": [
         {
-          "word": "让 AI 按配置输出视频，",
-          "startMs": 100,
-          "endMs": 2411
-        },
-        {
           "word": "改一行配置，",
-          "startMs": 2411,
-          "endMs": 3695
+          "startMs": 100,
+          "endMs": 1504
         },
         {
-          "word": "整条片子自动重渲—",
-          "startMs": 3695,
-          "endMs": 5749
+          "word": "整条片子自动重渲。",
+          "startMs": 1504,
+          "endMs": 3750
         },
         {
-          "word": "—这就是低成本、",
-          "startMs": 5749,
-          "endMs": 7289
+          "word": "这就是低成本、",
+          "startMs": 3700,
+          "endMs": 5190
         },
         {
           "word": "高效率的自动化生产。",
-          "startMs": 7289,
-          "endMs": 9600
+          "startMs": 5190,
+          "endMs": 7425
         }
       ]
     },
     {
       "id": "1.4",
       "section_id": "1",
-      "voice_slice": "怎么落地？三步：让 AI 找技术路径，对着实际需求做选型，最后落地出片。",
+      "voice_slice": "怎么落地？三步：先让 AI 找技术路径，再对着实际需求选型，最后落地出片。",
       "audio_file": "assets/1.4.mp3",
-      "start_seconds": 25.392,
-      "duration_seconds": 8.088,
+      "start_seconds": 26.016,
+      "duration_seconds": 8.376,
       "captions": [
         {
           "word": "怎么落地？",
@@ -109,29 +119,29 @@
           "endMs": 1438
         },
         {
-          "word": "三步：让 AI 找技术路径，",
+          "word": "三步：先让 AI 找技术路径，",
           "startMs": 1388,
-          "endMs": 3881
+          "endMs": 4158
         },
         {
-          "word": "对着实际需求做选型，",
-          "startMs": 3881,
-          "endMs": 6375
+          "word": "再对着实际需求选型，",
+          "startMs": 4158,
+          "endMs": 6650
         },
         {
           "word": "最后落地出片。",
-          "startMs": 6375,
-          "endMs": 8038
+          "startMs": 6650,
+          "endMs": 8312
         }
       ]
     },
     {
       "id": "2.1",
       "section_id": "2",
-      "voice_slice": "第一步，找技术路径。直接问 AI：通过 AI 编程做自动化渲染，现在都有哪些现成路子？",
+      "voice_slice": "第一步，找技术路径。别自己一个个去查，直接问 AI：用 AI 编程做自动化渲染，现在有哪些现成路子？",
       "audio_file": "assets/2.1.mp3",
-      "start_seconds": 33.48,
-      "duration_seconds": 9.24,
+      "start_seconds": 34.392,
+      "duration_seconds": 10.656,
       "captions": [
         {
           "word": "第一步，找技术路径。",
@@ -139,974 +149,949 @@
           "endMs": 2475
         },
         {
-          "word": "直接问 AI：",
+          "word": "别自己一个个去查，",
           "startMs": 2425,
-          "endMs": 3507
+          "endMs": 4531
         },
         {
-          "word": "通过 AI 编程做自动化渲染，",
-          "startMs": 3507,
-          "endMs": 6482
+          "word": "直接问 AI：",
+          "startMs": 4531,
+          "endMs": 5585
         },
         {
-          "word": "现在都有哪些现成路子？",
-          "startMs": 6482,
-          "endMs": 9188
+          "word": "用 AI 编程做自动化渲染，",
+          "startMs": 5585,
+          "endMs": 8218
+        },
+        {
+          "word": "现在有哪些现成路子？",
+          "startMs": 8218,
+          "endMs": 10587
         }
       ]
     },
     {
       "id": "2.2",
       "section_id": "2",
-      "voice_slice": "它一口气摆了六条——Remotion 走网页那套、Manim 画数学公式、MoviePy 和 FFmpeg 做拼接，还有 Motion Canvas、PixiJS 这些。",
+      "voice_slice": "它一口气摆了六条——Remotion 走网页那套，Manim 画数学公式，MoviePy、FFmpeg 做拼接，还有 Motion Canvas、PixiJS。",
       "audio_file": "assets/2.2.mp3",
-      "start_seconds": 42.72,
-      "duration_seconds": 11.76,
+      "start_seconds": 45.048,
+      "duration_seconds": 11.352,
       "captions": [
         {
           "word": "它一口气摆了六条—",
           "startMs": 100,
-          "endMs": 2382
+          "endMs": 2476
         },
         {
-          "word": "—Remotion 走网页那套、",
-          "startMs": 2382,
-          "endMs": 4569
+          "word": "—Remotion 走网页那套，",
+          "startMs": 2476,
+          "endMs": 4753
         },
         {
-          "word": "Manim 画数学公式、",
-          "startMs": 4569,
-          "endMs": 6470
+          "word": "Manim 画数学公式，",
+          "startMs": 4753,
+          "endMs": 6733
         },
         {
-          "word": "MoviePy 和 FFmpeg 做拼接，",
-          "startMs": 6470,
-          "endMs": 8848
+          "word": "MoviePy、",
+          "startMs": 6733,
+          "endMs": 7426
+        },
+        {
+          "word": "FFmpeg 做拼接，",
+          "startMs": 7426,
+          "endMs": 8911
         },
         {
           "word": "还有 Motion Canvas、",
-          "startMs": 8848,
-          "endMs": 10559
+          "startMs": 8911,
+          "endMs": 10693
         },
         {
-          "word": "PixiJS 这些。",
-          "startMs": 10559,
-          "endMs": 11700
+          "word": "PixiJS。",
+          "startMs": 10693,
+          "endMs": 11288
         }
       ]
     },
     {
       "id": "2.3",
       "section_id": "2",
-      "voice_slice": "名字五花八门，但你扒到底，全在干同一件事：拿代码描述画面，编译成一帧帧，再合成视频。六条路都摆出来了，可到底选哪条？",
+      "voice_slice": "名字五花八门，可你扒到底，全在干同一件事：拿代码描述画面，编译成一帧一帧，再合成视频。六条路摆出来了。到底选哪条？",
       "audio_file": "assets/2.3.mp3",
-      "start_seconds": 54.48,
-      "duration_seconds": 12.816,
+      "start_seconds": 56.4,
+      "duration_seconds": 13.152,
       "captions": [
         {
           "word": "名字五花八门，",
           "startMs": 100,
-          "endMs": 1633
+          "endMs": 1620
         },
         {
-          "word": "但你扒到底，",
-          "startMs": 1633,
-          "endMs": 2911
+          "word": "可你扒到底，",
+          "startMs": 1620,
+          "endMs": 2887
         },
         {
           "word": "全在干同一件事：",
-          "startMs": 2911,
-          "endMs": 4700
+          "startMs": 2887,
+          "endMs": 4661
         },
         {
           "word": "拿代码描述画面，",
-          "startMs": 4700,
-          "endMs": 6489
+          "startMs": 4661,
+          "endMs": 6434
         },
         {
-          "word": "编译成一帧帧，",
-          "startMs": 6489,
-          "endMs": 8022
+          "word": "编译成一帧一帧，",
+          "startMs": 6434,
+          "endMs": 8208
         },
         {
           "word": "再合成视频。",
-          "startMs": 8022,
-          "endMs": 9300
+          "startMs": 8208,
+          "endMs": 9475
         },
         {
-          "word": "六条路都摆出来了，",
-          "startMs": 9300,
-          "endMs": 11271
+          "word": "六条路摆出来了。",
+          "startMs": 9475,
+          "endMs": 11400
         },
         {
-          "word": "可到底选哪条？",
-          "startMs": 11271,
-          "endMs": 12750
+          "word": "到底选哪条？",
+          "startMs": 11400,
+          "endMs": 13088
         }
       ]
     },
     {
       "id": "3.1",
       "section_id": "3",
-      "voice_slice": "这就是第二步：技术选型，也是最容易翻车的一步。直接问 AI 哪个好，它跟个老好人似的，每个都夸一遍，你还是没法选。值钱的是看清每条路什么时候不好使、会在哪一步出问题。",
+      "voice_slice": "第二步，技术选型。别急着问 AI 哪个好——它会把每个都夸一遍，你照样选不出来。想让它帮你拍板，就让它做一次全方位对比：每条路的核心优势、劣势，全摆到台面上，列成一张表。",
       "audio_file": "assets/3.1.mp3",
-      "start_seconds": 67.296,
-      "duration_seconds": 16.704,
+      "start_seconds": 69.552,
+      "duration_seconds": 17.904,
       "captions": [
         {
-          "word": "这就是第二步：",
+          "word": "第二步，技术选型。",
           "startMs": 100,
-          "endMs": 1525
+          "endMs": 2412
         },
         {
-          "word": "技术选型，也是最容易翻车的一步。",
-          "startMs": 1525,
-          "endMs": 4850
+          "word": "别急着问 AI 哪个好—",
+          "startMs": 2362,
+          "endMs": 4312
         },
         {
-          "word": "直接问 AI 哪个好，",
-          "startMs": 4800,
-          "endMs": 6511
+          "word": "—它会把每个都夸一遍，",
+          "startMs": 4312,
+          "endMs": 6506
         },
         {
-          "word": "它跟个老好人似的，",
-          "startMs": 6511,
-          "endMs": 8467
+          "word": "你照样选不出来。",
+          "startMs": 6506,
+          "endMs": 8212
         },
         {
-          "word": "每个都夸一遍，",
-          "startMs": 8467,
-          "endMs": 9933
+          "word": "想让它帮你拍板，",
+          "startMs": 8212,
+          "endMs": 9942
         },
         {
-          "word": "你还是没法选。",
-          "startMs": 9933,
-          "endMs": 11400
+          "word": "就让它做一次全方位对比：",
+          "startMs": 9942,
+          "endMs": 12661
         },
         {
-          "word": "值钱的是看清每条路什么时候不好使、",
-          "startMs": 11400,
-          "endMs": 14892
+          "word": "每条路的核心优势、",
+          "startMs": 12661,
+          "endMs": 14638
         },
         {
-          "word": "会在哪一步出问题。",
-          "startMs": 14892,
-          "endMs": 16638
+          "word": "劣势，全摆到台面上，",
+          "startMs": 14638,
+          "endMs": 16614
+        },
+        {
+          "word": "列成一张表。",
+          "startMs": 16614,
+          "endMs": 17850
         }
       ]
     },
     {
       "id": "3.2",
       "section_id": "3",
-      "voice_slice": "所以反过来逼它：把每条路的适用场景、不适用场景和已知坑，列成一张表。拿 Remotion 来说：适合前端栈和复杂排版，但组件顶层直接读浏览器对象，打包阶段当场就崩，而且是 BUSL 商业授权。",
+      "voice_slice": "就说 Remotion。优势很实在：前端 React 栈、排版能力强、模板还能跨期复用。劣势它也不藏——组件顶层直接读浏览器对象，打包阶段当场崩；而且是 BUSL 授权，做大了要给钱。",
       "audio_file": "assets/3.2.mp3",
-      "start_seconds": 84.0,
-      "duration_seconds": 18.84,
+      "start_seconds": 87.456,
+      "duration_seconds": 17.448,
       "captions": [
         {
-          "word": "所以反过来逼它：",
+          "word": "就说 Remotion。",
           "startMs": 100,
-          "endMs": 1795
+          "endMs": 1775
         },
         {
-          "word": "把每条路的适用场景、",
-          "startMs": 1795,
-          "endMs": 3973
+          "word": "优势很实在：",
+          "startMs": 1725,
+          "endMs": 3126
         },
         {
-          "word": "不适用场景和已知坑，",
-          "startMs": 3973,
-          "endMs": 6152
+          "word": "前端 React 栈、",
+          "startMs": 3126,
+          "endMs": 4433
         },
         {
-          "word": "列成一张表。",
-          "startMs": 6152,
-          "endMs": 7363
+          "word": "排版能力强、",
+          "startMs": 4433,
+          "endMs": 5834
         },
         {
-          "word": "拿 Remotion 来说：",
-          "startMs": 7312,
-          "endMs": 8758
+          "word": "模板还能跨期复用。",
+          "startMs": 5834,
+          "endMs": 8075
         },
         {
-          "word": "适合前端栈和复杂排版，",
-          "startMs": 8758,
-          "endMs": 11308
+          "word": "劣势它也不藏—",
+          "startMs": 8075,
+          "endMs": 9574
         },
         {
-          "word": "但组件顶层直接读浏览器对象，",
-          "startMs": 11308,
-          "endMs": 14622
+          "word": "—组件顶层直接读浏览器对象，",
+          "startMs": 9574,
+          "endMs": 12571
         },
         {
-          "word": "打包阶段当场就崩，",
-          "startMs": 14622,
-          "endMs": 16662
+          "word": "打包阶段当场崩；",
+          "startMs": 12571,
+          "endMs": 14319
         },
         {
-          "word": "而且是 BUSL 商业授权。",
-          "startMs": 16662,
-          "endMs": 18788
+          "word": "而且是 BUSL 授权，",
+          "startMs": 14319,
+          "endMs": 15901
+        },
+        {
+          "word": "做大了要给钱。",
+          "startMs": 15901,
+          "endMs": 17400
         }
       ]
     },
     {
       "id": "3.3",
       "section_id": "3",
-      "voice_slice": "坑看清了，再回到实际约束做减法：一期一个固定模板、换数据批量出几十期，要 AI 改内容不出错，还要跨期好维护——三条约束卡下来，Remotion 胜出。",
+      "voice_slice": "优劣摆齐，再拿自己的约束去卡。我的约束就三条：一个固定模板、换数据批量出几十期；AI 改内容别老出错；跨期还得好维护。三条一卡，Remotion 胜出。",
       "audio_file": "assets/3.3.mp3",
-      "start_seconds": 102.84,
-      "duration_seconds": 14.304,
+      "start_seconds": 104.904,
+      "duration_seconds": 15.408,
       "captions": [
         {
-          "word": "坑看清了，再回到实际约束做减法：",
+          "word": "优劣摆齐，再拿自己的约束去卡。",
           "startMs": 100,
-          "endMs": 3535
+          "endMs": 3437
         },
         {
-          "word": "一期一个固定模板、",
-          "startMs": 3535,
-          "endMs": 5498
+          "word": "我的约束就三条：",
+          "startMs": 3388,
+          "endMs": 5130
         },
         {
-          "word": "换数据批量出几十期，",
-          "startMs": 5498,
-          "endMs": 7707
+          "word": "一个固定模板、",
+          "startMs": 5130,
+          "endMs": 6624
         },
         {
-          "word": "要 AI 改内容不出错，",
-          "startMs": 7707,
-          "endMs": 9670
+          "word": "换数据批量出几十期；",
+          "startMs": 6624,
+          "endMs": 8865
         },
         {
-          "word": "还要跨期好维护—",
-          "startMs": 9670,
-          "endMs": 11387
+          "word": "AI 改内容别老出错；",
+          "startMs": 8865,
+          "endMs": 10857
         },
         {
-          "word": "—三条约束卡下来，",
-          "startMs": 11387,
-          "endMs": 13105
+          "word": "跨期还得好维护。",
+          "startMs": 10857,
+          "endMs": 12600
         },
         {
-          "word": "Remotion 胜出。",
-          "startMs": 13105,
-          "endMs": 14250
+          "word": "三条一卡，Remotion 胜出。",
+          "startMs": 12600,
+          "endMs": 15337
         }
       ]
     },
     {
       "id": "3.4",
       "section_id": "3",
-      "voice_slice": "跟复制粘贴 HTML 那种土办法比，它改一处全系列生效，AI 也只能乖乖填数据、不乱改结构，十期之后照样管得住。",
+      "voice_slice": "你可能会问，直接拿 HTML 画页面不行吗？行。但你改一处，剩下几十期不会跟着变。Remotion 不一样，改一处全系列生效，AI 只能照着填数据，动不了结构。十期之后，照样管得住。",
       "audio_file": "assets/3.4.mp3",
-      "start_seconds": 117.144,
-      "duration_seconds": 11.832,
+      "start_seconds": 120.312,
+      "duration_seconds": 18.816,
       "captions": [
         {
-          "word": "跟复制粘贴 HTML 那种土办法比，",
+          "word": "你可能会问，",
           "startMs": 100,
-          "endMs": 3344
+          "endMs": 1567
         },
         {
-          "word": "它改一处全系列生效，",
-          "startMs": 3344,
-          "endMs": 5712
+          "word": "直接拿 HTML 画页面不行吗？",
+          "startMs": 1567,
+          "endMs": 4600
         },
         {
-          "word": "AI 也只能乖乖填数据、",
-          "startMs": 5712,
-          "endMs": 8080
+          "word": "行。",
+          "startMs": 4550,
+          "endMs": 5562
         },
         {
-          "word": "不乱改结构，",
-          "startMs": 8080,
-          "endMs": 9395
+          "word": "但你改一处，",
+          "startMs": 5562,
+          "endMs": 6829
         },
         {
-          "word": "十期之后照样管得住。",
-          "startMs": 9395,
-          "endMs": 11762
+          "word": "剩下几十期不会跟着变。",
+          "startMs": 6829,
+          "endMs": 9362
+        },
+        {
+          "word": "Remotion 不一样，",
+          "startMs": 9362,
+          "endMs": 10797
+        },
+        {
+          "word": "改一处全系列生效，",
+          "startMs": 10797,
+          "endMs": 12822
+        },
+        {
+          "word": "AI 只能照着填数据，",
+          "startMs": 12822,
+          "endMs": 14847
+        },
+        {
+          "word": "动不了结构。",
+          "startMs": 14847,
+          "endMs": 16112
+        },
+        {
+          "word": "十期之后，照样管得住。",
+          "startMs": 16112,
+          "endMs": 18762
         }
       ]
     },
     {
       "id": "3.5",
       "section_id": "3",
-      "voice_slice": "代价也摆清楚：React 技术栈，加 BUSL 授权，规模化商用要付费。但前端本来就是 AI 写、人把方向，不构成门槛。",
+      "voice_slice": "记住一点：AI 负责把优劣铺开；怎么权衡、选哪条，这个判断得你自己下。",
       "audio_file": "assets/3.5.mp3",
-      "start_seconds": 128.976,
-      "duration_seconds": 11.904,
+      "start_seconds": 139.128,
+      "duration_seconds": 7.584,
       "captions": [
         {
-          "word": "代价也摆清楚：",
+          "word": "记住一点：AI 负责把优劣铺开；",
           "startMs": 100,
-          "endMs": 1835
+          "endMs": 3304
         },
         {
-          "word": "React 技术栈，",
-          "startMs": 1835,
-          "endMs": 3184
+          "word": "怎么权衡、选哪条，",
+          "startMs": 3304,
+          "endMs": 5172
         },
         {
-          "word": "加 BUSL 授权，",
-          "startMs": 3184,
-          "endMs": 4437
-        },
-        {
-          "word": "规模化商用要付费。",
-          "startMs": 4437,
-          "endMs": 6750
-        },
-        {
-          "word": "但前端本来就是 AI 写、",
-          "startMs": 6700,
-          "endMs": 9269
-        },
-        {
-          "word": "人把方向，不构成门槛。",
-          "startMs": 9269,
-          "endMs": 11838
-        }
-      ]
-    },
-    {
-      "id": "3.6",
-      "section_id": "3",
-      "voice_slice": "一句话：让 AI 把信息铺开，真正拍板的判断，留给人。",
-      "audio_file": "assets/3.6.mp3",
-      "start_seconds": 140.88,
-      "duration_seconds": 5.856,
-      "captions": [
-        {
-          "word": "一句话：让 AI 把信息铺开，",
-          "startMs": 100,
-          "endMs": 2975
-        },
-        {
-          "word": "真正拍板的判断，留给人。",
-          "startMs": 2975,
-          "endMs": 5850
+          "word": "这个判断得你自己下。",
+          "startMs": 5172,
+          "endMs": 7575
         }
       ]
     },
     {
       "id": "4.1",
       "section_id": "4",
-      "voice_slice": "路线定了 Remotion，它干活就三步：用 React 组件描述每一帧长什么样，渲染时开一个无头浏览器，逐帧截成图片，再用 FFmpeg 把图和音轨合成 MP4。所以网页能画的，它就能渲成视频。",
+      "voice_slice": "路线定了 Remotion。它怎么工作？用 React 写页面和动画，引擎逐帧截图，再合成视频。你写的就是一个网页——网页上能画的，它就能渲成片。而且从页面到成品全自动，不用你盯着，也不用手动剪。",
       "audio_file": "assets/4.1.mp3",
-      "start_seconds": 146.736,
-      "duration_seconds": 18.672,
+      "start_seconds": 146.712,
+      "duration_seconds": 19.8,
       "captions": [
         {
-          "word": "路线定了 Remotion，",
+          "word": "路线定了 Remotion。",
           "startMs": 100,
-          "endMs": 1864
+          "endMs": 2275
         },
         {
-          "word": "它干活就三步：",
-          "startMs": 1864,
-          "endMs": 3451
+          "word": "它怎么工作？",
+          "startMs": 2225,
+          "endMs": 3725
         },
         {
-          "word": "用 React 组件描述每一帧长什么样，",
-          "startMs": 3451,
-          "endMs": 7066
+          "word": "用 React 写页面和动画，",
+          "startMs": 3725,
+          "endMs": 6204
         },
         {
-          "word": "渲染时开一个无头浏览器，",
-          "startMs": 7066,
-          "endMs": 9976
+          "word": "引擎逐帧截图，",
+          "startMs": 6204,
+          "endMs": 7920
         },
         {
-          "word": "逐帧截成图片，",
-          "startMs": 9976,
-          "endMs": 11563
+          "word": "再合成视频。",
+          "startMs": 7920,
+          "endMs": 9350
         },
         {
-          "word": "再用 FFmpeg 把图和音轨合成 MP4。",
-          "startMs": 11563,
-          "endMs": 14737
+          "word": "你写的就是一个网页—",
+          "startMs": 9350,
+          "endMs": 11493
         },
         {
-          "word": "所以网页能画的，",
-          "startMs": 14738,
-          "endMs": 16675
+          "word": "—网页上能画的，",
+          "startMs": 11493,
+          "endMs": 12921
         },
         {
-          "word": "它就能渲成视频。",
-          "startMs": 16675,
-          "endMs": 18612
+          "word": "它就能渲成片。",
+          "startMs": 12921,
+          "endMs": 14350
+        },
+        {
+          "word": "而且从页面到成品全自动，",
+          "startMs": 14350,
+          "endMs": 17050
+        },
+        {
+          "word": "不用你盯着，",
+          "startMs": 17050,
+          "endMs": 18277
+        },
+        {
+          "word": "也不用手动剪。",
+          "startMs": 18277,
+          "endMs": 19750
         }
       ]
     },
     {
       "id": "4.2",
       "section_id": "4",
-      "voice_slice": "组件里用 useCurrentFrame 拿当前帧号，位置、透明度、大小，全是帧号到数值的插值，不用一帧帧手摆。时间你按秒想就行，引擎按每秒三十帧自己换算。",
+      "voice_slice": "那它为什么这么好被 AI 驱动？我总结了四条。写的就是网页——React 加 CSS 是 AI 语料里最厚的一块，最熟也最不容易错。内容和模板分开，改数据就改片，正好撞在它改文本的强项上。字段还用 TypeScript 定死，填错漏填当场报红，乱来的空间压到最小。还有，出片全自动，截图、合成全交给引擎，天生适合批量。",
       "audio_file": "assets/4.2.mp3",
-      "start_seconds": 165.408,
-      "duration_seconds": 15.216,
+      "start_seconds": 166.512,
+      "duration_seconds": 32.544,
       "captions": [
         {
-          "word": "组件里用 useCurrentFrame 拿当前帧号，",
+          "word": "那它为什么这么好被 AI 驱动？",
           "startMs": 100,
-          "endMs": 3835
+          "endMs": 3038
         },
         {
-          "word": "位置、透明度、",
-          "startMs": 3835,
-          "endMs": 5169
+          "word": "我总结了四条。",
+          "startMs": 2988,
+          "endMs": 4788
         },
         {
-          "word": "大小，全是帧号到数值的插值，",
-          "startMs": 5169,
-          "endMs": 8370
+          "word": "写的就是网页—",
+          "startMs": 4788,
+          "endMs": 6466
         },
         {
-          "word": "不用一帧帧手摆。",
-          "startMs": 8370,
-          "endMs": 10237
+          "word": "—React 加 CSS 是 AI 语料里最厚的一块，",
+          "startMs": 6466,
+          "endMs": 10288
         },
         {
-          "word": "时间你按秒想就行，",
-          "startMs": 10238,
-          "endMs": 12208
+          "word": "最熟也最不容易错。",
+          "startMs": 10288,
+          "endMs": 12525
         },
         {
-          "word": "引擎按每秒三十帧自己换算。",
-          "startMs": 12208,
-          "endMs": 15163
+          "word": "内容和模板分开，",
+          "startMs": 12525,
+          "endMs": 14296
+        },
+        {
+          "word": "改数据就改片，",
+          "startMs": 14296,
+          "endMs": 15814
+        },
+        {
+          "word": "正好撞在它改文本的强项上。",
+          "startMs": 15814,
+          "endMs": 18850
+        },
+        {
+          "word": "字段还用 TypeScript 定死，",
+          "startMs": 18850,
+          "endMs": 21278
+        },
+        {
+          "word": "填错漏填当场报红，",
+          "startMs": 21278,
+          "endMs": 23359
+        },
+        {
+          "word": "乱来的空间压到最小。",
+          "startMs": 23359,
+          "endMs": 25700
+        },
+        {
+          "word": "还有，出片全自动，",
+          "startMs": 25700,
+          "endMs": 27856
+        },
+        {
+          "word": "截图、合成全交给引擎，",
+          "startMs": 27856,
+          "endMs": 30627
+        },
+        {
+          "word": "天生适合批量。",
+          "startMs": 30627,
+          "endMs": 32475
         }
       ]
     },
     {
       "id": "4.3",
       "section_id": "4",
-      "voice_slice": "为什么这套 AI 特别好驱动？四条：全是 React 加 CSS，它语料里最厚的一块；声明式，只描述长什么样；改数据就改片，正中它改文本的强项；字段用 TypeScript 定死，填错当场报红。",
+      "voice_slice": "一条心法：把视频写成数据，AI 只负责填空，不乱跑。原理通了，接着搭引擎。",
       "audio_file": "assets/4.3.mp3",
-      "start_seconds": 180.624,
-      "duration_seconds": 18.312,
+      "start_seconds": 199.056,
+      "duration_seconds": 8.592,
       "captions": [
         {
-          "word": "为什么这套 AI 特别好驱动？",
+          "word": "一条心法：把视频写成数据，",
           "startMs": 100,
-          "endMs": 3062
+          "endMs": 3262
         },
         {
-          "word": "四条：全是 React 加 CSS，",
-          "startMs": 3012,
-          "endMs": 5099
+          "word": "AI 只负责填空，不乱跑。",
+          "startMs": 3262,
+          "endMs": 5850
         },
         {
-          "word": "它语料里最厚的一块；",
-          "startMs": 5099,
-          "endMs": 7547
-        },
-        {
-          "word": "声明式，只描述长什么样；",
-          "startMs": 7547,
-          "endMs": 10268
-        },
-        {
-          "word": "改数据就改片，",
-          "startMs": 10268,
-          "endMs": 11901
-        },
-        {
-          "word": "正中它改文本的强项；",
-          "startMs": 11901,
-          "endMs": 14350
-        },
-        {
-          "word": "字段用 TypeScript 定死，",
-          "startMs": 14350,
-          "endMs": 16617
-        },
-        {
-          "word": "填错当场报红。",
-          "startMs": 16617,
-          "endMs": 18250
-        }
-      ]
-    },
-    {
-      "id": "4.4",
-      "section_id": "4",
-      "voice_slice": "记住一句：把视频写成数据，AI 只填空、不乱跑。原理通了，接着把引擎搭起来。",
-      "audio_file": "assets/4.4.mp3",
-      "start_seconds": 198.936,
-      "duration_seconds": 8.496,
-      "captions": [
-        {
-          "word": "记住一句：把视频写成数据，",
-          "startMs": 100,
-          "endMs": 3308
-        },
-        {
-          "word": "AI 只填空、不乱跑。",
-          "startMs": 3308,
-          "endMs": 5350
-        },
-        {
-          "word": "原理通了，接着把引擎搭起来。",
-          "startMs": 5300,
-          "endMs": 8438
+          "word": "原理通了，接着搭引擎。",
+          "startMs": 5800,
+          "endMs": 8525
         }
       ]
     },
     {
       "id": "5.1",
       "section_id": "5",
-      "voice_slice": "选型定了就进落地。引擎不用手写，跟 AI 把配置和现成组件对上号就行。这台引擎叫 remotion-composer：你写一份配置，说清这段画面是什么；主程序 Explainer 看配置里的 type 字段，自动找对应组件去渲。",
+      "voice_slice": "选型定了，进落地。引擎不用你自己写，你要做的，是把配置和现成组件对上号。这台引擎叫 remotion-composer。你写一份配置，讲清这段画面是什么；主程序 Explainer 读配置里的 type 字段，自动挑对应组件去渲。",
       "audio_file": "assets/5.1.mp3",
-      "start_seconds": 207.432,
-      "duration_seconds": 19.368,
+      "start_seconds": 207.648,
+      "duration_seconds": 20.664,
       "captions": [
         {
-          "word": "选型定了就进落地。",
+          "word": "选型定了，进落地。",
           "startMs": 100,
-          "endMs": 2288
+          "endMs": 2475
         },
         {
-          "word": "引擎不用手写，",
-          "startMs": 2238,
-          "endMs": 3795
+          "word": "引擎不用你自己写，",
+          "startMs": 2425,
+          "endMs": 4408
         },
         {
-          "word": "跟 AI 把配置和现成组件对上号就行。",
-          "startMs": 3795,
-          "endMs": 7688
+          "word": "你要做的，是把配置和现成组件对上号。",
+          "startMs": 4408,
+          "endMs": 8375
         },
         {
-          "word": "这台引擎叫 remotion-composer：",
-          "startMs": 7688,
-          "endMs": 10153
+          "word": "这台引擎叫 remotion-composer。",
+          "startMs": 8375,
+          "endMs": 11150
         },
         {
           "word": "你写一份配置，",
-          "startMs": 10153,
-          "endMs": 11585
+          "startMs": 11150,
+          "endMs": 12629
         },
         {
-          "word": "说清这段画面是什么；",
-          "startMs": 11585,
-          "endMs": 13732
+          "word": "讲清这段画面是什么；",
+          "startMs": 12629,
+          "endMs": 14848
         },
         {
-          "word": "主程序 Explainer 看配置里的 type 字段，",
-          "startMs": 13732,
-          "endMs": 17152
+          "word": "主程序 Explainer 读配置里的 type 字段，",
+          "startMs": 14848,
+          "endMs": 18381
         },
         {
-          "word": "自动找对应组件去渲。",
-          "startMs": 17152,
-          "endMs": 19300
+          "word": "自动挑对应组件去渲。",
+          "startMs": 18381,
+          "endMs": 20600
         }
       ]
     },
     {
       "id": "5.2",
       "section_id": "5",
-      "voice_slice": "现成模板场景有一整套——开场收尾、概念要点、流程表格、图表对比这些，还有合成终端和截图叠层，全统一成深色科技底加白字，改一处主题，全片生效。",
+      "voice_slice": "现成的模板场景有一整套——开场、收尾、概念、要点、流程、表格、图表对比，还有合成终端和截图叠层。全是深色科技底加白字，改一处主题，全片跟着变。",
       "audio_file": "assets/5.2.mp3",
-      "start_seconds": 226.8,
-      "duration_seconds": 15.432,
+      "start_seconds": 228.312,
+      "duration_seconds": 16.512,
       "captions": [
         {
-          "word": "现成模板场景有一整套—",
+          "word": "现成的模板场景有一整套—",
           "startMs": 100,
-          "endMs": 2644
+          "endMs": 3302
         },
         {
-          "word": "—开场收尾、概念要点、",
-          "startMs": 2644,
-          "endMs": 4679
+          "word": "—开场、收尾、概念、",
+          "startMs": 3302,
+          "endMs": 5049
         },
         {
-          "word": "流程表格、图表对比这些，",
-          "startMs": 4679,
-          "endMs": 7222
+          "word": "要点、流程、表格、",
+          "startMs": 5049,
+          "endMs": 6796
         },
         {
-          "word": "还有合成终端和截图叠层，",
-          "startMs": 7222,
-          "endMs": 10021
+          "word": "图表对比，还有合成终端和截图叠层。",
+          "startMs": 6796,
+          "endMs": 11162
         },
         {
-          "word": "全统一成深色科技底加白字，",
-          "startMs": 10021,
-          "endMs": 13073
+          "word": "全是深色科技底加白字，",
+          "startMs": 11162,
+          "endMs": 13806
         },
         {
-          "word": "改一处主题，全片生效。",
-          "startMs": 13073,
-          "endMs": 15362
+          "word": "改一处主题，",
+          "startMs": 13806,
+          "endMs": 15128
+        },
+        {
+          "word": "全片跟着变。",
+          "startMs": 15128,
+          "endMs": 16450
         }
       ]
     },
     {
       "id": "5.3",
       "section_id": "5",
-      "voice_slice": "所以做内容，说白了就是挑组件、填字段。要一张对比卡？就说左边传统剪辑、右边代码即视频，AI 吐出来的就是一段 type 写 comparison 的配置，齐活。",
+      "voice_slice": "所以做内容，其实就是挑组件、填字段。想要一张对比卡？你就说左边传统剪辑、右边代码即视频，AI 吐出来的，就是一段 type 写 comparison 的配置，齐活。",
       "audio_file": "assets/5.3.mp3",
-      "start_seconds": 242.232,
-      "duration_seconds": 15.384,
+      "start_seconds": 244.824,
+      "duration_seconds": 15.888,
       "captions": [
         {
           "word": "所以做内容，",
           "startMs": 100,
-          "endMs": 1455
+          "endMs": 1488
         },
         {
-          "word": "说白了就是挑组件、填字段。",
-          "startMs": 1455,
-          "endMs": 4438
+          "word": "其实就是挑组件、填字段。",
+          "startMs": 1488,
+          "endMs": 4262
         },
         {
-          "word": "要一张对比卡？",
-          "startMs": 4388,
-          "endMs": 6200
+          "word": "想要一张对比卡？",
+          "startMs": 4212,
+          "endMs": 6175
         },
         {
-          "word": "就说左边传统剪辑、",
-          "startMs": 6200,
-          "endMs": 8306
+          "word": "你就说左边传统剪辑、",
+          "startMs": 6175,
+          "endMs": 8613
         },
         {
           "word": "右边代码即视频，",
-          "startMs": 8306,
-          "endMs": 10148
+          "startMs": 8613,
+          "endMs": 10510
         },
         {
-          "word": "AI 吐出来的就是一段 type 写 comparison 的配置，齐活。",
-          "startMs": 10148,
-          "endMs": 15325
+          "word": "AI 吐出来的，",
+          "startMs": 10510,
+          "endMs": 11864
+        },
+        {
+          "word": "就是一段 type 写 comparison 的配置，齐活。",
+          "startMs": 11864,
+          "endMs": 15838
         }
       ]
     },
     {
       "id": "5.4",
       "section_id": "5",
-      "voice_slice": "落地唯一反复出问题的是 SSR 坑：组件顶层直接读 window，打包时还跑在 Node 里、没有浏览器——人还没进门就伸手拉灯，灯还没装上，当然报错红屏。修法是加一句 typeof window 判断；更聪明的，是把这条规则写进 .cursor/rules，一次固化给 AI。",
+      "voice_slice": "这里有条铁律：不许 AI 发明新组件，只让它照现成的填数据。让它从零手写，既在重复造轮子，又把「换数据就复用」的好处弄没了。而且每个字段都用 TypeScript 定死，AI 填错、漏填，当场报红，想乱发挥都没空间。",
       "audio_file": "assets/5.4.mp3",
-      "start_seconds": 257.616,
-      "duration_seconds": 23.088,
+      "start_seconds": 260.712,
+      "duration_seconds": 21.0,
       "captions": [
         {
-          "word": "落地唯一反复出问题的是 SSR 坑：",
+          "word": "这里有条铁律：",
           "startMs": 100,
-          "endMs": 3357
+          "endMs": 1641
         },
         {
-          "word": "组件顶层直接读 window，",
-          "startMs": 3357,
-          "endMs": 5611
+          "word": "不许 AI 发明新组件，",
+          "startMs": 1641,
+          "endMs": 3695
         },
         {
-          "word": "打包时还跑在 Node 里、",
-          "startMs": 5611,
-          "endMs": 7699
+          "word": "只让它照现成的填数据。",
+          "startMs": 3695,
+          "endMs": 6262
         },
         {
-          "word": "没有浏览器—",
-          "startMs": 7699,
-          "endMs": 8952
+          "word": "让它从零手写，",
+          "startMs": 6212,
+          "endMs": 7635
         },
         {
-          "word": "—人还没进门就伸手拉灯，",
-          "startMs": 8952,
-          "endMs": 11457
+          "word": "既在重复造轮子，",
+          "startMs": 7635,
+          "endMs": 9294
         },
         {
-          "word": "灯还没装上，",
-          "startMs": 11457,
-          "endMs": 12709
+          "word": "又把「换数据就复用」的好处弄没了。",
+          "startMs": 9294,
+          "endMs": 12612
         },
         {
-          "word": "当然报错红屏。",
-          "startMs": 12709,
-          "endMs": 14213
+          "word": "而且每个字段都用 TypeScript 定死，",
+          "startMs": 12612,
+          "endMs": 16272
         },
         {
-          "word": "修法是加一句 typeof window 判断；",
-          "startMs": 14212,
-          "endMs": 17358
+          "word": "AI 填错、漏填，",
+          "startMs": 16272,
+          "endMs": 17644
         },
         {
-          "word": "更聪明的，是把这条规则写进 .",
-          "startMs": 17358,
-          "endMs": 20504
-        },
-        {
-          "word": "cursor/rules，",
-          "startMs": 20504,
-          "endMs": 21465
-        },
-        {
-          "word": "一次固化给 AI。",
-          "startMs": 21465,
-          "endMs": 23038
+          "word": "当场报红，想乱发挥都没空间。",
+          "startMs": 17644,
+          "endMs": 20938
         }
       ]
     },
     {
       "id": "5.5",
       "section_id": "5",
-      "voice_slice": "还有条铁律：不让 AI 发明新组件，只让它照现成的填数据。从零手写新组件，既重复造轮子，又把换数据就复用的好处弄没了。",
+      "voice_slice": "至于在现成组件上再扩一套自有品牌风格，那是更大的话题，以后单独开一期。这期，先用现成的把片子跑通。",
       "audio_file": "assets/5.5.mp3",
-      "start_seconds": 280.704,
-      "duration_seconds": 12.672,
+      "start_seconds": 281.712,
+      "duration_seconds": 10.944,
       "captions": [
         {
-          "word": "还有条铁律：",
+          "word": "至于在现成组件上再扩一套自有品牌风格，",
           "startMs": 100,
-          "endMs": 1404
+          "endMs": 4213
         },
         {
-          "word": "不让 AI 发明新组件，",
-          "startMs": 1404,
-          "endMs": 3491
-        },
-        {
-          "word": "只让它照现成的填数据。",
-          "startMs": 3491,
-          "endMs": 6100
-        },
-        {
-          "word": "从零手写新组件，",
-          "startMs": 6050,
-          "endMs": 7751
-        },
-        {
-          "word": "既重复造轮子，",
-          "startMs": 7751,
-          "endMs": 9210
-        },
-        {
-          "word": "又把换数据就复用的好处弄没了。",
-          "startMs": 9210,
-          "endMs": 12612
-        }
-      ]
-    },
-    {
-      "id": "5.6",
-      "section_id": "5",
-      "voice_slice": "至于在现成组件上扩一套自有风格的品牌组件库，是更大的话题，以后单独开一期。这期先用现成的把片子跑通。",
-      "audio_file": "assets/5.6.mp3",
-      "start_seconds": 293.376,
-      "duration_seconds": 10.92,
-      "captions": [
-        {
-          "word": "至于在现成组件上扩一套自有风格的品牌组件库，",
-          "startMs": 100,
-          "endMs": 4825
-        },
-        {
-          "word": "是更大的话题，",
-          "startMs": 4825,
-          "endMs": 6175
+          "word": "那是更大的话题，",
+          "startMs": 4213,
+          "endMs": 5813
         },
         {
           "word": "以后单独开一期。",
-          "startMs": 6175,
-          "endMs": 7750
+          "startMs": 5813,
+          "endMs": 7412
         },
         {
-          "word": "这期先用现成的把片子跑通。",
-          "startMs": 7700,
-          "endMs": 10850
+          "word": "这期，先用现成的把片子跑通。",
+          "startMs": 7362,
+          "endMs": 10875
         }
       ]
     },
     {
       "id": "6.1",
       "section_id": "6",
-      "voice_slice": "视频要不要一个出镜形象串场？先把定位钉死：数字人只是陪衬，不是主角，干货主体永远是屏幕上的真实操作。",
+      "voice_slice": "视频要不要一个出镜形象来串场？先把定位钉死：数字人只是陪衬，不是主角，真正的干货，永远是屏幕上的真实操作。",
       "audio_file": "assets/6.1.mp3",
-      "start_seconds": 304.296,
-      "duration_seconds": 11.496,
+      "start_seconds": 292.656,
+      "duration_seconds": 11.64,
       "captions": [
         {
-          "word": "视频要不要一个出镜形象串场？",
+          "word": "视频要不要一个出镜形象来串场？",
           "startMs": 100,
-          "endMs": 3400
+          "endMs": 3312
         },
         {
           "word": "先把定位钉死：",
-          "startMs": 3350,
-          "endMs": 4864
+          "startMs": 3262,
+          "endMs": 4776
         },
         {
           "word": "数字人只是陪衬，",
-          "startMs": 4864,
-          "endMs": 6630
+          "startMs": 4776,
+          "endMs": 6542
         },
         {
-          "word": "不是主角，干货主体永远是屏幕上的真实操作。",
-          "startMs": 6630,
-          "endMs": 11425
+          "word": "不是主角，真正的干货，",
+          "startMs": 6542,
+          "endMs": 8812
+        },
+        {
+          "word": "永远是屏幕上的真实操作。",
+          "startMs": 8812,
+          "endMs": 11587
         }
       ]
     },
     {
       "id": "6.2",
       "section_id": "6",
-      "voice_slice": "然后套一样的方法论，让 AI 把可选形象和各自的坑摆出来：真人出镜最可信，但要露脸、没法编程复用；写实数字人对口型，容易掉进恐怖谷，可信度反而崩；二次元或 3D 风格化角色走 VRM，风格统一、可编程、渲一次到处用，还不踩恐怖谷。",
+      "voice_slice": "定位定了，套一样的方法论——让 AI 把每种形象的优势、劣势全方位摆出来。真人出镜最可信、有温度，但你得露脸，也没法编程批量复用。写实数字人对口型像真主播，可它太容易掉进恐怖谷，一掉进去，可信度就崩了。二次元或者 3D 风格化角色走 VRM，风格统一、能编程、渲一次到处用，还不踩恐怖谷。",
       "audio_file": "assets/6.2.mp3",
-      "start_seconds": 315.792,
-      "duration_seconds": 23.4,
+      "start_seconds": 304.296,
+      "duration_seconds": 29.784,
       "captions": [
         {
-          "word": "然后套一样的方法论，",
+          "word": "定位定了，套一样的方法论—",
           "startMs": 100,
-          "endMs": 2350
+          "endMs": 2893
         },
         {
-          "word": "让 AI 把可选形象和各自的坑摆出来：",
-          "startMs": 2350,
-          "endMs": 6100
+          "word": "—让 AI 把每种形象的优势、",
+          "startMs": 2893,
+          "endMs": 5431
         },
         {
-          "word": "真人出镜最可信，",
-          "startMs": 6100,
-          "endMs": 7850
+          "word": "劣势全方位摆出来。",
+          "startMs": 5431,
+          "endMs": 7462
         },
         {
-          "word": "但要露脸、没法编程复用；",
-          "startMs": 7850,
-          "endMs": 10350
+          "word": "真人出镜最可信、",
+          "startMs": 7412,
+          "endMs": 9188
         },
         {
-          "word": "写实数字人对口型，",
-          "startMs": 10350,
-          "endMs": 12350
+          "word": "有温度，但你得露脸，",
+          "startMs": 9188,
+          "endMs": 11217
         },
         {
-          "word": "容易掉进恐怖谷，",
-          "startMs": 12350,
-          "endMs": 14100
+          "word": "也没法编程批量复用。",
+          "startMs": 11217,
+          "endMs": 13500
         },
         {
-          "word": "可信度反而崩；",
-          "startMs": 14100,
-          "endMs": 15600
+          "word": "写实数字人对口型像真主播，",
+          "startMs": 13500,
+          "endMs": 16303
         },
         {
-          "word": "二次元或 3D 风格化角色走 VRM，",
-          "startMs": 15600,
-          "endMs": 18600
+          "word": "可它太容易掉进恐怖谷，",
+          "startMs": 16303,
+          "endMs": 18639
         },
         {
-          "word": "风格统一、可编程、",
-          "startMs": 18600,
-          "endMs": 20350
+          "word": "一掉进去，可信度就崩了。",
+          "startMs": 18639,
+          "endMs": 20975
+        },
+        {
+          "word": "二次元或者 3D 风格化角色走 VRM，",
+          "startMs": 20975,
+          "endMs": 24530
+        },
+        {
+          "word": "风格统一、能编程、",
+          "startMs": 24530,
+          "endMs": 26444
         },
         {
           "word": "渲一次到处用，",
-          "startMs": 20350,
-          "endMs": 21850
+          "startMs": 26444,
+          "endMs": 28084
         },
         {
           "word": "还不踩恐怖谷。",
-          "startMs": 21850,
-          "endMs": 23350
+          "startMs": 28084,
+          "endMs": 29725
         }
       ]
     },
     {
       "id": "6.3",
       "section_id": "6",
-      "voice_slice": "对着约束——不露脸、可编程批量复用、避开恐怖谷——我选定 3D 风格化角色 VRMAvatar，并且定死：只做陪衬，坚决不做对口型。",
+      "voice_slice": "优劣摆全，再拿约束去卡——不露脸、要能编程批量复用、避开恐怖谷。选定 3D 风格化角色 VRMAvatar，并且定死一条：只做陪衬，坚决不做对口型。",
       "audio_file": "assets/6.3.mp3",
-      "start_seconds": 339.192,
-      "duration_seconds": 12.72,
+      "start_seconds": 334.08,
+      "duration_seconds": 14.856,
       "captions": [
         {
-          "word": "对着约束——不露脸、",
+          "word": "优劣摆全，再拿约束去卡—",
           "startMs": 100,
-          "endMs": 2012
+          "endMs": 2706
         },
         {
-          "word": "可编程批量复用、",
-          "startMs": 2012,
-          "endMs": 3923
+          "word": "—不露脸、要能编程批量复用、",
+          "startMs": 2706,
+          "endMs": 5572
         },
         {
-          "word": "避开恐怖谷—",
-          "startMs": 3923,
-          "endMs": 5289
+          "word": "避开恐怖谷。",
+          "startMs": 5572,
+          "endMs": 6875
         },
         {
-          "word": "—我选定 3D 风格化角色 VRMAvatar，",
-          "startMs": 5289,
-          "endMs": 8566
+          "word": "选定 3D 风格化角色 VRMAvatar，",
+          "startMs": 6825,
+          "endMs": 9953
         },
         {
-          "word": "并且定死：只做陪衬，",
-          "startMs": 8566,
-          "endMs": 10751
+          "word": "并且定死一条：",
+          "startMs": 9953,
+          "endMs": 11659
         },
         {
-          "word": "坚决不做对口型。",
-          "startMs": 10751,
-          "endMs": 12662
+          "word": "只做陪衬，坚决不做对口型。",
+          "startMs": 11659,
+          "endMs": 14788
         }
       ]
     },
     {
       "id": "6.4",
       "section_id": "6",
-      "voice_slice": "落地交给 AI：整体渲一次，再按场景裁角落、半身或全身。站姿这类细节问题，也都让 AI 调到自然、脚踩稳原地。",
+      "voice_slice": "落地照样交给 AI：整体渲一次，再按场景裁——角落、半身、全身。",
       "audio_file": "assets/6.4.mp3",
-      "start_seconds": 351.912,
-      "duration_seconds": 11.976,
+      "start_seconds": 348.936,
+      "duration_seconds": 7.32,
       "captions": [
         {
-          "word": "落地交给 AI：",
+          "word": "落地照样交给 AI：",
           "startMs": 100,
-          "endMs": 1532
+          "endMs": 2295
         },
         {
           "word": "整体渲一次，",
-          "startMs": 1532,
-          "endMs": 2964
+          "startMs": 2295,
+          "endMs": 3863
         },
         {
-          "word": "再按场景裁角落、",
-          "startMs": 2964,
-          "endMs": 4968
+          "word": "再按场景裁—",
+          "startMs": 3863,
+          "endMs": 5431
         },
         {
-          "word": "半身或全身。",
-          "startMs": 4968,
-          "endMs": 6400
-        },
-        {
-          "word": "站姿这类细节问题，",
-          "startMs": 6350,
-          "endMs": 8469
-        },
-        {
-          "word": "也都让 AI 调到自然、",
-          "startMs": 8469,
-          "endMs": 10588
-        },
-        {
-          "word": "脚踩稳原地。",
-          "startMs": 10588,
-          "endMs": 11912
+          "word": "—角落、半身、全身。",
+          "startMs": 5431,
+          "endMs": 7312
         }
       ]
     },
     {
       "id": "7.1",
       "section_id": "7",
-      "voice_slice": "引擎跑通了，更值钱的判断是：什么场景该用它？适合它独占整屏、纯模板自动出片的，是模板化、换数据就能批量复用的内容——概念讲解、要点流程、图表对比、开场收尾这些；命令和报错用合成终端兜底，不用真录屏。",
+      "voice_slice": "引擎跑通了，更值钱的判断是：什么场景该用它？让它独占整屏、纯模板自动出片，适合的是那种换数据就能批量复用的内容——概念讲解、要点流程、图表对比、开场收尾。命令和报错，用合成终端兜底，不用真去录屏。",
       "audio_file": "assets/7.1.mp3",
-      "start_seconds": 363.888,
-      "duration_seconds": 21.576,
+      "start_seconds": 356.256,
+      "duration_seconds": 21.288,
       "captions": [
         {
           "word": "引擎跑通了，",
@@ -1124,124 +1109,134 @@
           "endMs": 4912
         },
         {
-          "word": "适合它独占整屏、",
+          "word": "让它独占整屏、",
           "startMs": 4862,
-          "endMs": 6630
+          "endMs": 6362
         },
         {
-          "word": "纯模板自动出片的，",
-          "startMs": 6630,
-          "endMs": 8649
+          "word": "纯模板自动出片，",
+          "startMs": 6362,
+          "endMs": 8113
         },
         {
-          "word": "是模板化、换数据就能批量复用的内容—",
-          "startMs": 8649,
-          "endMs": 12689
+          "word": "适合的是那种换数据就能批量复用的内容—",
+          "startMs": 8113,
+          "endMs": 12612
         },
         {
           "word": "—概念讲解、要点流程、",
-          "startMs": 12689,
-          "endMs": 14709
+          "startMs": 12612,
+          "endMs": 14612
         },
         {
-          "word": "图表对比、开场收尾这些；",
-          "startMs": 14709,
-          "endMs": 17233
+          "word": "图表对比、开场收尾。",
+          "startMs": 14612,
+          "endMs": 16612
         },
         {
-          "word": "命令和报错用合成终端兜底，",
-          "startMs": 17233,
-          "endMs": 20263
+          "word": "命令和报错，",
+          "startMs": 16612,
+          "endMs": 17894
         },
         {
-          "word": "不用真录屏。",
-          "startMs": 20263,
-          "endMs": 21525
+          "word": "用合成终端兜底，",
+          "startMs": 17894,
+          "endMs": 19688
+        },
+        {
+          "word": "不用真去录屏。",
+          "startMs": 19688,
+          "endMs": 21225
         }
       ]
     },
     {
       "id": "7.2",
       "section_id": "7",
-      "voice_slice": "第二种是搭配用：主体是真人口播或真实录屏时，Remotion 不独占整屏，渲成透明背景的悬浮叠层贴上去——数据卡、字幕高亮、局部标注都行。",
+      "voice_slice": "第二种，搭配着用。主体是真人口播、或者真实录屏的时候，Remotion 别独占整屏，把它渲成透明背景的悬浮叠层贴上去——数据卡、字幕高亮、局部标注，都行。",
       "audio_file": "assets/7.2.mp3",
-      "start_seconds": 385.464,
-      "duration_seconds": 13.656,
+      "start_seconds": 377.544,
+      "duration_seconds": 15.288,
       "captions": [
         {
-          "word": "第二种是搭配用：",
+          "word": "第二种，搭配着用。",
           "startMs": 100,
-          "endMs": 1829
+          "endMs": 2300
         },
         {
-          "word": "主体是真人口播或真实录屏时，",
-          "startMs": 1829,
-          "endMs": 5039
+          "word": "主体是真人口播、",
+          "startMs": 2250,
+          "endMs": 3976
         },
         {
-          "word": "Remotion 不独占整屏，",
-          "startMs": 5039,
-          "endMs": 6932
+          "word": "或者真实录屏的时候，",
+          "startMs": 3976,
+          "endMs": 6196
         },
         {
-          "word": "渲成透明背景的悬浮叠层贴上去—",
-          "startMs": 6932,
-          "endMs": 10390
+          "word": "Remotion 别独占整屏，",
+          "startMs": 6196,
+          "endMs": 8086
+        },
+        {
+          "word": "把它渲成透明背景的悬浮叠层贴上去—",
+          "startMs": 8086,
+          "endMs": 12032
         },
         {
           "word": "—数据卡、字幕高亮、",
-          "startMs": 10390,
-          "endMs": 12118
+          "startMs": 12032,
+          "endMs": 13758
         },
         {
-          "word": "局部标注都行。",
-          "startMs": 12118,
-          "endMs": 13600
+          "word": "局部标注，都行。",
+          "startMs": 13758,
+          "endMs": 15238
         }
       ]
     },
     {
       "id": "7.3",
       "section_id": "7",
-      "voice_slice": "三类别硬上：真实物理世界，该拍就拍；写实对口型数字人，恐怖谷加可信度崩，本项目明确排除；影视级特效和超长批处理，交给专业工具和 FFmpeg。",
+      "voice_slice": "还有三类，别硬上。真实的物理世界，该拍就拍。写实对口型数字人，恐怖谷加可信度崩，这项目直接排除。影视级特效和超长批处理，交给专业工具和 FFmpeg。",
       "audio_file": "assets/7.3.mp3",
-      "start_seconds": 399.12,
-      "duration_seconds": 15.168,
+      "start_seconds": 392.832,
+      "duration_seconds": 16.896,
       "captions": [
         {
-          "word": "三类别硬上：",
+          "word": "还有三类，别硬上。",
           "startMs": 100,
-          "endMs": 1393
+          "endMs": 2425
         },
         {
-          "word": "真实物理世界，",
-          "startMs": 1393,
-          "endMs": 2945
+          "word": "真实的物理世界，该拍就拍。",
+          "startMs": 2375,
+          "endMs": 5325
         },
         {
-          "word": "该拍就拍；写实对口型数字人，",
-          "startMs": 2945,
-          "endMs": 6048
+          "word": "写实对口型数字人，",
+          "startMs": 5325,
+          "endMs": 7382
         },
         {
           "word": "恐怖谷加可信度崩，",
-          "startMs": 6048,
-          "endMs": 8117
+          "startMs": 7382,
+          "endMs": 9438
         },
         {
-          "word": "本项目明确排除；",
-          "startMs": 8117,
-          "endMs": 9928
+          "word": "这项目直接排除。",
+          "startMs": 9438,
+          "endMs": 11238
         },
         {
           "word": "影视级特效和超长批处理，",
-          "startMs": 9928,
-          "endMs": 12772
+          "startMs": 11238,
+          "endMs": 14311
         },
         {
           "word": "交给专业工具和 FFmpeg。",
-          "startMs": 12772,
-          "endMs": 15100
+          "startMs": 14311,
+          "endMs": 16825
         }
       ]
     },
@@ -1250,7 +1245,7 @@
       "section_id": "7",
       "voice_slice": "一句口诀：主体是真实画面，就退居叠层；主体是讲解和数据，就独占整屏。",
       "audio_file": "assets/7.4.mp3",
-      "start_seconds": 414.288,
+      "start_seconds": 409.728,
       "duration_seconds": 7.92,
       "captions": [
         {
@@ -1278,55 +1273,65 @@
     {
       "id": "8.1",
       "section_id": "8",
-      "voice_slice": "回顾一下，整期就三步：让 AI 罗列技术路径，人对着约束拍板选型，再让 AI 填配置、套组件、自动出片。这套流程不吃编程基础：会讲需求、会判断验收，就能复制。",
+      "voice_slice": "回顾一下，整期就三步：让 AI 把技术路径全列出来，你做全方位对比、结合约束选型，再让 AI 填配置、套组件、自动出片。这套流程不吃编程基础——会讲需求、会验收，你就能复制。",
       "audio_file": "assets/8.1.mp3",
-      "start_seconds": 422.208,
-      "duration_seconds": 17.352,
+      "start_seconds": 417.648,
+      "duration_seconds": 18.552,
       "captions": [
         {
           "word": "回顾一下，整期就三步：",
           "startMs": 100,
-          "endMs": 2644
+          "endMs": 2536
         },
         {
-          "word": "让 AI 罗列技术路径，",
-          "startMs": 2644,
-          "endMs": 4906
+          "word": "让 AI 把技术路径全列出来，",
+          "startMs": 2536,
+          "endMs": 5513
         },
         {
-          "word": "人对着约束拍板选型，",
-          "startMs": 4906,
-          "endMs": 7450
+          "word": "你做全方位对比、",
+          "startMs": 5513,
+          "endMs": 7408
+        },
+        {
+          "word": "结合约束选型，",
+          "startMs": 7408,
+          "endMs": 9032
         },
         {
           "word": "再让 AI 填配置、",
-          "startMs": 7450,
-          "endMs": 9146
+          "startMs": 9032,
+          "endMs": 10655
         },
         {
           "word": "套组件、自动出片。",
-          "startMs": 9146,
-          "endMs": 11125
+          "startMs": 10655,
+          "endMs": 12550
         },
         {
-          "word": "这套流程不吃编程基础：",
-          "startMs": 11125,
-          "endMs": 13804
+          "word": "这套流程不吃编程基础—",
+          "startMs": 12550,
+          "endMs": 15255
         },
         {
-          "word": "会讲需求、会判断验收，就能复制。",
-          "startMs": 13804,
-          "endMs": 17288
+          "word": "—会讲需求、会验收，",
+          "startMs": 15255,
+          "endMs": 17148
+        },
+        {
+          "word": "你就能复制。",
+          "startMs": 17148,
+          "endMs": 18500
         }
       ]
     },
     {
       "id": "8.2",
       "section_id": "8",
-      "voice_slice": "这个频道就一条原则：不吹AI，真落地，真开源。觉得有用点个关注。下期 EP03 讲字幕匹配：用 Whisper 拿到字级时间戳，自动驱动 CaptionOverlay，让字幕踩着话音一个字一个字跳。",
+      "voice_slice": "这个频道就一条原则：不吹 AI，真落地，真开源。觉得有用，点个关注。下期 EP03 讲字幕匹配：用 Whisper 拿到字级时间戳，自动驱动 CaptionOverlay，让字幕踩着话音一个字一个字往外蹦。",
       "audio_file": "assets/8.2.mp3",
-      "start_seconds": 439.56,
-      "duration_seconds": 18.024,
+      "start_seconds": 436.2,
+      "duration_seconds": 18.672,
       "captions": [
         {
           "word": "这个频道就一条原则：",
@@ -1334,34 +1339,34 @@
           "endMs": 2712
         },
         {
-          "word": "不吹AI，真落地，真开源。",
+          "word": "不吹 AI，真落地，真开源。",
           "startMs": 2712,
           "endMs": 5325
         },
         {
-          "word": "觉得有用点个关注。",
+          "word": "觉得有用，点个关注。",
           "startMs": 5275,
-          "endMs": 7312
+          "endMs": 7650
         },
         {
           "word": "下期 EP03 讲字幕匹配：",
-          "startMs": 7312,
-          "endMs": 9462
+          "startMs": 7650,
+          "endMs": 9758
         },
         {
           "word": "用 Whisper 拿到字级时间戳，",
-          "startMs": 9462,
-          "endMs": 12128
+          "startMs": 9758,
+          "endMs": 12372
         },
         {
           "word": "自动驱动 CaptionOverlay，",
-          "startMs": 12128,
-          "endMs": 14364
+          "startMs": 12372,
+          "endMs": 14565
         },
         {
-          "word": "让字幕踩着话音一个字一个字跳。",
-          "startMs": 14364,
-          "endMs": 17975
+          "word": "让字幕踩着话音一个字一个字往外蹦。",
+          "startMs": 14565,
+          "endMs": 18612
         }
       ]
     }

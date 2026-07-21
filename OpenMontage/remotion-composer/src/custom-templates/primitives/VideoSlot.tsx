@@ -80,7 +80,7 @@ export const VideoSlot: React.FC<Props> = ({
 				opacity,
 				borderRadius: isFill ? 0 : rounded ? RADIUS.lg : 0,
 				overflow: 'hidden',
-				border: isFill ? 'none' : `3px solid ${colors.accent[0]}55`,
+				border: isFill ? 'none' : `3px solid ${colors.accent[0]}AA`,
 				boxShadow: isFill ? 'none' : '0 12px 40px rgba(0,0,0,0.4)',
 			}}
 		>

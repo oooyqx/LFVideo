@@ -29,8 +29,8 @@ const TECH_TEXT = {
 	muted: '#A8B2C4',
 } as const;
 // 深色科技底上统一的网格/表面色（白色低透明度）。
-const TECH_LINE = 'rgba(255,255,255,0.12)';
-const TECH_SURFACE = 'rgba(255,255,255,0.06)';
+const TECH_LINE = 'rgba(255,255,255,0.30)';
+const TECH_SURFACE = 'rgba(255,255,255,0.10)';
 
 // 全部 5 套主题统一为「深色科技底 + 白字」，仅 accent / 字体保留各自调性。
 export const PALETTES: Record<string, Palette> = {
@@ -45,7 +45,7 @@ export const PALETTES: Record<string, Palette> = {
 	'flat-motion-graphics': {
 		bg: {from: '#0F172A', to: '#1E293B'},
 		text: {...TECH_TEXT},
-		accent: ['#7C3AED', '#EC4899', '#06B6D4', '#F59E0B'],
+		accent: ['#A78BFA', '#F472B6', '#22D3EE', '#FBBF24'],
 		line: TECH_LINE,
 		surface: TECH_SURFACE,
 		codeBg: '#0B1120',
@@ -54,7 +54,7 @@ export const PALETTES: Record<string, Palette> = {
 		// 由浅底改为深色专业蓝底，accent 提亮以在深底上保持对比。
 		bg: {from: '#0C1322', to: '#172338'},
 		text: {...TECH_TEXT},
-		accent: ['#3B82F6', '#F59E0B', '#10B981', '#A78BFA'],
+		accent: ['#60A5FA', '#FBBF24', '#34D399', '#C4B5FD'],
 		line: TECH_LINE,
 		surface: TECH_SURFACE,
 		codeBg: '#0B1120',
@@ -71,7 +71,7 @@ export const PALETTES: Record<string, Palette> = {
 	'anime-ghibli': {
 		bg: {from: '#0A0A1A', to: '#1A2332'},
 		text: {...TECH_TEXT},
-		accent: ['#FFB347', '#FF6B9D', '#A8E6CF', '#6B4C8A'],
+		accent: ['#FFB347', '#FF6B9D', '#A8E6CF', '#B79BD8'],
 		line: TECH_LINE,
 		surface: TECH_SURFACE,
 		codeBg: '#0A0F1A',
