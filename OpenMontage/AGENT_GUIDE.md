@@ -393,7 +393,9 @@ For these requests:
 
 ### Remotion scene types available in `remotion-composer/`
 
-See `remotion-composer/SCENE_TYPES.md` for the authoritative list and their cut schemas. Current scene types usable via `cut.type`:
+See `remotion-composer/src/custom-templates/scene-types.json` for the authoritative list and their schemas. Custom template scene types usable via `cut.type` (registered in `registry.ts`):
+`intro_scene`, `outro_scene`, `section_scene`, `concept_scene`, `timeline_scene`, `bullet_scene`, `flow_scene`, `table_scene`, `comparison_scene`, `chart_scene`, `stat_scene`, `callout_scene`, `quote_scene`, `code_scene`.
+Legacy scene types still handled by `Explainer.tsx` SCENES array:
 `text_card`, `stat_card`, `callout`, `comparison`, `hero_title`, `terminal_scene`, `anime_scene`, `bar_chart`, `line_chart`, `pie_chart`, `kpi_grid`, `progress_bar`. Overlay types include `section_title`, `stat_reveal`, `hero_title`, `provider_chip`.
 
 **When Remotion is NOT available** and `render_runtime="remotion"` was NOT locked, `video_compose` may use FFmpeg Ken Burns motion on still images. This still works but produces less engaging visuals. Mention this tradeoff in the proposal. When `render_runtime="remotion"` IS locked and Remotion is unavailable, that's a blocker — escalate, don't silently swap.

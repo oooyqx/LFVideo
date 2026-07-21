@@ -8,10 +8,11 @@ import {
 } from 'remotion';
 import {z} from 'zod';
 import {useTheme} from '../../theme/ThemeContext';
-import {glowBlob} from '../../theme/surfaces';
+import {glowBlob, holoTextShadow} from '../../theme/surfaces';
 import {withAlpha} from '../../theme/util';
 import {textStyles} from '../../theme/textStyles';
 import {HoloTitle} from '../../primitives/HoloTitle';
+import {osc01} from '../../animation/presence';
 
 export const introSchema = z.object({
 	title: z.string(),
@@ -37,7 +38,6 @@ export const IntroScene: React.FC<IntroProps> = ({title, subtitle}) => {
 		{extrapolateLeft: 'clamp'}
 	);
 
-	// frame 驱动的副标题揭示（取代 CSS `subtitle-reveal`，延迟 8%、时长 30%）。
 	const subStart = Math.round(durationInFrames * 0.08);
 	const subEnd = Math.round(durationInFrames * 0.38);
 	const subT = interpolate(frame, [subStart, subEnd], [0, 1], {
@@ -45,10 +45,10 @@ export const IntroScene: React.FC<IntroProps> = ({title, subtitle}) => {
 		extrapolateRight: 'clamp',
 	});
 	const subEase = 1 - Math.pow(1 - subT, 3);
-	const subOpacity = subEase * 0.85;
+	const subOpacity = subEase;
 	const subTranslateY = (1 - subEase) * 20;
 
-	// 全息扫描线波动（缓慢上移，强化「投影」质感）。
+	const breath = osc01(frame, fps, 5);
 	const scanShift = (frame / fps / 6) % 1;
 
 	return (
@@ -62,8 +62,7 @@ export const IntroScene: React.FC<IntroProps> = ({title, subtitle}) => {
 				transform: `scale(${scale})`,
 			}}
 		>
-			{/* 全息背景：弥散光晕 + 扫描线 wash（叠在深色底上）。 */}
-			<div style={glowBlob(colors.accent[0], {width: 760, height: 320, intensity: 0.18})} />
+			<div style={glowBlob(colors.accent[0], {width: 760, height: 320, intensity: 0.14 + breath * 0.08})} />
 			<div
 				style={{
 					position: 'absolute',
@@ -102,6 +101,7 @@ export const IntroScene: React.FC<IntroProps> = ({title, subtitle}) => {
 						opacity: subOpacity,
 						transform: `translateY(${subTranslateY}px)`,
 						marginTop: SPACING.md,
+						textShadow: holoTextShadow(colors.accent[0], {blur: 16, alpha: 0.35}),
 						zIndex: 1,
 					}}
 				>

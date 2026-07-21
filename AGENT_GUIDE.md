@@ -10,9 +10,9 @@
 ## 📌 零号法则：前置对齐 (Rule Zero)
 
 任何新一轮对话、或接到新任务时，你必须**首选执行**以下前置动作：
-1. **核对项目上下文**：读取根目录下的 `@Project Context (项目上下文).md`、`@Content Plan (内容计划).md`。
-2. **核对角色身份**：根据用户任务（例如策划、撰稿、执行），在 `@shared/roles/` 下找到匹配的角色定义文件并阅读，严格按角色的“职责边界”与“输出格式契约”工作。
-3. **核对当前工作流**：读取当前期目录下的 `README.md` 头部的 Frontmatter（如 `stage` 与 `status`），确认所处阶段。工作流真相源在 `@shared/workflows/<slug>.md`（IDE 无关）；各 IDE 也可直接调用生成副本的 slash 命令 `/<slug>`（Windsurf `.windsurf/workflows/`、Cursor `.cursor/commands/`、Devin `.devin/workflows/`）。**改步骤只改 `shared/workflows/`，再跑 `python scripts/sync_workflows.py` 同步**，切勿手改各 IDE 目录下的生成副本。
+1. **核对项目上下文**：读取 `shared/rules/project-context.md`（频道定位、配置、人设）与 `Content Plan (内容计划).md`。
+2. **核对角色身份**：根据用户任务（例如策划、撰稿、执行），在 `shared/roles/` 下找到匹配的角色定义文件并阅读，严格按角色的“职责边界”与“输出格式契约”工作。
+3. **核对当前工作流**：读取当前期目录下的 `README.md` 头部的 Frontmatter（如 `stage` 与 `status`），确认所处阶段。工作流真相源在 `shared/workflows/<slug>.md`（IDE 无关）；各 IDE 也可直接调用生成副本的 slash 命令 `/<slug>`（Windsurf `.windsurf/workflows/`、Cursor `.cursor/commands/`、Devin `.devin/workflows/`）。**改步骤只改 `shared/workflows/`，再跑 `python scripts/sync_workflows.py` 同步**，切勿手改各 IDE 目录下的生成副本。
 
 ---
 

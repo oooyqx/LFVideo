@@ -9,8 +9,9 @@ import {
 import {z} from 'zod';
 import {useTheme} from '../../theme/ThemeContext';
 import {withAlpha} from '../../theme/util';
-import {glowBlob} from '../../theme/surfaces';
+import {glowBlob, accentUnderline, holoTextShadow} from '../../theme/surfaces';
 import {textStyles} from '../../theme/textStyles';
+import {osc01} from '../../animation/presence';
 
 export const quoteSchema = z.object({
 	text: z.string(),
@@ -18,7 +19,6 @@ export const quoteSchema = z.object({
 });
 export type QuoteProps = z.infer<typeof quoteSchema>;
 
-// 全屏金句 / 大字报陈述。与 IntroScene 区别：用于中段强调一句观点。
 export const QuoteScene: React.FC<QuoteProps> = ({text, attribution}) => {
 	const frame = useCurrentFrame();
 	const {fps, durationInFrames} = useVideoConfig();
@@ -40,8 +40,13 @@ export const QuoteScene: React.FC<QuoteProps> = ({text, attribution}) => {
 		{extrapolateLeft: 'clamp'},
 	);
 
-	// 长句降一档字号，短句用 display 量级。
 	const big = text.length <= 28;
+	const breath = osc01(frame, fps, 5);
+	const scanShift = (frame / fps / 6) % 1;
+
+	const chars = Array.from(text);
+	const charStart = Math.round(durationInFrames * 0.06);
+	const charStagger = Math.max(1, Math.round(fps * 0.03));
 
 	return (
 		<AbsoluteFill
@@ -54,22 +59,63 @@ export const QuoteScene: React.FC<QuoteProps> = ({text, attribution}) => {
 				opacity: opacity * fadeOut,
 			}}
 		>
-			<div style={glowBlob(color, {width: 760, height: 360, blur: 90})} />
+			<div
+				style={glowBlob(color, {
+					width: 760,
+					height: 360,
+					blur: 90,
+					intensity: 0.12 + breath * 0.08,
+				})}
+			/>
 			<div
 				style={{
-					fontFamily: 'Georgia, serif',
-					fontSize: 160,
-					lineHeight: 0.6,
-					fontWeight: 700,
-					color: withAlpha(color, 0.65),
+					position: 'absolute',
+					inset: 0,
+					zIndex: 0,
+					pointerEvents: 'none',
+					backgroundImage: `repeating-linear-gradient(0deg, ${withAlpha(
+						color,
+						0.05,
+					)} 0px, ${withAlpha(color, 0.05)} 1px, transparent 1px, transparent 4px)`,
+					backgroundPositionY: `${scanShift * 4}px`,
+					maskImage:
+						'radial-gradient(ellipse 70% 55% at 50% 45%, #000 0%, transparent 75%)',
+					WebkitMaskImage:
+						'radial-gradient(ellipse 70% 55% at 50% 45%, #000 0%, transparent 75%)',
+				}}
+			/>
+
+			<div
+				style={{
+					display: 'flex',
+					gap: 10,
 					marginBottom: SPACING.sm,
 					transform: `scale(${markScale})`,
-					textShadow: `0 0 30px ${withAlpha(color, 0.5)}, 0 0 60px ${withAlpha(color, 0.3)}`,
 					zIndex: 1,
 				}}
 			>
-				“
+				<div
+					style={{
+						width: 6,
+						height: 52,
+						borderRadius: 3,
+						background: `linear-gradient(180deg, ${color}, ${withAlpha(color, 0.3)})`,
+						boxShadow: `0 0 16px ${withAlpha(color, 0.6)}, 0 0 32px ${withAlpha(color, 0.3)}`,
+						transform: 'rotate(-8deg)',
+					}}
+				/>
+				<div
+					style={{
+						width: 6,
+						height: 52,
+						borderRadius: 3,
+						background: `linear-gradient(180deg, ${color}, ${withAlpha(color, 0.3)})`,
+						boxShadow: `0 0 16px ${withAlpha(color, 0.6)}, 0 0 32px ${withAlpha(color, 0.3)}`,
+						transform: 'rotate(8deg)',
+					}}
+				/>
 			</div>
+
 			<div
 				style={{
 					...(big ? t.displayTitle : t.sceneTitle),
@@ -78,12 +124,39 @@ export const QuoteScene: React.FC<QuoteProps> = ({text, attribution}) => {
 					lineHeight: 1.3,
 					color: '#ffffff',
 					transform: `translateY(${translateY}px)`,
-					textShadow: `0 0 24px ${withAlpha(color, 0.6)}, 0 0 48px ${withAlpha(color, 0.3)}, 0 0 80px ${withAlpha(color, 0.15)}, 0 4px 16px rgba(0,0,0,0.6)`,
+					textShadow: holoTextShadow(color, {blur: 24 + breath * 8, alpha: 0.6}),
 					zIndex: 1,
+					display: 'flex',
+					flexWrap: 'wrap',
+					justifyContent: 'center',
 				}}
 			>
-				{text}
+				{chars.map((ch, i) => {
+					const charDelay = charStart + i * charStagger;
+					const charEnter = spring({
+						fps,
+						frame: frame - charDelay,
+						config: {damping: 18, stiffness: 120},
+					});
+					const charOpacity = interpolate(charEnter, [0, 1], [0, 1]);
+					const charY = interpolate(charEnter, [0, 1], [20, 0]);
+					const isSpace = ch === ' ';
+					return (
+						<span
+							key={i}
+							style={{
+								opacity: charOpacity,
+								transform: `translateY(${charY}px)`,
+								display: isSpace ? 'inline' : 'inline-block',
+								whiteSpace: 'pre',
+							}}
+						>
+							{ch}
+						</span>
+					);
+				})}
 			</div>
+
 			{attribution && (
 				<div
 					style={{
@@ -95,13 +168,14 @@ export const QuoteScene: React.FC<QuoteProps> = ({text, attribution}) => {
 						zIndex: 1,
 					}}
 				>
-					<div style={{width: 48, height: 2, background: color}} />
+					<div style={accentUnderline(theme, {width: 48, height: 2, glow: 0.8})} />
 					<div
 						style={{
 							...t.bodyMuted,
 							fontSize: FONT_SIZE.subtitle,
 							fontWeight: 600,
 							letterSpacing: 1,
+							textShadow: holoTextShadow(color, {blur: 12, alpha: 0.3}),
 						}}
 					>
 						{attribution}
