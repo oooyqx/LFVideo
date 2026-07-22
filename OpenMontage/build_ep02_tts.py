@@ -13,7 +13,7 @@ Outputs:
   - remotion-composer/public/audio/ep02-narration.mp3            (concatenated)
   - content-library/ep02-video-render/06-tts/assets/manifest.json (timing + captions)
 
-The 07 props generator (build_ep02_shots_props.py) reads the manifest: it swaps
+The 07 props generator (content-library/ep02-video-render/07-assembly/build_props.py) reads the manifest: it swaps
 the storyboard estimate for the measured per-shot duration (06-tts is the timing
 source of truth) and wires the captions + narration into the Explainer props so
 the host actually lip-syncs.
@@ -109,7 +109,7 @@ def build_captions(
     """Shot-relative-ms WordCaption list for one shot.
 
     Timestamps are relative to the shot's own start; the 07 props generator
-    (build_ep02_shots_props.py) offsets them onto the absolute timeline.
+    (build_props.py) offsets them onto the absolute timeline.
 
     Anchors to the engine's sentence boundaries (real speech timing); within each
     sentence, time is split across clause chunks proportional to their spoken

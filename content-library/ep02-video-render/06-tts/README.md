@@ -39,11 +39,11 @@ upstream_inputs:
 
 - `assets/<镜头号>.mp3` —— 36 段逐镜 narration 音频。
 - `remotion-composer/public/audio/ep02-narration.mp3` —— 合成总轨（07 的 `audio.narration`）。
-- `assets/manifest.json` —— 机器可读清单：`provider: edge-tts`、每镜 `start_seconds`/实测 `duration_seconds`/`audio_file`，以及绝对毫秒 `captions[]`。07 组装（`build_ep02_shots_props.py`）读取它把镜头时长换成实测时长、把 captions 注入 Explainer props（烧字幕 + 主持口型）。
+- `assets/manifest.json` —— 机器可读清单：`provider: edge-tts`、每镜 `start_seconds`/实测 `duration_seconds`/`audio_file`，以及绝对毫秒 `captions[]`。07 组装（`build_props.py`）读取它把镜头时长换成实测时长、把 captions 注入 Explainer props（烧字幕 + 主持口型）。
 
 ## 重生成
 
 ```bash
 python OpenMontage/build_ep02_tts.py            # 合成音频 + 写 manifest（36 镜）
-python OpenMontage/build_ep02_shots_props.py    # 回填时长/字幕/音轨到 ep02-shots.json
+python content-library/ep02-video-render/07-assembly/build_props.py    # 回填时长/字幕/音轨到 ep02-shots.json
 ```

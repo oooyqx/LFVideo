@@ -21,7 +21,7 @@ upstream_inputs:
 ## 说明
 
 - 素材由 `OpenMontage/tools/capture/scripted_terminal_recorder.py` 产出：命令**真实执行**（stdout/stderr/exit code 均为真），仅回放呈现为合成，符合 F-06 红线；执行审计见 `assets/b-ssr-crash-fix.mp4.provenance.json`。
-- 接入方式：`OpenMontage/build_ep02_shots_props.py` 的 `SHOT_OVERRIDES["5.4"]` 把 cut 的 `source` 指向 `public/broll/b-ssr-crash-fix.mp4`，Explainer 走 media fallback 全屏播放；删除 override 重新生成即可回退到 `@TerminalScene` 自动渲染兜底。
+- 接入方式：`content-library/ep02-video-render/07-assembly/build_props.py` 的 `SHOT_OVERRIDES["5.4"]` 把 cut 的 `source` 指向 `public/broll/b-ssr-crash-fix.mp4`，Explainer 走 media fallback 全屏播放；删除 override 重新生成即可回退到 `@TerminalScene` 自动渲染兜底。
 - 素材需同时存在两处：`assets/`（存档 + provenance）与 `OpenMontage/remotion-composer/public/broll/`（渲染时经 staticFile 读取）。
 
 ## 素材路径

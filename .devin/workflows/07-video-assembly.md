@@ -52,7 +52,28 @@ OpenMontage/remotion-composer/
 
 ### 2. 生成每期 Remotion props JSON（`public/demo-props/<slug>.json`）
 
-把 04 SSOT 映射成 `Explainer` 可读的 `cuts[]` props，写入 `OpenMontage/remotion-composer/public/demo-props/<slug>.json`（可参考 `OpenMontage/build_ep02_shots_props.py` 那样的生成器，或直接写 JSON）：
+把 04 SSOT 映射成 `Explainer` 可读的 `cuts[]` props，写入 `OpenMontage/remotion-composer/public/demo-props/<slug>.json`：
+
+**推荐方式**：在 `content-library/<epNN-slug>/07-assembly/` 下创建 `build_props.py`，只配置本期路径/avatar/unity 背景/shot overrides，调用 `OpenMontage/tools/props_builder.py` 引擎生成 props JSON。引擎逻辑（scene_template 映射、SSOT 解析、TTS manifest 读取、字幕分页）跨期复用，每期脚本只管本期配置。
+
+```python
+# content-library/<epNN-slug>/07-assembly/build_props.py 示例
+from tools.props_builder import EpisodeConfig, build_props
+
+config = EpisodeConfig(
+    script_md=Path(".../04-script/README.md"),
+    tts_manifest=Path(".../06-tts/assets/manifest.json"),
+    output_json=Path(".../public/demo-props/<slug>.json"),
+    avatar={...},
+    unity_background={...},
+    shot_overrides={...},
+)
+build_props(config)
+```
+
+也可直接手写 JSON，但推荐用生成器以减少手动错误。
+
+无论用哪种方式，均须遵守以下映射规则：
 - 读取 `04-script/README.md` 末尾的 JSON 契约块——**它是唯一真源（SSOT）**。
 - 将每一段**逐条映射**为一个 `cut`，映射单位是**镜头 (shot)**：
   - 若某 section 含 `shots[]`，则为**每个 shot 生成一个 cut**（cut 顺序＝shot 顺序）；`cut.type` 由该 shot 的 `scene_template` 按 `remotion-spec.md` 映射表换算，`props` / `duration_seconds` / `visual_beats` 取自该 shot；该 section 的 `voice` 仍整段对齐到这串 cut 的时间区间上（按 `voice_slice` / `duration_seconds` 切分时间轴）。

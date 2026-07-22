@@ -17,7 +17,7 @@ upstream_inputs:
 ## 引擎与映射
 
 - 引擎：`OpenMontage/remotion-composer`（Remotion 4，`Explainer` 按 `cut.type` 分发场景组件；新增 7 个模板场景已接入 registry 通用分发）。
-- 生成器：`OpenMontage/build_ep02_shots_props.py` —— 读取 04 SSOT，结构（镜头顺序 / 每镜时长 / 覆盖的口播）全部来自 SSOT，仅每镜的画面可渲染细节（标题/卡片/表格行/终端代码/对比项/流程步骤/要点/金句/提示）在生成器的 `SHOT_CONTENT` 里补全（即 07 视频工程师的工作）。
+- 生成器：`content-library/ep02-video-render/07-assembly/build_props.py` —— 读取 04 SSOT，结构（镜头顺序 / 每镜时长 / 覆盖的口播）全部来自 SSOT，仅每镜的画面可渲染细节（标题/卡片/表格行/终端代码/对比项/流程步骤/要点/金句/提示）在生成器的 `SHOT_OVERRIDES` 里补全（即 07 视频工程师的工作）。引擎逻辑在 `OpenMontage/tools/props_builder.py`（跨期复用）。
 - 产物 props：`OpenMontage/remotion-composer/public/demo-props/ep02-shots.json`（36 个 cut，481s = 14430 帧 @30fps）。
 
 ### scene_template → Explainer cut.type
@@ -86,7 +86,7 @@ cut 数按类型：`intro_scene×3, concept_scene×11, table_scene×5, compariso
 
 ```bash
 # 1) 由 04 SSOT 生成 Remotion props（一镜一 cut）
-python OpenMontage/build_ep02_shots_props.py
+python content-library/ep02-video-render/07-assembly/build_props.py
 
 # 2) Remotion 预览（默认验证方式，不出片）
 cd OpenMontage/remotion-composer
@@ -102,6 +102,6 @@ npx remotion studio        # 打开 ep02-shots 合成逐镜核对
 
 ## 待办
 
-- 06 补真音后：时间轴改由 06 实测时长驱动（`build_ep02_shots_props.py` 自动读 `manifest.json`），并注入 narration 音频与字幕。
+- 06 补真音后：时间轴改由 06 实测时长驱动（`build_props.py` 自动读 `manifest.json`），并注入 narration 音频与字幕。
 - 05 真人补录 `b-ssr-crash`/`b-ssr-fix` 后：把 6.1/6.2 两镜从 `code_scene` 兜底换成视频 cut。
 - 用户下达渲染命令后再出片（半分辨率快验：`--scale=0.5`；全高清去掉 `--scale`）。

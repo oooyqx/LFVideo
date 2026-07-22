@@ -1,7 +1,8 @@
 """Single source of truth for caption segmentation.
 
 Every consumer of caption text — the 06-tts builder (build_ep02_tts.py), the
-07 props generator (build_ep02_shots_props.py), and the SRT/VTT generator
+07 props generator (tools/props_builder.py, called from each episode's
+build_props.py), and the SRT/VTT generator
 (tools/subtitle/subtitle_gen.py) — takes its punctuation sets, clause chunking,
 speech-weight timing, and page grouping from this module. The Remotion
 CaptionOverlay renders the pre-paged captions the 07 generator emits and does
