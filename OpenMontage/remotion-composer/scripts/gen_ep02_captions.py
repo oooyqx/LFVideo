@@ -53,28 +53,20 @@ def cjk_char_count(text: str) -> int:
 # Split voice_slice into word-level segments
 # ---------------------------------------------------------------------------
 def split_to_words(text: str) -> list[str]:
-    """Split Chinese text into natural phrase segments for word-by-word caption."""
-    # Split on punctuation and commas, keep content
-    # For CJK, split on: ，。、！？——；： and also ——
-    parts = re.split(r'[，。、！？；：—\-\-]+', text)
+    """Split Chinese text into natural phrase segments, keeping punctuation attached."""
+    # Split after punctuation (keep the punctuation with the preceding segment)
+    parts = re.split(r'(?<=[，。、！？；：—])[，。、！？；：—]*', text)
     parts = [p.strip() for p in parts if p.strip()]
     
     # Further split long segments at natural boundaries
     result = []
     for part in parts:
         if len(part) > 12:
-            # Try to split at natural boundaries
-            sub_parts = re.split(r'[的是了在和与就也都还把让被给对从向为以到用把]', part)
+            # Split at function words, keep the delimiter with the preceding chunk
+            sub_parts = re.split(r'(?<=[的是了在和与就也都还把让被给对从向为以到用把])', part)
             sub_parts = [p.strip() for p in sub_parts if p.strip()]
             if len(sub_parts) > 1:
-                # Reconstruct with the delimiter
-                idx = 0
-                for sp in sub_parts:
-                    end_idx = part.find(sp, idx) + len(sp)
-                    segment = part[idx:end_idx]
-                    if segment.strip():
-                        result.append(segment.strip())
-                    idx = end_idx
+                result.extend(sub_parts)
             else:
                 result.append(part)
         else:
@@ -84,7 +76,6 @@ def split_to_words(text: str) -> list[str]:
     final = []
     for seg in result:
         if len(seg) > 15:
-            # Split into ~7-char chunks
             for i in range(0, len(seg), 7):
                 chunk = seg[i:i+7]
                 if chunk:

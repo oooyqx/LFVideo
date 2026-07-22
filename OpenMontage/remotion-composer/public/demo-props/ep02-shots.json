@@ -605,42 +605,42 @@
   "captions": [
     {
       "startMs": 0,
-      "endMs": 6873,
+      "endMs": 6874,
       "words": [
         {
-          "word": "如何",
+          "word": "如何用",
           "startMs": 0,
-          "endMs": 416
+          "endMs": 625
         },
         {
-          "word": "用 Vibe Coding",
-          "startMs": 416,
-          "endMs": 2707
+          "word": "Vibe Coding，",
+          "startMs": 625,
+          "endMs": 2708
         },
         {
-          "word": "快速搞定自动化视频渲染",
-          "startMs": 2707,
-          "endMs": 4998
+          "word": "快速搞定自动化视频渲染？",
+          "startMs": 2708,
+          "endMs": 4999
         },
         {
-          "word": "先记住一个关键认知",
-          "startMs": 4998,
-          "endMs": 6873
+          "word": "先记住一个关键认知：",
+          "startMs": 4999,
+          "endMs": 6874
         }
       ]
     },
     {
-      "startMs": 6873,
+      "startMs": 6874,
       "endMs": 10000,
       "words": [
         {
-          "word": "AI 最能打的本事",
-          "startMs": 6873,
-          "endMs": 8539
+          "word": "AI 最能打的本事，",
+          "startMs": 6874,
+          "endMs": 8540
         },
         {
-          "word": "是啃文本和代码",
-          "startMs": 8539,
+          "word": "是啃文本和代码。",
+          "startMs": 8540,
           "endMs": 10000
         }
       ]
@@ -650,22 +650,22 @@
       "endMs": 18532,
       "words": [
         {
-          "word": "所以想让渲染自动化",
+          "word": "所以想让渲染自动化，",
           "startMs": 10000,
           "endMs": 12400
         },
         {
-          "word": "思路就一条",
+          "word": "思路就一条—",
           "startMs": 12400,
           "endMs": 13733
         },
         {
-          "word": "把视频变成代码和数据",
+          "word": "把视频变成代码和数据，",
           "startMs": 13733,
           "endMs": 16399
         },
         {
-          "word": "让 AI 按配置出片",
+          "word": "让 AI 按配置出片。",
           "startMs": 16399,
           "endMs": 18532
         }
@@ -676,12 +676,12 @@
       "endMs": 22000,
       "words": [
         {
-          "word": "修改文案或配置",
+          "word": "修改文案或配置，",
           "startMs": 18532,
           "endMs": 20398
         },
         {
-          "word": "快速自动重渲",
+          "word": "快速自动重渲。",
           "startMs": 20398,
           "endMs": 22000
         }
@@ -692,27 +692,27 @@
       "endMs": 29250,
       "words": [
         {
-          "word": "这条低成本",
+          "word": "这条低成本、",
           "startMs": 22000,
           "endMs": 23250
         },
         {
-          "word": "高效率",
+          "word": "高效率的",
           "startMs": 23250,
-          "endMs": 24000
+          "endMs": 24250
         },
         {
-          "word": "的自动化生产怎么落地",
-          "startMs": 24000,
+          "word": "自动化生产怎么落地？",
+          "startMs": 24250,
           "endMs": 26500
         },
         {
-          "word": "三步",
+          "word": "三步：",
           "startMs": 26500,
           "endMs": 27000
         },
         {
-          "word": "先让 AI 找技术路径",
+          "word": "先让 AI 找技术路径，",
           "startMs": 27000,
           "endMs": 29250
         }
@@ -723,12 +723,12 @@
       "endMs": 33000,
       "words": [
         {
-          "word": "再对着实际需求选型",
+          "word": "再对着实际需求选型，",
           "startMs": 29250,
           "endMs": 31500
         },
         {
-          "word": "最后落地出片",
+          "word": "最后落地出片。",
           "startMs": 31500,
           "endMs": 33000
         }
@@ -739,7 +739,7 @@
       "endMs": 41000,
       "words": [
         {
-          "word": "我们直接问 AI",
+          "word": "我们直接问 AI：",
           "startMs": 33000,
           "endMs": 34696
         },
@@ -754,13 +754,23 @@
           "endMs": 37604
         },
         {
-          "word": "视频",
+          "word": "视频，",
           "startMs": 37604,
           "endMs": 38088
         },
         {
-          "word": "现在最优的技术路线有哪些",
+          "word": "现在",
           "startMs": 38088,
+          "endMs": 38572
+        },
+        {
+          "word": "最优的",
+          "startMs": 38572,
+          "endMs": 39299
+        },
+        {
+          "word": "技术路线有哪些？",
+          "startMs": 39299,
           "endMs": 41000
         }
       ]
@@ -770,74 +780,79 @@
       "endMs": 45009,
       "words": [
         {
-          "word": "它一口气摆了六条",
+          "word": "它一口气摆了六条—",
           "startMs": 41000,
           "endMs": 42106
         },
         {
-          "word": "Remotion 使",
+          "word": "Remotion 使用",
           "startMs": 42106,
-          "endMs": 43350
+          "endMs": 43488
         },
         {
-          "word": "用React前端网页渲染",
-          "startMs": 43350,
+          "word": "React前端网页渲染、",
+          "startMs": 43488,
           "endMs": 45009
         }
       ]
     },
     {
       "startMs": 45009,
-      "endMs": 49570,
+      "endMs": 49708,
       "words": [
         {
-          "word": "Manim 画数学公式",
+          "word": "Manim 画数学公式、",
           "startMs": 45009,
           "endMs": 46391
         },
         {
-          "word": "MoviePy",
+          "word": "MoviePy 和",
           "startMs": 46391,
-          "endMs": 47359
+          "endMs": 47497
         },
         {
-          "word": "和 FFmpeg 做拼接",
-          "startMs": 47359,
+          "word": "FFmpeg 做拼接，",
+          "startMs": 47497,
           "endMs": 48741
         },
         {
-          "word": "还有 Moti",
+          "word": "还",
           "startMs": 48741,
-          "endMs": 49570
+          "endMs": 48879
+        },
+        {
+          "word": "有 Motio",
+          "startMs": 48879,
+          "endMs": 49708
         }
       ]
     },
     {
-      "startMs": 49570,
+      "startMs": 49708,
       "endMs": 54000,
       "words": [
         {
-          "word": "on Canv",
-          "startMs": 49570,
-          "endMs": 50399
+          "word": "n Canva",
+          "startMs": 49708,
+          "endMs": 50537
         },
         {
-          "word": "as",
-          "startMs": 50399,
+          "word": "s、",
+          "startMs": 50537,
           "endMs": 50675
         },
         {
-          "word": "PixiJS 这些路径",
+          "word": "PixiJS 这些路径。",
           "startMs": 50675,
           "endMs": 52057
         },
         {
-          "word": "六条路都摆出来了",
+          "word": "六条路都摆出来了，",
           "startMs": 52057,
           "endMs": 53163
         },
         {
-          "word": "可到底选哪条",
+          "word": "可到底选哪条？",
           "startMs": 53163,
           "endMs": 54000
         }
@@ -848,27 +863,27 @@
       "endMs": 59784,
       "words": [
         {
-          "word": "第二步",
+          "word": "第二步，",
           "startMs": 54000,
           "endMs": 54510
         },
         {
-          "word": "技术选型",
+          "word": "技术选型，",
           "startMs": 54510,
           "endMs": 55190
         },
         {
-          "word": "也是最容易翻车的一步",
+          "word": "也是最容易翻车的一步。",
           "startMs": 55190,
           "endMs": 56892
         },
         {
-          "word": "直接问 AI 哪个好",
+          "word": "直接问 AI 哪个好，",
           "startMs": 56892,
           "endMs": 58253
         },
         {
-          "word": "它会把每个都夸一遍",
+          "word": "它会把每个都夸一遍，",
           "startMs": 58253,
           "endMs": 59784
         }
@@ -879,22 +894,27 @@
       "endMs": 65058,
       "words": [
         {
-          "word": "你照样选不出来",
+          "word": "你照样选不出来。",
           "startMs": 59784,
           "endMs": 60975
         },
         {
-          "word": "值钱",
+          "word": "值钱的",
           "startMs": 60975,
-          "endMs": 61315
+          "endMs": 61485
         },
         {
-          "word": "的是看清每条路什么时候不好使",
-          "startMs": 61315,
+          "word": "是",
+          "startMs": 61485,
+          "endMs": 61655
+        },
+        {
+          "word": "看清每条路什么时候不好使、",
+          "startMs": 61655,
           "endMs": 63697
         },
         {
-          "word": "会在哪一步出问题",
+          "word": "会在哪一步出问题。",
           "startMs": 63697,
           "endMs": 65058
         }
@@ -905,27 +925,27 @@
       "endMs": 70000,
       "words": [
         {
-          "word": "所以反过来逼它",
+          "word": "所以反过来逼它：",
           "startMs": 65058,
           "endMs": 66249
         },
         {
-          "word": "把每条路的核心优势",
+          "word": "把每条路的核心优势、",
           "startMs": 66249,
           "endMs": 67780
         },
         {
-          "word": "劣势",
+          "word": "劣势，",
           "startMs": 67780,
           "endMs": 68120
         },
         {
-          "word": "全摆到台面上",
+          "word": "全摆到台面上，",
           "startMs": 68120,
           "endMs": 69141
         },
         {
-          "word": "列成一张表",
+          "word": "列成一张表。",
           "startMs": 69141,
           "endMs": 70000
         }
@@ -933,68 +953,78 @@
     },
     {
       "startMs": 70000,
-      "endMs": 74798,
+      "endMs": 74797,
       "words": [
         {
-          "word": "就拿 Remotion 来说",
+          "word": "就",
           "startMs": 70000,
-          "endMs": 71600
+          "endMs": 70133
         },
         {
-          "word": "优势",
-          "startMs": 71600,
-          "endMs": 71866
+          "word": "拿 Remotion 来说：",
+          "startMs": 70133,
+          "endMs": 71599
         },
         {
-          "word": "是前端 React 栈",
-          "startMs": 71866,
-          "endMs": 73066
+          "word": "优势是",
+          "startMs": 71599,
+          "endMs": 71999
         },
         {
-          "word": "排版能力强",
-          "startMs": 73066,
-          "endMs": 73732
+          "word": "前端 React 栈、",
+          "startMs": 71999,
+          "endMs": 73065
         },
         {
-          "word": "模板还能跨期复用",
-          "startMs": 73732,
-          "endMs": 74798
+          "word": "排版能力强、",
+          "startMs": 73065,
+          "endMs": 73731
+        },
+        {
+          "word": "模板还能跨期复用。",
+          "startMs": 73731,
+          "endMs": 74797
         }
       ]
     },
     {
-      "startMs": 74798,
-      "endMs": 79197,
+      "startMs": 74797,
+      "endMs": 79195,
       "words": [
         {
-          "word": "劣势也不藏",
-          "startMs": 74798,
-          "endMs": 75464
+          "word": "劣势也不藏—",
+          "startMs": 74797,
+          "endMs": 75463
         },
         {
-          "word": "组件顶层直接读浏览器对象",
-          "startMs": 75464,
-          "endMs": 77064
+          "word": "组件顶层直接读浏览器对",
+          "startMs": 75463,
+          "endMs": 76929
         },
         {
-          "word": "打包阶段当场崩",
-          "startMs": 77064,
-          "endMs": 77997
+          "word": "象，",
+          "startMs": 76929,
+          "endMs": 77062
         },
         {
-          "word": "而且是 BUSL 授权",
-          "startMs": 77997,
-          "endMs": 79197
+          "word": "打包阶段当场崩；",
+          "startMs": 77062,
+          "endMs": 77995
+        },
+        {
+          "word": "而且是 BUSL 授权，",
+          "startMs": 77995,
+          "endMs": 79195
         }
       ]
     },
     {
-      "startMs": 79197,
+      "startMs": 79195,
       "endMs": 80000,
       "words": [
         {
-          "word": "做大了要给钱",
-          "startMs": 79197,
+          "word": "做大了要给钱。",
+          "startMs": 79195,
           "endMs": 80000
         }
       ]
@@ -1004,27 +1034,27 @@
       "endMs": 85311,
       "words": [
         {
-          "word": "优劣摆齐了",
+          "word": "优劣摆齐了，",
           "startMs": 80000,
           "endMs": 80781
         },
         {
-          "word": "再拿自己的约束去卡",
+          "word": "再拿自己的约束去卡。",
           "startMs": 80781,
           "endMs": 82187
         },
         {
-          "word": "我的约束就三条",
+          "word": "我的约束就三条：",
           "startMs": 82187,
           "endMs": 83280
         },
         {
-          "word": "固定模板",
+          "word": "固定模板、",
           "startMs": 83280,
           "endMs": 83905
         },
         {
-          "word": "换数据批量出几十期",
+          "word": "换数据批量出几十期；",
           "startMs": 83905,
           "endMs": 85311
         }
@@ -1035,22 +1065,22 @@
       "endMs": 90000,
       "words": [
         {
-          "word": "AI 改内容别老出错",
+          "word": "AI 改内容别老出错；",
           "startMs": 85311,
           "endMs": 86717
         },
         {
-          "word": "跨期还得好维护",
+          "word": "跨期还得好维护。",
           "startMs": 86717,
           "endMs": 87810
         },
         {
-          "word": "三条一卡",
+          "word": "三条一卡，",
           "startMs": 87810,
           "endMs": 88435
         },
         {
-          "word": "Remotion 胜出",
+          "word": "Remotion 胜出。",
           "startMs": 88435,
           "endMs": 90000
         }
@@ -1058,120 +1088,140 @@
     },
     {
       "startMs": 90000,
-      "endMs": 95365,
+      "endMs": 95364,
       "words": [
         {
-          "word": "你可能会问",
+          "word": "你可能会问，",
           "startMs": 90000,
           "endMs": 90789
         },
         {
-          "word": "直接拿 HTML 画页面不行吗",
+          "word": "直接拿 HTM",
           "startMs": 90789,
-          "endMs": 92841
+          "endMs": 91736
         },
         {
-          "word": "行",
-          "startMs": 92841,
-          "endMs": 92998
+          "word": "L 画页面不行",
+          "startMs": 91736,
+          "endMs": 92683
         },
         {
-          "word": "但你改一处",
-          "startMs": 92998,
-          "endMs": 93787
+          "word": "吗？",
+          "startMs": 92683,
+          "endMs": 92840
         },
         {
-          "word": "剩下几十期不会跟着变",
-          "startMs": 93787,
-          "endMs": 95365
+          "word": "行。",
+          "startMs": 92840,
+          "endMs": 92997
+        },
+        {
+          "word": "但你改一处，",
+          "startMs": 92997,
+          "endMs": 93786
+        },
+        {
+          "word": "剩下几十期不会跟着变。",
+          "startMs": 93786,
+          "endMs": 95364
         }
       ]
     },
     {
-      "startMs": 95365,
-      "endMs": 100574,
+      "startMs": 95364,
+      "endMs": 100573,
       "words": [
         {
-          "word": "Remotion 不一样",
-          "startMs": 95365,
-          "endMs": 97101
+          "word": "Remotion 不一样，",
+          "startMs": 95364,
+          "endMs": 97100
         },
         {
-          "word": "改一处全系列生效",
-          "startMs": 97101,
-          "endMs": 98364
+          "word": "改一处全系列生效，",
+          "startMs": 97100,
+          "endMs": 98363
         },
         {
-          "word": "AI 只能照着填数据",
-          "startMs": 98364,
-          "endMs": 99785
+          "word": "AI 只能照着填数据，",
+          "startMs": 98363,
+          "endMs": 99784
         },
         {
-          "word": "动不了结构",
-          "startMs": 99785,
-          "endMs": 100574
+          "word": "动不了结构。",
+          "startMs": 99784,
+          "endMs": 100573
         }
       ]
     },
     {
-      "startMs": 100574,
+      "startMs": 100573,
       "endMs": 102000,
       "words": [
         {
-          "word": "十期之后",
-          "startMs": 100574,
-          "endMs": 101205
+          "word": "十期之后，",
+          "startMs": 100573,
+          "endMs": 101204
         },
         {
-          "word": "照样管得住",
-          "startMs": 101205,
+          "word": "照样管得住。",
+          "startMs": 101204,
           "endMs": 102000
         }
       ]
     },
     {
       "startMs": 102000,
-      "endMs": 106764,
+      "endMs": 107955,
       "words": [
         {
-          "word": "代价也清楚",
+          "word": "代价也清楚：",
           "startMs": 102000,
           "endMs": 102851
         },
         {
-          "word": "React 技术栈",
+          "word": "React 技术栈，",
           "startMs": 102851,
           "endMs": 104212
         },
         {
-          "word": "加 BUSL 授权",
+          "word": "加 BUSL 授权，",
           "startMs": 104212,
           "endMs": 105403
         },
         {
-          "word": "规模化商用要付费",
+          "word": "规模化商用要付费。",
           "startMs": 105403,
           "endMs": 106764
+        },
+        {
+          "word": "但前端本来就",
+          "startMs": 106764,
+          "endMs": 107785
+        },
+        {
+          "word": "是",
+          "startMs": 107785,
+          "endMs": 107955
         }
       ]
     },
     {
-      "startMs": 106764,
+      "startMs": 107955,
       "endMs": 110000,
       "words": [
         {
-          "word": "但前端本来就是 AI 写",
-          "startMs": 106764,
-          "endMs": 108466
+          "word": "AI 写、",
+          "startMs": 107955,
+          "endMs": 108465
         },
         {
-          "word": "人把方向",
-          "startMs": 108466,
-          "endMs": 109146
+          "word": "人把方向，",
+          "startMs": 108465,
+          "endMs": 109145
         },
         {
-          "word": "不构成门槛",
-          "startMs": 109146,
+          "word": "不构成门槛。",
+          "startMs": 109145,
           "endMs": 110000
         }
       ]
@@ -1181,22 +1231,22 @@
       "endMs": 118000,
       "words": [
         {
-          "word": "一句话",
+          "word": "一句话：",
           "startMs": 110000,
           "endMs": 111142
         },
         {
-          "word": "让 AI 把信息铺开",
+          "word": "让 AI 把信息铺开，",
           "startMs": 111142,
           "endMs": 114189
         },
         {
-          "word": "真正拍板的判断",
+          "word": "真正拍板的判断，",
           "startMs": 114189,
           "endMs": 116855
         },
         {
-          "word": "留给人",
+          "word": "留给人。",
           "startMs": 116855,
           "endMs": 118000
         }
@@ -1207,32 +1257,37 @@
       "endMs": 124743,
       "words": [
         {
-          "word": "路线定",
+          "word": "路线定了",
           "startMs": 118000,
-          "endMs": 118578
+          "endMs": 118771
         },
         {
-          "word": "了 Remotion",
-          "startMs": 118578,
-          "endMs": 120312
+          "word": "Remotion。",
+          "startMs": 118771,
+          "endMs": 120313
         },
         {
-          "word": "它怎么工作",
-          "startMs": 120312,
-          "endMs": 121275
+          "word": "它怎么工作？",
+          "startMs": 120313,
+          "endMs": 121276
         },
         {
-          "word": "用 React 写页面",
-          "startMs": 121275,
-          "endMs": 123009
+          "word": "用",
+          "startMs": 121276,
+          "endMs": 121468
         },
         {
-          "word": "和动画",
-          "startMs": 123009,
+          "word": "React 写页面和",
+          "startMs": 121468,
+          "endMs": 123202
+        },
+        {
+          "word": "动画，",
+          "startMs": 123202,
           "endMs": 123587
         },
         {
-          "word": "引擎逐帧截图",
+          "word": "引擎逐帧截图，",
           "startMs": 123587,
           "endMs": 124743
         }
@@ -1243,22 +1298,22 @@
       "endMs": 129752,
       "words": [
         {
-          "word": "再合成视频",
+          "word": "再合成视频。",
           "startMs": 124743,
           "endMs": 125706
         },
         {
-          "word": "你写的就是一个网页",
+          "word": "你写的就是一个网页—",
           "startMs": 125706,
           "endMs": 127440
         },
         {
-          "word": "网页上能画的",
+          "word": "网页上能画的，",
           "startMs": 127440,
           "endMs": 128596
         },
         {
-          "word": "它就能渲成片",
+          "word": "它就能渲成片。",
           "startMs": 128596,
           "endMs": 129752
         }
@@ -1269,17 +1324,17 @@
       "endMs": 134000,
       "words": [
         {
-          "word": "而且从页面到成品全自动",
+          "word": "而且从页面到成品全自动，",
           "startMs": 129752,
           "endMs": 131872
         },
         {
-          "word": "不用你盯着",
+          "word": "不用你盯着，",
           "startMs": 131872,
           "endMs": 132835
         },
         {
-          "word": "也不用手动剪",
+          "word": "也不用手动剪。",
           "startMs": 132835,
           "endMs": 134000
         }
@@ -1287,76 +1342,76 @@
     },
     {
       "startMs": 134000,
-      "endMs": 137996,
+      "endMs": 138113,
       "words": [
         {
-          "word": "那它",
+          "word": "那它为",
           "startMs": 134000,
-          "endMs": 134235
+          "endMs": 134352
         },
         {
-          "word": "为什么这么好",
-          "startMs": 134235,
-          "endMs": 134940
+          "word": "什么这么好被",
+          "startMs": 134352,
+          "endMs": 135057
         },
         {
-          "word": "被 AI 驱动",
-          "startMs": 134940,
-          "endMs": 135528
+          "word": "AI 驱动？",
+          "startMs": 135057,
+          "endMs": 135527
         },
         {
-          "word": "四条原因",
-          "startMs": 135528,
-          "endMs": 135998
+          "word": "四条原因。",
+          "startMs": 135527,
+          "endMs": 135997
         },
         {
-          "word": "第一",
-          "startMs": 135998,
-          "endMs": 136233
+          "word": "第一，",
+          "startMs": 135997,
+          "endMs": 136232
         },
         {
-          "word": "写的就是网页",
-          "startMs": 136233,
-          "endMs": 136938
+          "word": "写的就是网页—",
+          "startMs": 136232,
+          "endMs": 136937
         },
         {
-          "word": "React 加 CSS",
-          "startMs": 136938,
-          "endMs": 137996
+          "word": "React 加 CSS 是",
+          "startMs": 136937,
+          "endMs": 138113
         }
       ]
     },
     {
-      "startMs": 137996,
+      "startMs": 138113,
       "endMs": 141993,
       "words": [
         {
-          "word": "是 AI 语料里最厚",
-          "startMs": 137996,
-          "endMs": 138937
+          "word": "AI 语料里最厚的",
+          "startMs": 138113,
+          "endMs": 139054
         },
         {
-          "word": "的一块",
-          "startMs": 138937,
+          "word": "一块，",
+          "startMs": 139054,
           "endMs": 139289
         },
         {
-          "word": "最熟也最不容易错",
+          "word": "最熟也最不容易错。",
           "startMs": 139289,
           "endMs": 140230
         },
         {
-          "word": "第二",
+          "word": "第二，",
           "startMs": 140230,
           "endMs": 140465
         },
         {
-          "word": "内容和模板分开",
+          "word": "内容和模板分开，",
           "startMs": 140465,
           "endMs": 141288
         },
         {
-          "word": "改数据就改片",
+          "word": "改数据就改片，",
           "startMs": 141288,
           "endMs": 141993
         }
@@ -1364,73 +1419,83 @@
     },
     {
       "startMs": 141993,
-      "endMs": 145403,
+      "endMs": 145401,
       "words": [
         {
-          "word": "正好撞在它改文本的强项上",
+          "word": "正好撞在",
           "startMs": 141993,
-          "endMs": 143404
+          "endMs": 142463
         },
         {
-          "word": "第三",
-          "startMs": 143404,
-          "endMs": 143639
+          "word": "它改文本的",
+          "startMs": 142463,
+          "endMs": 143051
         },
         {
-          "word": "字段",
-          "startMs": 143639,
-          "endMs": 143874
+          "word": "强项上。",
+          "startMs": 143051,
+          "endMs": 143403
         },
         {
-          "word": "用 TypeScript 定死",
-          "startMs": 143874,
-          "endMs": 145403
+          "word": "第三，",
+          "startMs": 143403,
+          "endMs": 143638
+        },
+        {
+          "word": "字段用",
+          "startMs": 143638,
+          "endMs": 143990
+        },
+        {
+          "word": "TypeScript 定死，",
+          "startMs": 143990,
+          "endMs": 145401
         }
       ]
     },
     {
-      "startMs": 145403,
-      "endMs": 149283,
+      "startMs": 145401,
+      "endMs": 149281,
       "words": [
         {
-          "word": "填错漏填当场报红",
-          "startMs": 145403,
-          "endMs": 146344
+          "word": "填错漏填当场报红，",
+          "startMs": 145401,
+          "endMs": 146342
         },
         {
-          "word": "乱来的空间压到最小",
-          "startMs": 146344,
-          "endMs": 147402
+          "word": "乱来的空间压到最小。",
+          "startMs": 146342,
+          "endMs": 147400
         },
         {
-          "word": "第四",
-          "startMs": 147402,
-          "endMs": 147637
+          "word": "第四，",
+          "startMs": 147400,
+          "endMs": 147635
         },
         {
-          "word": "出片全自动",
-          "startMs": 147637,
-          "endMs": 148225
+          "word": "出片全自动，",
+          "startMs": 147635,
+          "endMs": 148223
         },
         {
-          "word": "截图",
-          "startMs": 148225,
-          "endMs": 148460
+          "word": "截图、",
+          "startMs": 148223,
+          "endMs": 148458
         },
         {
-          "word": "合成全交给引擎",
-          "startMs": 148460,
-          "endMs": 149283
+          "word": "合成全交给引擎，",
+          "startMs": 148458,
+          "endMs": 149281
         }
       ]
     },
     {
-      "startMs": 149283,
+      "startMs": 149281,
       "endMs": 150000,
       "words": [
         {
-          "word": "天生适合批量",
-          "startMs": 149283,
+          "word": "天生适合批量。",
+          "startMs": 149281,
           "endMs": 150000
         }
       ]
@@ -1440,32 +1505,32 @@
       "endMs": 156000,
       "words": [
         {
-          "word": "一条心法",
+          "word": "一条心法：",
           "startMs": 150000,
           "endMs": 150800
         },
         {
-          "word": "把视频写成数据",
+          "word": "把视频写成数据，",
           "startMs": 150800,
           "endMs": 152200
         },
         {
-          "word": "AI 只负责填空",
+          "word": "AI 只负责填空，",
           "startMs": 152200,
           "endMs": 153600
         },
         {
-          "word": "不乱跑",
+          "word": "不乱跑。",
           "startMs": 153600,
           "endMs": 154200
         },
         {
-          "word": "原理通了",
+          "word": "原理通了，",
           "startMs": 154200,
           "endMs": 155000
         },
         {
-          "word": "接着搭引擎",
+          "word": "接着搭引擎。",
           "startMs": 155000,
           "endMs": 156000
         }
@@ -1473,88 +1538,118 @@
     },
     {
       "startMs": 156000,
-      "endMs": 161007,
+      "endMs": 161005,
       "words": [
         {
-          "word": "选型定了",
+          "word": "选型定了，",
           "startMs": 156000,
           "endMs": 156646
         },
         {
-          "word": "进落地",
+          "word": "进落地。",
           "startMs": 156646,
           "endMs": 157130
         },
         {
-          "word": "引擎不用你自己写",
+          "word": "引擎不用你自己写，",
           "startMs": 157130,
           "endMs": 158422
         },
         {
-          "word": "你要做的",
+          "word": "你要做的，",
           "startMs": 158422,
           "endMs": 159068
         },
         {
-          "word": "是把配置和现成组件对上号",
+          "word": "是",
           "startMs": 159068,
-          "endMs": 161007
+          "endMs": 159229
+        },
+        {
+          "word": "把",
+          "startMs": 159229,
+          "endMs": 159390
+        },
+        {
+          "word": "配置和",
+          "startMs": 159390,
+          "endMs": 159874
+        },
+        {
+          "word": "现成组件对",
+          "startMs": 159874,
+          "endMs": 160682
+        },
+        {
+          "word": "上号。",
+          "startMs": 160682,
+          "endMs": 161005
         }
       ]
     },
     {
-      "startMs": 161007,
-      "endMs": 166823,
+      "startMs": 161005,
+      "endMs": 166820,
       "words": [
         {
-          "word": "这台引擎叫 remotion",
-          "startMs": 161007,
-          "endMs": 163108
+          "word": "这台引擎叫 r",
+          "startMs": 161005,
+          "endMs": 161974
         },
         {
-          "word": "composer",
-          "startMs": 163108,
-          "endMs": 164400
+          "word": "emotion",
+          "startMs": 161974,
+          "endMs": 163105
         },
         {
-          "word": "你写一份配置",
-          "startMs": 164400,
-          "endMs": 165369
+          "word": "-compos",
+          "startMs": 163105,
+          "endMs": 164074
         },
         {
-          "word": "讲清这段画面是什么",
-          "startMs": 165369,
-          "endMs": 166823
+          "word": "er。",
+          "startMs": 164074,
+          "endMs": 164397
+        },
+        {
+          "word": "你写一份配置，",
+          "startMs": 164397,
+          "endMs": 165366
+        },
+        {
+          "word": "讲清这段画面是什么；",
+          "startMs": 165366,
+          "endMs": 166820
         }
       ]
     },
     {
-      "startMs": 166823,
+      "startMs": 166820,
       "endMs": 172000,
       "words": [
         {
           "word": "主程序 Exp",
-          "startMs": 166823,
-          "endMs": 167792
+          "startMs": 166820,
+          "endMs": 167789
         },
         {
           "word": "lainer ",
-          "startMs": 167792,
-          "endMs": 168761
+          "startMs": 167789,
+          "endMs": 168758
         },
         {
-          "word": "读配置里",
-          "startMs": 168761,
-          "endMs": 169407
+          "word": "读配置里的",
+          "startMs": 168758,
+          "endMs": 169566
         },
         {
-          "word": "的 type 字段",
-          "startMs": 169407,
-          "endMs": 170538
+          "word": "type 字段，",
+          "startMs": 169566,
+          "endMs": 170535
         },
         {
-          "word": "自动挑对应组件去渲",
-          "startMs": 170538,
+          "word": "自动挑对应组件去渲。",
+          "startMs": 170535,
           "endMs": 172000
         }
       ]
@@ -1564,52 +1659,52 @@
       "endMs": 178239,
       "words": [
         {
-          "word": "现成的模板场景有一整套",
+          "word": "现成的模板场景有一整套—",
           "startMs": 172000,
           "endMs": 174081
         },
         {
-          "word": "开场",
+          "word": "开场、",
           "startMs": 174081,
           "endMs": 174459
         },
         {
-          "word": "收尾",
+          "word": "收尾、",
           "startMs": 174459,
           "endMs": 174837
         },
         {
-          "word": "概念",
+          "word": "概念、",
           "startMs": 174837,
           "endMs": 175215
         },
         {
-          "word": "要点",
+          "word": "要点、",
           "startMs": 175215,
           "endMs": 175593
         },
         {
-          "word": "流程",
+          "word": "流程、",
           "startMs": 175593,
           "endMs": 175971
         },
         {
-          "word": "表格",
+          "word": "表格、",
           "startMs": 175971,
           "endMs": 176349
         },
         {
-          "word": "左右对比",
+          "word": "左右对比、",
           "startMs": 176349,
           "endMs": 177105
         },
         {
-          "word": "图表",
+          "word": "图表、",
           "startMs": 177105,
           "endMs": 177483
         },
         {
-          "word": "核心数字",
+          "word": "核心数字、",
           "startMs": 177483,
           "endMs": 178239
         }
@@ -1620,32 +1715,32 @@
       "endMs": 185046,
       "words": [
         {
-          "word": "提示避坑",
+          "word": "提示避坑、",
           "startMs": 178239,
           "endMs": 178995
         },
         {
-          "word": "金句",
+          "word": "金句、",
           "startMs": 178995,
           "endMs": 179373
         },
         {
-          "word": "章节分隔",
+          "word": "章节分隔，",
           "startMs": 179373,
           "endMs": 180129
         },
         {
-          "word": "还有合成终端和截图叠层",
+          "word": "还有合成终端和截图叠层。",
           "startMs": 180129,
           "endMs": 182210
         },
         {
-          "word": "全是深色科技底加白字",
+          "word": "全是深色科技底加白字，",
           "startMs": 182210,
           "endMs": 184101
         },
         {
-          "word": "改一处主题",
+          "word": "改一处主题，",
           "startMs": 184101,
           "endMs": 185046
         }
@@ -1656,7 +1751,7 @@
       "endMs": 186000,
       "words": [
         {
-          "word": "全片跟着变",
+          "word": "全片跟着变。",
           "startMs": 185046,
           "endMs": 186000
         }
@@ -1667,27 +1762,27 @@
       "endMs": 192836,
       "words": [
         {
-          "word": "所以做内容",
+          "word": "所以做内容，",
           "startMs": 186000,
           "endMs": 187102
         },
         {
-          "word": "其实就是挑组件",
+          "word": "其实就是挑组件、",
           "startMs": 187102,
           "endMs": 188646
         },
         {
-          "word": "填字段",
+          "word": "填字段。",
           "startMs": 188646,
           "endMs": 189307
         },
         {
-          "word": "想要一张对比卡",
+          "word": "想要一张对比卡？",
           "startMs": 189307,
           "endMs": 190851
         },
         {
-          "word": "你就说左边传统剪辑",
+          "word": "你就说左边传统剪辑、",
           "startMs": 190851,
           "endMs": 192836
         }
@@ -1695,160 +1790,170 @@
     },
     {
       "startMs": 192836,
-      "endMs": 200553,
+      "endMs": 200552,
       "words": [
         {
-          "word": "右边代码即视频",
+          "word": "右边代码即视频，",
           "startMs": 192836,
           "endMs": 194380
         },
         {
-          "word": "AI 吐出来的",
+          "word": "AI 吐出来的，",
           "startMs": 194380,
           "endMs": 195703
         },
         {
-          "word": "就是一段 ty",
+          "word": "就",
           "startMs": 195703,
-          "endMs": 197026
+          "endMs": 195923
         },
         {
-          "word": "pe 写 co",
-          "startMs": 197026,
-          "endMs": 198128
+          "word": "是",
+          "startMs": 195923,
+          "endMs": 196143
         },
         {
-          "word": "mpariso",
-          "startMs": 198128,
-          "endMs": 199672
+          "word": "一段 type",
+          "startMs": 196143,
+          "endMs": 197466
         },
         {
-          "word": "n",
-          "startMs": 199672,
-          "endMs": 199892
+          "word": " 写 comp",
+          "startMs": 197466,
+          "endMs": 198568
         },
         {
-          "word": "的配置",
-          "startMs": 199892,
-          "endMs": 200553
+          "word": "arison ",
+          "startMs": 198568,
+          "endMs": 199891
+        },
+        {
+          "word": "的",
+          "startMs": 199891,
+          "endMs": 200111
+        },
+        {
+          "word": "配置，",
+          "startMs": 200111,
+          "endMs": 200552
         }
       ]
     },
     {
-      "startMs": 200553,
+      "startMs": 200552,
       "endMs": 201000,
       "words": [
         {
-          "word": "齐活",
-          "startMs": 200553,
+          "word": "齐活。",
+          "startMs": 200552,
           "endMs": 201000
         }
       ]
     },
     {
       "startMs": 201000,
-      "endMs": 206223,
+      "endMs": 206166,
       "words": [
         {
-          "word": "这里有条铁律",
+          "word": "这里有条铁律：",
           "startMs": 201000,
-          "endMs": 202011
+          "endMs": 202000
         },
         {
-          "word": "不许 AI 发明新组件",
-          "startMs": 202011,
-          "endMs": 203527
+          "word": "不许 AI 发明新组件，",
+          "startMs": 202000,
+          "endMs": 203500
         },
         {
-          "word": "只让它照现成的填数据",
-          "startMs": 203527,
-          "endMs": 205212
+          "word": "只让它照现成的填数据。",
+          "startMs": 203500,
+          "endMs": 205166
         },
         {
-          "word": "让它从零手写",
-          "startMs": 205212,
-          "endMs": 206223
+          "word": "让它从零手写，",
+          "startMs": 205166,
+          "endMs": 206166
         }
       ]
     },
     {
-      "startMs": 206223,
-      "endMs": 211613,
+      "startMs": 206166,
+      "endMs": 210995,
       "words": [
         {
-          "word": "既在重复造轮子",
-          "startMs": 206223,
-          "endMs": 207402
+          "word": "既在重复造轮子，",
+          "startMs": 206166,
+          "endMs": 207332
         },
         {
-          "word": "又",
-          "startMs": 207402,
-          "endMs": 207570
+          "word": "又把",
+          "startMs": 207332,
+          "endMs": 207665
         },
         {
-          "word": "把「换数据",
-          "startMs": 207570,
-          "endMs": 208244
+          "word": "「换数据就",
+          "startMs": 207665,
+          "endMs": 208331
         },
         {
-          "word": "就复",
-          "startMs": 208244,
-          "endMs": 208581
+          "word": "复用",
+          "startMs": 208331,
+          "endMs": 208664
         },
         {
-          "word": "用」",
-          "startMs": 208581,
-          "endMs": 208749
+          "word": "」的",
+          "startMs": 208664,
+          "endMs": 208830
         },
         {
-          "word": "的好处弄没",
-          "startMs": 208749,
-          "endMs": 209591
+          "word": "好处弄没了",
+          "startMs": 208830,
+          "endMs": 209663
         },
         {
-          "word": "而且每个字段",
-          "startMs": 209591,
-          "endMs": 210602
+          "word": "。",
+          "startMs": 209663,
+          "endMs": 209663
         },
         {
-          "word": "都用 Type",
-          "startMs": 210602,
-          "endMs": 211613
+          "word": "而且每个字段都",
+          "startMs": 209663,
+          "endMs": 210829
+        },
+        {
+          "word": "用",
+          "startMs": 210829,
+          "endMs": 210995
         }
       ]
     },
     {
-      "startMs": 211613,
+      "startMs": 210995,
       "endMs": 216000,
       "words": [
         {
-          "word": "Script ",
-          "startMs": 211613,
-          "endMs": 212624
+          "word": "TypeScript 定死，",
+          "startMs": 210995,
+          "endMs": 212995
         },
         {
-          "word": "定死",
-          "startMs": 212624,
-          "endMs": 212961
+          "word": "AI 填错、",
+          "startMs": 212995,
+          "endMs": 213661
         },
         {
-          "word": "AI 填错",
-          "startMs": 212961,
-          "endMs": 213635
+          "word": "漏填，",
+          "startMs": 213661,
+          "endMs": 213994
         },
         {
-          "word": "漏填",
-          "startMs": 213635,
-          "endMs": 213972
+          "word": "当场报红，",
+          "startMs": 213994,
+          "endMs": 214660
         },
         {
-          "word": "当场报红",
-          "startMs": 213972,
-          "endMs": 214646
-        },
-        {
-          "word": "想乱发挥都没空间",
-          "startMs": 214646,
+          "word": "想乱发挥都没空间。",
+          "startMs": 214660,
           "endMs": 216000
         }
       ]
@@ -1858,37 +1963,37 @@
       "endMs": 223722,
       "words": [
         {
-          "word": "至于",
+          "word": "至于在",
           "startMs": 216000,
-          "endMs": 216454
+          "endMs": 216681
         },
         {
-          "word": "在现成组件上再",
-          "startMs": 216454,
-          "endMs": 218044
+          "word": "现成组件上再扩",
+          "startMs": 216681,
+          "endMs": 218271
         },
         {
-          "word": "扩一套自有品牌",
-          "startMs": 218044,
-          "endMs": 219634
+          "word": "一套自有品牌风",
+          "startMs": 218271,
+          "endMs": 219861
         },
         {
-          "word": "风格",
-          "startMs": 219634,
+          "word": "格，",
+          "startMs": 219861,
           "endMs": 220088
         },
         {
-          "word": "那是更大的话题",
+          "word": "那是更大的话题，",
           "startMs": 220088,
           "endMs": 221678
         },
         {
-          "word": "以后单独开一期",
+          "word": "以后单独开一期。",
           "startMs": 221678,
           "endMs": 223268
         },
         {
-          "word": "这期",
+          "word": "这期，",
           "startMs": 223268,
           "endMs": 223722
         }
@@ -1899,7 +2004,7 @@
       "endMs": 226000,
       "words": [
         {
-          "word": "先用现成的把片子跑通",
+          "word": "先用现成的把片子跑通。",
           "startMs": 223722,
           "endMs": 226000
         }
@@ -1910,27 +2015,27 @@
       "endMs": 235955,
       "words": [
         {
-          "word": "视频要不要一个出镜形象来串场",
+          "word": "视频要不要一个出镜形象来串场？",
           "startMs": 226000,
           "endMs": 229872
         },
         {
-          "word": "先把定位钉死",
+          "word": "先把定位钉死：",
           "startMs": 229872,
           "endMs": 231531
         },
         {
-          "word": "数字人只是陪衬",
+          "word": "数字人只是陪衬，",
           "startMs": 231531,
           "endMs": 233467
         },
         {
-          "word": "不是主角",
+          "word": "不是主角，",
           "startMs": 233467,
           "endMs": 234573
         },
         {
-          "word": "真正的干货",
+          "word": "真正的干货，",
           "startMs": 234573,
           "endMs": 235955
         }
@@ -1941,7 +2046,7 @@
       "endMs": 239000,
       "words": [
         {
-          "word": "永远是屏幕上的真实操作",
+          "word": "永远是屏幕上的真实操作。",
           "startMs": 235955,
           "endMs": 239000
         }
@@ -1952,32 +2057,37 @@
       "endMs": 242943,
       "words": [
         {
-          "word": "定位定了",
+          "word": "定位定了，",
           "startMs": 239000,
           "endMs": 239493
         },
         {
-          "word": "套一样的方法论",
+          "word": "套一样的方法论—",
           "startMs": 239493,
           "endMs": 240356
         },
         {
-          "word": "让 AI",
+          "word": "让",
           "startMs": 240356,
-          "endMs": 240725
+          "endMs": 240479
         },
         {
-          "word": "把每种形象",
-          "startMs": 240725,
-          "endMs": 241341
+          "word": "AI 把",
+          "startMs": 240479,
+          "endMs": 240848
         },
         {
-          "word": "的核心优势",
-          "startMs": 241341,
+          "word": "每种形象的",
+          "startMs": 240848,
+          "endMs": 241464
+        },
+        {
+          "word": "核心优势、",
+          "startMs": 241464,
           "endMs": 241957
         },
         {
-          "word": "劣势全方位摆出来",
+          "word": "劣势全方位摆出来。",
           "startMs": 241957,
           "endMs": 242943
         }
@@ -1985,124 +2095,129 @@
     },
     {
       "startMs": 242943,
-      "endMs": 247379,
+      "endMs": 247378,
       "words": [
         {
-          "word": "真人出镜最可信",
+          "word": "真人出镜最可信、",
           "startMs": 242943,
           "endMs": 243806
         },
         {
-          "word": "有温度",
+          "word": "有温度，",
           "startMs": 243806,
           "endMs": 244175
         },
         {
-          "word": "但你得露脸",
+          "word": "但你得露脸，",
           "startMs": 244175,
           "endMs": 244791
         },
         {
-          "word": "也没法编程批量复用",
+          "word": "也没法编程批量复用。",
           "startMs": 244791,
           "endMs": 245900
         },
         {
-          "word": "写实数字人对口型像真主播",
+          "word": "写实数字人对",
           "startMs": 245900,
-          "endMs": 247379
+          "endMs": 246639
+        },
+        {
+          "word": "口型像真主播，",
+          "startMs": 246639,
+          "endMs": 247378
         }
       ]
     },
     {
-      "startMs": 247379,
-      "endMs": 251814,
+      "startMs": 247378,
+      "endMs": 251813,
       "words": [
         {
-          "word": "可它太容易掉进恐怖谷",
-          "startMs": 247379,
-          "endMs": 248611
+          "word": "可它太容易掉进恐怖谷，",
+          "startMs": 247378,
+          "endMs": 248610
         },
         {
-          "word": "一掉进去",
-          "startMs": 248611,
-          "endMs": 249104
+          "word": "一掉进去，",
+          "startMs": 248610,
+          "endMs": 249103
         },
         {
-          "word": "可信度就崩了",
-          "startMs": 249104,
-          "endMs": 249843
+          "word": "可信度就崩了。",
+          "startMs": 249103,
+          "endMs": 249842
         },
         {
           "word": "二次元或者 3",
-          "startMs": 249843,
-          "endMs": 250582
+          "startMs": 249842,
+          "endMs": 250581
         },
         {
           "word": "D 风格化角色",
-          "startMs": 250582,
-          "endMs": 251321
+          "startMs": 250581,
+          "endMs": 251320
         },
         {
-          "word": "走 VRM",
-          "startMs": 251321,
-          "endMs": 251814
+          "word": "走 VRM，",
+          "startMs": 251320,
+          "endMs": 251813
         }
       ]
     },
     {
-      "startMs": 251814,
-      "endMs": 256002,
+      "startMs": 251813,
+      "endMs": 256124,
       "words": [
         {
-          "word": "风格统一",
-          "startMs": 251814,
-          "endMs": 252307
+          "word": "风格统一、",
+          "startMs": 251813,
+          "endMs": 252306
         },
         {
-          "word": "能编程",
-          "startMs": 252307,
-          "endMs": 252676
+          "word": "能编程、",
+          "startMs": 252306,
+          "endMs": 252675
         },
         {
-          "word": "渲一次到处用",
-          "startMs": 252676,
-          "endMs": 253415
+          "word": "渲一次到处用，",
+          "startMs": 252675,
+          "endMs": 253414
         },
         {
-          "word": "还不踩恐怖谷",
-          "startMs": 253415,
-          "endMs": 254154
+          "word": "还不踩恐怖谷。",
+          "startMs": 253414,
+          "endMs": 254153
         },
         {
-          "word": "劣势是要建模与动作绑定",
-          "startMs": 254154,
-          "endMs": 255510
+          "word": "劣势是要建模与动作绑定，",
+          "startMs": 254153,
+          "endMs": 255509
         },
         {
-          "word": "但可",
-          "startMs": 255510,
-          "endMs": 255756
+          "word": "但可以",
+          "startMs": 255509,
+          "endMs": 255878
         },
         {
-          "word": "以交",
-          "startMs": 255756,
-          "endMs": 256002
+          "word": "交给",
+          "startMs": 255878,
+          "endMs": 256124
         }
       ]
     },
     {
-      "startMs": 256002,
+      "startMs": 256124,
       "endMs": 257000,
       "words": [
         {
-          "word": "给 AI",
-          "startMs": 256002,
-          "endMs": 256371
+          "word": "AI 和",
+          "startMs": 256124,
+          "endMs": 256493
         },
         {
-          "word": "和现成方案",
-          "startMs": 256371,
+          "word": "现成方案。",
+          "startMs": 256493,
           "endMs": 257000
         }
       ]
@@ -2112,27 +2227,27 @@
       "endMs": 264620,
       "words": [
         {
-          "word": "优劣摆全",
+          "word": "优劣摆全，",
           "startMs": 257000,
           "endMs": 257983
         },
         {
-          "word": "再拿约束去卡",
+          "word": "再拿约束去卡—",
           "startMs": 257983,
           "endMs": 259458
         },
         {
-          "word": "不露脸",
+          "word": "不露脸、",
           "startMs": 259458,
           "endMs": 260195
         },
         {
-          "word": "要能编程批量复用",
+          "word": "要能编程批量复用、",
           "startMs": 260195,
           "endMs": 262162
         },
         {
-          "word": "避开恐怖谷",
+          "word": "避开恐怖谷。",
           "startMs": 262162,
           "endMs": 263391
         },
@@ -2158,17 +2273,22 @@
           "endMs": 267816
         },
         {
-          "word": "并且定死一条",
+          "word": "，",
+          "startMs": 267816,
+          "endMs": 267816
+        },
+        {
+          "word": "并且定死一条：",
           "startMs": 267816,
           "endMs": 269291
         },
         {
-          "word": "只做陪衬",
+          "word": "只做陪衬，",
           "startMs": 269291,
           "endMs": 270274
         },
         {
-          "word": "坚决不做对口型",
+          "word": "坚决不做对口型。",
           "startMs": 270274,
           "endMs": 272000
         }
@@ -2179,32 +2299,32 @@
       "endMs": 280000,
       "words": [
         {
-          "word": "落地照样交给 AI",
+          "word": "落地照样交给 AI：",
           "startMs": 272000,
           "endMs": 274666
         },
         {
-          "word": "整体渲一次",
+          "word": "整体渲一次，",
           "startMs": 274666,
           "endMs": 276332
         },
         {
-          "word": "再按场景裁",
+          "word": "再按场景裁—",
           "startMs": 276332,
           "endMs": 277998
         },
         {
-          "word": "角落",
+          "word": "角落、",
           "startMs": 277998,
           "endMs": 278664
         },
         {
-          "word": "半身",
+          "word": "半身、",
           "startMs": 278664,
           "endMs": 279330
         },
         {
-          "word": "全身",
+          "word": "全身。",
           "startMs": 279330,
           "endMs": 280000
         }
@@ -2212,98 +2332,108 @@
     },
     {
       "startMs": 280000,
-      "endMs": 286473,
+      "endMs": 286854,
       "words": [
         {
-          "word": "引擎跑通了",
+          "word": "引擎跑通了，",
           "startMs": 280000,
           "endMs": 280952
         },
         {
-          "word": "更值钱的判断是",
+          "word": "更值钱的判断是：",
           "startMs": 280952,
           "endMs": 282285
         },
         {
-          "word": "什么场景该用它",
+          "word": "什么场景该用它？",
           "startMs": 282285,
           "endMs": 283618
         },
         {
-          "word": "让它独占整屏",
+          "word": "让它独占整屏、",
           "startMs": 283618,
           "endMs": 284760
         },
         {
-          "word": "纯模板自动出片",
+          "word": "纯模板自动出片，",
           "startMs": 284760,
           "endMs": 286093
         },
         {
-          "word": "适合",
+          "word": "适合的",
           "startMs": 286093,
-          "endMs": 286473
+          "endMs": 286664
+        },
+        {
+          "word": "是",
+          "startMs": 286664,
+          "endMs": 286854
         }
       ]
     },
     {
-      "startMs": 286473,
-      "endMs": 292563,
+      "startMs": 286854,
+      "endMs": 293514,
       "words": [
         {
-          "word": "的是那种换数据",
-          "startMs": 286473,
-          "endMs": 287806
+          "word": "那种换数据就",
+          "startMs": 286854,
+          "endMs": 287996
         },
         {
-          "word": "就能批量复",
-          "startMs": 287806,
-          "endMs": 288758
+          "word": "能批量复用",
+          "startMs": 287996,
+          "endMs": 288948
         },
         {
-          "word": "用的内容",
-          "startMs": 288758,
-          "endMs": 289519
+          "word": "的",
+          "startMs": 288948,
+          "endMs": 289138
         },
         {
-          "word": "概念讲解",
-          "startMs": 289519,
-          "endMs": 290280
+          "word": "内容—",
+          "startMs": 289138,
+          "endMs": 289518
         },
         {
-          "word": "要点流程",
-          "startMs": 290280,
-          "endMs": 291041
+          "word": "概念讲解、",
+          "startMs": 289518,
+          "endMs": 290279
         },
         {
-          "word": "图表对比",
-          "startMs": 291041,
-          "endMs": 291802
+          "word": "要点流程、",
+          "startMs": 290279,
+          "endMs": 291040
         },
         {
-          "word": "开场收尾",
-          "startMs": 291802,
-          "endMs": 292563
+          "word": "图表对比、",
+          "startMs": 291040,
+          "endMs": 291801
+        },
+        {
+          "word": "开场收尾。",
+          "startMs": 291801,
+          "endMs": 292562
+        },
+        {
+          "word": "命令和报错，",
+          "startMs": 292562,
+          "endMs": 293514
         }
       ]
     },
     {
-      "startMs": 292563,
+      "startMs": 293514,
       "endMs": 296000,
       "words": [
         {
-          "word": "命令和报错",
-          "startMs": 292563,
-          "endMs": 293515
+          "word": "用合成终端兜底，",
+          "startMs": 293514,
+          "endMs": 294847
         },
         {
-          "word": "用合成终端兜底",
-          "startMs": 293515,
-          "endMs": 294848
-        },
-        {
-          "word": "不用真去录屏",
-          "startMs": 294848,
+          "word": "不用真去录屏。",
+          "startMs": 294847,
           "endMs": 296000
         }
       ]
@@ -2313,27 +2443,27 @@
       "endMs": 303752,
       "words": [
         {
-          "word": "第二种",
+          "word": "第二种，",
           "startMs": 296000,
           "endMs": 296646
         },
         {
-          "word": "搭配着用",
+          "word": "搭配着用。",
           "startMs": 296646,
           "endMs": 297507
         },
         {
-          "word": "主体是真人口播",
+          "word": "主体是真人口播、",
           "startMs": 297507,
           "endMs": 299014
         },
         {
-          "word": "或者真实录屏的时候",
+          "word": "或者真实录屏的时候，",
           "startMs": 299014,
           "endMs": 300952
         },
         {
-          "word": "Remotion 别独占整屏",
+          "word": "Remotion 别独占整屏，",
           "startMs": 300952,
           "endMs": 303752
         }
@@ -2344,33 +2474,38 @@
       "endMs": 310000,
       "words": [
         {
-          "word": "把它渲成透明背景",
+          "word": "把",
           "startMs": 303752,
-          "endMs": 305475
+          "endMs": 303967
         },
         {
-          "word": "的悬浮叠层贴上去",
-          "startMs": 305475,
-          "endMs": 307198
+          "word": "它渲成透明背景的",
+          "startMs": 303967,
+          "endMs": 305690
         },
         {
-          "word": "数据卡",
-          "startMs": 307198,
-          "endMs": 307844
+          "word": "悬浮叠层贴上去—",
+          "startMs": 305690,
+          "endMs": 307197
         },
         {
-          "word": "字幕高亮",
-          "startMs": 307844,
-          "endMs": 308705
+          "word": "数据卡、",
+          "startMs": 307197,
+          "endMs": 307843
         },
         {
-          "word": "局部标注",
-          "startMs": 308705,
-          "endMs": 309566
+          "word": "字幕高亮、",
+          "startMs": 307843,
+          "endMs": 308704
         },
         {
-          "word": "都行",
-          "startMs": 309566,
+          "word": "局部标注，",
+          "startMs": 308704,
+          "endMs": 309565
+        },
+        {
+          "word": "都行。",
+          "startMs": 309565,
           "endMs": 310000
         }
       ]
@@ -2380,32 +2515,32 @@
       "endMs": 317321,
       "words": [
         {
-          "word": "还有三类",
+          "word": "还有三类，",
           "startMs": 310000,
           "endMs": 310861
         },
         {
-          "word": "别硬上",
+          "word": "别硬上。",
           "startMs": 310861,
           "endMs": 311507
         },
         {
-          "word": "真实的物理世界",
+          "word": "真实的物理世界，",
           "startMs": 311507,
           "endMs": 313014
         },
         {
-          "word": "该拍就拍",
+          "word": "该拍就拍。",
           "startMs": 313014,
           "endMs": 313875
         },
         {
-          "word": "写实对口型数字人",
+          "word": "写实对口型数字人，",
           "startMs": 313875,
           "endMs": 315598
         },
         {
-          "word": "恐怖谷加可信度崩",
+          "word": "恐怖谷加可信度崩，",
           "startMs": 315598,
           "endMs": 317321
         }
@@ -2416,28 +2551,28 @@
       "endMs": 324000,
       "words": [
         {
-          "word": "这项目直接排除",
+          "word": "这项目直接排除。",
           "startMs": 317321,
           "endMs": 318828
         },
         {
-          "word": "影视级特效和超长批处理",
+          "word": "影视级特效和超长批处理，",
           "startMs": 318828,
           "endMs": 321197
         },
         {
-          "word": "交",
+          "word": "交给",
           "startMs": 321197,
-          "endMs": 321412
+          "endMs": 321627
         },
         {
-          "word": "给专业工具",
-          "startMs": 321412,
-          "endMs": 322488
+          "word": "专业工具和",
+          "startMs": 321627,
+          "endMs": 322703
         },
         {
-          "word": "和 FFmpeg",
-          "startMs": 322488,
+          "word": "FFmpeg。",
+          "startMs": 322703,
           "endMs": 324000
         }
       ]
@@ -2447,27 +2582,27 @@
       "endMs": 332000,
       "words": [
         {
-          "word": "一句口诀",
+          "word": "一句口诀：",
           "startMs": 324000,
           "endMs": 325103
         },
         {
-          "word": "主体是真实画面",
+          "word": "主体是真实画面，",
           "startMs": 325103,
           "endMs": 327034
         },
         {
-          "word": "就退居叠层",
+          "word": "就退居叠层；",
           "startMs": 327034,
           "endMs": 328413
         },
         {
-          "word": "主体是讲解和数据",
+          "word": "主体是讲解和数据，",
           "startMs": 328413,
           "endMs": 330619
         },
         {
-          "word": "就独占整屏",
+          "word": "就独占整屏。",
           "startMs": 330619,
           "endMs": 332000
         }
@@ -2478,32 +2613,37 @@
       "endMs": 335883,
       "words": [
         {
-          "word": "回顾一下",
+          "word": "回顾一下，",
           "startMs": 332000,
           "endMs": 332457
         },
         {
-          "word": "整期就三步",
+          "word": "整期就三步：",
           "startMs": 332457,
           "endMs": 333028
         },
         {
-          "word": "让 AI",
+          "word": "让",
           "startMs": 333028,
-          "endMs": 333370
+          "endMs": 333142
         },
         {
-          "word": "把技术路径全列出来",
-          "startMs": 333370,
+          "word": "AI 把",
+          "startMs": 333142,
+          "endMs": 333484
+        },
+        {
+          "word": "技术路径全列出来，",
+          "startMs": 333484,
           "endMs": 334398
         },
         {
-          "word": "你做全方位对比",
+          "word": "你做全方位对比、",
           "startMs": 334398,
           "endMs": 335198
         },
         {
-          "word": "结合约束选型",
+          "word": "结合约束选型，",
           "startMs": 335198,
           "endMs": 335883
         }
@@ -2514,37 +2654,37 @@
       "endMs": 340000,
       "words": [
         {
-          "word": "再让 AI 填配置",
+          "word": "再让 AI 填配置、",
           "startMs": 335883,
           "endMs": 336683
         },
         {
-          "word": "套组件",
+          "word": "套组件、",
           "startMs": 336683,
           "endMs": 337025
         },
         {
-          "word": "自动出片",
+          "word": "自动出片。",
           "startMs": 337025,
           "endMs": 337482
         },
         {
-          "word": "这套流程不吃编程基础",
+          "word": "这套流程不吃编程基础—",
           "startMs": 337482,
           "endMs": 338624
         },
         {
-          "word": "会讲需求",
+          "word": "会讲需求、",
           "startMs": 338624,
           "endMs": 339081
         },
         {
-          "word": "会验收",
+          "word": "会验收，",
           "startMs": 339081,
           "endMs": 339423
         },
         {
-          "word": "你就能复制",
+          "word": "你就能复制。",
           "startMs": 339423,
           "endMs": 340000
         }
@@ -2555,32 +2695,32 @@
       "endMs": 343410,
       "words": [
         {
-          "word": "这个频道就一条原则",
+          "word": "这个频道就一条原则：",
           "startMs": 340000,
           "endMs": 341137
         },
         {
-          "word": "不吹 AI",
+          "word": "不吹 AI，",
           "startMs": 341137,
           "endMs": 341642
         },
         {
-          "word": "真落地",
+          "word": "真落地，",
           "startMs": 341642,
           "endMs": 342021
         },
         {
-          "word": "真开源",
+          "word": "真开源。",
           "startMs": 342021,
           "endMs": 342400
         },
         {
-          "word": "觉得有用",
+          "word": "觉得有用，",
           "startMs": 342400,
           "endMs": 342905
         },
         {
-          "word": "点个关注",
+          "word": "点个关注。",
           "startMs": 342905,
           "endMs": 343410
         }
@@ -2591,18 +2731,23 @@
       "endMs": 347453,
       "words": [
         {
-          "word": "下期 EP03 讲字幕匹配",
+          "word": "下期 EP03 讲字幕匹配：",
           "startMs": 343410,
           "endMs": 344800
         },
         {
-          "word": "用 Whisper 拿",
+          "word": "用",
           "startMs": 344800,
-          "endMs": 345937
+          "endMs": 344926
         },
         {
-          "word": "到字级时间戳",
-          "startMs": 345937,
+          "word": "Whisper 拿到",
+          "startMs": 344926,
+          "endMs": 346063
+        },
+        {
+          "word": "字级时间戳，",
+          "startMs": 346063,
           "endMs": 346695
         },
         {
@@ -2622,23 +2767,28 @@
           "endMs": 348338
         },
         {
-          "word": "erlay",
+          "word": "erlay，",
           "startMs": 348338,
           "endMs": 348970
         },
         {
-          "word": "让字幕踩着话音",
+          "word": "让",
           "startMs": 348970,
-          "endMs": 349855
+          "endMs": 349096
         },
         {
-          "word": "一个字一个字往",
-          "startMs": 349855,
-          "endMs": 350740
+          "word": "字幕踩着话音一",
+          "startMs": 349096,
+          "endMs": 349981
         },
         {
-          "word": "外蹦",
-          "startMs": 350740,
+          "word": "个字一个字往外",
+          "startMs": 349981,
+          "endMs": 350866
+        },
+        {
+          "word": "蹦。",
+          "startMs": 350866,
           "endMs": 351000
         }
       ]
