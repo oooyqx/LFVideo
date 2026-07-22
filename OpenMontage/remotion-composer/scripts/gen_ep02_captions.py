@@ -97,7 +97,7 @@ def split_to_words(text: str) -> list[str]:
 # ---------------------------------------------------------------------------
 # Build captions from voice_slice + shot timing
 # ---------------------------------------------------------------------------
-MAX_CHARS_PER_PAGE = 40  # 20 chars × 2 lines (matches CaptionOverlay maxCharsCjk * maxLines)
+MAX_CHARS_PER_PAGE = 30  # 30 chars × 1 line (matches CaptionOverlay maxCharsCjk=30, maxLines=1)
 
 def build_captions(sections: list) -> list:
     """Build paged captions from sections, splitting long voice_slices into multiple pages."""

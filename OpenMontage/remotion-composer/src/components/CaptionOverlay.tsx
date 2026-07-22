@@ -217,14 +217,14 @@ const PageRenderer: React.FC<{
       style={{
         justifyContent: "flex-end",
         alignItems: "center",
-        paddingBottom: 80,
+        paddingBottom: 40,
       }}
     >
       <div
         style={{
           opacity: wrapperOpacity,
           transform: wrapperTransform,
-          maxWidth: "80%",
+          maxWidth: "90%",
           textAlign: "center",
         }}
       >        {animation === "scramble" ? (
@@ -234,7 +234,8 @@ const PageRenderer: React.FC<{
               fontWeight: 700,
               fontFamily,
               lineHeight: 1.4,
-              whiteSpace: "pre-wrap",
+              whiteSpace: "nowrap",
+              letterSpacing: "0.08em",
               color: "#FFFFFF",
               textShadow: `0 0 16px rgba(167,139,250,0.6), 0 0 32px rgba(167,139,250,0.35), 0 2px 6px rgba(0,0,0,0.6), 1px 0 0 #C4B5FD, -1px 0 0 #C4B5FD, 0 1px 0 #C4B5FD, 0 -1px 0 #C4B5FD`,
             }}
@@ -258,6 +259,8 @@ const PageRenderer: React.FC<{
               fontWeight: 700,
               fontFamily,
               lineHeight: 1.4,
+              whiteSpace: "nowrap",
+              letterSpacing: "0.08em",
               color: "#FFFFFF",
             }}
           />
@@ -268,7 +271,8 @@ const PageRenderer: React.FC<{
               fontWeight: 700,
               fontFamily,
               lineHeight: 1.4,
-              whiteSpace: "pre-wrap",
+              whiteSpace: "nowrap",
+              letterSpacing: "0.08em",
               color: "#FFFFFF",
               textShadow: `0 0 16px rgba(167,139,250,0.6), 0 0 32px rgba(167,139,250,0.35), 0 2px 6px rgba(0,0,0,0.6), 1px 0 0 #C4B5FD, -1px 0 0 #C4B5FD, 0 1px 0 #C4B5FD, 0 -1px 0 #C4B5FD`,
             }}
@@ -303,7 +307,7 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({
   words,
   wordsPerPage = 6,
   maxCharsLatin = 42,
-  maxCharsCjk = 20,
+  maxCharsCjk = 30,
   pauseThresholdMs = 500,
   maxDurationMs = 6000,
   minDurationMs = 1200,
@@ -326,7 +330,7 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({
         pauseThresholdMs,
         maxDurationMs,
         minDurationMs,
-        maxLines: 2,
+        maxLines: 1,
       });
 
   return (
