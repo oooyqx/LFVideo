@@ -307,7 +307,7 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({
   words,
   wordsPerPage = 6,
   maxCharsLatin = 42,
-  maxCharsCjk = 40,
+  maxCharsCjk = 36,
   pauseThresholdMs = 500,
   maxDurationMs = 6000,
   minDurationMs = 1200,
