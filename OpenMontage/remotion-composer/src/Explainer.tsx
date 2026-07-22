@@ -269,6 +269,8 @@ export interface ExplainerProps {
   overlays?: Overlay[];
   // Pre-paged pages (07 generator output) or legacy flat WordCaption[].
   captions?: CaptionsInput;
+  // Caption entrance animation: 'spring' (default) | 'scramble' | 'rgb-tear'.
+  captionAnimation?: 'spring' | 'scramble' | 'rgb-tear';
   audio?: AudioConfig;
   avatar?: AvatarConfig;
   /** Live Unity WebGL build rendered as the bottom-most background layer. */
@@ -855,7 +857,7 @@ const OverlayRenderer: React.FC<{ overlay: Overlay }> = ({ overlay }) => {
 // ---------------------------------------------------------------------------
 
 export const Explainer: React.FC<ExplainerProps> = (props) => {
-  const { cuts, overlays, captions, audio, avatar, unityBackground } = props;
+  const { cuts, overlays, captions, captionAnimation, audio, avatar, unityBackground } = props;
   // Lip-sync consumes flat word timings; flatten pre-paged captions.
   const captionWords: WordCaption[] | undefined =
     captions && isPagedCaptions(captions)
@@ -1085,6 +1087,7 @@ export const Explainer: React.FC<ExplainerProps> = (props) => {
         fontSize={42}
         highlightColor={theme.captionHighlightColor}
         backgroundColor={theme.captionBackgroundColor}
+        animation={captionAnimation}
       />
     ) : null;
 

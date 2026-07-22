@@ -1,6 +1,7 @@
 import { Composition, CalculateMetadataFunction } from "remotion";
 import { Explainer, ExplainerProps } from "./Explainer";
 import { BackgroundShowcase, SHOWCASE_FRAMES } from "./BackgroundShowcase";
+import { CaptionShowcase, CAPTION_SHOWCASE_FRAMES } from "./CaptionShowcase";
 import ep02ShotsProps from "../public/demo-props/ep02-shots.json";
 
 // ---------------------------------------------------------------------------
@@ -132,6 +133,7 @@ export const Root: React.FC = () => {
           cuts: [],
           overlays: [],
           captions: [],
+          captionAnimation: "scramble",
           audio: {},
         }}
         calculateMetadata={calculateMetadata}
@@ -150,6 +152,14 @@ export const Root: React.FC = () => {
         id="BackgroundShowcase"
         component={BackgroundShowcase}
         durationInFrames={SHOWCASE_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="CaptionShowcase"
+        component={CaptionShowcase}
+        durationInFrames={CAPTION_SHOWCASE_FRAMES}
         fps={30}
         width={1920}
         height={1080}

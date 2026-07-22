@@ -6,6 +6,12 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import {
+  Scramble,
+  RGBTearText,
+  clamp01,
+  easeOutCubic,
+} from "../custom-templates/primitives/textfx-utils";
 
 // Word-level caption for TikTok-style highlight display
 export interface WordCaption {
@@ -29,6 +35,9 @@ export function isPagedCaptions(items: CaptionsInput): items is CaptionPageInput
   return items.length > 0 && Array.isArray((items[0] as CaptionPageInput).words);
 }
 
+/** Caption entrance animation mode. */
+export type CaptionAnimation = "spring" | "scramble" | "rgb-tear";
+
 interface CaptionOverlayProps {
   words: CaptionsInput;
   // Hard cap on words per page (Latin scripts); CJK is governed by chars.
@@ -47,6 +56,8 @@ interface CaptionOverlayProps {
   highlightColor?: string;
   backgroundColor?: string;
   fontFamily?: string;
+  // Entrance animation mode: 'spring' (default) | 'scramble' | 'rgb-tear'.
+  animation?: CaptionAnimation;
 }
 
 interface CaptionPage {
@@ -167,7 +178,8 @@ const PageRenderer: React.FC<{
   highlightColor: string;
   backgroundColor: string;
   fontFamily: string;
-}> = ({ page, fontSize, color, highlightColor, backgroundColor, fontFamily }) => {
+  animation: CaptionAnimation;
+}> = ({ page, fontSize, color, highlightColor, backgroundColor, fontFamily, animation }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -176,12 +188,29 @@ const PageRenderer: React.FC<{
   const cjk = isCJKText(page.words.map((w) => w.word).join(""));
   const wordSep = cjk ? "" : " ";
 
-  // Spring entrance
+  // Entrance progress (0→1) over first ~15 frames
+  const entranceFrames = 15;
+  const entranceProgress = easeOutCubic(clamp01(frame / entranceFrames));
+
+  // Spring entrance (default)
   const entrance = spring({
     frame,
     fps,
     config: { damping: 18, stiffness: 120 },
   });
+
+  // Build the text content for glitch modes
+  const pageText = page.words.map((w) => w.word.trim()).join(wordSep);
+
+  // Wrapper style varies by animation mode
+  const wrapperOpacity =
+    animation === "scramble" ? Math.min(1, entranceProgress * 2)
+    : animation === "rgb-tear" ? Math.min(1, entranceProgress * 3)
+    : entrance;
+  const wrapperTransform =
+    animation === "spring"
+      ? `translateY(${interpolate(entrance, [0, 1], [20, 0])}px)`
+      : undefined;
 
   return (
     <AbsoluteFill
@@ -193,44 +222,78 @@ const PageRenderer: React.FC<{
     >
       <div
         style={{
-          opacity: entrance,
-          transform: `translateY(${interpolate(entrance, [0, 1], [20, 0])}px)`,
-          backgroundColor,
-          borderRadius: 12,
-          padding: "14px 28px",
+          opacity: wrapperOpacity,
+          transform: wrapperTransform,
           maxWidth: "80%",
           textAlign: "center",
         }}
-      >
-        <span
-          style={{
-            fontSize,
-            fontWeight: 700,
-            fontFamily,
-            lineHeight: 1.4,
-            whiteSpace: "pre-wrap",
-          }}
-        >
-          {page.words.map((w, i) => {
-            const isActive = w.startMs <= currentMs && w.endMs > currentMs;
-            const isPast = w.endMs <= currentMs;
-            return (
-              <span
-                key={`${w.startMs}-${i}`}
-                style={{
-                  color: isActive ? highlightColor : isPast ? color : `${color}99`,
-                  transition: "none", // CSS transitions forbidden in Remotion
-                  textShadow: isActive
-                    ? `0 0 20px ${highlightColor}66, 0 2px 4px rgba(0,0,0,0.5)`
-                    : "0 2px 4px rgba(0,0,0,0.5)",
-                }}
-              >
-                {stripEdgePunct(w.word, i === 0, i === page.words.length - 1)}
-                {i < page.words.length - 1 ? wordSep : ""}
-              </span>
-            );
-          })}
-        </span>
+      >        {animation === "scramble" ? (
+          <span
+            style={{
+              fontSize,
+              fontWeight: 700,
+              fontFamily,
+              lineHeight: 1.4,
+              whiteSpace: "pre-wrap",
+              color: "#FFFFFF",
+              textShadow: `0 0 16px rgba(167,139,250,0.6), 0 0 32px rgba(167,139,250,0.35), 0 2px 6px rgba(0,0,0,0.6), 1px 0 0 #C4B5FD, -1px 0 0 #C4B5FD, 0 1px 0 #C4B5FD, 0 -1px 0 #C4B5FD`,
+            }}
+          >
+            <Scramble
+              text={pageText}
+              progress={entranceProgress}
+              frame={frame}
+              seed={page.startMs}
+              scrambleColor={highlightColor}
+            />
+          </span>
+        ) : animation === "rgb-tear" ? (
+          <RGBTearText
+            text={pageText}
+            progress={entranceProgress}
+            frame={frame}
+            seed={page.startMs}
+            style={{
+              fontSize,
+              fontWeight: 700,
+              fontFamily,
+              lineHeight: 1.4,
+              color: "#FFFFFF",
+            }}
+          />
+        ) : (
+          <span
+            style={{
+              fontSize,
+              fontWeight: 700,
+              fontFamily,
+              lineHeight: 1.4,
+              whiteSpace: "pre-wrap",
+              color: "#FFFFFF",
+              textShadow: `0 0 16px rgba(167,139,250,0.6), 0 0 32px rgba(167,139,250,0.35), 0 2px 6px rgba(0,0,0,0.6), 1px 0 0 #C4B5FD, -1px 0 0 #C4B5FD, 0 1px 0 #C4B5FD, 0 -1px 0 #C4B5FD`,
+            }}
+          >
+            {page.words.map((w, i) => {
+              const isActive = w.startMs <= currentMs && w.endMs > currentMs;
+              const isPast = w.endMs <= currentMs;
+              return (
+                <span
+                  key={`${w.startMs}-${i}`}
+                  style={{
+                    color: isActive ? "#FFFFFF" : isPast ? "#FFFFFF" : "rgba(255,255,255,0.6)",
+                    transition: "none",
+                    textShadow: isActive
+                      ? `0 0 20px rgba(167,139,250,0.7), 0 0 40px rgba(167,139,250,0.4), 0 2px 6px rgba(0,0,0,0.6), 1px 0 0 #C4B5FD, -1px 0 0 #C4B5FD, 0 1px 0 #C4B5FD, 0 -1px 0 #C4B5FD`
+                      : `0 0 12px rgba(167,139,250,0.3), 0 2px 6px rgba(0,0,0,0.6), 1px 0 0 #C4B5FD, -1px 0 0 #C4B5FD, 0 1px 0 #C4B5FD, 0 -1px 0 #C4B5FD`,
+                  }}
+                >
+                  {stripEdgePunct(w.word, i === 0, i === page.words.length - 1)}
+                  {i < page.words.length - 1 ? wordSep : ""}
+                </span>
+              );
+            })}
+          </span>
+        )}
       </div>
     </AbsoluteFill>
   );
@@ -247,8 +310,9 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({
   fontSize = 42,
   color = "#F8FAFC",
   highlightColor = "#22D3EE",
-  backgroundColor = "rgba(15, 23, 42, 0.75)",
+  backgroundColor = "transparent",
   fontFamily = "Space Grotesk, Inter, system-ui, sans-serif",
+  animation = "spring",
 }) => {
   const { fps } = useVideoConfig();
   // Pre-paged captions (from the 07 props generator) render as-is; the legacy
@@ -276,7 +340,13 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({
         );
 
         return (
-          <Sequence key={i} from={fromFrame} durationInFrames={duration}>
+          <Sequence
+            key={i}
+            from={fromFrame}
+            durationInFrames={duration}
+            style={{
+              translate: "54.7px -60.8px"
+            }}>
             <PageRenderer
               page={page}
               fontSize={fontSize}
@@ -284,6 +354,7 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({
               highlightColor={highlightColor}
               backgroundColor={backgroundColor}
               fontFamily={fontFamily}
+              animation={animation}
             />
           </Sequence>
         );

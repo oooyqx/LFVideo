@@ -87,6 +87,36 @@ export const Scramble: React.FC<{
 	);
 };
 
+// ---- RGB Tear / Chromatic Aberration (effect #95) ----
+// Renders text with red/cyan textShadow offset + horizontal jitter that
+// decreases as entrance progresses.  Use `progress` 0→1 for entrance,
+// 1→0 for exit.
+export const RGBTearText: React.FC<{
+	text: string;
+	progress: number;
+	frame: number;
+	seed?: number;
+	style?: React.CSSProperties;
+}> = ({text, progress, frame, seed = 1, style}) => {
+	const p = clamp01(progress);
+	const o = (1 - p) * 18 + (rand2(Math.floor(frame / 2), seed) - 0.5) * (1 - p) * 30;
+	const sx = (rand2(Math.floor(frame / 3), seed + 1) - 0.5) * (1 - p) * 30;
+	return (
+		<span
+			style={{
+				display: 'inline-block',
+				whiteSpace: 'pre-wrap',
+				opacity: Math.min(1, p * 3),
+				transform: `translateX(${sx}px)`,
+				textShadow: `${o}px 0 #ff003c, ${-o}px 0 #00f0ff`,
+				...style,
+			}}
+		>
+			{text}
+		</span>
+	);
+};
+
 // ---- PerChar component for per-character animation ----
 export const PerChar: React.FC<{
 	text: string;
