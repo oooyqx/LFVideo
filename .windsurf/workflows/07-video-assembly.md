@@ -54,7 +54,9 @@ OpenMontage/remotion-composer/
 
 把 04 SSOT 映射成 `Explainer` 可读的 `cuts[]` props，写入 `OpenMontage/remotion-composer/public/demo-props/<slug>.json`：
 
-**推荐方式**：在 `content-library/<epNN-slug>/07-assembly/` 下创建 `build_props.py`，只配置本期路径/avatar/unity 背景/shot overrides，调用 `OpenMontage/tools/props_builder.py` 引擎生成 props JSON。引擎逻辑（scene_template 映射、SSOT 解析、TTS manifest 读取、字幕分页）跨期复用，每期脚本只管本期配置。
+**标准方式**：在 `content-library/<epNN-slug>/07-assembly/` 下创建 `build_props.py`，只配置本期路径/avatar/unity 背景/shot overrides，调用 `OpenMontage/tools/props_builder.py` 引擎生成 props JSON。引擎逻辑（scene_template 映射、SSOT 解析、TTS manifest 读取、字幕分页）跨期复用，每期脚本只管本期配置。
+
+> 参考模板：`content-library/ep02-video-render/07-assembly/build_props.py`——复制后改路径和配置即可，不用动引擎。
 
 ```python
 # content-library/<epNN-slug>/07-assembly/build_props.py 示例
@@ -71,7 +73,7 @@ config = EpisodeConfig(
 build_props(config)
 ```
 
-也可直接手写 JSON，但推荐用生成器以减少手动错误。
+> 如确需直接手写 JSON（如本期无 TTS、结构极简），须确保 `cuts[]` / `captions[]` 格式与 `props_builder.py` 输出一致，否则 CaptionOverlay 和 Explainer 可能渲染异常。
 
 无论用哪种方式，均须遵守以下映射规则：
 - 读取 `04-script/README.md` 末尾的 JSON 契约块——**它是唯一真源（SSOT）**。
