@@ -140,8 +140,8 @@ class PaginationOptions:
 
     max_words: int = 8  # Latin scripts only; CJK is governed by chars
     max_chars: int = 42  # per line, Latin
-    max_chars_cjk: int = 20  # per line, CJK
-    max_lines: int = 2
+    max_chars_cjk: int = 36  # per line, CJK
+    max_lines: int = 1
     pause_threshold_s: float = 0.5
     max_duration_s: float = 6.0
     min_duration_s: float = 1.2

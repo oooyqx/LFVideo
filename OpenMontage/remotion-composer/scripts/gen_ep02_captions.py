@@ -4,21 +4,39 @@
 Reads the JSON contract from 04-script/README.md, builds cuts + captions,
 and writes the preview props JSON for Remotion Studio.
 
+Caption chunking, pagination, and punctuation stripping are delegated to
+``tools/subtitle/segmentation.py`` (the single source of truth), so the
+preview pipeline and the production pipeline (build_ep02_shots_props.py)
+share identical segmentation rules.
+
 Usage:
     python scripts/gen_ep02_captions.py
 """
 
 import json
 import re
-import os
+import sys
 from pathlib import Path
+
+# Add OpenMontage/ to sys.path so we can import tools.subtitle.segmentation
+OPEN_MONTAGE = Path(__file__).resolve().parent.parent.parent  # OpenMontage/
+sys.path.insert(0, str(OPEN_MONTAGE))
+
+from tools.subtitle.segmentation import (
+    PaginationOptions,
+    chunk_text,
+    paginate,
+    speech_weight,
+    strip_leading_punct,
+    strip_trailing_punct,
+)
 
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent  # LFVideo root
+REPO_ROOT = OPEN_MONTAGE.parent  # LFVideo root
 SCRIPT_MD = REPO_ROOT / "content-library" / "ep02-video-render" / "04-script" / "README.md"
-OUTPUT_JSON = REPO_ROOT / "OpenMontage" / "remotion-composer" / "public" / "demo-props" / "ep02-shots.json"
+OUTPUT_JSON = OPEN_MONTAGE / "remotion-composer" / "public" / "demo-props" / "ep02-shots.json"
 
 # ---------------------------------------------------------------------------
 # Scene template → Remotion type mapping
@@ -37,63 +55,15 @@ TEMPLATE_TO_TYPE = {
 }
 
 # ---------------------------------------------------------------------------
-# CJK character counting (for proportional timing)
+# Build captions from voice_slice + shot timing (delegates to segmentation.py)
 # ---------------------------------------------------------------------------
-def cjk_char_count(text: str) -> int:
-    """Count CJK + ASCII chars (excluding whitespace/punctuation for timing)."""
-    count = 0
-    for ch in text:
-        if '\u4e00' <= ch <= '\u9fff':
-            count += 1
-        elif ch.isalnum():
-            count += 1
-    return count
-
-# ---------------------------------------------------------------------------
-# Split voice_slice into word-level segments
-# ---------------------------------------------------------------------------
-def split_to_words(text: str) -> list[str]:
-    """Split Chinese text into natural phrase segments, keeping punctuation attached."""
-    # Split after punctuation (keep the punctuation with the preceding segment)
-    parts = re.split(r'(?<=[，。、！？；：—])[，。、！？；：—]*', text)
-    parts = [p.strip() for p in parts if p.strip()]
-    
-    # Further split long segments at natural boundaries
-    result = []
-    for part in parts:
-        if len(part) > 12:
-            # Split at function words, keep the delimiter with the preceding chunk
-            sub_parts = re.split(r'(?<=[的是了在和与就也都还把让被给对从向为以到用把])', part)
-            sub_parts = [p.strip() for p in sub_parts if p.strip()]
-            if len(sub_parts) > 1:
-                result.extend(sub_parts)
-            else:
-                result.append(part)
-        else:
-            result.append(part)
-    
-    # If segments are still too long (>15 chars), split by char pairs
-    final = []
-    for seg in result:
-        if len(seg) > 15:
-            for i in range(0, len(seg), 7):
-                chunk = seg[i:i+7]
-                if chunk:
-                    final.append(chunk)
-        else:
-            final.append(seg)
-    
-    return final if final else [text]
-
-# ---------------------------------------------------------------------------
-# Build captions from voice_slice + shot timing
-# ---------------------------------------------------------------------------
-MAX_CHARS_PER_PAGE = 36  # 36 chars × 1 line (matches CaptionOverlay maxCharsCjk=36, maxLines=1)
+# Shared pagination options — same as production pipeline (build_ep02_shots_props.py)
+PAGINATION_OPTS = PaginationOptions(max_chars_cjk=36, max_lines=1)
 
 def build_captions(sections: list) -> list:
-    """Build paged captions from sections, splitting long voice_slices into multiple pages."""
+    """Build paged captions from sections using segmentation.py as SSOT."""
     captions = []
-    
+
     for sec in sections:
         sec_start_ms = int(sec["_abs_start_ms"])
         for shot in sec["shots"]:
@@ -102,50 +72,50 @@ def build_captions(sections: list) -> list:
             voice_slice = shot.get("voice_slice", "")
             if not voice_slice:
                 continue
-            
-            words = split_to_words(voice_slice)
-            total_chars = sum(cjk_char_count(w) for w in words)
-            if total_chars == 0:
+
+            # SSOT chunking: splits into clause-level chunks, keeps punctuation
+            chunks = chunk_text(voice_slice)
+            if not chunks:
                 continue
-            
-            duration_ms = shot_end_ms - shot_start_ms
-            
-            # Assign proportional timestamps to each word
-            word_captions = []
-            current_ms = shot_start_ms
-            for i, w in enumerate(words):
-                word_chars = cjk_char_count(w)
-                word_duration = int(duration_ms * word_chars / total_chars)
-                word_end = current_ms + word_duration if i < len(words) - 1 else shot_end_ms
-                word_captions.append({
-                    "word": w,
-                    "startMs": current_ms,
-                    "endMs": word_end,
-                })
-                current_ms = word_end
-            
-            # Split word_captions into pages by char limit
-            pages = []
-            buf = []
-            buf_chars = 0
-            for wc in word_captions:
-                wc_chars = cjk_char_count(wc["word"])
-                if buf and buf_chars + wc_chars > MAX_CHARS_PER_PAGE:
-                    pages.append(buf)
-                    buf = []
-                    buf_chars = 0
-                buf.append(wc)
-                buf_chars += wc_chars
-            if buf:
-                pages.append(buf)
-            
-            for page_words in pages:
+
+            # Assign proportional timestamps using speech_weight (SSOT)
+            total_weight = sum(speech_weight(c) for c in chunks)
+            if total_weight == 0:
+                continue
+
+            duration_s = (shot_end_ms - shot_start_ms) / 1000.0
+            shot_start_s = shot_start_ms / 1000.0
+
+            words = []
+            current_s = shot_start_s
+            for i, c in enumerate(chunks):
+                w = speech_weight(c)
+                chunk_dur = duration_s * w / total_weight if i < len(chunks) - 1 else (shot_end_ms / 1000.0 - current_s)
+                chunk_end = current_s + chunk_dur if i < len(chunks) - 1 else shot_end_ms / 1000.0
+                words.append({"word": c, "start": current_s, "end": chunk_end})
+                current_s = chunk_end
+
+            # SSOT pagination: groups words into pages by char/time budget
+            groups = paginate(words, PAGINATION_OPTS)
+
+            for group in groups:
+                page_words = [
+                    {
+                        "word": w["word"],
+                        "startMs": round(w["start"] * 1000),
+                        "endMs": round(w["end"] * 1000),
+                    }
+                    for w in group
+                ]
+                # Broadcast-subtitle convention: strip neutral stops at page edges
+                page_words[0]["word"] = strip_leading_punct(page_words[0]["word"])
+                page_words[-1]["word"] = strip_trailing_punct(page_words[-1]["word"])
                 captions.append({
-                    "startMs": page_words[0]["startMs"],
-                    "endMs": page_words[-1]["endMs"],
+                    "startMs": round(group[0]["start"] * 1000),
+                    "endMs": round(group[-1]["end"] * 1000),
                     "words": page_words,
                 })
-    
+
     return captions
 
 # ---------------------------------------------------------------------------
