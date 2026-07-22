@@ -97,8 +97,10 @@ def split_to_words(text: str) -> list[str]:
 # ---------------------------------------------------------------------------
 # Build captions from voice_slice + shot timing
 # ---------------------------------------------------------------------------
+MAX_CHARS_PER_PAGE = 40  # 20 chars × 2 lines (matches CaptionOverlay maxCharsCjk * maxLines)
+
 def build_captions(sections: list) -> list:
-    """Build paged captions from sections, each shot = one caption page."""
+    """Build paged captions from sections, splitting long voice_slices into multiple pages."""
     captions = []
     
     for sec in sections:
@@ -116,9 +118,10 @@ def build_captions(sections: list) -> list:
                 continue
             
             duration_ms = shot_end_ms - shot_start_ms
+            
+            # Assign proportional timestamps to each word
             word_captions = []
             current_ms = shot_start_ms
-            
             for i, w in enumerate(words):
                 word_chars = cjk_char_count(w)
                 word_duration = int(duration_ms * word_chars / total_chars)
@@ -130,11 +133,27 @@ def build_captions(sections: list) -> list:
                 })
                 current_ms = word_end
             
-            captions.append({
-                "startMs": shot_start_ms,
-                "endMs": shot_end_ms,
-                "words": word_captions,
-            })
+            # Split word_captions into pages by char limit
+            pages = []
+            buf = []
+            buf_chars = 0
+            for wc in word_captions:
+                wc_chars = cjk_char_count(wc["word"])
+                if buf and buf_chars + wc_chars > MAX_CHARS_PER_PAGE:
+                    pages.append(buf)
+                    buf = []
+                    buf_chars = 0
+                buf.append(wc)
+                buf_chars += wc_chars
+            if buf:
+                pages.append(buf)
+            
+            for page_words in pages:
+                captions.append({
+                    "startMs": page_words[0]["startMs"],
+                    "endMs": page_words[-1]["endMs"],
+                    "words": page_words,
+                })
     
     return captions
 
