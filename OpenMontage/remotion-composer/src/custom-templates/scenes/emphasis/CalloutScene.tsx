@@ -4,7 +4,6 @@ import {z} from 'zod';
 import {AutoFit} from '../../primitives';
 import {useTheme} from '../../theme/ThemeContext';
 import {withAlpha} from '../../theme/util';
-import {TechPanel} from '../../theme/surfaces';
 import {textStyles} from '../../theme/textStyles';
 import {Animated} from '../../animation';
 import {osc01, proportionalTiming} from '../../animation/presence';
@@ -62,12 +61,7 @@ export const CalloutScene: React.FC<CalloutProps> = ({
 			maxScale={1.45}
 		>
 			<Animated enter={enter} delay={auto.start} distance={70}>
-				<TechPanel
-					accent={color}
-					glow={glow}
-					borderAlpha={0.4}
-					fill={0.5}
-					blur={16}
+				<div
 					style={{
 						fontFamily: fonts.family,
 						display: 'flex',
@@ -77,6 +71,13 @@ export const CalloutScene: React.FC<CalloutProps> = ({
 						minWidth: 720,
 						maxWidth: 1320,
 						padding: `${SPACING.xl}px ${SPACING.xl}px`,
+						background: withAlpha(colors.bg.to, 0.5),
+						backdropFilter: 'blur(16px)',
+						WebkitBackdropFilter: 'blur(16px)',
+						borderRadius: theme.RADIUS.lg,
+						boxShadow: `0 18px 48px -16px rgba(0,0,0,${0.5 + 0.15 * glow}), inset 0 1px 0 ${withAlpha('#FFFFFF', 0.1)}, inset 0 0 10px ${withAlpha('#FFFFFF', 0.12 + 0.08 * glow)}, 0 0 ${26 * glow}px ${withAlpha(color, 0.18 * glow)}`,
+						position: 'relative',
+						overflow: 'hidden',
 					}}
 				>
 					<div
@@ -136,7 +137,7 @@ export const CalloutScene: React.FC<CalloutProps> = ({
 							</div>
 						)}
 					</div>
-				</TechPanel>
+				</div>
 			</Animated>
 		</AutoFit>
 	);

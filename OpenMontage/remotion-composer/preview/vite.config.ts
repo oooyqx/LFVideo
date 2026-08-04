@@ -11,7 +11,7 @@ export default defineConfig({
 	root: here,
 	base: './',
 	// 复用 Remotion 的 public/ 资源目录，使「最终效果」模式下 staticFile()
-	// 引用的 UnityBG.png、数字人 VRM/FBX 等资源能被预览服务器正确加载。
+	// 引用的 UnityBG.mp4、数字人 VRM/FBX 等资源能被预览服务器正确加载。
 	publicDir: resolve(here, '../public'),
 	plugins: [react()],
 	server: {

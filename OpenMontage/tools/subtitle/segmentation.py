@@ -1,7 +1,8 @@
 """Single source of truth for caption segmentation.
 
 Every consumer of caption text — the 06-tts builder (build_ep02_tts.py), the
-07 props generator (build_ep02_shots_props.py), and the SRT/VTT generator
+07 props generator (tools/props_builder.py, called from each episode's
+build_props.py), and the SRT/VTT generator
 (tools/subtitle/subtitle_gen.py) — takes its punctuation sets, clause chunking,
 speech-weight timing, and page grouping from this module. The Remotion
 CaptionOverlay renders the pre-paged captions the 07 generator emits and does
@@ -110,7 +111,12 @@ def chunk_text(text: str) -> list[str]:
     Chunks below MIN_CHUNK_CHARS visible characters are merged into the next
     chunk (or the previous one at end of sentence) so no caption unit flashes
     by as a two/three-character fragment.
+
+    If a chunk has no clause-ending punctuation but exceeds MAX_CHUNK_CHARS,
+    it is split at spaces (CJK-Latin boundaries) or hard-wrapped at
+    MAX_CHUNK_CHARS so no single caption unit overflows the page budget.
     """
+    MAX_CHUNK_CHARS = 18
     chunks: list[str] = []
     buf = ""
     for ch in text:
@@ -121,6 +127,33 @@ def chunk_text(text: str) -> list[str]:
     if buf.strip():
         chunks.append(buf)
     chunks = [c for c in chunks if c.strip()]
+
+    # Fallback: split long chunks without punctuation at spaces or by length
+    split_chunks: list[str] = []
+    for c in chunks:
+        if visible_len(c) <= MAX_CHUNK_CHARS:
+            split_chunks.append(c)
+            continue
+        # Try splitting at spaces first (CJK-Latin boundary)
+        parts = []
+        cur = ""
+        for ch in c:
+            cur += ch
+            if ch == " " and visible_len(cur) >= MIN_CHUNK_CHARS:
+                parts.append(cur)
+                cur = ""
+        if cur.strip():
+            parts.append(cur)
+        # If still no split or any part too long, hard-wrap at MAX_CHUNK_CHARS
+        final_parts = []
+        for p in parts:
+            while visible_len(p) > MAX_CHUNK_CHARS:
+                final_parts.append(p[:MAX_CHUNK_CHARS])
+                p = p[MAX_CHUNK_CHARS:]
+            if p.strip():
+                final_parts.append(p)
+        split_chunks.extend(final_parts if final_parts else [c])
+    chunks = split_chunks
 
     merged: list[str] = []
     for c in chunks:
@@ -140,8 +173,8 @@ class PaginationOptions:
 
     max_words: int = 8  # Latin scripts only; CJK is governed by chars
     max_chars: int = 42  # per line, Latin
-    max_chars_cjk: int = 20  # per line, CJK
-    max_lines: int = 2
+    max_chars_cjk: int = 36  # per line, CJK
+    max_lines: int = 1
     pause_threshold_s: float = 0.5
     max_duration_s: float = 6.0
     min_duration_s: float = 1.2

@@ -2,6 +2,7 @@ import React, {type CSSProperties} from 'react';
 import {staticFile} from 'remotion';
 import {withAlpha, lighten} from './util';
 import {GLOW} from './tokens';
+import {glowL4} from './textStyles';
 import {useTheme, type TemplateTheme} from './ThemeContext';
 
 // ───────────────────────────────────────────────────────────────────────────
@@ -202,6 +203,7 @@ export function techIconChip(
 			`0 4px 18px -2px ${withAlpha(color, 0.16)}`,
 			`0 0 ${GLOW.icon.blur}px ${withAlpha(color, GLOW.icon.alpha)}`,
 		].join(', '),
+		textShadow: glowL4(color),
 	};
 }
 
@@ -219,6 +221,7 @@ export function techPill(theme: TemplateTheme, color: string): CSSProperties {
 		border: `1.5px solid ${withAlpha(lighten(color, 0.3), 0.8)}`,
 		borderRadius: RADIUS.pill,
 		padding: `6px ${SPACING.md}px`,
+		textShadow: glowL4(color),
 	};
 }
 
@@ -246,7 +249,7 @@ export function holoTextShadow(
 	accent: string,
 	opts?: {blur?: number; alpha?: number},
 ): string {
-	const {blur = GLOW.text.blur, alpha = GLOW.text.alpha} = opts ?? {};
+	const {blur = GLOW.textL1.blur, alpha = GLOW.textL1.alpha} = opts ?? {};
 	return [
 		`0 0 ${blur}px ${withAlpha(accent, alpha)}`,
 		`0 0 ${blur * 2}px ${withAlpha(accent, alpha * 0.5)}`,

@@ -9,9 +9,13 @@ import {
 import {z} from 'zod';
 import {useTheme} from '../../theme/ThemeContext';
 import {withAlpha} from '../../theme/util';
-import {glowBlob, accentUnderline, holoTextShadow} from '../../theme/surfaces';
-import {textStyles} from '../../theme/textStyles';
+import {glowBlob, accentUnderline} from '../../theme/surfaces';
+import {textStyles, glowL2, extrudeShadow} from '../../theme/textStyles';
 import {osc01} from '../../animation/presence';
+import {ScanlineOverlay} from '../../background/Background';
+import {loadFont as loadMogra} from '@remotion/google-fonts/Mogra';
+
+const {fontFamily: mograFont} = loadMogra();
 
 export const quoteSchema = z.object({
 	text: z.string(),
@@ -42,7 +46,6 @@ export const QuoteScene: React.FC<QuoteProps> = ({text, attribution}) => {
 
 	const big = text.length <= 28;
 	const breath = osc01(frame, fps, 5);
-	const scanShift = (frame / fps / 6) % 1;
 
 	const chars = Array.from(text);
 	const charStart = Math.round(durationInFrames * 0.06);
@@ -67,23 +70,7 @@ export const QuoteScene: React.FC<QuoteProps> = ({text, attribution}) => {
 					intensity: 0.12 + breath * 0.08,
 				})}
 			/>
-			<div
-				style={{
-					position: 'absolute',
-					inset: 0,
-					zIndex: 0,
-					pointerEvents: 'none',
-					backgroundImage: `repeating-linear-gradient(0deg, ${withAlpha(
-						color,
-						0.05,
-					)} 0px, ${withAlpha(color, 0.05)} 1px, transparent 1px, transparent 4px)`,
-					backgroundPositionY: `${scanShift * 4}px`,
-					maskImage:
-						'radial-gradient(ellipse 70% 55% at 50% 45%, #000 0%, transparent 75%)',
-					WebkitMaskImage:
-						'radial-gradient(ellipse 70% 55% at 50% 45%, #000 0%, transparent 75%)',
-				}}
-			/>
+			<ScanlineOverlay color={color} />
 
 			<div
 				style={{
@@ -123,8 +110,10 @@ export const QuoteScene: React.FC<QuoteProps> = ({text, attribution}) => {
 					maxWidth: 1500,
 					lineHeight: 1.3,
 					color: '#ffffff',
+					fontFamily: mograFont,
+					letterSpacing: '0.02em',
 					transform: `translateY(${translateY}px)`,
-					textShadow: holoTextShadow(color, {blur: 24 + breath * 8, alpha: 0.6}),
+					textShadow: extrudeShadow(6, big ? FONT_SIZE.display : FONT_SIZE.title),
 					zIndex: 1,
 					display: 'flex',
 					flexWrap: 'wrap',
@@ -174,8 +163,10 @@ export const QuoteScene: React.FC<QuoteProps> = ({text, attribution}) => {
 							...t.bodyMuted,
 							fontSize: FONT_SIZE.subtitle,
 							fontWeight: 600,
+							color: '#FFFFFF',
+							fontFamily: mograFont,
 							letterSpacing: 1,
-							textShadow: holoTextShadow(color, {blur: 12, alpha: 0.3}),
+							textShadow: extrudeShadow(5, FONT_SIZE.subtitle),
 						}}
 					>
 						{attribution}

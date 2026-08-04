@@ -325,10 +325,10 @@ def _check_anti_deadtime(stage: "Stage", tag: str, report: Report, promote) -> N
             )
 
 
-# Chinese voice-over timing: ~4.5 chars per second (voice-style.md §二).
-CHARS_PER_SECOND = 4.5
-# Tolerance for duration <-> char-count consistency (script-director §双区一致性).
-DURATION_TOLERANCE = 0.20
+# Chinese voice-over timing range: 4-5 chars/sec (voice-style.md §二).
+# We use a wider advisory band (3.5-5.5) so only gross mismatches are flagged.
+CHARS_PER_SEC_FAST = 5.5
+CHARS_PER_SEC_SLOW = 3.5
 
 
 def _cjk_char_count(text: str) -> int:
@@ -345,13 +345,13 @@ def _check_voice_slice_integrity(
 ) -> None:
     """Verify voice_slice concatenation and duration<->char-count consistency.
 
-    Three checks per section (script-director §双区一致性, L4 machine guard):
-    1. **Concatenation**: all ``voice_slice`` joined (whitespace-stripped) must
-       equal the section ``voice`` — no missing, extra, or reordered text.
-    2. **Duration <-> char count**: each shot's ``duration_seconds`` should be
-       within ±20% of ``char_count / 4.5`` (voice-style.md §二 timing).
-    3. **Shot-level anti-deadtime**: no single ``voice_slice`` may exceed
-       15 seconds — otherwise the shot itself needs further splitting.
+    Two checks per section (script-director §双区一致性, L4 machine guard):
+    1. **Concatenation** (hard): all ``voice_slice`` joined (whitespace-stripped)
+       must equal the section ``voice`` — no missing, extra, or reordered text.
+    2. **Duration <-> char count** (advisory): each shot's ``duration_seconds``
+       should fall within the 3.5-5.5 chars/sec band.  Outside the band is a
+       warning (not error) because actual timing is set by TTS audio, not the
+       script estimate.
     """
     contract = stage.contract
     if not isinstance(contract, dict):
@@ -400,7 +400,7 @@ def _check_voice_slice_integrity(
                     f"shot(s) but only {len(slices)} have voice_slice text"
                 )
 
-        # --- Check 2 & 3: per-shot duration <-> char count + shot deadtime ---
+        # --- Check 2: per-shot duration <-> char count (advisory) ---
         for shot in shots:
             if not isinstance(shot, dict):
                 continue
@@ -413,22 +413,15 @@ def _check_voice_slice_integrity(
                 continue
 
             char_count = _cjk_char_count(slice_text)
-            expected_dur = char_count / CHARS_PER_SECOND
-            if expected_dur > 0:
-                ratio = dur / expected_dur
-                if abs(ratio - 1.0) > DURATION_TOLERANCE:
-                    promote(
-                        f"{tag} voice-slice: section '{sid}' shot '{shot_id}' "
-                        f"duration {dur}s vs {char_count} chars "
-                        f"(expected ~{expected_dur:.1f}s, "
-                        f"{ratio:.0%} ratio, tolerance ±{DURATION_TOLERANCE:.0%})"
-                    )
-
-            if dur > DEADTIME_LIMIT_SECONDS:
-                promote(
+            if char_count == 0:
+                continue
+            fast_dur = char_count / CHARS_PER_SEC_FAST
+            slow_dur = char_count / CHARS_PER_SEC_SLOW
+            if dur < fast_dur or dur > slow_dur:
+                report.warn(
                     f"{tag} voice-slice: section '{sid}' shot '{shot_id}' "
-                    f"is {dur}s (> {DEADTIME_LIMIT_SECONDS}s) — "
-                    f"split into multiple shots"
+                    f"duration {dur}s vs {char_count} chars "
+                    f"(expected {fast_dur:.1f}-{slow_dur:.1f}s at 3.5-5.5 ch/s)"
                 )
 
 

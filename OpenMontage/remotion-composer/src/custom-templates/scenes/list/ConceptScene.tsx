@@ -4,7 +4,7 @@ import {z} from 'zod';
 import {AutoFit} from '../../primitives';
 import {useTheme} from '../../theme/ThemeContext';
 import {TechPanel, techIconChip} from '../../theme/surfaces';
-import {textStyles} from '../../theme/textStyles';
+import {textStyles, glowL2} from '../../theme/textStyles';
 import {lighten} from '../../theme/util';
 import {Animated} from '../../animation';
 import {osc01, proportionalTiming} from '../../animation/presence';
@@ -68,7 +68,7 @@ const ItemCard: React.FC<{
 				display: 'flex',
 				alignItems: 'flex-start',
 				gap: GAP,
-				minWidth: [560, 0, 0][tier],
+				minWidth: [0, 0, 0][tier],
 				padding: `${PAD_Y}px ${PAD_X}px`,
 			}}
 		>
@@ -99,8 +99,8 @@ const ItemCard: React.FC<{
 				<div
 					style={{
 						...t.eyebrow,
-						color: lighten(color, 0.35),
-						textShadow: `0 0 12px ${color}60, 0 2px 6px rgba(0,0,0,0.8)`,
+						color: '#FFFFFF',
+						textShadow: glowL2(color),
 						marginBottom: SPACING.xs - 2,
 						opacity: 0.9,
 					}}
@@ -138,9 +138,9 @@ export const ConceptScene: React.FC<
 
 	// 密度分档（fit-to-fill + 方案 B）：条目多时换多列排布并配合字号/间距收紧，
 	// 而不是被 AutoFit 一味等比缩小到字很小。
-	// tier 0 (≤4 条)：单列、大字；tier 1 (5–9 条)：双列；tier 2 (>9 条)：三列、紧凑字。
-	const tier: 0 | 1 | 2 = items.length <= 4 ? 0 : items.length <= 9 ? 1 : 2;
-	const columns = [1, 2, 3][tier];
+	// tier 0 (≤3 条)：横向排列、大字；tier 1 (4–9 条)：双列；tier 2 (>9 条)：三列、紧凑字。
+	const tier: 0 | 1 | 2 = items.length <= 3 ? 0 : items.length <= 9 ? 1 : 2;
+	const columns = tier === 0 ? items.length : [1, 2, 3][tier];
 	const gridGap = [SPACING.md, SPACING.md, SPACING.sm][tier];
 
 	return (
@@ -155,8 +155,10 @@ export const ConceptScene: React.FC<
 					fontFamily: fonts.family,
 					display: 'grid',
 					gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
-					alignItems: 'start',
+					alignItems: 'stretch',
 					gap: gridGap,
+					marginTop: 80,
+					width: '100%',
 				}}
 			>
 				{items.map((item, i) => {

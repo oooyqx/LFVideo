@@ -1,0 +1,959 @@
+{
+  "episode": "ep03-scene-building",
+  "stage": "06-tts-synthesis",
+  "fps": 30,
+  "language": "zh-CN",
+  "provider": "doubao",
+  "voice": "zh_female_xiaohe_uranus_bigtts",
+  "provider_status": "synthesized",
+  "duration_source": "measured doubao segment durations (timing source of truth)",
+  "narration_audio": "audio/ep03-narration.mp3",
+  "total_duration_seconds": 283.968,
+  "shots": [
+    {
+      "id": "1.1",
+      "section_id": "1",
+      "voice_slice": "怎么构建特色鲜明的 Remotion 渲染场景？",
+      "audio_file": "assets/1.1.mp3",
+      "start_seconds": 0.0,
+      "duration_seconds": 3.072,
+      "captions": [
+        {
+          "word": "怎么构建特色鲜明的",
+          "startMs": 165,
+          "endMs": 1728
+        },
+        {
+          "word": "Remotion 渲染场景？",
+          "startMs": 1728,
+          "endMs": 2885
+        }
+      ]
+    },
+    {
+      "id": "1.2",
+      "section_id": "1",
+      "voice_slice": "特色不在\"让 AI 写更花哨的组件\"，而在画面分层。背景、内容、叠层、主持人各自独立成层，按需组合——理解了分层，就能指挥 AI 搭出有空间感、有辨识度的场景。",
+      "audio_file": "assets/1.2.mp3",
+      "start_seconds": 3.072,
+      "duration_seconds": 14.256,
+      "captions": [
+        {
+          "word": "特色不在\"让 AI 写更花哨的组件\"，",
+          "startMs": 145,
+          "endMs": 3005
+        },
+        {
+          "word": "而在画面分层。",
+          "startMs": 3005,
+          "endMs": 4325
+        },
+        {
+          "word": "背景、内容、叠层、",
+          "startMs": 4575,
+          "endMs": 5911
+        },
+        {
+          "word": "主持人各自独立成层，",
+          "startMs": 5911,
+          "endMs": 7914
+        },
+        {
+          "word": "按需组合——理解了分层，",
+          "startMs": 7914,
+          "endMs": 9918
+        },
+        {
+          "word": "就能指挥 AI 搭出有空间感、",
+          "startMs": 9918,
+          "endMs": 12367
+        },
+        {
+          "word": "有辨识度的场景。",
+          "startMs": 12367,
+          "endMs": 13925
+        }
+      ]
+    },
+    {
+      "id": "1.3",
+      "section_id": "1",
+      "voice_slice": "理解了分层，就能指挥 AI 搭出有空间感、有辨识度的场景。",
+      "audio_file": "assets/1.3.mp3",
+      "start_seconds": 17.328,
+      "duration_seconds": 5.232,
+      "captions": [
+        {
+          "word": "理解了分层，",
+          "startMs": 135,
+          "endMs": 1176
+        },
+        {
+          "word": "就能指挥 AI 搭出有空间感、",
+          "startMs": 1176,
+          "endMs": 3467
+        },
+        {
+          "word": "有辨识度的场景。",
+          "startMs": 3467,
+          "endMs": 4925
+        }
+      ]
+    },
+    {
+      "id": "2.1",
+      "section_id": "2",
+      "voice_slice": "视频场景的本质都一样——从底到顶叠图层，每层独立渲染、独立控制。背景层定调子，不承载信息。内容层讲东西，承载信息。叠层辅助理解，标题、字幕、高亮。角色层人格化，主持人和数字人。",
+      "audio_file": "assets/2.1.mp3",
+      "start_seconds": 22.56,
+      "duration_seconds": 17.64,
+      "captions": [
+        {
+          "word": "视频场景的本质都一样—",
+          "startMs": 175,
+          "endMs": 2194
+        },
+        {
+          "word": "—从底到顶叠图层，",
+          "startMs": 2194,
+          "endMs": 3606
+        },
+        {
+          "word": "每层独立渲染、独立控制。",
+          "startMs": 3606,
+          "endMs": 5625
+        },
+        {
+          "word": "背景层定调子，",
+          "startMs": 5967,
+          "endMs": 7336
+        },
+        {
+          "word": "不承载信息。",
+          "startMs": 7336,
+          "endMs": 8477
+        },
+        {
+          "word": "内容层讲东西，承载信息。",
+          "startMs": 8740,
+          "endMs": 11140
+        },
+        {
+          "word": "叠层辅助理解，",
+          "startMs": 11306,
+          "endMs": 12841
+        },
+        {
+          "word": "标题、字幕、高亮。",
+          "startMs": 12841,
+          "endMs": 14376
+        },
+        {
+          "word": "角色层人格化，",
+          "startMs": 14725,
+          "endMs": 15911
+        },
+        {
+          "word": "主持人和数字人。",
+          "startMs": 15911,
+          "endMs": 17295
+        }
+      ]
+    },
+    {
+      "id": "2.2",
+      "section_id": "2",
+      "voice_slice": "为什么分层？改一层不动其他层。换数据只改内容层，背景和主持人不用重做。AI 填配置时只管自己那层，不会互相干扰。",
+      "audio_file": "assets/2.2.mp3",
+      "start_seconds": 40.2,
+      "duration_seconds": 10.176,
+      "captions": [
+        {
+          "word": "为什么分层？",
+          "startMs": 135,
+          "endMs": 935
+        },
+        {
+          "word": "改一层不动其他层。",
+          "startMs": 1320,
+          "endMs": 2670
+        },
+        {
+          "word": "换数据只改内容层，",
+          "startMs": 3117,
+          "endMs": 4624
+        },
+        {
+          "word": "背景和主持人不用重做。",
+          "startMs": 4624,
+          "endMs": 6507
+        },
+        {
+          "word": "AI 填配置时只管自己那层，",
+          "startMs": 6945,
+          "endMs": 8906
+        },
+        {
+          "word": "不会互相干扰。",
+          "startMs": 8906,
+          "endMs": 9975
+        }
+      ]
+    },
+    {
+      "id": "2.3",
+      "section_id": "2",
+      "voice_slice": "你只需要决定要哪几层、每层什么风格——剩下交给 AI。但分层只是原理，具体怎么落地？我们将以本视频为例，讲解视频分层构建。",
+      "audio_file": "assets/2.3.mp3",
+      "start_seconds": 50.376,
+      "duration_seconds": 10.8,
+      "captions": [
+        {
+          "word": "你只需要决定要哪几层、",
+          "startMs": 125,
+          "endMs": 2087
+        },
+        {
+          "word": "每层什么风格—",
+          "startMs": 2087,
+          "endMs": 3264
+        },
+        {
+          "word": "—剩下交给 AI。",
+          "startMs": 3264,
+          "endMs": 4245
+        },
+        {
+          "word": "但分层只是原理，",
+          "startMs": 4527,
+          "endMs": 5873
+        },
+        {
+          "word": "具体怎么落地？",
+          "startMs": 5873,
+          "endMs": 7027
+        },
+        {
+          "word": "我们将以本视频为例，",
+          "startMs": 7285,
+          "endMs": 8974
+        },
+        {
+          "word": "讲解视频分层构建。",
+          "startMs": 8974,
+          "endMs": 10475
+        }
+      ]
+    },
+    {
+      "id": "3.1",
+      "section_id": "3",
+      "voice_slice": "背景层是内容的平台。你可以通过 AI 编程将视频、图片、特效等多种方式叠加构建。",
+      "audio_file": "assets/3.1.mp3",
+      "start_seconds": 61.176,
+      "duration_seconds": 7.464,
+      "captions": [
+        {
+          "word": "背景层是内容的平台。",
+          "startMs": 175,
+          "endMs": 1965
+        },
+        {
+          "word": "你可以通过 AI 编程将视频、",
+          "startMs": 2332,
+          "endMs": 4596
+        },
+        {
+          "word": "图片、特效等多种方式叠加构建。",
+          "startMs": 4596,
+          "endMs": 7272
+        }
+      ]
+    },
+    {
+      "id": "3.2",
+      "section_id": "3",
+      "voice_slice": "最终目标就是构建出有你满意的动态场景。比如本视频的背景用的就是 3D 场景视频。背景层搞定了，内容层呢？EP02 讲过配置按 type 自动分发，这里重点讲怎么选场景.",
+      "audio_file": "assets/3.2.mp3",
+      "start_seconds": 68.64,
+      "duration_seconds": 14.064,
+      "captions": [
+        {
+          "word": "最终目标就是构建出有你满意的动态场景。",
+          "startMs": 155,
+          "endMs": 3205
+        },
+        {
+          "word": "比如本视频的背景用的就是 3D 场景视频。",
+          "startMs": 3555,
+          "endMs": 6515
+        },
+        {
+          "word": "背景层搞定了，内容层呢？",
+          "startMs": 6758,
+          "endMs": 8688
+        },
+        {
+          "word": "EP02 讲过配置按 type 自动分发，",
+          "startMs": 8936,
+          "endMs": 11564
+        },
+        {
+          "word": "这里重点讲怎么选场景.",
+          "startMs": 11564,
+          "endMs": 13816
+        }
+      ]
+    },
+    {
+      "id": "4.1",
+      "section_id": "4",
+      "voice_slice": "内容层承载信息。当前我们构建了 16 个模板场景，",
+      "audio_file": "assets/4.1.mp3",
+      "start_seconds": 82.704,
+      "duration_seconds": 4.656,
+      "captions": [
+        {
+          "word": "内容层承载信息。",
+          "startMs": 145,
+          "endMs": 1705
+        },
+        {
+          "word": "当前我们构建了 16 个模板场景，",
+          "startMs": 1940,
+          "endMs": 4450
+        }
+      ]
+    },
+    {
+      "id": "4.2",
+      "section_id": "4",
+      "voice_slice": "按内容语义对号入座——讲流程用流程图，讲对比用对比卡，讲架构用架构图。你现在看到的这个表格就是其中一种。",
+      "audio_file": "assets/4.2.mp3",
+      "start_seconds": 87.36,
+      "duration_seconds": 9.648,
+      "captions": [
+        {
+          "word": "按内容语义对号入座—",
+          "startMs": 195,
+          "endMs": 2271
+        },
+        {
+          "word": "—讲流程用流程图，",
+          "startMs": 2271,
+          "endMs": 3886
+        },
+        {
+          "word": "讲对比用对比卡，",
+          "startMs": 3886,
+          "endMs": 5500
+        },
+        {
+          "word": "讲架构用架构图。",
+          "startMs": 5500,
+          "endMs": 7115
+        },
+        {
+          "word": "你现在看到的这个表格就是其中一种。",
+          "startMs": 7315,
+          "endMs": 9545
+        }
+      ]
+    },
+    {
+      "id": "4.3",
+      "section_id": "4",
+      "voice_slice": "不需要记组件名，你说\"这段讲三层架构\"，AI 自动选场景、填字段。",
+      "audio_file": "assets/4.3.mp3",
+      "start_seconds": 97.008,
+      "duration_seconds": 5.64,
+      "captions": [
+        {
+          "word": "不需要记组件名，",
+          "startMs": 155,
+          "endMs": 1631
+        },
+        {
+          "word": "你说\"这段讲三层架构\"，",
+          "startMs": 1631,
+          "endMs": 3528
+        },
+        {
+          "word": "AI 自动选场景、填字段。",
+          "startMs": 3528,
+          "endMs": 5425
+        }
+      ]
+    },
+    {
+      "id": "4.4",
+      "section_id": "4",
+      "voice_slice": "想加自己的场景？告诉 AI 需求，AI 写组件、注册、填配置，你验收。关键纪律：别让 AI 从零发明场景——先看现成的能不能用，不能再扩展。内容层搞定了，但画面还是平的。想要空间感？下一层。",
+      "audio_file": "assets/4.4.mp3",
+      "start_seconds": 102.648,
+      "duration_seconds": 16.992,
+      "captions": [
+        {
+          "word": "想加自己的场景？",
+          "startMs": 145,
+          "endMs": 1435
+        },
+        {
+          "word": "告诉 AI 需求，",
+          "startMs": 1733,
+          "endMs": 2983
+        },
+        {
+          "word": "AI 写组件、",
+          "startMs": 2983,
+          "endMs": 3983
+        },
+        {
+          "word": "注册、填配置，你验收。",
+          "startMs": 3983,
+          "endMs": 5983
+        },
+        {
+          "word": "关键纪律：别让 AI 从零发明场景—",
+          "startMs": 6335,
+          "endMs": 8911
+        },
+        {
+          "word": "—先看现成的能不能用，",
+          "startMs": 8911,
+          "endMs": 10694
+        },
+        {
+          "word": "不能再扩展。",
+          "startMs": 10694,
+          "endMs": 11685
+        },
+        {
+          "word": "内容层搞定了，",
+          "startMs": 11910,
+          "endMs": 13050
+        },
+        {
+          "word": "但画面还是平的。",
+          "startMs": 13050,
+          "endMs": 14380
+        },
+        {
+          "word": "想要空间感？",
+          "startMs": 14677,
+          "endMs": 15687
+        },
+        {
+          "word": "下一层。",
+          "startMs": 16155,
+          "endMs": 16665
+        }
+      ]
+    },
+    {
+      "id": "5.1",
+      "section_id": "5",
+      "voice_slice": "全息屏是我们在背景中预留的一块有三维空间感的区域，通过矩阵变换实现。你给四角坐标和背景图，引擎自动算透视变换。",
+      "audio_file": "assets/5.1.mp3",
+      "start_seconds": 119.64,
+      "duration_seconds": 10.248,
+      "captions": [
+        {
+          "word": "全息屏是我们在背景中预留的一块有三维",
+          "startMs": 135,
+          "endMs": 3403
+        },
+        {
+          "word": "空间感的区域，",
+          "startMs": 3403,
+          "endMs": 4492
+        },
+        {
+          "word": "通过矩阵变换实现。",
+          "startMs": 4492,
+          "endMs": 5945
+        },
+        {
+          "word": "你给四角坐标和背景图，",
+          "startMs": 6332,
+          "endMs": 8237
+        },
+        {
+          "word": "引擎自动算透视变换。",
+          "startMs": 8237,
+          "endMs": 9952
+        }
+      ]
+    },
+    {
+      "id": "5.2",
+      "section_id": "5",
+      "voice_slice": "这块不是必须的——包括主持人也一样，背景加内容已经够用，这些是锦上添花。但如果你要用主持人，怎么搭？",
+      "audio_file": "assets/5.2.mp3",
+      "start_seconds": 129.888,
+      "duration_seconds": 8.64,
+      "captions": [
+        {
+          "word": "这块不是必须的—",
+          "startMs": 165,
+          "endMs": 1427
+        },
+        {
+          "word": "—包括主持人也一样，",
+          "startMs": 1427,
+          "endMs": 2870
+        },
+        {
+          "word": "背景加内容已经够用，",
+          "startMs": 2870,
+          "endMs": 4493
+        },
+        {
+          "word": "这些是锦上添花。",
+          "startMs": 4493,
+          "endMs": 5755
+        },
+        {
+          "word": "但如果你要用主持人，怎么搭？",
+          "startMs": 6103,
+          "endMs": 8263
+        }
+      ]
+    },
+    {
+      "id": "6.1",
+      "section_id": "6",
+      "voice_slice": "主持人不是每帧重渲染 3D。引擎渲染一次全身，按场景类型自动裁切——讲概念半身出镜，展示表格缩到角落，开场全身站旁边。本视频就用了主持人，你现在看到的角落模式就是。AI 只填场景类型，镜头自动切好。",
+      "audio_file": "assets/6.1.mp3",
+      "start_seconds": 138.528,
+      "duration_seconds": 18.432,
+      "captions": [
+        {
+          "word": "主持人不是每帧重渲染 3D。",
+          "startMs": 145,
+          "endMs": 2315
+        },
+        {
+          "word": "引擎渲染一次全身，",
+          "startMs": 2807,
+          "endMs": 4526
+        },
+        {
+          "word": "按场景类型自动裁切—",
+          "startMs": 4526,
+          "endMs": 6460
+        },
+        {
+          "word": "—讲概念半身出镜，",
+          "startMs": 6460,
+          "endMs": 7964
+        },
+        {
+          "word": "展示表格缩到角落，",
+          "startMs": 7964,
+          "endMs": 9683
+        },
+        {
+          "word": "开场全身站旁边。",
+          "startMs": 9683,
+          "endMs": 11187
+        },
+        {
+          "word": "本视频就用了主持人，",
+          "startMs": 11595,
+          "endMs": 13056
+        },
+        {
+          "word": "你现在看到的角落模式就是。",
+          "startMs": 13056,
+          "endMs": 15005
+        },
+        {
+          "word": "AI 只填场景类型，",
+          "startMs": 15598,
+          "endMs": 17014
+        },
+        {
+          "word": "镜头自动切好。",
+          "startMs": 17014,
+          "endMs": 18228
+        }
+      ]
+    },
+    {
+      "id": "6.2",
+      "section_id": "6",
+      "voice_slice": "两种模式：角落模式贴角落，内容不透明，适合内容为主。占满模式占满画面，内容透明浮在上层，适合主持人为主。",
+      "audio_file": "assets/6.2.mp3",
+      "start_seconds": 156.96,
+      "duration_seconds": 10.08,
+      "captions": [
+        {
+          "word": "两种模式：角落模式贴角落，",
+          "startMs": 135,
+          "endMs": 2530
+        },
+        {
+          "word": "内容不透明，",
+          "startMs": 2530,
+          "endMs": 3619
+        },
+        {
+          "word": "适合内容为主。",
+          "startMs": 3619,
+          "endMs": 4925
+        },
+        {
+          "word": "占满模式占满画面，",
+          "startMs": 5190,
+          "endMs": 6818
+        },
+        {
+          "word": "内容透明浮在上层，",
+          "startMs": 6818,
+          "endMs": 8446
+        },
+        {
+          "word": "适合主持人为主。",
+          "startMs": 8446,
+          "endMs": 9870
+        }
+      ]
+    },
+    {
+      "id": "6.3",
+      "section_id": "6",
+      "voice_slice": "口型同步用字幕的逐字时间戳驱动，每个字对应一个口型形状，不需要读音频波形。字幕说\"你好\"，嘴就按\"你\"和\"好\"的口型动——帧级确定。",
+      "audio_file": "assets/6.3.mp3",
+      "start_seconds": 167.04,
+      "duration_seconds": 12.024,
+      "captions": [
+        {
+          "word": "口型同步用字幕的逐字时间戳驱动，",
+          "startMs": 125,
+          "endMs": 3200
+        },
+        {
+          "word": "每个字对应一个口型形状，",
+          "startMs": 3200,
+          "endMs": 5455
+        },
+        {
+          "word": "不需要读音频波形。",
+          "startMs": 5455,
+          "endMs": 7095
+        },
+        {
+          "word": "字幕说\"你好\"，",
+          "startMs": 7368,
+          "endMs": 8521
+        },
+        {
+          "word": "嘴就按\"你\"和\"好\"的口型动——帧级确定。",
+          "startMs": 8521,
+          "endMs": 11748
+        }
+      ]
+    },
+    {
+      "id": "6.4",
+      "section_id": "6",
+      "voice_slice": "选好 VRM 模型和动画，告诉 AI 用哪种模式。AI 填配置，引擎自动切镜头加驱动口型。三层都讲完了，怎么组合？",
+      "audio_file": "assets/6.4.mp3",
+      "start_seconds": 179.064,
+      "duration_seconds": 10.248,
+      "captions": [
+        {
+          "word": "选好 VRM 模型和动画，",
+          "startMs": 135,
+          "endMs": 1910
+        },
+        {
+          "word": "告诉 AI 用哪种模式。",
+          "startMs": 1910,
+          "endMs": 3685
+        },
+        {
+          "word": "AI 填配置，",
+          "startMs": 4239,
+          "endMs": 5074
+        },
+        {
+          "word": "引擎自动切镜头加驱动口型。",
+          "startMs": 5074,
+          "endMs": 7579
+        },
+        {
+          "word": "三层都讲完了，怎么组合？",
+          "startMs": 8000,
+          "endMs": 9960
+        }
+      ]
+    },
+    {
+      "id": "7.1",
+      "section_id": "7",
+      "voice_slice": "本视频就是三层叠加的结果——背景层用 3D 场景视频，内容层用场景模板，加一个角落模式的主持人。三层各自独立配置，互不干扰，引擎从底到顶渲染。指挥 AI 搭场景：第一步，决定要哪几层——背景加内容是最小集，全息屏和主持人可选。第二步，选背景构建方式。第三步，按语义让 AI 填场景配置。第四步，需要主持人？加 avatar 配置块。第五步，需要全息屏？给房间素材和屏幕坐标。第六步，现成场景不够？让 AI 扩展，你验收。",
+      "audio_file": "assets/7.1.mp3",
+      "start_seconds": 189.312,
+      "duration_seconds": 40.656,
+      "captions": [
+        {
+          "word": "本视频就是三层叠加的结果—",
+          "startMs": 185,
+          "endMs": 2678
+        },
+        {
+          "word": "—背景层用 3D 场景视频，",
+          "startMs": 2678,
+          "endMs": 4548
+        },
+        {
+          "word": "内容层用场景模板，",
+          "startMs": 4548,
+          "endMs": 6210
+        },
+        {
+          "word": "加一个角落模式的主持人。",
+          "startMs": 6210,
+          "endMs": 8495
+        },
+        {
+          "word": "三层各自独立配置，",
+          "startMs": 9010,
+          "endMs": 10626
+        },
+        {
+          "word": "互不干扰，引擎从底到顶渲染。",
+          "startMs": 10626,
+          "endMs": 13050
+        },
+        {
+          "word": "指挥 AI 搭场景：",
+          "startMs": 13389,
+          "endMs": 14736
+        },
+        {
+          "word": "第一步，决定要哪几层—",
+          "startMs": 14736,
+          "endMs": 16757
+        },
+        {
+          "word": "—背景加内容是最小集，",
+          "startMs": 16757,
+          "endMs": 18778
+        },
+        {
+          "word": "全息屏和主持人可选。",
+          "startMs": 18778,
+          "endMs": 20799
+        },
+        {
+          "word": "第二步，选背景构建方式。",
+          "startMs": 21145,
+          "endMs": 23445
+        },
+        {
+          "word": "第三步，按语义让 AI 填场景配置。",
+          "startMs": 23777,
+          "endMs": 26877
+        },
+        {
+          "word": "第四步，需要主持人？",
+          "startMs": 27190,
+          "endMs": 29070
+        },
+        {
+          "word": "加 avatar 配置块。",
+          "startMs": 29358,
+          "endMs": 30748
+        },
+        {
+          "word": "第五步，需要全息屏？",
+          "startMs": 31239,
+          "endMs": 33159
+        },
+        {
+          "word": "给房间素材和屏幕坐标。",
+          "startMs": 33553,
+          "endMs": 35523
+        },
+        {
+          "word": "第六步，现成场景不够？",
+          "startMs": 35791,
+          "endMs": 38201
+        },
+        {
+          "word": "让 AI 扩展，你验收。",
+          "startMs": 38551,
+          "endMs": 40361
+        }
+      ]
+    },
+    {
+      "id": "7.2",
+      "section_id": "7",
+      "voice_slice": "适合的场景：模板化讲解、数据图表、有主持人的教学片。不适合的：实拍真人，该拍就拍。写实数字人，恐怖谷。高自由度影视特效，交专业工具。",
+      "audio_file": "assets/7.2.mp3",
+      "start_seconds": 229.968,
+      "duration_seconds": 13.8,
+      "captions": [
+        {
+          "word": "适合的场景：",
+          "startMs": 165,
+          "endMs": 1245
+        },
+        {
+          "word": "模板化讲解、",
+          "startMs": 1245,
+          "endMs": 2324
+        },
+        {
+          "word": "数据图表、有主持人的教学片。",
+          "startMs": 2324,
+          "endMs": 4915
+        },
+        {
+          "word": "不适合的：实拍真人，该拍就拍。",
+          "startMs": 5357,
+          "endMs": 8197
+        },
+        {
+          "word": "写实数字人，恐怖谷。",
+          "startMs": 8499,
+          "endMs": 10559
+        },
+        {
+          "word": "高自由度影视特效，",
+          "startMs": 10888,
+          "endMs": 12500
+        },
+        {
+          "word": "交专业工具。",
+          "startMs": 12500,
+          "endMs": 13508
+        }
+      ]
+    },
+    {
+      "id": "8.1",
+      "section_id": "8",
+      "voice_slice": "画面分层原理：视频场景就是从底到顶叠图层——背景、内容、叠层、角色。可迁移的通用认知，不限于 Remotion。本视频就是实例：背景层用 3D 场景视频，内容层用场景模板，加一个角落模式的主持人。核心判断：特色在分层组合，不在写更花哨的组件。人决定要哪几层、选风格、给素材，AI 填配置、写扩展。会讲需求、会判断验收，就能指挥 AI 搭场景。",
+      "audio_file": "assets/8.1.mp3",
+      "start_seconds": 243.768,
+      "duration_seconds": 32.184,
+      "captions": [
+        {
+          "word": "画面分层原理：",
+          "startMs": 145,
+          "endMs": 1625
+        },
+        {
+          "word": "视频场景就是从底到顶叠图层—",
+          "startMs": 1625,
+          "endMs": 4832
+        },
+        {
+          "word": "—背景、内容、叠层、角色。",
+          "startMs": 4832,
+          "endMs": 6805
+        },
+        {
+          "word": "可迁移的通用认知，",
+          "startMs": 7144,
+          "endMs": 8444
+        },
+        {
+          "word": "不限于 Remotion。",
+          "startMs": 8444,
+          "endMs": 9364
+        },
+        {
+          "word": "本视频就是实例：",
+          "startMs": 10376,
+          "endMs": 11874
+        },
+        {
+          "word": "背景层用 3D 场景视频，",
+          "startMs": 11874,
+          "endMs": 13800
+        },
+        {
+          "word": "内容层用场景模板，",
+          "startMs": 13800,
+          "endMs": 15512
+        },
+        {
+          "word": "加一个角落模式的主持人。",
+          "startMs": 15512,
+          "endMs": 17866
+        },
+        {
+          "word": "核心判断：特色在分层组合，",
+          "startMs": 18340,
+          "endMs": 20617
+        },
+        {
+          "word": "不在写更花哨的组件。",
+          "startMs": 20617,
+          "endMs": 22480
+        },
+        {
+          "word": "人决定要哪几层、",
+          "startMs": 22933,
+          "endMs": 24672
+        },
+        {
+          "word": "选风格、给素材，",
+          "startMs": 24672,
+          "endMs": 26163
+        },
+        {
+          "word": "AI 填配置、写扩展。",
+          "startMs": 26163,
+          "endMs": 27903
+        },
+        {
+          "word": "会讲需求、会判断验收，",
+          "startMs": 28305,
+          "endMs": 30280
+        },
+        {
+          "word": "就能指挥 AI 搭场景。",
+          "startMs": 30280,
+          "endMs": 32035
+        }
+      ]
+    },
+    {
+      "id": "8.2",
+      "section_id": "8",
+      "voice_slice": "下期 EP04 字幕匹配：TTS 时间戳 vs WhisperX 转录——两条路怎么选，弹跳字幕怎么做。",
+      "audio_file": "assets/8.2.mp3",
+      "start_seconds": 275.952,
+      "duration_seconds": 8.016,
+      "captions": [
+        {
+          "word": "下期 EP04 字幕匹配：",
+          "startMs": 205,
+          "endMs": 2075
+        },
+        {
+          "word": "TTS 时间戳 vs WhisperX 转录—",
+          "startMs": 2075,
+          "endMs": 4540
+        },
+        {
+          "word": "—两条路怎么选，",
+          "startMs": 4540,
+          "endMs": 6070
+        },
+        {
+          "word": "弹跳字幕怎么做。",
+          "startMs": 6070,
+          "endMs": 7855
+        }
+      ]
+    }
+  ]
+}

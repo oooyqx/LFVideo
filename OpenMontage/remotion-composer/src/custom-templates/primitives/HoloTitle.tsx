@@ -1,8 +1,8 @@
 import React from 'react';
 import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {useTheme} from '../theme/ThemeContext';
-import {holoTextShadow, accentUnderline} from '../theme/surfaces';
-import {textStyles} from '../theme/textStyles';
+import {accentUnderline} from '../theme/surfaces';
+import {textStyles, glowL1} from '../theme/textStyles';
 import {
 	clamp01,
 	lerp,
@@ -25,6 +25,12 @@ export interface HoloTitleProps {
 	maxWidth?: number;
 	/** accent 发光下划线的目标宽度（px）。 */
 	underlineWidth?: number;
+	/** 下划线与标题之间的额外间距（px），默认 0。 */
+	underlineOffset?: number;
+	/** 自定义字体（覆盖主题默认）。 */
+	fontFamily?: string;
+	/** 自定义文字阴影（覆盖默认 glowL1）。 */
+	textShadow?: string;
 	/** 是否在出场时投影成形（长阴影坍缩）。默认 true。 */
 	exit?: boolean;
 }
@@ -47,6 +53,9 @@ export const HoloTitle: React.FC<HoloTitleProps> = ({
 	startFrame = 0,
 	maxWidth = 1400,
 	underlineWidth = 160,
+	underlineOffset = 0,
+	fontFamily,
+	textShadow,
 	exit = true,
 }) => {
 	const frame = useCurrentFrame();
@@ -56,7 +65,7 @@ export const HoloTitle: React.FC<HoloTitleProps> = ({
 	const t = textStyles(theme);
 
 	const fontSize = size === 'display' ? FONT_SIZE.display : FONT_SIZE.title;
-	const cssFont = `900 ${fontSize}px ${fonts.family}`;
+	const cssFont = `900 ${fontSize}px ${fontFamily ?? fonts.family}`;
 	const lines = React.useMemo(
 		() => computeBalancedLines(title, cssFont, maxWidth),
 		[title, cssFont, maxWidth],
@@ -108,8 +117,8 @@ export const HoloTitle: React.FC<HoloTitleProps> = ({
 					color: colors.text.primary,
 					lineHeight: 1.15,
 					letterSpacing: size === 'display' ? -1.5 : -1,
-					marginBottom: SPACING.sm,
-					textShadow: tOut > 0 ? exitShadow : holoTextShadow(colors.accent[0]),
+					marginBottom: SPACING.sm + underlineOffset,
+					textShadow: tOut > 0 ? exitShadow : (textShadow ?? glowL1(colors.accent[0])),
 				}}
 			>
 				{lines.map((ln, i) => (

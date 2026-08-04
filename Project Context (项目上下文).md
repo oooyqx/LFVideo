@@ -2,7 +2,7 @@
 
 > 跨设备 / 跨会话的「首要真相源」。新环境上把本文件交给 AI 阅读即可恢复上下文。
 > 配套文档：内容路线见 [Content Plan (内容计划).md](./Content%20Plan%20(%E5%86%85%E5%AE%B9%E8%AE%A1%E5%88%92).md)；架构细节见 [ARCHITECTURE.md](./ARCHITECTURE.md)；协作铁律见 [AGENT_GUIDE.md](./AGENT_GUIDE.md)。
-> 最后更新：2026.06.15
+> 最后更新：2026.07.24
 
 ---
 
@@ -10,12 +10,12 @@
 
 | 项 | 值 |
 |----|---|
-| 仓库 | `DomeButlerBang/LFVideo` |
+| 仓库 | `ooooyx/LFVideo` |
 | 性质 | 硬核技术教程**内容频道**项目（视频 + GitHub 配套资源） |
 | 核心打法 | 用 AI IDE 把能力编排成**可复用的自动化工作流**；并以频道自身的「视频生产线」作为头号实战样板（Dogfooding） |
 | 当前阶段 | 系列《Vibe Coding 造一条自动化视频生产线》生产中；同步完善流水线自动化能力与成片质量 |
 | 当前期 | `ep02-video-render`（推进到 08 字幕 `draft`，详见 [content-library/PIPELINE.md](./content-library/PIPELINE.md)） |
-| 下一步 | 收尾 ep02（字幕/组装质量），按 ep02→03→04→05→06 顺序边做边迭代工作流与成片质量；ep01 总览最后制作 |
+| 下一步 | 收尾 ep02（字幕/组装质量），按 ep02→03→04→05→06→07 顺序边做边迭代工作流与成片质量；ep01 总览最后制作 |
 
 ---
 
@@ -81,16 +81,16 @@
 
 ---
 
-## 内容生产状态机（13 阶段 + 校验门）
+## 内容生产状态机（9 阶段 + 校验门）
 
 每期都走同一条标准化流水线，工作流真相源在 `shared/workflows/<slug>.md`（IDE 无关，由 `scripts/sync_workflows.py` 物化到 `.devin/workflows/`、`.windsurf/workflows/`、`.cursor/commands/` 供各 IDE 以 `/<slug>` 调用），产物落 `content-library/epNN-slug/` 的对应阶段目录：
 
 ```
-01 选题 → 02 策划 → 03 B站视听 → 04 脚本(SSOT) → 05 录屏采集⏸ → 06 TTS
-   → 07 组装 → 08 字幕 → 09 BGM⏸ → 10 封面⏸ → 11 质检⏸ → 12 分发⏸ → 13 归档⏸
+01 选题 → 02 策划 → 04 脚本(SSOT) → 05 录屏采集⏸ → 06 TTS
+   → 07 组装 → 08 字幕 → 09 BGM⏸ → 10 封面⏸ → 发布
 ```
 
-- **看板唯一真相**：[content-library/PIPELINE.md](./content-library/PIPELINE.md) 记录「所有期 × 13 阶段」状态（`- / draft / reviewed / approved / suspended / superseded`）。每推进一阶段必须更新；重启时定位到第一个 `-`/`draft` 续跑。
+- **看板唯一真相**：[content-library/PIPELINE.md](./content-library/PIPELINE.md) 记录「所有期 × 9 阶段」状态（`- / draft / reviewed / approved / suspended / superseded`）。每推进一阶段必须更新；重启时定位到第一个 `-`/`draft` 续跑。
 - **L0.5 单核校验门**：阶段置 `approved` 的前置 = **Schema 校验通过 + 人工确认**。
   - 机器校验 `scripts/pipeline_lint.py`：校验产物尾部 ` ```json ` 结构块是否符合 `shared/schemas/*.json`（01/02/03/04），并做跨阶段防漂移门禁（04 脚本为 SSOT、上游状态一致性、场景数一致、下游标题不触犯噱头黑名单）。
   - 第二核「判断层评审（CHAI 质量门）」当前**已挂起**，角色文件保留，恢复时去掉提示即可。
@@ -122,16 +122,16 @@ LFVideo/
 ├── Content Plan (内容计划).md       # 内容路线与策略
 ├── .devin/
 │   ├── rules/                     # 常驻规则（项目上下文 / 角色体系）
-│   └── workflows/                 # 13 阶段工作流（01 选题 … 13 归档）
+│   └── workflows/                 # 9 阶段工作流（01 选题 … 10 封面）
 ├── shared/
 │   ├── roles/                     # 角色库（content/ execution/ meta/）+ README
 │   ├── schemas/                   # 阶段 JSON Schema（01/02/03/04）
 │   └── docs/remotion-spec.md      # Remotion 目标态规范（1080p）
 ├── ideas/                         # 脑暴库（backlog / epNN 素材）
 ├── content-library/               # 成品库
-│   ├── PIPELINE.md                # 看板：所有期 × 13 阶段（唯一进度真相）
+│   ├── PIPELINE.md                # 看板：所有期 × 9 阶段（唯一进度真相）
 │   ├── _decisions/                # 跨期决策 + dev-log
-│   └── ep02-video-render/         # 本期（01-topic … 12-distribute + CONTENTLIB）
+│   └── ep02-video-render/         # 本期（01-topic … 10-cover + CONTENTLIB）
 ├── scripts/
 │   ├── pipeline_lint.py           # L0.5 机器校验（Schema + 防漂移门禁）
 │   └── devin-sync.ps1
@@ -151,18 +151,19 @@ LFVideo/
 
 ## 内容路线图（详见 [content-library/PIPELINE.md](./content-library/PIPELINE.md)）
 
-系列：**《Vibe Coding 造一条自动化视频生产线》**（每期 3–10 分钟，边做边播）
+系列：**《Vibe Coding 造一条自动化视频生产线》**（边做边播，单期时长不硬约束，以内容紧凑、不注水为准）
 
 | 期 | 标题 | 主题 |
 |----|------|------|
 | ep01-video-agent-overview | 总览 | 系列总览/总结（含技术选型复盘）；最后制作、置顶第 1 期 |
-| ep02-video-render | 视频渲染 | 场景组件系统 + VRM 主持人（**本期**） |
-| ep03-video-subtitle | 字幕匹配 | Whisper 字级时间戳驱动弹跳字幕 |
-| ep04-video-audio | 音频混音 | 智能混音、气口与响度标准化 |
-| ep05-video-pipeline | 工作流构建 | 13 阶段状态机 + Schema 校验门 |
-| ep06-video-orchestrator | 角色编排 | 角色即 Prompt → 多智能体编排（YAML 管道） |
+| ep02-video-render | 视频渲染 | 渲染引擎选型与落地：找路径→对比选型→Remotion 配置驱动自动出片（**本期**） |
+| ep03-scene-building | 渲染场景搭建 | 实战：视频背景 + 多场景叠加 + 变换矩阵全息屏 + VRM 主持人迁移 |
+| ep04-video-subtitle | 字幕匹配 | TTS 原生时间戳 vs WhisperX 转录：两条路怎么选 + 弹跳字幕 |
+| ep05-video-audio | 语音与混音 | TTS 多引擎选型（豆包/OpenAI/ElevenLabs）+ BGM ducking + 响度标准化 |
+| ep06-video-pipeline | 工作流构建 | 9 阶段状态机 + Schema 校验门 |
+| ep07-video-orchestrator | 角色编排 | 角色即 Prompt → YAML 管道串联 + EP 跨阶段判断（如实说清边界） |
 
-> 制作顺序：EP02 → EP06 五期"功能期"先做、迭代质量，EP01 总览/总结最后制作。
+> 制作顺序：EP02 → EP07 六期"功能期"先做、迭代质量，EP01 总览/总结最后制作。
 
 ---
 

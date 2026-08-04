@@ -8,19 +8,26 @@ import {
 } from 'remotion';
 import {z} from 'zod';
 import {useTheme} from '../../theme/ThemeContext';
-import {glowBlob, holoTextShadow} from '../../theme/surfaces';
-import {withAlpha} from '../../theme/util';
-import {textStyles} from '../../theme/textStyles';
+import {withAlpha, lighten} from '../../theme/util';
+import {glowBlob} from '../../theme/surfaces';
+import {textStyles, glowL2, extrudeShadow} from '../../theme/textStyles';
 import {HoloTitle} from '../../primitives/HoloTitle';
 import {osc01} from '../../animation/presence';
+import {ScanlineOverlay} from '../../background/Background';
+import {loadFont as loadMogra} from '@remotion/google-fonts/Mogra';
+
+const {fontFamily: mograFont} = loadMogra();
 
 export const introSchema = z.object({
 	title: z.string(),
 	subtitle: z.string().optional(),
+	gitUrl: z.string().optional(),
 });
 export type IntroProps = z.infer<typeof introSchema>;
 
-export const IntroScene: React.FC<IntroProps> = ({title, subtitle}) => {
+const GIT_URL_DEFAULT = 'github.com/ooooyx/LFVideo';
+
+export const IntroScene: React.FC<IntroProps> = ({title, subtitle, gitUrl}) => {
 	const frame = useCurrentFrame();
 	const {fps, durationInFrames} = useVideoConfig();
 	const theme = useTheme();
@@ -49,7 +56,6 @@ export const IntroScene: React.FC<IntroProps> = ({title, subtitle}) => {
 	const subTranslateY = (1 - subEase) * 20;
 
 	const breath = osc01(frame, fps, 5);
-	const scanShift = (frame / fps / 6) % 1;
 
 	return (
 		<AbsoluteFill
@@ -62,50 +68,73 @@ export const IntroScene: React.FC<IntroProps> = ({title, subtitle}) => {
 				transform: `scale(${scale})`,
 			}}
 		>
-			<div style={glowBlob(colors.accent[0], {width: 760, height: 320, intensity: 0.14 + breath * 0.08})} />
-			<div
-				style={{
-					position: 'absolute',
-					inset: 0,
-					zIndex: 0,
-					pointerEvents: 'none',
-					backgroundImage: `repeating-linear-gradient(0deg, ${withAlpha(
-						colors.accent[0],
-						0.05
-					)} 0px, ${withAlpha(colors.accent[0], 0.05)} 1px, transparent 1px, transparent 4px)`,
-					backgroundPositionY: `${scanShift * 4}px`,
-					maskImage:
-						'radial-gradient(ellipse 70% 55% at 50% 45%, #000 0%, transparent 75%)',
-					WebkitMaskImage:
-						'radial-gradient(ellipse 70% 55% at 50% 45%, #000 0%, transparent 75%)',
-				}}
-			/>
+			<div style={glowBlob(colors.accent[0], {width: 1200, height: 500, intensity: 0.12 + breath * 0.06, blur: 120})} />
+			<ScanlineOverlay color={colors.accent[0]} />
 
-			<div style={{zIndex: 1, padding: '0 80px', maxWidth: 1500}}>
+			<div style={{zIndex: 1, padding: `0 ${SPACING.gutter}px`, width: '100%', maxWidth: 1700, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
 				<HoloTitle
 					title={title}
 					align="center"
 					size="display"
-					maxWidth={1340}
-					underlineWidth={220}
+					maxWidth={1600}
+					underlineWidth={280}
+					underlineOffset={30}
+					fontFamily={mograFont}
+					textShadow={extrudeShadow(8, FONT_SIZE.display)}
 				/>
 			</div>
 			{subtitle && (
 				<div
 					style={{
 						...t.bodyMuted,
-						fontSize: FONT_SIZE.subtitle,
+						fontSize: 44,
 						fontWeight: 600,
-						letterSpacing: 2,
+						color: '#FFFFFF',
+						letterSpacing: 3,
 						textTransform: 'uppercase',
 						opacity: subOpacity,
 						transform: `translateY(${subTranslateY}px)`,
-						marginTop: SPACING.md,
-						textShadow: holoTextShadow(colors.accent[0], {blur: 16, alpha: 0.35}),
+						marginTop: SPACING.xl + 50,
+						textShadow: extrudeShadow(5, 44),
 						zIndex: 1,
+						padding: `0 ${SPACING.gutter}px`,
 					}}
 				>
 					{subtitle}
+				</div>
+			)}
+			{(gitUrl ?? GIT_URL_DEFAULT) && (
+				<div
+					style={{
+						position: 'absolute',
+						top: 40,
+						left: '50%',
+						transform: 'translateX(-50%)',
+						display: 'flex',
+						alignItems: 'center',
+						gap: 12,
+						opacity: subOpacity,
+						zIndex: 1,
+					}}
+				>
+					<span style={{color: colors.accent[0], fontSize: 36, fontWeight: 800}}>
+						{'</>'}
+					</span>
+					<span
+						style={{
+							color: '#FFFFFF',
+							fontSize: 32,
+							fontWeight: 400,
+							letterSpacing: '0.1em',
+							fontFamily: mograFont,
+							textShadow: extrudeShadow(4, 32),
+						}}
+					>
+						{gitUrl ?? GIT_URL_DEFAULT}
+					</span>
+					<span style={{color: colors.accent[1], fontSize: 36, fontWeight: 800}}>
+						{'</>'}
+					</span>
 				</div>
 			)}
 		</AbsoluteFill>

@@ -2,7 +2,7 @@
 title: 封面生成
 slug: 10-cover-gen
 stage: "10"
-description: 封面生成 - 为各平台生成封面/缩略图（B站16:9、抖音9:16、小红书1:1），遵循高点击率封面设计规范。
+description: 封面生成 - 为各平台生成封面/缩略图（B站/抖音16:9、小红书1:1），遵循高点击率封面设计规范。
 ---
 
 # 封面生成 Workflow (10-cover-gen)
@@ -36,7 +36,7 @@ description: 封面生成 - 为各平台生成封面/缩略图（B站16:9、抖�
 |------|------|--------|--------|------|
 | **B站** | 1920×1080 | 16:9 | 文字距边 ≥10% | 右下角避开时长标签 |
 | **YouTube** | 1280×720 | 16:9 | 文字距边 ≥10% | 同 B站 |
-| **抖音** | 1080×1920 | 9:16 | 上下 15% 为系统 UI 遮挡区 | 核心信息居中 |
+| **抖音** | 1920×1080 | 16:9 | 文字距边 ≥10% | 技术教程横版，同 B站 |
 | **小红书** | 1080×1080 | 1:1 | 底部 10% 避让标题栏 | 图文风格 |
 
 ### 3. 封面设计
@@ -77,8 +77,7 @@ showcase_card.run({
 ### 4. 多尺寸适配
 
 基于主封面（16:9）派生其他尺寸：
-- **9:16 竖版**：裁剪或重排布局，核心文字居中
-- **1:1 方版**：居中裁剪，文字重排为上下结构
+- **1:1 方版**：居中裁剪，文字重排为上下结构（小红书）
 
 ### 5. 封面质量检查
 
@@ -93,8 +92,7 @@ showcase_card.run({
 content-library/<epNN-slug>/10-cover/
 ├── README.md
 ├── assets/
-│   ├── cover-bilibili-1920x1080.png    # B站/YouTube 横版
-│   ├── cover-douyin-1080x1920.png      # 抖音竖版
+│   ├── cover-bilibili-1920x1080.png    # B站/抖音/YouTube 横版
 │   └── cover-xiaohongshu-1080x1080.png # 小红书方版
 ```
 
@@ -117,8 +115,7 @@ source_workflow: /10-cover-gen
 
 | 平台 | 尺寸 | 文件 | 状态 |
 |------|------|------|------|
-| B站/YouTube | 1920×1080 | cover-bilibili-1920x1080.png | ✅ |
-| 抖音 | 1080×1920 | cover-douyin-1080x1920.png | ✅ |
+| B站/抖音/YouTube | 1920×1080 | cover-bilibili-1920x1080.png | ✅ |
 | 小红书 | 1080×1080 | cover-xiaohongshu-1080x1080.png | ✅ |
 ```
 
@@ -135,12 +132,12 @@ source_workflow: /10-cover-gen
 ### 8. 交付与下一步
 
 提示用户：
-> 封面就绪后（看板标 `approved`），可进入 `/11-qa-review` 做成片最终质检。
+> 封面就绪后（看板标 `approved`），成片即可发布到 B站、抖音等平台。GitHub 配套资源同步推送。
 
 ---
 
 ## 关联文件
 
 - 上游：`09-bgm-mix.md`
-- 下游：`11-qa-review.md`
+- 下游：无（封面是流水线最后阶段，发布为人工动作）
 - OpenMontage 工具：`tools/analysis/frame_sampler.py`、`tools/video/showcase_card.py`、`tools/graphics/image_selector.py`

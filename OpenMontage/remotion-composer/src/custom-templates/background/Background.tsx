@@ -8,6 +8,7 @@ import {
 	useVideoConfig,
 } from 'remotion';
 import type {Palette} from '../theme/palettes';
+import {withAlpha} from '../theme/util';
 import {VideoCarousel} from './VideoCarousel';
 
 // 背景层的独立配色（全息蓝）。背景已是独立图层，颜色不再跟随场景主题，
@@ -139,7 +140,9 @@ const GridBg: React.FC<{colors: Palette}> = ({colors}) => {
 // 视频清单为空时退化成纯 mesh 渐变底。
 const VideoBg: React.FC<{colors: Palette}> = ({colors}) => (
 	<AbsoluteFill style={{overflow: 'hidden'}}>
-		<MeshGradientBg colors={colors} />
+		<AbsoluteFill style={{opacity: 0.01}}>
+			<MeshGradientBg colors={colors} />
+		</AbsoluteFill>
 		<VideoCarousel />
 	</AbsoluteFill>
 );
@@ -210,8 +213,9 @@ const MediaBg: React.FC<{
 				<OffthreadVideo
 					src={video}
 					startFrom={Math.round(videoStartFrom * fps)}
-					style={{width: '100%', height: '100%', objectFit: 'cover'}}
+					style={{width: '100%', height: '100%', objectFit: 'cover', opacity: 0.1}}
 					muted
+					onError={() => {}}
 				/>
 			) : image ? (
 				<Img
@@ -222,10 +226,11 @@ const MediaBg: React.FC<{
 						objectFit: 'cover',
 						transform: `scale(${scale})`,
 						willChange: 'transform',
+						opacity: 0.1,
 					}}
 				/>
 			) : null}
-			<AbsoluteFill style={{background: `rgba(8, 6, 12, ${overlayOpacity})`}} />
+			{/* <AbsoluteFill style={{background: `rgba(8, 6, 12, ${overlayOpacity})`}} /> */}
 		</AbsoluteFill>
 	);
 };
@@ -235,7 +240,7 @@ export const Background: React.FC<BackgroundProps> = ({
 	image,
 	video,
 	videoStartFrom,
-	overlayOpacity = 0.55,
+	overlayOpacity = 0.15,
 }) => {
 	const colors = HOLOGRAPHIC;
 
@@ -279,3 +284,75 @@ function hexToRgb(hex: string): {r: number; g: number; b: number} {
 	const bigint = parseInt(full, 16);
 	return {r: (bigint >> 16) & 255, g: (bigint >> 8) & 255, b: bigint & 255};
 }
+
+// ───────────────────────────────────────────────────────────────────────────
+// 可复用叠加层：扫描线 / 全息蓝色罩 / 色调 grade。
+// 从 IntroScene / OutroScene / QuoteScene / CoverScene / Explainer 中提取的
+// 通用视觉层，统一放此处供所有场景复用。
+// ───────────────────────────────────────────────────────────────────────────
+
+export const ScanlineOverlay: React.FC<{
+	color: string;
+}> = ({color}) => {
+	const frame = useCurrentFrame();
+	const {fps} = useVideoConfig();
+	const scanShift = (frame / fps / 6) % 1;
+	return (
+		<div
+			style={{
+				position: 'absolute',
+				inset: 0,
+				zIndex: 0,
+				pointerEvents: 'none',
+				backgroundImage: `repeating-linear-gradient(0deg, ${withAlpha(
+					color,
+					0.05
+				)} 0px, ${withAlpha(color, 0.05)} 1px, transparent 1px, transparent 4px)`,
+				backgroundPositionY: `${scanShift * 4}px`,
+				maskImage:
+					'radial-gradient(ellipse 70% 55% at 50% 45%, #000 0%, transparent 75%)',
+				WebkitMaskImage:
+					'radial-gradient(ellipse 70% 55% at 50% 45%, #000 0%, transparent 75%)',
+			}}
+		/>
+	);
+};
+
+export const HolographicWash: React.FC<{
+	zIndex?: number;
+	/** 强度倍率（0-1），用于在不改动其他调用处的前提下单独调浅这层蓝色洗染。 */
+	intensity?: number;
+}> = ({zIndex = 1, intensity = 1}) => (
+	<AbsoluteFill
+		style={{
+			background: `radial-gradient(ellipse 95% 85% at 50% 42%, rgba(70,170,240,${0.40 * intensity}) 0%, rgba(20,90,180,${0.34 * intensity}) 55%, rgba(8,30,72,${0.40 * intensity}) 100%)`,
+			mixBlendMode: 'screen',
+			zIndex,
+			pointerEvents: 'none',
+		}}
+	/>
+);
+
+export const GradeLayers: React.FC<{
+	baseZIndex?: number;
+}> = ({baseZIndex = 3}) => (
+	<>
+		<AbsoluteFill
+			style={{
+				pointerEvents: 'none',
+				zIndex: baseZIndex,
+				background:
+					'linear-gradient(180deg, rgba(255,180,120,0.06) 0%, rgba(150,90,170,0.07) 100%)',
+				mixBlendMode: 'soft-light',
+			}}
+		/>
+		<AbsoluteFill
+			style={{
+				pointerEvents: 'none',
+				zIndex: baseZIndex + 1,
+				background:
+					'radial-gradient(ellipse 78% 72% at 50% 42%, transparent 55%, rgba(15,8,18,0.5) 100%)',
+			}}
+		/>
+	</>
+);

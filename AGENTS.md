@@ -9,7 +9,7 @@
 |----|------|---------|
 | **L1** | **Forbidden Actions（禁止清单）** — 绝不可违反 | `shared/rules/forbidden-actions.md` |
 | **L2** | 项目级约束 — 核心契约、频道配置、角色调用、口播规范 | `AGENT_GUIDE.md` + `shared/rules/`（project-context / role-system / voice-style） |
-| **L3** | 经审核的工作流与角色 — 13 阶段流水线、12 个角色定义 | `shared/workflows/` + `shared/roles/` |
+| **L3** | 经审核的工作流与角色 — 9 阶段流水线、12 个角色定义 | `shared/workflows/` + `shared/roles/` |
 | **L4** | 机器化校验（本项目最佳实践的代码化形态） | `scripts/pipeline_lint.py`、`scripts/sync_*.py --check`、`.pre-commit-config.yaml`、`shared/schemas/` |
 | **L5** | AI 自身判断 — **仅在 L1-L4 均无覆盖时允许**，且必须说明判断依据，重大决策先询问用户 | — |
 

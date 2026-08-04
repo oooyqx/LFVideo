@@ -29,8 +29,6 @@ export type BulletProps = z.infer<typeof bulletSchema>;
 // 轻量要点 / 步骤清单：比 ConceptScene 的卡片墙更朴素，逐行错峰入场。
 // items 既可是纯字符串，也可是 {text, icon}；ordered=true 时用 1.2.3 序号。
 export const BulletScene: React.FC<BulletProps> = ({
-	eyebrow,
-	title,
 	items,
 	ordered = false,
 	enter = 'slide-right',
@@ -69,22 +67,9 @@ export const BulletScene: React.FC<BulletProps> = ({
 					maxWidth: grid ? 1480 : 1300,
 					display: 'flex',
 					flexDirection: 'column',
+					marginTop: 80,
 				}}
 			>
-				{eyebrow && (
-					<Animated enter="rise" delay={Math.round(durationInFrames * 0.03)} distance={24}>
-						<div style={{...t.eyebrow, marginBottom: SPACING.xs}}>
-							{eyebrow}
-						</div>
-					</Animated>
-				)}
-				{title && (
-					<Animated enter="rise" delay={Math.round(durationInFrames * 0.06)} distance={28}>
-						<div style={{...t.sceneTitle, marginBottom: SPACING.lg}}>
-							{title}
-						</div>
-					</Animated>
-				)}
 				<div
 					style={
 						grid

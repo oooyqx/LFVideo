@@ -10,6 +10,7 @@ import {AutoFit} from '../../primitives';
 import {useTheme} from '../../theme/ThemeContext';
 import {withAlpha} from '../../theme/util';
 import {TechPanel} from '../../theme/surfaces';
+import {glowL2, glowL3, glowL4} from '../../theme/textStyles';
 import {Animated} from '../../animation';
 import {osc01, proportionalTiming} from '../../animation/presence';
 import {TRANSITION_IDS} from '../../animation/types';
@@ -69,10 +70,12 @@ const TableCell: React.FC<{
 				padding: `${PAD_Y}px ${PAD_X}px`,
 				fontSize: isHeader ? HEADER_FONT : DATA_FONT,
 				fontWeight: isHeader ? 900 : colIndex === 0 ? 800 : 500,
-				color:
-					isHeader || colIndex === 0
-						? colors.text.primary
-						: colors.text.secondary,
+				color: '#FFFFFF',
+				textShadow: isHeader
+					? glowL2(colors.accent[0])
+					: colIndex === 0
+						? glowL3(colors.accent[0])
+						: glowL4(colors.accent[0]),
 				display: 'flex',
 				alignItems: 'center',
 				justifyContent: align === 'center' ? 'center' : 'flex-start',
@@ -145,6 +148,7 @@ export const TableScene: React.FC<
 					fontFamily: fonts.family,
 					display: 'flex',
 					flexDirection: 'column',
+					marginTop: 80,
 				}}
 			>
 				<div

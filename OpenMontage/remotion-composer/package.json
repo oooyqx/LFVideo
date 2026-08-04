@@ -4,7 +4,7 @@
   "description": "Remotion composition renderer for OpenMontage animated explainer videos",
   "scripts": {
     "start": "npx remotion studio",
-    "build": "npx remotion render src/index.tsx Explainer out/video.mp4",
+    "build": "npx remotion render src/index.tsx ep02-shots out/ep02-video-render.mp4 --concurrency=4",
     "upgrade": "npx remotion upgrade",
     "preview": "vite --config preview/vite.config.ts",
     "preview:build": "vite build --config preview/vite.config.ts"

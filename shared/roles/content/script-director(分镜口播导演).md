@@ -44,12 +44,13 @@
 口播之外，每段的 `[画面]` 与 JSON 契约里的视觉字段必须满足：
 
 - **组件覆盖**：每个 section 都要映射到具体 Remotion 组件或声明 Template Ticket，禁止留下未解决的抽象描述。
-- **语义-场景匹配（选型硬规则）**：按 `shared/docs/remotion-spec.md` §2.1.5「场景选型决策表」把口播语义信号映射到场景——口播出现「N 步/流程/对比/清单/大数字」等结构信号时必须用对应结构化场景（`@FlowScene`/`@TableScene`/`@SplitLayout`/`@BulletScene`/`@StatScene`…），禁止用 `@IntroScene`/`@OutroScene`/`@QuoteScene` 纯文字硬扛；相邻镜头禁止用同一场景重放几乎相同的 props（「全景→聚焦」用不同场景递进）；开场结构骨架与结尾回顾用同一结构场景首尾呼应；props 字段名逐字段对照 `scene-types.json`/组件 zod schema（错名会静默回退成纯文字，如 FlowScene step 用 `label` 不是 `title`）。
+- **语义-场景匹配（选型硬规则）**：按 `shared/docs/remotion-spec.md` §2.1.5「场景选型决策表」把口播语义信号映射到场景——口播出现「N 步/流程/对比/清单/大数字」等结构信号时必须用对应结构化场景（`@FlowScene`/`@TableScene`/`@SplitLayout`/`@BulletScene`/`@StatScene`…），禁止用 `@IntroScene`/`@OutroScene`/`@QuoteScene` 纯文字硬扛；相邻镜头禁止用同一场景重放几乎相同的 props（「全景→聚焦」用不同场景递进）；开场结构骨架与结尾回顾用同一结构场景首尾呼应；props 字段名逐字段对照 `scene-types.json`/组件 zod schema（错名会静默回退成纯文字，如 FlowScene step 用 `label` 不是 `title`）；**场景密度与内容形态匹配**——`items`/`steps`/`events` 只有 1 条时用 `@CalloutScene`/`@QuoteScene` 而非 `@ConceptScene`/`@FlowScene`/`@BulletScene`（单条概念撑不起卡片墙的视觉密度，教训：ep02 shot 2.1/2.3/5.5 单卡片 ConceptScene 空旷），口播出现「问 AI / 让 AI 回答 / AI 给出答案」等对话交互信号时用 `@ChatScene` 展示问答过程而非用 `@ConceptScene` 文字概述（教训：ep02 shot 2.1「把问题丢给 AI」本应用 ChatScene）；**数字过场增节奏**——口播提到「N 条路线 / N 个理由 / N 种模板」等可量化数字、且后续用 `@TableScene`/`@BulletScene` 展开详情时，在详情场景前插一个 3-5 秒 `@StatScene` 做数字弹入过场，打破连续卡片/表格的视觉疲劳（教训：ep02 S2「六条路线」直接进 TableScene 缺少节奏停顿）。`@StatScene` 的 `stat` 放数字+关键词组合（如 "6现成路线"、"4条理由"），不要只放纯数字；`label` 选填、用于补充说明（如列出具体是哪几条），`subtitle` 选填、作为下方副标题。
 - **术语专业化（与口语化口播相反）**：`@TableScene` 等判断层矩阵的列名与描述用**严谨、正式的工程术语**，统一为 `["技术路线","适用场景","局限条件","关键约束"]`，做**全方位对比**（既列核心优势/适用场景，也列局限/关键约束），不是单摆缺点或只堆坑；避免「报菜名、复制粘贴/土办法」等口语、片面或略粗俗的表达。**注意：口语化只用于 `[口播]` voice，视觉/Props 字段一律用工程术语。**
 - **受众对齐**：本频道受众为 AI 开发者 / 独立开发者 / 技术内容创作者，**大多不是传统视频制作者**。禁止用「传统剪辑拖时间轴 / 手动对字幕」等面向剪辑师的痛点做对比；改用开发者能共鸣的工程心智模型（如「手工时序 vs 声明式配置」「改配置即改片」）。
 - **防静止编排（Anti-Deadtime，硬性约束·镜头级）**：遵循 `shared/docs/remotion-spec.md` §1.5。任何 `duration_hint_seconds > 15`（中文约每秒 4–5 字，即 > ~75 字）的 section，**必须**切成 `≥ ceil(时长/15)` 个 `shots[]`，让任一画面不超过 ~15 秒不变。只在 section 级写 `visual_beats`/`sub_shots` 文字注解而不拆 shot 是**不合格的治标做法**（`scripts/pipeline_lint.py` 在该期 04 被置 `approved`/`reviewed` 后会硬报错）。多组件接力天然就是多个 shot，不要把它们塞进一个 section 的单个 `scene_template`。
 - **干货式钩子（Dry-goods Hook，开场分镜硬性约束）**：开场第一个分镜（如 `@IntroScene`）必须在前 3-5 秒内用**结论先行的干货 + 实质画面**抓住注意力（如：一句话点出本期能力 + 首屏呈现核心成果/「配置→出片」的真实画面）。严禁在前 15 秒内使用单一、缓慢渐显的静态标题或无实质内容的纯粒子背景；首个子镜头/动画 cue 必须是承载信息的实质画面——**但不必是综艺式极速表演切换**，画面服务于把干货讲清。
 - **录屏兜底**：对含录屏（`@VideoSlot`）的场景，必须同时给出 `[录屏画面]` 画面指示（录屏要求 + `zoom_crop_directives`）与 `[自动渲染兜底]` 画面指示（对应 Remotion 组件渲染，如 `@TerminalScene` + 代码 Props），确保录屏缺失时有可渲染的自动渲染替代画面。
+- **禁止无声镜头（硬性约束）**：每个 shot 必须有非空 `voice_slice`，不允许口播静默、只靠画面文字承载的镜头。口播是时间轴主驱动，无声镜头会在时间轴上制造死时间——画面停住、语音也停住，观众体验断裂。`@StatScene` 数字弹入时口播要念出数字和关键词（如「六条现成路线」），`@QuoteScene` 金句要口播念出金句内容。（教训：ep02 shot 2.2/4.2/5.3 StatScene 和 4.5/6.4 QuoteScene 曾为无声镜头，导致 narration 音频与时间轴错位 22 秒）
 
 ## 双区一致性与人工修订回写（硬性约束）
 
@@ -57,7 +58,7 @@
 
 - **逐字一致**：markdown 每段 `[口播]` 必须与 JSON `sections[].voice` 逐字一致；叙述区镜头列表（编号/组件/Props/时长/voice_slice）与 `shots[]` 一一对应（含表格行数、字段值）。任何一处修改必须两区同步，禁止只改一处。
 - **voice_slice 完整性**：同一 section 内所有 `voice_slice` 按镜头顺序拼接必须等于该段 `voice` 全文，无遗漏、无重叠。
-- **时长-字数一致**：`duration_seconds ≈ voice_slice 字数 / 4.5`（误差 ±20%）；任一 `voice_slice` 折算时长 > 15s 必须继续拆镜头，不得靠标小 `duration_seconds` 糊弄防静止检查。
+- **时长-字数一致**：`duration_seconds` 应落在 `字数/5.5` ~ `字数/3.5` 秒区间内（对应 4-5 字/秒语速 + 停顿余量）；超出区间为 advisory warning（最终时长由 TTS 音频决定，脚本值为预估）。单个 shot 允许到 20s（动态模板有内部动画不算静止），但 section 级 >15s 仍必须切 shots。
 - **人工修订回写**：用户在 04 draft 上修改措辞/裁剪内容后，必须：① 两区同步落实；② 若波及镜头切分（删句/删段）同步重切 shots 与时长；③ 若裁掉了 `tutorial.final.md` 必讲要点，在覆盖清单标 ⚠（含日期与「经人工决定」）并提醒用户回写上游清单，保持上下游一致。
 
 ---

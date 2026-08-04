@@ -6,14 +6,14 @@
       "template": "@IntroScene",
       "description": "全屏开场标题（渐变描边主标题 + 可选副标题）。",
       "required": ["title"],
-      "optional": ["subtitle"]
+      "optional": ["subtitle", "gitUrl"]
     },
     {
       "type": "outro_scene",
       "template": "@OutroScene",
       "description": "全屏收尾（大标题 + 脉冲 CTA 按钮）。",
       "required": ["headline"],
-      "optional": ["cta"]
+      "optional": ["cta", "gitUrl"]
     },
     {
       "type": "concept_scene",
@@ -72,6 +72,13 @@
       "optional": ["eyebrow", "title", "orientation", "enter"]
     },
     {
+      "type": "architecture_scene",
+      "template": "@ArchitectureScene",
+      "description": "架构图 / 管线全景：分层节点（level 决定层级）+ 可选 edges 连接关系，节点按密度自适应大小。enter 为可选的节点入场过渡。",
+      "required": ["nodes"],
+      "optional": ["eyebrow", "title", "edges", "enter"]
+    },
+    {
       "type": "chart_scene",
       "template": "@ChartScene",
       "description": "主题驱动图表：kind ∈ bar/line/pie/kpi，data 为对应图表的数据数组，复用 components/charts 并注入主题配色。",
@@ -98,6 +105,20 @@
       "description": "全屏金句 / 大字报：引号装饰 + 大字陈述 + 可选署名，用于中段强调一句观点。",
       "required": ["text"],
       "optional": ["attribution"]
+    },
+    {
+      "type": "cover_scene",
+      "template": "@CoverScene",
+      "description": "多平台封面：视频轮播背景 + 蓝色全息罩 + 数字人 + 左侧大号关键词排版，支持 16:9 / 9:16 / 1:1。",
+      "required": ["keywords"],
+      "optional": ["slogan", "episodeLabel", "unityBackground", "avatar"]
+    },
+    {
+      "type": "chat_scene",
+      "template": "@ChatScene",
+      "description": "AI 对话窗口：模拟用户与 AI 的聊天交互，消息逐条 stagger 入场，用户右对齐、AI 左对齐，AI 消息支持内嵌代码块。",
+      "required": ["messages"],
+      "optional": ["title", "enter"]
     }
   ]
 }

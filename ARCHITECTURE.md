@@ -11,7 +11,7 @@ ai-ide-workflows/ (项目根目录)
 ├── AGENTS.md                  # AI 编码工具统一入口 + 指令层级声明 (L1-L5)
 ├── shared/                     # 跨 IDE 共享资源 (Single Source of Truth)
 │   ├── roles/                  # 12 个角色定义 (选题/策划/导演/工程/审查等)
-│   ├── workflows/              # 13 阶段工作流真相源 (IDE 无关，纯 ASCII 文件名)
+│   ├── workflows/              # 9 阶段工作流真相源 (IDE 无关，纯 ASCII 文件名)
 │   ├── rules/                  # 项目常驻规则真相源 (IDE 无关)
 │   ├── docs/                   # 组件规格、指令层级说明等
 │   └── schemas/                # L0.5 严苛双核校验的 JSON Schema
@@ -89,7 +89,7 @@ ai-ide-workflows/ (项目根目录)
 ### 4.1 内容流水线 SSOT
 
 - **角色定义**：所有角色（如 `script-director`, `strategist`）仅在 `shared/roles/` 维护一份 Markdown 文件。
-- **工作流定义**：13 阶段工作流仅在 `shared/workflows/<slug>.md` 维护一份（IDE 无关，纯 ASCII 文件名，中文名在 frontmatter `title`）。各 IDE 实际调用的副本由 `scripts/sync_workflows.py` **生成**，不手改：
+- **工作流定义**：9 阶段工作流仅在 `shared/workflows/<slug>.md` 维护一份（IDE 无关，纯 ASCII 文件名，中文名在 frontmatter `title`）。各 IDE 实际调用的副本由 `scripts/sync_workflows.py` **生成**，不手改：
   - **Devin**：`.devin/workflows/<slug>.md`
   - **Windsurf**：`.windsurf/workflows/<slug>.md`（原生 Workflows，`/<slug>` 调用）
   - **Cursor**：`.cursor/commands/<slug>.md`（slash 命令，`/<slug>` 调用）

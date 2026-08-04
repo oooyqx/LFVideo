@@ -1,6 +1,7 @@
 import React from 'react';
 import {z} from 'zod';
 import {useTheme} from '../../theme/ThemeContext';
+import {glowL4} from '../../theme/textStyles';
 import {BarChart, LineChart, PieChart, KPIGrid} from '../../../components/charts';
 
 export const CHART_KINDS = ['bar', 'line', 'pie', 'kpi'] as const;
@@ -52,6 +53,9 @@ export const ChartScene: React.FC<ChartProps> = ({
 	showValues = true,
 }) => {
 	const {colors, fonts} = useTheme();
+	const accent = colors.accent[0];
+	const glow = glowL4(accent);
+	const svgFilter = `drop-shadow(0 0 ${8}px ${accent}33)`;
 
 	const common = {
 		title,
@@ -62,15 +66,21 @@ export const ChartScene: React.FC<ChartProps> = ({
 		gridColor: colors.line,
 	};
 
+	const wrap = (el: React.ReactNode) => (
+		<div style={{textShadow: glow, filter: svgFilter}}>
+			{el}
+		</div>
+	);
+
 	switch (kind) {
 		case 'bar':
-			return <BarChart {...common} data={data as BarDatum[]} showValues={showValues} />;
+			return wrap(<BarChart {...common} data={data as BarDatum[]} showValues={showValues} />);
 		case 'line':
-			return <LineChart {...common} series={data as LineSeries[]} />;
+			return wrap(<LineChart {...common} series={data as LineSeries[]} />);
 		case 'pie':
-			return <PieChart {...common} data={data as PieDatum[]} donut={donut} />;
+			return wrap(<PieChart {...common} data={data as PieDatum[]} donut={donut} />);
 		case 'kpi':
-			return <KPIGrid {...common} metrics={data as KpiMetric[]} />;
+			return wrap(<KPIGrid {...common} metrics={data as KpiMetric[]} />);
 		default:
 			return null;
 	}

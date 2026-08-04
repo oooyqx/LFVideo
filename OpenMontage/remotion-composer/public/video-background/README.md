@@ -12,7 +12,7 @@
    ```
 
    这会扫描本目录、把文件名写进 `manifest.json`（`VideoCarousel` 读取它来轮播）。
-3. 任意 cut 用视频背景：在 `build_ep02_shots_props.py` 把该 cut 的 `"background"` 设为 `"video"`，或在 Studio 的 `BackgroundShowcase` 合成里查看 `video` 段。
+3. 任意 cut 用视频背景：在 `content-library/ep02-video-render/07-assembly/build_props.py` 把该 cut 的 `"background"` 设为 `"video"`，或在 Studio 的 `BackgroundShowcase` 合成里查看 `video` 段。
 
 ## 渲染特性（见 `src/custom-templates/background/VideoCarousel.tsx`）
 

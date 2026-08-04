@@ -43,11 +43,11 @@ import {Background} from './custom-templates';
 ```
 
 ### 在 ep02 数据流里怎么选
-每个 cut 的 `background` 字段就是 variant 名。改 `build_ep02_shots_props.py` 里
-`SHOT_CONTENT[...]["background"]` 后重新生成 props：
+每个 cut 的 `background` 字段就是 variant 名。改 `content-library/ep02-video-render/07-assembly/build_props.py` 里
+`SHOT_OVERRIDES[...]["background"]` 后重新生成 props：
 
 ```bash
-python build_ep02_shots_props.py
+python content-library/ep02-video-render/07-assembly/build_props.py
 ```
 
 ---

@@ -21,6 +21,8 @@ export interface Fonts {
 const CJK = '"PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif';
 const MONO = '"SF Mono", "JetBrains Mono", "Cascadia Code", Consolas, monospace';
 
+const MOGRA_CJK = `"Mogra", ${CJK}`;
+
 // 统一文字色：全部主题白字（科技风），三档层级仅靠不透明度区分，
 // 与背景的深浅无关。改这里即可全片调整正文配色。
 const TECH_TEXT = {
@@ -37,7 +39,7 @@ export const PALETTES: Record<string, Palette> = {
 	'warm-glass': {
 		bg: {from: '#1A1320', to: '#2E2233'},
 		text: {...TECH_TEXT},
-		accent: ['#FFB347', '#FF7EB6', '#7FD8C0', '#C9A6E8'],
+		accent: ['#A78BFA', '#FF7EB6', '#7FD8C0', '#C9A6E8'],
 		line: TECH_LINE,
 		surface: TECH_SURFACE,
 		codeBg: '#160E1C',
@@ -45,7 +47,7 @@ export const PALETTES: Record<string, Palette> = {
 	'flat-motion-graphics': {
 		bg: {from: '#0F172A', to: '#1E293B'},
 		text: {...TECH_TEXT},
-		accent: ['#A78BFA', '#F472B6', '#22D3EE', '#FBBF24'],
+		accent: ['#C4B5FD', '#F472B6', '#22D3EE', '#FBBF24'],
 		line: TECH_LINE,
 		surface: TECH_SURFACE,
 		codeBg: '#0B1120',
@@ -79,11 +81,11 @@ export const PALETTES: Record<string, Palette> = {
 };
 
 export const FONTS: Record<string, Fonts> = {
-	'warm-glass': {family: CJK, mono: MONO},
-	'flat-motion-graphics': {family: `"Space Grotesk", ${CJK}`, mono: `"Fira Code", ${MONO}`},
-	'clean-professional': {family: `"Inter", ${CJK}`, mono: `"JetBrains Mono", ${MONO}`},
-	'minimalist-diagram': {family: `"IBM Plex Sans", ${CJK}`, mono: `"IBM Plex Mono", ${MONO}`},
-	'anime-ghibli': {family: `"Noto Serif JP", ${CJK}`, mono: `"Fira Code", ${MONO}`},
+	'warm-glass': {family: MOGRA_CJK, mono: MONO},
+	'flat-motion-graphics': {family: MOGRA_CJK, mono: `"Fira Code", ${MONO}`},
+	'clean-professional': {family: MOGRA_CJK, mono: `"JetBrains Mono", ${MONO}`},
+	'minimalist-diagram': {family: MOGRA_CJK, mono: `"IBM Plex Mono", ${MONO}`},
+	'anime-ghibli': {family: MOGRA_CJK, mono: `"Fira Code", ${MONO}`},
 };
 
 export const DEFAULT_THEME_NAME = 'warm-glass';

@@ -8,8 +8,11 @@ import {
 } from 'remotion';
 import {z} from 'zod';
 import {useTheme} from '../../theme/ThemeContext';
-import {glowBlob, accentGradientText} from '../../theme/surfaces';
-import {textStyles} from '../../theme/textStyles';
+import {glowBlob} from '../../theme/surfaces';
+import {textStyles, extrudeShadow} from '../../theme/textStyles';
+import {loadFont as loadMogra} from '@remotion/google-fonts/Mogra';
+
+const {fontFamily: mograFont} = loadMogra();
 
 export const statSchema = z.object({
 	stat: z.string(),
@@ -56,10 +59,11 @@ export const StatScene: React.FC<StatProps> = ({stat, subtitle, label}) => {
 						fontWeight: 700,
 						letterSpacing: 4,
 						textTransform: 'uppercase',
-						color: colors.text.secondary,
+						color: '#FFFFFF',
+						fontFamily: mograFont,
 						marginBottom: SPACING.md,
 						opacity: subProgress,
-						textShadow: `0 0 12px ${color}60, 0 1px 4px rgba(0,0,0,0.5)`,
+						textShadow: extrudeShadow(5, FONT_SIZE.subtitle),
 						zIndex: 1,
 					}}
 				>
@@ -73,8 +77,9 @@ export const StatScene: React.FC<StatProps> = ({stat, subtitle, label}) => {
 					fontWeight: 900,
 					lineHeight: 1,
 					letterSpacing: -4,
-					...accentGradientText(theme),
-					filter: `drop-shadow(0 0 24px ${color}50) drop-shadow(0 4px 12px rgba(0,0,0,0.5))`,
+					color: '#FFFFFF',
+					fontFamily: mograFont,
+					textShadow: extrudeShadow(8, 200),
 					zIndex: 1,
 				}}
 			>
@@ -86,6 +91,9 @@ export const StatScene: React.FC<StatProps> = ({stat, subtitle, label}) => {
 						...t.body,
 						fontSize: FONT_SIZE.subtitle,
 						fontWeight: 600,
+						color: '#FFFFFF',
+						fontFamily: mograFont,
+						textShadow: extrudeShadow(5, FONT_SIZE.subtitle),
 						marginTop: SPACING.lg,
 						maxWidth: 1200,
 						lineHeight: 1.4,

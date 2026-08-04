@@ -7,6 +7,7 @@ import {ConceptScene, conceptSchema} from './scenes/list/ConceptScene';
 import {TimelineScene, timelineSchema} from './scenes/list/TimelineScene';
 import {BulletScene, bulletSchema} from './scenes/list/BulletScene';
 import {FlowScene, flowSchema} from './scenes/list/FlowScene';
+import {ArchitectureScene, archSchema} from './scenes/list/ArchitectureScene';
 import {TableScene, tableSchema} from './scenes/data/TableScene';
 import {ComparisonScene, comparisonSchema} from './scenes/data/ComparisonScene';
 import {ChartScene, chartSchema} from './scenes/data/ChartScene';
@@ -14,6 +15,8 @@ import {StatScene, statSchema} from './scenes/data/StatScene';
 import {CalloutScene, calloutSchema} from './scenes/emphasis/CalloutScene';
 import {QuoteScene, quoteSchema} from './scenes/emphasis/QuoteScene';
 import {CodeScene, codeSchema} from './scenes/demo/CodeScene';
+import {ChatScene, chatSchema} from './scenes/demo/ChatScene';
+import {CoverScene, coverSchema} from './scenes/cover/CoverScene';
 import sceneTypesManifest from './scene-types.json';
 
 // 模板库的单一注册表：每个场景把「类型名 → 组件 + co-located zod schema」登记在此。
@@ -37,10 +40,13 @@ export const TEMPLATE_SCENES: Record<string, SceneDefinition> = {
 	section_scene: {type: 'section_scene', schema: sectionSchema, component: SectionScene},
 	bullet_scene: {type: 'bullet_scene', schema: bulletSchema, component: BulletScene},
 	flow_scene: {type: 'flow_scene', schema: flowSchema, component: FlowScene},
+	architecture_scene: {type: 'architecture_scene', schema: archSchema, component: ArchitectureScene},
 	chart_scene: {type: 'chart_scene', schema: chartSchema, component: ChartScene},
 	stat_scene: {type: 'stat_scene', schema: statSchema, component: StatScene},
 	callout_scene: {type: 'callout_scene', schema: calloutSchema, component: CalloutScene},
 	quote_scene: {type: 'quote_scene', schema: quoteSchema, component: QuoteScene},
+	cover_scene: {type: 'cover_scene', schema: coverSchema, component: CoverScene},
+	chat_scene: {type: 'chat_scene', schema: chatSchema, component: ChatScene},
 };
 
 export const TEMPLATE_SCENE_TYPES: string[] = Object.keys(TEMPLATE_SCENES);

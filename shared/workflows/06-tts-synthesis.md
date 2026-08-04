@@ -44,6 +44,8 @@ description: TTS语音合成 - 将 04 脚本的口播文本转为语音音频，
 
 ### 3. 选择 TTS 引擎
 
+> **⚠️ 费用控制门**：调用付费 TTS API（豆包/OpenAI/ElevenLabs 等）前**必须向用户确认**——告知预估调用量（镜头数 × 平均字数）和大致费用，等用户明确同意后再执行合成。免费引擎（edge-tts/Piper）无此限制，但仍建议告知用户即将调用。AI 不得自行决定批量调用付费 API。
+
 按口播语言选择引擎（默认优先级见 `shared/rules/project-context.md`《频道配置 · TTS 默认引擎》；通过 OpenMontage `tts_selector.py`）：
 
 | 引擎 | 优势 | 适用场景 | 工具文件 |

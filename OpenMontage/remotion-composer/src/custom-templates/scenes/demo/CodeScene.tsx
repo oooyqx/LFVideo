@@ -9,6 +9,7 @@ import {
 import {z} from 'zod';
 import {useTheme} from '../../theme/ThemeContext';
 import {withAlpha} from '../../theme/util';
+import {glowL2, glowL3, glowL4} from '../../theme/textStyles';
 
 // 模板库版「合成终端 / 代码」场景：主题驱动配色、等宽字体、全透明外底。
 // 取代旧 components/TerminalScene 的硬编码风格。step 协议保持兼容：
@@ -175,8 +176,8 @@ export const CodeScene: React.FC<CodeProps> = ({
 							const isActive = frame <= line.endFrame + fps * 0.2;
 							return (
 								<div key={`${line.startFrame}-${idx}`} style={{display: 'flex', alignItems: 'baseline'}}>
-									<span style={{color: accent, marginRight: 12, fontWeight: 600, textShadow: `0 0 8px ${accent}80`}}>{prompt}</span>
-									<span style={{color: colors.text.primary, textShadow: '0 0 8px rgba(0,0,0,0.4)'}}>{typed}</span>
+									<span style={{color: accent, marginRight: 12, fontWeight: 600, textShadow: glowL2(accent)}}>{prompt}</span>
+									<span style={{color: colors.text.primary, textShadow: glowL3(accent)}}>{typed}</span>
 									{isLatest && isActive && blinkPhase && (
 										<span
 											style={{
@@ -201,7 +202,7 @@ export const CodeScene: React.FC<CodeProps> = ({
 						return (
 							<div
 								key={`${line.startFrame}-${idx}`}
-								style={{color: colors.text.secondary, opacity: alpha, paddingLeft: 4, whiteSpace: 'pre-wrap', textShadow: '0 0 8px rgba(0,0,0,0.4)'}}
+								style={{color: colors.text.secondary, opacity: alpha, paddingLeft: 4, whiteSpace: 'pre-wrap', textShadow: glowL4(accent)}}
 							>
 								{line.text}
 							</div>

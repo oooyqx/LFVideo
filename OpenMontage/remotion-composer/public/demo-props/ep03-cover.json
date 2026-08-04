@@ -1,0 +1,34 @@
+{
+  "keywords": [
+    { "text": "构建", "color": "#F8FAFC", "glow": "#A78BFA", "fontSize": 200 },
+    { "text": "特色鲜明的渲染场景", "color": "#22D3EE", "glow": "#A78BFA", "fontSize": 58 },
+    { "text": "场景搭建篇", "color": "#F59E0B", "glow": "#A78BFA", "fontSize": 70 }
+  ],
+  "slogan": "不吹AI，真落地，真开源",
+  "episodeLabel": "EP03",
+  "unityBackground": {
+    "enabled": true,
+    "image": "UnityBG.mp4",
+    "screenQuad": {
+      "tl": [13, 142],
+      "tr": [1194, 275],
+      "br": [1194, 791],
+      "bl": [13, 919]
+    },
+    "screenOpacity": 0.4,
+    "screenTint": "#0b2a52"
+  },
+  "avatar": {
+    "enabled": true,
+    "clipUrl": "avatars/Sitting.fbx",
+    "clipSpeed": 0.6,
+    "bgCameraZ": 5.9,
+    "bgModelX": 2.1,
+    "bgModelY": -1.35,
+    "bgModelYawDeg": 50,
+    "bgScale": 1.43,
+    "bgOffsetYpx": 50,
+    "bgOriginXPct": 70,
+    "bgOriginYPct": 57
+  }
+}

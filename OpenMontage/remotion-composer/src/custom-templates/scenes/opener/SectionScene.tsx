@@ -9,7 +9,10 @@ import {
 import {z} from 'zod';
 import {useTheme} from '../../theme/ThemeContext';
 import {glowBlob, accentGradientText} from '../../theme/surfaces';
-import {textStyles} from '../../theme/textStyles';
+import {textStyles, extrudeShadow} from '../../theme/textStyles';
+import {loadFont as loadMogra} from '@remotion/google-fonts/Mogra';
+
+const {fontFamily: mograFont} = loadMogra();
 
 export const sectionSchema = z.object({
 	title: z.string(),
@@ -59,11 +62,12 @@ export const SectionScene: React.FC<SectionProps> = ({title, index, eyebrow}) =>
 						fontSize: FONT_SIZE.subtitle,
 						letterSpacing: 6,
 						textTransform: 'uppercase',
-						color: colors.text.muted,
+						color: '#FFFFFF',
+						fontFamily: mograFont,
 						fontWeight: 700,
 						marginBottom: SPACING.md,
 						opacity: titleProgress,
-						textShadow: `0 0 12px ${color}60, 0 1px 4px rgba(0,0,0,0.5)`,
+						textShadow: extrudeShadow(5, FONT_SIZE.subtitle),
 						zIndex: 1,
 					}}
 				>
@@ -78,8 +82,9 @@ export const SectionScene: React.FC<SectionProps> = ({title, index, eyebrow}) =>
 						lineHeight: 0.9,
 						letterSpacing: -6,
 						transform: `scale(${indexScale})`,
-						...accentGradientText(theme),
-						filter: `drop-shadow(0 0 24px ${color}50) drop-shadow(0 4px 12px rgba(0,0,0,0.5))`,
+						color: '#FFFFFF',
+						fontFamily: mograFont,
+						textShadow: extrudeShadow(8, 220),
 						zIndex: 1,
 					}}
 				>
@@ -100,6 +105,9 @@ export const SectionScene: React.FC<SectionProps> = ({title, index, eyebrow}) =>
 				style={{
 					...t.displayTitle,
 					maxWidth: 1500,
+					color: '#FFFFFF',
+					fontFamily: mograFont,
+					textShadow: extrudeShadow(8, FONT_SIZE.display),
 					opacity: titleProgress,
 					transform: `translateY(${interpolate(titleProgress, [0, 1], [24, 0])}px)`,
 					zIndex: 1,

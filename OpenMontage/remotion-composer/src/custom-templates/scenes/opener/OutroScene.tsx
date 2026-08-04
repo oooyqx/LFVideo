@@ -10,19 +10,27 @@ import {z} from 'zod';
 import {useTheme} from '../../theme/ThemeContext';
 import {withAlpha} from '../../theme/util';
 import {glowBlob} from '../../theme/surfaces';
-import {textStyles} from '../../theme/textStyles';
+import {textStyles, extrudeShadow} from '../../theme/textStyles';
 import {HoloTitle} from '../../primitives/HoloTitle';
 import {osc01} from '../../animation/presence';
+import {ScanlineOverlay} from '../../background/Background';
+import {loadFont as loadMogra} from '@remotion/google-fonts/Mogra';
+
+const {fontFamily: mograFont} = loadMogra();
 
 export const outroSchema = z.object({
 	headline: z.string(),
 	cta: z.string().optional(),
+	gitUrl: z.string().optional(),
 });
 export type OutroProps = z.infer<typeof outroSchema>;
+
+const GIT_URL_DEFAULT = 'github.com/ooooyx/LFVideo';
 
 export const OutroScene: React.FC<OutroProps> = ({
 	headline,
 	cta = '关注 · 一起验证 AI IDE 的真实能力',
+	gitUrl,
 }) => {
 	const frame = useCurrentFrame();
 	const {fps, durationInFrames} = useVideoConfig();
@@ -41,7 +49,6 @@ export const OutroScene: React.FC<OutroProps> = ({
 	);
 
 	const breath = osc01(frame, fps, 5);
-	const scanShift = (frame / fps / 6) % 1;
 
 	const pulse = (1 - Math.cos((frame / fps / 3.5) * Math.PI * 2)) / 2;
 	const btnScale = 1 + 0.03 * pulse;
@@ -68,51 +75,72 @@ export const OutroScene: React.FC<OutroProps> = ({
 					blur: 70,
 				})}
 			/>
-			<div
-				style={{
-					position: 'absolute',
-					inset: 0,
-					zIndex: 0,
-					pointerEvents: 'none',
-					backgroundImage: `repeating-linear-gradient(0deg, ${withAlpha(
-						colors.accent[0],
-						0.05,
-					)} 0px, ${withAlpha(colors.accent[0], 0.05)} 1px, transparent 1px, transparent 4px)`,
-					backgroundPositionY: `${scanShift * 4}px`,
-					maskImage:
-						'radial-gradient(ellipse 70% 55% at 50% 45%, #000 0%, transparent 75%)',
-					WebkitMaskImage:
-						'radial-gradient(ellipse 70% 55% at 50% 45%, #000 0%, transparent 75%)',
-				}}
-			/>
+			<ScanlineOverlay color={colors.accent[0]} />
 
 			<div style={{zIndex: 1, padding: '0 80px', maxWidth: 1400, marginBottom: SPACING.xl}}>
 				<HoloTitle
 					title={headline}
 					align="center"
-					size="title"
-					maxWidth={1280}
-					underlineWidth={180}
+					size="display"
+					maxWidth={1600}
+					underlineWidth={280}
+					underlineOffset={30}
+					fontFamily={mograFont}
+					textShadow={extrudeShadow(8, FONT_SIZE.display)}
 				/>
 			</div>
 			<div
 				style={{
-					fontSize: FONT_SIZE.subtitle,
-					fontWeight: 700,
-					color: colors.text.primary,
+					fontSize: 44,
+					fontWeight: 600,
+					color: '#FFFFFF',
+					fontFamily: mograFont,
 					padding: `${SPACING.sm + 4}px ${SPACING.xl}px`,
 					borderRadius: RADIUS.pill,
 					background: `linear-gradient(135deg, ${colors.accent[0]} 0%, ${colors.accent[1]} 100%)`,
 					transform: `scale(${btnScale})`,
 					boxShadow: btnShadow,
-					letterSpacing: 1.5,
-					textShadow: `0 1px 4px rgba(0,0,0,0.4)`,
+					letterSpacing: 3,
+					textShadow: extrudeShadow(5, 44),
 					zIndex: 1,
 					border: '1.5px solid rgba(255,255,255,0.45)',
 				}}
 			>
 				{cta}
 			</div>
+			{(gitUrl ?? GIT_URL_DEFAULT) && (
+				<div
+					style={{
+						position: 'absolute',
+						top: 40,
+						left: '50%',
+						transform: 'translateX(-50%)',
+						display: 'flex',
+						alignItems: 'center',
+						gap: 12,
+						zIndex: 1,
+					}}
+				>
+					<span style={{color: colors.accent[0], fontSize: 36, fontWeight: 800}}>
+						{'</>'}
+					</span>
+					<span
+						style={{
+							color: '#FFFFFF',
+							fontSize: 32,
+							fontWeight: 400,
+							letterSpacing: '0.1em',
+							fontFamily: mograFont,
+							textShadow: extrudeShadow(4, 32),
+						}}
+					>
+						{gitUrl ?? GIT_URL_DEFAULT}
+					</span>
+					<span style={{color: colors.accent[1], fontSize: 36, fontWeight: 800}}>
+						{'</>'}
+					</span>
+				</div>
+			)}
 		</AbsoluteFill>
 	);
 };

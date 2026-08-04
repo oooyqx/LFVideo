@@ -42,6 +42,7 @@ import {
 } from "./components/CaptionOverlay";
 import { VRMAvatar, AvatarTimelineEntry } from "./components/VRMAvatar";
 import { quadMatrix3d, animatedQuadMatrix3d, UnityBackgroundConfig } from "./components/screenWarp";
+import { SafeVideoBackground } from "./components/SafeVideoBackground";
 import {
   AvatarOverride,
   AvatarSceneConfig,
@@ -73,6 +74,7 @@ import {
   TEMPLATE_SCENES,
 } from "./custom-templates";
 import type { BackgroundVariant, CodeStep, TransitionId } from "./custom-templates";
+import { CAPTION_SAFE_ZONE } from "./custom-templates/theme/tokens";
 
 // Load Space Grotesk font for cinematic typography
 const { fontFamily } = loadFont("normal", {
@@ -269,6 +271,8 @@ export interface ExplainerProps {
   overlays?: Overlay[];
   // Pre-paged pages (07 generator output) or legacy flat WordCaption[].
   captions?: CaptionsInput;
+  // Caption entrance animation: 'spring' (default) | 'scramble' | 'rgb-tear'.
+  captionAnimation?: 'spring' | 'scramble' | 'rgb-tear';
   audio?: AudioConfig;
   avatar?: AvatarConfig;
   /** Live Unity WebGL build rendered as the bottom-most background layer. */
@@ -408,6 +412,7 @@ const VideoScene: React.FC<{ src: string; startFrom?: number }> = ({
           opacity: fadeIn * fadeOut,
         }}
         muted
+        onError={() => {}}
       />
       <Vignette />
     </AbsoluteFill>
@@ -480,6 +485,7 @@ const BackgroundVideoLayer: React.FC<{
           objectFit: "cover",
         }}
         muted
+        onError={() => {}}
       />
       {/* Dark overlay for readability */}
       <AbsoluteFill
@@ -764,6 +770,35 @@ const SceneRenderer: React.FC<{
   const textColor = cut.color || theme.textColor;
   const accent = cut.accentColor || theme.accentColor;
 
+  // Scenes exempt from CSS safe-zone wrapping:
+  // - Full-screen title cards (centering is the visual point)
+  // - AutoFit-based scenes (AutoFit handles CAPTION_SAFE_ZONE internally via availH)
+  const SAFE_ZONE_EXEMPT_TYPES = new Set([
+    "intro_scene",
+    "outro_scene",
+    "section_scene",
+    "architecture_scene",
+    "concept_scene",
+    "flow_scene",
+    "table_scene",
+    "bullet_scene",
+    "timeline_scene",
+    "comparison",
+    "comparison_scene",
+    "callout_scene",
+  ]);
+
+  // Wrap scene content with bottom safe-zone padding so flex-centered scenes
+  // don't extend into the caption overlay area.
+  const wrapWithSafeZone = (element: React.ReactElement): React.ReactElement => {
+    if (cut.type && SAFE_ZONE_EXEMPT_TYPES.has(cut.type)) return element;
+    return (
+      <AbsoluteFill style={{ paddingBottom: CAPTION_SAFE_ZONE }}>
+        {element}
+      </AbsoluteFill>
+    );
+  };
+
   // Dispatch through the ordered scene registry (see SCENES above). The first
   // entry whose `type` matches and whose `guard` passes renders the scene.
   const sceneCtx: SceneContext = { cut, theme, bgColor, textColor, accent, transparentBg };
@@ -771,7 +806,7 @@ const SceneRenderer: React.FC<{
     (s) => s.type === cut.type && (!s.guard || s.guard(cut))
   );
   if (sceneEntry) {
-    const element = sceneEntry.render(sceneCtx);
+    const element = wrapWithSafeZone(sceneEntry.render(sceneCtx));
     return sceneEntry.wrapBackground === false ? element : maybeWrapWithBg(element);
   }
 
@@ -784,7 +819,7 @@ const SceneRenderer: React.FC<{
     const parsed = def.schema.safeParse(cut);
     if (parsed.success) {
       const TemplateComponent = def.component;
-      return maybeWrapWithBg(<TemplateComponent {...parsed.data} />);
+      return maybeWrapWithBg(wrapWithSafeZone(<TemplateComponent {...parsed.data} />));
     }
   }
 
@@ -855,7 +890,7 @@ const OverlayRenderer: React.FC<{ overlay: Overlay }> = ({ overlay }) => {
 // ---------------------------------------------------------------------------
 
 export const Explainer: React.FC<ExplainerProps> = (props) => {
-  const { cuts, overlays, captions, audio, avatar, unityBackground } = props;
+  const { cuts, overlays, captions, captionAnimation, audio, avatar, unityBackground } = props;
   // Lip-sync consumes flat word timings; flatten pre-paged captions.
   const captionWords: WordCaption[] | undefined =
     captions && isPagedCaptions(captions)
@@ -906,7 +941,7 @@ export const Explainer: React.FC<ExplainerProps> = (props) => {
   // contentWarpTransform is computed below after warpProgress is resolved.
 
   // Chapter titles are split out of the scene content and rendered as a flat
-  // top-right overlay (NOT warped into the screen), so they stay readable and
+  // top-left overlay (NOT warped into the screen), so they stay readable and
   // fixed while the scene below is perspective-mapped / transformed.
   const TITLE_OVERLAY_TYPES = new Set([
     "concept_scene",
@@ -914,6 +949,9 @@ export const Explainer: React.FC<ExplainerProps> = (props) => {
     "table_scene",
     "comparison",
     "comparison_scene",
+    "architecture_scene",
+    "bullet_scene",
+    "flow_scene",
   ]);
   const titleOverlay = (
     <AbsoluteFill style={{ pointerEvents: "none", zIndex: 60 }}>
@@ -934,22 +972,22 @@ export const Explainer: React.FC<ExplainerProps> = (props) => {
 
   // The background variant is derived from the current cut, or falls back to props.background
   const currentCut = cuts.find(c => (c.out_seconds || 0) * fps >= frame) || cuts[0];
-  const bgVariant = (currentCut?.background || props.background as BackgroundVariant) || "gradient";
+  const bgVariant = (currentCut?.background || props.background as BackgroundVariant) || "video";
   const bgGradient = <Background variant={bgVariant as BackgroundVariant} />;
 
   // Per-cut warp: use the current cut's relative frame so each scene gets its
   // own fly-in animation (matching the preview's FinalComposition behavior).
   // When warpHoldFrames / warpRevealFrames are not explicitly set, auto-compute
-  // them from the current cut's duration (hold=50%, reveal=15%).
+  // them from the current cut's duration (hold=68%, reveal=10%).
   const currentCutStartFrame = Math.round((currentCut?.in_seconds ?? 0) * fps);
   const currentCutDuration = Math.round(
     ((currentCut?.out_seconds ?? 0) - (currentCut?.in_seconds ?? 0)) * fps
   );
   const cutRelativeFrame = frame - currentCutStartFrame;
   const warpRevealFrames =
-    explicitWarpRevealFrames || Math.round(currentCutDuration * 0.15);
+    explicitWarpRevealFrames || Math.round(currentCutDuration * 0.1);
   const warpHoldFrames =
-    explicitWarpHoldFrames || Math.round(currentCutDuration * 0.5);
+    explicitWarpHoldFrames || Math.round(currentCutDuration * 0.68);
   const warpProgress =
     warp && warpRevealFrames > 0
       ? 1 -
@@ -1085,6 +1123,7 @@ export const Explainer: React.FC<ExplainerProps> = (props) => {
         fontSize={42}
         highlightColor={theme.captionHighlightColor}
         backgroundColor={theme.captionBackgroundColor}
+        animation={captionAnimation}
       />
     ) : null;
 
@@ -1142,23 +1181,30 @@ export const Explainer: React.FC<ExplainerProps> = (props) => {
     return (
       <TemplateThemeProvider theme={templateTheme}>
         <AbsoluteFill style={{ background: "#000", fontFamily: theme.headingFont || fontFamily }}>
-          <Img
-            src={resolveAsset(screen!.image!)}
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
-            from={-2417} />
+          {screen?.image ? (
+            <SafeVideoBackground
+              src={resolveAsset(screen.image)}
+              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          ) : (
+            <AbsoluteFill style={{ background: "#0F172A" }} />
+          )}
+          {/* Digital host — rendered below the screen content so scenes appear
+              on top of the character. */}
+          {hostEl}
           {/* Screen backdrop (tint + page gradient + holographic wash) — pinned
               to the final quad (static) so the lit-screen look stays constant. */}
           <div style={{ ...warpLayerStyle, transform: staticWarpTransform }}>
             <AbsoluteFill
-              style={{ background: hexToRgba(screenTint, screenOpacity), overflow: "hidden" }}
+              style={{ background: hexToRgba(screenTint, 0.1), overflow: "hidden" }}
             >
-              <AbsoluteFill style={{ opacity: screenOpacity }}>{bgGradient}</AbsoluteFill>
+              <AbsoluteFill style={{ opacity: 0.4 }}>{bgGradient}</AbsoluteFill>
               {/* Holographic blue wash over the backdrop (below the UI content). */}
               <AbsoluteFill
                 style={{
                   pointerEvents: "none",
                   background:
-                    "radial-gradient(ellipse 95% 85% at 50% 42%, rgba(70,170,240,0.40) 0%, rgba(20,90,180,0.34) 55%, rgba(8,30,72,0.40) 100%)",
+                    "radial-gradient(ellipse 95% 85% at 50% 42%, rgba(70,170,240,0.04) 0%, rgba(20,90,180,0.034) 55%, rgba(8,30,72,0.04) 100%)",
                   mixBlendMode: "screen",
                 }}
               />
@@ -1174,7 +1220,6 @@ export const Explainer: React.FC<ExplainerProps> = (props) => {
           <div style={{ ...warpLayerStyle, transform: staticWarpTransform }}>
             {gradeLayers}
           </div>
-          {hostEl}
           {titleOverlay}
           {captionsEl}
           {audioEls}
