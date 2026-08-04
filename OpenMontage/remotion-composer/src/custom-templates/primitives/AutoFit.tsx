@@ -1,5 +1,6 @@
 import React, {useLayoutEffect, useRef, useState} from 'react';
 import {AbsoluteFill, useVideoConfig} from 'remotion';
+import {CAPTION_SAFE_ZONE} from '../theme/tokens';
 
 interface Props {
 	children: React.ReactNode;
@@ -15,6 +16,8 @@ interface Props {
 	// 'fill'（默认）= 内容拉满安全区宽（适合整宽堆叠的卡片列，如 Concept）；
 	// 'content' = 内容按自身自然宽度排布，再由缩放整体撑满/收缩（适合 Comparison/Table）。
 	widthMode?: 'fill' | 'content';
+	// 设为 true 时跳过字幕安全区扣除（用于全屏标题卡等不需要避让字幕的场景）。
+	fullBleed?: boolean;
 }
 
 /**
@@ -31,13 +34,14 @@ export const AutoFit: React.FC<Props> = ({
 	maxScale = 1,
 	align = 'center',
 	widthMode = 'fill',
+	fullBleed = false,
 }) => {
 	const {width, height} = useVideoConfig();
 	const innerRef = useRef<HTMLDivElement>(null);
 	const [scale, setScale] = useState(1);
 
 	const availW = Math.max(1, width - paddingX * 2);
-	const availH = Math.max(1, height - paddingY * 2);
+	const availH = Math.max(1, height - paddingY * 2 - (fullBleed ? 0 : CAPTION_SAFE_ZONE));
 
 	useLayoutEffect(() => {
 		const inner = innerRef.current;
@@ -54,7 +58,7 @@ export const AutoFit: React.FC<Props> = ({
 		const ro = new ResizeObserver(measure);
 		ro.observe(inner);
 		return () => ro.disconnect();
-	}, [availW, availH, maxScale, children]);
+	}, [availW, availH, maxScale]);
 
 	return (
 		<AbsoluteFill

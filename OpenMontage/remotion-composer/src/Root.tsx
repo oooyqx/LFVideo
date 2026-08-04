@@ -2,7 +2,11 @@ import { Composition, CalculateMetadataFunction } from "remotion";
 import { Explainer, ExplainerProps } from "./Explainer";
 import { BackgroundShowcase, SHOWCASE_FRAMES } from "./BackgroundShowcase";
 import { CaptionShowcase, CAPTION_SHOWCASE_FRAMES } from "./CaptionShowcase";
+import { CoverScene, CoverProps } from "./custom-templates/scenes/cover/CoverScene";
 import ep02ShotsProps from "../public/demo-props/ep02-shots.json";
+import ep02CoverProps from "../public/demo-props/ep02-cover.json";
+import ep03ShotsProps from "../public/demo-props/ep03-shots.json";
+import ep03CoverProps from "../public/demo-props/ep03-cover.json";
 
 // ---------------------------------------------------------------------------
 // Theme System — prevents every video from looking like dark fintech
@@ -149,6 +153,16 @@ export const Root: React.FC = () => {
         calculateMetadata={calculateMetadata}
       />
       <Composition
+        id="ep03-shots"
+        component={Explainer}
+        durationInFrames={30 * 60}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={ep03ShotsProps as unknown as ExplainerProps}
+        calculateMetadata={calculateMetadata}
+      />
+      <Composition
         id="BackgroundShowcase"
         component={BackgroundShowcase}
         durationInFrames={SHOWCASE_FRAMES}
@@ -163,6 +177,42 @@ export const Root: React.FC = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+      <Composition
+        id="cover-16x9"
+        component={CoverScene as unknown as React.FC<Record<string, unknown>>}
+        durationInFrames={30}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={ep02CoverProps as unknown as CoverProps}
+      />
+      <Composition
+        id="ep03-cover-16x9"
+        component={CoverScene as unknown as React.FC<Record<string, unknown>>}
+        durationInFrames={30}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={ep03CoverProps as unknown as CoverProps}
+      />
+      <Composition
+        id="cover-9x16"
+        component={CoverScene as unknown as React.FC<Record<string, unknown>>}
+        durationInFrames={30}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={ep02CoverProps as unknown as CoverProps}
+      />
+      <Composition
+        id="cover-1x1"
+        component={CoverScene as unknown as React.FC<Record<string, unknown>>}
+        durationInFrames={30}
+        fps={30}
+        width={1080}
+        height={1080}
+        defaultProps={ep02CoverProps as unknown as CoverProps}
       />
     </>
   );

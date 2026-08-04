@@ -111,7 +111,12 @@ def chunk_text(text: str) -> list[str]:
     Chunks below MIN_CHUNK_CHARS visible characters are merged into the next
     chunk (or the previous one at end of sentence) so no caption unit flashes
     by as a two/three-character fragment.
+
+    If a chunk has no clause-ending punctuation but exceeds MAX_CHUNK_CHARS,
+    it is split at spaces (CJK-Latin boundaries) or hard-wrapped at
+    MAX_CHUNK_CHARS so no single caption unit overflows the page budget.
     """
+    MAX_CHUNK_CHARS = 18
     chunks: list[str] = []
     buf = ""
     for ch in text:
@@ -122,6 +127,33 @@ def chunk_text(text: str) -> list[str]:
     if buf.strip():
         chunks.append(buf)
     chunks = [c for c in chunks if c.strip()]
+
+    # Fallback: split long chunks without punctuation at spaces or by length
+    split_chunks: list[str] = []
+    for c in chunks:
+        if visible_len(c) <= MAX_CHUNK_CHARS:
+            split_chunks.append(c)
+            continue
+        # Try splitting at spaces first (CJK-Latin boundary)
+        parts = []
+        cur = ""
+        for ch in c:
+            cur += ch
+            if ch == " " and visible_len(cur) >= MIN_CHUNK_CHARS:
+                parts.append(cur)
+                cur = ""
+        if cur.strip():
+            parts.append(cur)
+        # If still no split or any part too long, hard-wrap at MAX_CHUNK_CHARS
+        final_parts = []
+        for p in parts:
+            while visible_len(p) > MAX_CHUNK_CHARS:
+                final_parts.append(p[:MAX_CHUNK_CHARS])
+                p = p[MAX_CHUNK_CHARS:]
+            if p.strip():
+                final_parts.append(p)
+        split_chunks.extend(final_parts if final_parts else [c])
+    chunks = split_chunks
 
     merged: list[str] = []
     for c in chunks:

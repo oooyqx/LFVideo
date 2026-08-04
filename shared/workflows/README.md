@@ -5,7 +5,7 @@ slug: workflows-readme
 
 # shared/workflows — 工作流单一真相源 (Single Source of Truth)
 
-本目录是 13 阶段内容流水线工作流的**唯一真相源**，与 `shared/roles/`（角色真相源）对等，IDE 无关。
+本目录是 9 阶段内容流水线工作流的**唯一真相源**，与 `shared/roles/`（角色真相源）对等，IDE 无关。
 各 AI IDE 实际调用的工作流文件由脚本从这里**生成**，不要手改生成副本。
 
 ## 目录约定
@@ -17,7 +17,7 @@ slug: workflows-readme
 | `.windsurf/workflows/<slug>.md` | Windsurf 原生 Workflows 生成副本（`/<slug>` 调用） | ❌ 自动生成 |
 | `.cursor/commands/<slug>.md` | Cursor slash 命令生成副本（`/<slug>` 调用） | ❌ 自动生成 |
 
-文件名一律**纯 ASCII**（`02-content-planning.md`），中文名放在 frontmatter `title`，
+文件名一律**纯 ASCII**（`04-script-draft.md`），中文名放在 frontmatter `title`，
 这样 `/<slug>` 在各 IDE 都能正常作为 slash 命令调用。
 
 ## 改完后必须同步

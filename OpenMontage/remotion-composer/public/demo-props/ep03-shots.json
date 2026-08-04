@@ -1,0 +1,1721 @@
+{
+  "theme": "flat-motion-graphics",
+  "cuts": [
+    {
+      "id": "shot-1.1",
+      "type": "intro_scene",
+      "source": "",
+      "in_seconds": 0.0,
+      "out_seconds": 3.072,
+      "title": "用 Vibe Coding 构建特色鲜明的 Remotion 渲染场景",
+      "subtitle": "EP03 · 渲染场景搭建",
+      "background": "video"
+    },
+    {
+      "id": "shot-1.2",
+      "type": "concept_scene",
+      "source": "",
+      "in_seconds": 3.072,
+      "out_seconds": 17.328,
+      "eyebrow": "关键认知",
+      "title": "特色在画面分层，不在写更花哨的组件",
+      "items": [
+        {
+          "label": "分层",
+          "title": "背景层",
+          "desc": "定调子：渐变、网格、视频",
+          "icon": "🎨"
+        },
+        {
+          "label": "分层",
+          "title": "内容层",
+          "desc": "讲东西：卡片、表格、图表",
+          "icon": "📊"
+        },
+        {
+          "label": "分层",
+          "title": "叠层",
+          "desc": "辅助理解：标题、字幕、高亮",
+          "icon": "🏷️"
+        },
+        {
+          "label": "分层",
+          "title": "角色层",
+          "desc": "人格化：主持人、数字人",
+          "icon": "🧑"
+        }
+      ],
+      "background": "video"
+    },
+    {
+      "id": "shot-1.3",
+      "type": "callout_scene",
+      "source": "",
+      "in_seconds": 17.328,
+      "out_seconds": 22.56,
+      "callout_type": "tip",
+      "title": "核心判断",
+      "text": "理解了分层架构，就能指挥 AI 搭出有空间感、有辨识度的场景",
+      "background": "video"
+    },
+    {
+      "id": "shot-2.1",
+      "type": "concept_scene",
+      "source": "",
+      "in_seconds": 22.56,
+      "out_seconds": 40.2,
+      "eyebrow": "通用认知",
+      "title": "视频场景 = 从底到顶叠图层",
+      "items": [
+        {
+          "label": "第 1 层",
+          "title": "背景层",
+          "desc": "定调子，不承载信息——渐变、网格、视频",
+          "icon": "🌅"
+        },
+        {
+          "label": "第 2 层",
+          "title": "内容层",
+          "desc": "讲东西，承载信息——卡片、表格、图表、终端",
+          "icon": "📐"
+        },
+        {
+          "label": "第 3 层",
+          "title": "叠层",
+          "desc": "辅助理解——标题、字幕、角标、高亮",
+          "icon": "🔖"
+        },
+        {
+          "label": "第 4 层",
+          "title": "角色层",
+          "desc": "人格化——主持人、数字人",
+          "icon": "🧑"
+        }
+      ],
+      "background": "video"
+    },
+    {
+      "id": "shot-2.2",
+      "type": "callout_scene",
+      "source": "",
+      "in_seconds": 40.2,
+      "out_seconds": 50.376,
+      "callout_type": "tip",
+      "title": "为什么分层",
+      "text": "改一层不动其他层",
+      "items": [
+        "换数据只改内容层，背景和主持人不用重做",
+        "AI 填配置时只管自己那层，不会互相干扰"
+      ],
+      "background": "video"
+    },
+    {
+      "id": "shot-2.3",
+      "type": "quote_scene",
+      "source": "",
+      "in_seconds": 50.376,
+      "out_seconds": 61.176,
+      "text": "你只需要决定要哪几层、每层什么风格——剩下交给 AI",
+      "background": "video"
+    },
+    {
+      "id": "shot-3.1",
+      "type": "stat_scene",
+      "source": "",
+      "in_seconds": 61.176,
+      "out_seconds": 68.64,
+      "stat": "多种方式",
+      "label": "背景层构建",
+      "background": "video"
+    },
+    {
+      "id": "shot-3.2",
+      "type": "table_scene",
+      "source": "",
+      "in_seconds": 68.64,
+      "out_seconds": 82.704,
+      "title": "背景层构建方式",
+      "headers": [
+        "方式",
+        "效果",
+        "适合什么调子"
+      ],
+      "rows": [
+        [
+          "渐变（编程）",
+          "随时间缓慢变色的漂移流动渐变",
+          "温暖、柔和"
+        ],
+        [
+          "科技网格（特效）",
+          "暗色科技感网格，随时间缓慢平移",
+          "硬核、技术"
+        ],
+        [
+          "浮动粒子（特效）",
+          "科技感浮动微光粒子",
+          "开场、未来感"
+        ],
+        [
+          "视频轮播（视频）",
+          "随机轮播背景视频，叠在渐变上",
+          "有素材、丰富"
+        ],
+        [
+          "垫图+遮罩（图片）",
+          "静态图片加暗化遮罩，图太亮就压暗",
+          "自定义氛围"
+        ],
+        [
+          "透明",
+          "不画底，让下层透出",
+          "主持人占满画面"
+        ]
+      ],
+      "enter": "rise",
+      "background": "video"
+    },
+    {
+      "id": "shot-4.1",
+      "type": "stat_scene",
+      "source": "",
+      "in_seconds": 82.704,
+      "out_seconds": 87.36,
+      "stat": "16种场景",
+      "label": "内容层",
+      "background": "video"
+    },
+    {
+      "id": "shot-4.2",
+      "type": "table_scene",
+      "source": "",
+      "in_seconds": 87.36,
+      "out_seconds": 97.008,
+      "title": "16 种现成场景",
+      "headers": [
+        "场景",
+        "什么时候用"
+      ],
+      "rows": [
+        [
+          "开场 / 收尾",
+          "片头大字报 / 片尾 CTA"
+        ],
+        [
+          "概念卡 / 要点清单 / 流程图",
+          "概念拆解 / 平铺要点 / A→B→C 流程"
+        ],
+        [
+          "架构图",
+          "分层节点 + 连接关系"
+        ],
+        [
+          "表格 / 对比卡",
+          "多方案矩阵对比 / 两方对照"
+        ],
+        [
+          "时间线",
+          "按时间/版本推进的事件"
+        ],
+        [
+          "图表 / 核心数字",
+          "量化数据 / 单个硬指标"
+        ],
+        [
+          "终端 / 截图场景",
+          "命令+输出演示 / 截图叠光标"
+        ],
+        [
+          "提示框 / 金句 / 章节分隔",
+          "避坑提示 / 金句收束 / 段落过渡"
+        ],
+        [
+          "对话窗口",
+          "模拟用户与 AI 的聊天交互"
+        ]
+      ],
+      "enter": "rise",
+      "background": "video"
+    },
+    {
+      "id": "shot-4.3",
+      "type": "chat_scene",
+      "source": "",
+      "in_seconds": 97.008,
+      "out_seconds": 102.648,
+      "title": "怎么选场景",
+      "messages": [
+        {
+          "role": "user",
+          "text": "这段讲三层架构，用哪个场景？"
+        },
+        {
+          "role": "assistant",
+          "text": "用 architecture_scene，我帮你填好节点和连接关系。"
+        }
+      ],
+      "background": "video"
+    },
+    {
+      "id": "shot-4.4",
+      "type": "callout_scene",
+      "source": "",
+      "in_seconds": 102.648,
+      "out_seconds": 119.64,
+      "callout_type": "warning",
+      "title": "关键纪律",
+      "text": "别让 AI 从零发明场景",
+      "items": [
+        "先看现成的能不能用",
+        "不能用再用 AI 扩展：告诉 AI 需求 → AI 写组件 → 你验收"
+      ],
+      "background": "video"
+    },
+    {
+      "id": "shot-5.1",
+      "type": "concept_scene",
+      "source": "",
+      "in_seconds": 119.64,
+      "out_seconds": 129.888,
+      "eyebrow": "可选层",
+      "title": "全息屏 = 背景中预留的三维空间区域",
+      "items": [
+        {
+          "label": "实现",
+          "title": "矩阵变换",
+          "desc": "给四角坐标和背景图，引擎自动算透视变换",
+          "icon": "📐"
+        },
+        {
+          "label": "定位",
+          "title": "非必须",
+          "desc": "背景加内容已经够用，全息屏和主持人都是锦上添花",
+          "icon": "💡"
+        }
+      ],
+      "background": "video"
+    },
+    {
+      "id": "shot-5.2",
+      "type": "callout_scene",
+      "source": "",
+      "in_seconds": 129.888,
+      "out_seconds": 138.528,
+      "callout_type": "tip",
+      "title": "非必须",
+      "text": "全息屏和主持人都是锦上添花",
+      "items": [
+        "背景层 + 内容层已经够用",
+        "有素材再加全息屏，有模型再加主持人"
+      ],
+      "background": "video"
+    },
+    {
+      "id": "shot-6.1",
+      "type": "concept_scene",
+      "source": "",
+      "in_seconds": 138.528,
+      "out_seconds": 156.96,
+      "eyebrow": "VRM 主持人",
+      "title": "渲染一次全身，按场景自动裁切",
+      "items": [
+        {
+          "label": "概念",
+          "title": "讲概念→半身",
+          "desc": "主持人半身出镜",
+          "icon": "🗣️"
+        },
+        {
+          "label": "表格",
+          "title": "展示表格→角落",
+          "desc": "主持人缩到角落",
+          "icon": "📐"
+        },
+        {
+          "label": "开场",
+          "title": "开场→全身",
+          "desc": "主持人全身站旁边",
+          "icon": "🧑"
+        }
+      ],
+      "background": "video"
+    },
+    {
+      "id": "shot-6.2",
+      "type": "table_scene",
+      "source": "",
+      "in_seconds": 156.96,
+      "out_seconds": 167.04,
+      "title": "两种模式",
+      "headers": [
+        "模式",
+        "画面效果",
+        "适合什么"
+      ],
+      "rows": [
+        [
+          "角落模式",
+          "主持人贴角落，内容不透明",
+          "内容为主、主持人辅助"
+        ],
+        [
+          "占满模式",
+          "主持人占满画面，内容透明浮在上层",
+          "主持人为主、内容辅助"
+        ]
+      ],
+      "enter": "rise",
+      "background": "video"
+    },
+    {
+      "id": "shot-6.3",
+      "type": "callout_scene",
+      "source": "",
+      "in_seconds": 167.04,
+      "out_seconds": 179.064,
+      "callout_type": "info",
+      "title": "口型同步",
+      "text": "用字幕的逐字时间戳驱动口型",
+      "items": [
+        "每个字对应一个口型形状，不需要读音频波形",
+        "字幕说'你好'，嘴就按'你'和'好'的口型动——帧级确定"
+      ],
+      "background": "video"
+    },
+    {
+      "id": "shot-6.4",
+      "type": "quote_scene",
+      "source": "",
+      "in_seconds": 179.064,
+      "out_seconds": 189.312,
+      "text": "人选模型和动画，AI 填配置，引擎自动切镜头 + 驱动口型",
+      "background": "video"
+    },
+    {
+      "id": "shot-7.1",
+      "type": "flow_scene",
+      "source": "",
+      "in_seconds": 189.312,
+      "out_seconds": 229.968,
+      "eyebrow": "指挥 AI 搭场景",
+      "title": "六步路径",
+      "steps": [
+        {
+          "label": "决定要哪几层",
+          "desc": "背景+内容是最小集；全息屏和主持人是可选增强",
+          "icon": "🎯"
+        },
+        {
+          "label": "选背景构建方式",
+          "desc": "多种方式对号入座",
+          "icon": "🎨"
+        },
+        {
+          "label": "填场景配置",
+          "desc": "16 种现成场景按语义选",
+          "icon": "📋"
+        },
+        {
+          "label": "加主持人",
+          "desc": "加 avatar 配置块，选模式",
+          "icon": "🧑"
+        },
+        {
+          "label": "加全息屏",
+          "desc": "给房间素材和屏幕坐标",
+          "icon": "🖥️"
+        },
+        {
+          "label": "扩展新场景",
+          "desc": "让 AI 写组件，你验收",
+          "icon": "🔧"
+        }
+      ],
+      "orientation": "horizontal",
+      "background": "video"
+    },
+    {
+      "id": "shot-7.2",
+      "type": "comparison_scene",
+      "source": "",
+      "in_seconds": 229.968,
+      "out_seconds": 243.768,
+      "title": "适合 vs 不适合",
+      "leftLabel": "✅ 适合",
+      "leftValue": "模板化讲解 + 数据图表 + 有主持人的教学片",
+      "rightLabel": "❌ 不适合",
+      "rightValue": "实拍真人、写实数字人（恐怖谷）、高自由度影视特效",
+      "background": "video"
+    },
+    {
+      "id": "shot-8.1",
+      "type": "flow_scene",
+      "source": "",
+      "in_seconds": 243.768,
+      "out_seconds": 275.952,
+      "eyebrow": "三层回顾",
+      "title": "",
+      "steps": [
+        {
+          "label": "分层原理",
+          "desc": "背景→内容→叠层→角色",
+          "icon": "📚"
+        },
+        {
+          "label": "三层实例",
+          "desc": "背景层→全息屏→VRM 主持人",
+          "icon": "🏗️"
+        },
+        {
+          "label": "指挥 AI",
+          "desc": "选层→选风格→填场景→验收",
+          "icon": "🎯"
+        }
+      ],
+      "orientation": "horizontal",
+      "background": "video"
+    },
+    {
+      "id": "shot-8.2",
+      "type": "outro_scene",
+      "source": "",
+      "in_seconds": 275.952,
+      "out_seconds": 283.968,
+      "headline": "不吹AI，真落地，真开源",
+      "cta": "关注 · 一起用 AI 构建能落地、可复现的工作流",
+      "background": "video"
+    }
+  ],
+  "overlays": [],
+  "captions": [
+    {
+      "startMs": 165,
+      "endMs": 2885,
+      "words": [
+        {
+          "word": "怎么构建特色鲜明的",
+          "startMs": 165,
+          "endMs": 1728
+        },
+        {
+          "word": "Remotion 渲染场景？",
+          "startMs": 1728,
+          "endMs": 2885
+        }
+      ]
+    },
+    {
+      "startMs": 3217,
+      "endMs": 7397,
+      "words": [
+        {
+          "word": "特色不在\"让 AI 写更花哨的组件\"，",
+          "startMs": 3217,
+          "endMs": 6077
+        },
+        {
+          "word": "而在画面分层",
+          "startMs": 6077,
+          "endMs": 7397
+        }
+      ]
+    },
+    {
+      "startMs": 7647,
+      "endMs": 12990,
+      "words": [
+        {
+          "word": "背景、内容、叠层、",
+          "startMs": 7647,
+          "endMs": 8983
+        },
+        {
+          "word": "主持人各自独立成层，",
+          "startMs": 8983,
+          "endMs": 10986
+        },
+        {
+          "word": "按需组合——理解了分层",
+          "startMs": 10986,
+          "endMs": 12990
+        }
+      ]
+    },
+    {
+      "startMs": 12990,
+      "endMs": 16997,
+      "words": [
+        {
+          "word": "就能指挥 AI 搭出有空间感、",
+          "startMs": 12990,
+          "endMs": 15439
+        },
+        {
+          "word": "有辨识度的场景",
+          "startMs": 15439,
+          "endMs": 16997
+        }
+      ]
+    },
+    {
+      "startMs": 17463,
+      "endMs": 22253,
+      "words": [
+        {
+          "word": "理解了分层，",
+          "startMs": 17463,
+          "endMs": 18504
+        },
+        {
+          "word": "就能指挥 AI 搭出有空间感、",
+          "startMs": 18504,
+          "endMs": 20795
+        },
+        {
+          "word": "有辨识度的场景",
+          "startMs": 20795,
+          "endMs": 22253
+        }
+      ]
+    },
+    {
+      "startMs": 22735,
+      "endMs": 28185,
+      "words": [
+        {
+          "word": "视频场景的本质都一样—",
+          "startMs": 22735,
+          "endMs": 24754
+        },
+        {
+          "word": "—从底到顶叠图层，",
+          "startMs": 24754,
+          "endMs": 26166
+        },
+        {
+          "word": "每层独立渲染、独立控制",
+          "startMs": 26166,
+          "endMs": 28185
+        }
+      ]
+    },
+    {
+      "startMs": 28527,
+      "endMs": 31037,
+      "words": [
+        {
+          "word": "背景层定调子，",
+          "startMs": 28527,
+          "endMs": 29896
+        },
+        {
+          "word": "不承载信息",
+          "startMs": 29896,
+          "endMs": 31037
+        }
+      ]
+    },
+    {
+      "startMs": 31300,
+      "endMs": 33700,
+      "words": [
+        {
+          "word": "内容层讲东西，承载信息",
+          "startMs": 31300,
+          "endMs": 33700
+        }
+      ]
+    },
+    {
+      "startMs": 33866,
+      "endMs": 36936,
+      "words": [
+        {
+          "word": "叠层辅助理解，",
+          "startMs": 33866,
+          "endMs": 35401
+        },
+        {
+          "word": "标题、字幕、高亮",
+          "startMs": 35401,
+          "endMs": 36936
+        }
+      ]
+    },
+    {
+      "startMs": 37285,
+      "endMs": 41135,
+      "words": [
+        {
+          "word": "角色层人格化，",
+          "startMs": 37285,
+          "endMs": 38471
+        },
+        {
+          "word": "主持人和数字人。",
+          "startMs": 38471,
+          "endMs": 39855
+        },
+        {
+          "word": "为什么分层？",
+          "startMs": 40335,
+          "endMs": 41135
+        }
+      ]
+    },
+    {
+      "startMs": 41520,
+      "endMs": 42870,
+      "words": [
+        {
+          "word": "改一层不动其他层",
+          "startMs": 41520,
+          "endMs": 42870
+        }
+      ]
+    },
+    {
+      "startMs": 43317,
+      "endMs": 46707,
+      "words": [
+        {
+          "word": "换数据只改内容层，",
+          "startMs": 43317,
+          "endMs": 44824
+        },
+        {
+          "word": "背景和主持人不用重做",
+          "startMs": 44824,
+          "endMs": 46707
+        }
+      ]
+    },
+    {
+      "startMs": 47145,
+      "endMs": 50175,
+      "words": [
+        {
+          "word": "AI 填配置时只管自己那层，",
+          "startMs": 47145,
+          "endMs": 49106
+        },
+        {
+          "word": "不会互相干扰",
+          "startMs": 49106,
+          "endMs": 50175
+        }
+      ]
+    },
+    {
+      "startMs": 50501,
+      "endMs": 54621,
+      "words": [
+        {
+          "word": "你只需要决定要哪几层、",
+          "startMs": 50501,
+          "endMs": 52463
+        },
+        {
+          "word": "每层什么风格—",
+          "startMs": 52463,
+          "endMs": 53640
+        },
+        {
+          "word": "—剩下交给 AI",
+          "startMs": 53640,
+          "endMs": 54621
+        }
+      ]
+    },
+    {
+      "startMs": 54903,
+      "endMs": 57403,
+      "words": [
+        {
+          "word": "但分层只是原理，",
+          "startMs": 54903,
+          "endMs": 56249
+        },
+        {
+          "word": "具体怎么落地？",
+          "startMs": 56249,
+          "endMs": 57403
+        }
+      ]
+    },
+    {
+      "startMs": 57661,
+      "endMs": 60851,
+      "words": [
+        {
+          "word": "我们将以本视频为例，",
+          "startMs": 57661,
+          "endMs": 59350
+        },
+        {
+          "word": "讲解视频分层构建",
+          "startMs": 59350,
+          "endMs": 60851
+        }
+      ]
+    },
+    {
+      "startMs": 61351,
+      "endMs": 63141,
+      "words": [
+        {
+          "word": "背景层是内容的平台",
+          "startMs": 61351,
+          "endMs": 63141
+        }
+      ]
+    },
+    {
+      "startMs": 63508,
+      "endMs": 68448,
+      "words": [
+        {
+          "word": "你可以通过 AI 编程将视频、",
+          "startMs": 63508,
+          "endMs": 65772
+        },
+        {
+          "word": "图片、特效等多种方式叠加构建",
+          "startMs": 65772,
+          "endMs": 68448
+        }
+      ]
+    },
+    {
+      "startMs": 68795,
+      "endMs": 71845,
+      "words": [
+        {
+          "word": "最终目标就是构建出有你满意的动态场景",
+          "startMs": 68795,
+          "endMs": 71845
+        }
+      ]
+    },
+    {
+      "startMs": 72195,
+      "endMs": 75155,
+      "words": [
+        {
+          "word": "比如本视频的背景用的就是 3D 场景视频",
+          "startMs": 72195,
+          "endMs": 75155
+        }
+      ]
+    },
+    {
+      "startMs": 75398,
+      "endMs": 77328,
+      "words": [
+        {
+          "word": "背景层搞定了，内容层呢？",
+          "startMs": 75398,
+          "endMs": 77328
+        }
+      ]
+    },
+    {
+      "startMs": 77576,
+      "endMs": 82456,
+      "words": [
+        {
+          "word": "EP02 讲过配置按 type 自动分发，",
+          "startMs": 77576,
+          "endMs": 80204
+        },
+        {
+          "word": "这里重点讲怎么选场景",
+          "startMs": 80204,
+          "endMs": 82456
+        }
+      ]
+    },
+    {
+      "startMs": 82849,
+      "endMs": 84409,
+      "words": [
+        {
+          "word": "内容层承载信息",
+          "startMs": 82849,
+          "endMs": 84409
+        }
+      ]
+    },
+    {
+      "startMs": 84644,
+      "endMs": 89631,
+      "words": [
+        {
+          "word": "当前我们构建了 16 个模板场景，",
+          "startMs": 84644,
+          "endMs": 87154
+        },
+        {
+          "word": "按内容语义对号入座",
+          "startMs": 87555,
+          "endMs": 89631
+        }
+      ]
+    },
+    {
+      "startMs": 89631,
+      "endMs": 94475,
+      "words": [
+        {
+          "word": "讲流程用流程图，",
+          "startMs": 89631,
+          "endMs": 91246
+        },
+        {
+          "word": "讲对比用对比卡，",
+          "startMs": 91246,
+          "endMs": 92860
+        },
+        {
+          "word": "讲架构用架构图",
+          "startMs": 92860,
+          "endMs": 94475
+        }
+      ]
+    },
+    {
+      "startMs": 94675,
+      "endMs": 96905,
+      "words": [
+        {
+          "word": "你现在看到的这个表格就是其中一种",
+          "startMs": 94675,
+          "endMs": 96905
+        }
+      ]
+    },
+    {
+      "startMs": 97163,
+      "endMs": 102433,
+      "words": [
+        {
+          "word": "不需要记组件名，",
+          "startMs": 97163,
+          "endMs": 98639
+        },
+        {
+          "word": "你说\"这段讲三层架构\"，",
+          "startMs": 98639,
+          "endMs": 100536
+        },
+        {
+          "word": "AI 自动选场景、填字段",
+          "startMs": 100536,
+          "endMs": 102433
+        }
+      ]
+    },
+    {
+      "startMs": 102793,
+      "endMs": 104083,
+      "words": [
+        {
+          "word": "想加自己的场景？",
+          "startMs": 102793,
+          "endMs": 104083
+        }
+      ]
+    },
+    {
+      "startMs": 104381,
+      "endMs": 108631,
+      "words": [
+        {
+          "word": "告诉 AI 需求，",
+          "startMs": 104381,
+          "endMs": 105631
+        },
+        {
+          "word": "AI 写组件、",
+          "startMs": 105631,
+          "endMs": 106631
+        },
+        {
+          "word": "注册、填配置，你验收",
+          "startMs": 106631,
+          "endMs": 108631
+        }
+      ]
+    },
+    {
+      "startMs": 108983,
+      "endMs": 114333,
+      "words": [
+        {
+          "word": "关键纪律：别让 AI 从零发明场景—",
+          "startMs": 108983,
+          "endMs": 111559
+        },
+        {
+          "word": "—先看现成的能不能用，",
+          "startMs": 111559,
+          "endMs": 113342
+        },
+        {
+          "word": "不能再扩展",
+          "startMs": 113342,
+          "endMs": 114333
+        }
+      ]
+    },
+    {
+      "startMs": 114558,
+      "endMs": 119313,
+      "words": [
+        {
+          "word": "内容层搞定了，",
+          "startMs": 114558,
+          "endMs": 115698
+        },
+        {
+          "word": "但画面还是平的。",
+          "startMs": 115698,
+          "endMs": 117028
+        },
+        {
+          "word": "想要空间感？",
+          "startMs": 117325,
+          "endMs": 118335
+        },
+        {
+          "word": "下一层",
+          "startMs": 118803,
+          "endMs": 119313
+        }
+      ]
+    },
+    {
+      "startMs": 119775,
+      "endMs": 124132,
+      "words": [
+        {
+          "word": "全息屏是我们在背景中预留的一块有三维",
+          "startMs": 119775,
+          "endMs": 123043
+        },
+        {
+          "word": "空间感的区域",
+          "startMs": 123043,
+          "endMs": 124132
+        }
+      ]
+    },
+    {
+      "startMs": 124132,
+      "endMs": 125585,
+      "words": [
+        {
+          "word": "通过矩阵变换实现",
+          "startMs": 124132,
+          "endMs": 125585
+        }
+      ]
+    },
+    {
+      "startMs": 125972,
+      "endMs": 129592,
+      "words": [
+        {
+          "word": "你给四角坐标和背景图，",
+          "startMs": 125972,
+          "endMs": 127877
+        },
+        {
+          "word": "引擎自动算透视变换",
+          "startMs": 127877,
+          "endMs": 129592
+        }
+      ]
+    },
+    {
+      "startMs": 130053,
+      "endMs": 134381,
+      "words": [
+        {
+          "word": "这块不是必须的—",
+          "startMs": 130053,
+          "endMs": 131315
+        },
+        {
+          "word": "—包括主持人也一样，",
+          "startMs": 131315,
+          "endMs": 132758
+        },
+        {
+          "word": "背景加内容已经够用",
+          "startMs": 132758,
+          "endMs": 134381
+        }
+      ]
+    },
+    {
+      "startMs": 134381,
+      "endMs": 135643,
+      "words": [
+        {
+          "word": "这些是锦上添花",
+          "startMs": 134381,
+          "endMs": 135643
+        }
+      ]
+    },
+    {
+      "startMs": 135991,
+      "endMs": 138151,
+      "words": [
+        {
+          "word": "但如果你要用主持人，怎么搭？",
+          "startMs": 135991,
+          "endMs": 138151
+        }
+      ]
+    },
+    {
+      "startMs": 138673,
+      "endMs": 140843,
+      "words": [
+        {
+          "word": "主持人不是每帧重渲染 3D",
+          "startMs": 138673,
+          "endMs": 140843
+        }
+      ]
+    },
+    {
+      "startMs": 141335,
+      "endMs": 146492,
+      "words": [
+        {
+          "word": "引擎渲染一次全身，",
+          "startMs": 141335,
+          "endMs": 143054
+        },
+        {
+          "word": "按场景类型自动裁切—",
+          "startMs": 143054,
+          "endMs": 144988
+        },
+        {
+          "word": "—讲概念半身出镜",
+          "startMs": 144988,
+          "endMs": 146492
+        }
+      ]
+    },
+    {
+      "startMs": 146492,
+      "endMs": 149715,
+      "words": [
+        {
+          "word": "展示表格缩到角落，",
+          "startMs": 146492,
+          "endMs": 148211
+        },
+        {
+          "word": "开场全身站旁边",
+          "startMs": 148211,
+          "endMs": 149715
+        }
+      ]
+    },
+    {
+      "startMs": 150123,
+      "endMs": 153533,
+      "words": [
+        {
+          "word": "本视频就用了主持人，",
+          "startMs": 150123,
+          "endMs": 151584
+        },
+        {
+          "word": "你现在看到的角落模式就是",
+          "startMs": 151584,
+          "endMs": 153533
+        }
+      ]
+    },
+    {
+      "startMs": 154126,
+      "endMs": 156756,
+      "words": [
+        {
+          "word": "AI 只填场景类型，",
+          "startMs": 154126,
+          "endMs": 155542
+        },
+        {
+          "word": "镜头自动切好",
+          "startMs": 155542,
+          "endMs": 156756
+        }
+      ]
+    },
+    {
+      "startMs": 157095,
+      "endMs": 161885,
+      "words": [
+        {
+          "word": "两种模式：角落模式贴角落，",
+          "startMs": 157095,
+          "endMs": 159490
+        },
+        {
+          "word": "内容不透明，",
+          "startMs": 159490,
+          "endMs": 160579
+        },
+        {
+          "word": "适合内容为主",
+          "startMs": 160579,
+          "endMs": 161885
+        }
+      ]
+    },
+    {
+      "startMs": 162150,
+      "endMs": 166830,
+      "words": [
+        {
+          "word": "占满模式占满画面，",
+          "startMs": 162150,
+          "endMs": 163778
+        },
+        {
+          "word": "内容透明浮在上层，",
+          "startMs": 163778,
+          "endMs": 165406
+        },
+        {
+          "word": "适合主持人为主",
+          "startMs": 165406,
+          "endMs": 166830
+        }
+      ]
+    },
+    {
+      "startMs": 167165,
+      "endMs": 172495,
+      "words": [
+        {
+          "word": "口型同步用字幕的逐字时间戳驱动，",
+          "startMs": 167165,
+          "endMs": 170240
+        },
+        {
+          "word": "每个字对应一个口型形状",
+          "startMs": 170240,
+          "endMs": 172495
+        }
+      ]
+    },
+    {
+      "startMs": 172495,
+      "endMs": 174135,
+      "words": [
+        {
+          "word": "不需要读音频波形",
+          "startMs": 172495,
+          "endMs": 174135
+        }
+      ]
+    },
+    {
+      "startMs": 174408,
+      "endMs": 178788,
+      "words": [
+        {
+          "word": "字幕说\"你好\"，",
+          "startMs": 174408,
+          "endMs": 175561
+        },
+        {
+          "word": "嘴就按\"你\"和\"好\"的口型动——帧级确定",
+          "startMs": 175561,
+          "endMs": 178788
+        }
+      ]
+    },
+    {
+      "startMs": 179199,
+      "endMs": 182749,
+      "words": [
+        {
+          "word": "选好 VRM 模型和动画，",
+          "startMs": 179199,
+          "endMs": 180974
+        },
+        {
+          "word": "告诉 AI 用哪种模式",
+          "startMs": 180974,
+          "endMs": 182749
+        }
+      ]
+    },
+    {
+      "startMs": 183303,
+      "endMs": 186643,
+      "words": [
+        {
+          "word": "AI 填配置，",
+          "startMs": 183303,
+          "endMs": 184138
+        },
+        {
+          "word": "引擎自动切镜头加驱动口型",
+          "startMs": 184138,
+          "endMs": 186643
+        }
+      ]
+    },
+    {
+      "startMs": 187064,
+      "endMs": 189024,
+      "words": [
+        {
+          "word": "三层都讲完了，怎么组合？",
+          "startMs": 187064,
+          "endMs": 189024
+        }
+      ]
+    },
+    {
+      "startMs": 189497,
+      "endMs": 193860,
+      "words": [
+        {
+          "word": "本视频就是三层叠加的结果—",
+          "startMs": 189497,
+          "endMs": 191990
+        },
+        {
+          "word": "—背景层用 3D 场景视频",
+          "startMs": 191990,
+          "endMs": 193860
+        }
+      ]
+    },
+    {
+      "startMs": 193860,
+      "endMs": 197807,
+      "words": [
+        {
+          "word": "内容层用场景模板，",
+          "startMs": 193860,
+          "endMs": 195522
+        },
+        {
+          "word": "加一个角落模式的主持人",
+          "startMs": 195522,
+          "endMs": 197807
+        }
+      ]
+    },
+    {
+      "startMs": 198322,
+      "endMs": 202362,
+      "words": [
+        {
+          "word": "三层各自独立配置，",
+          "startMs": 198322,
+          "endMs": 199938
+        },
+        {
+          "word": "互不干扰，引擎从底到顶渲染",
+          "startMs": 199938,
+          "endMs": 202362
+        }
+      ]
+    },
+    {
+      "startMs": 202701,
+      "endMs": 208090,
+      "words": [
+        {
+          "word": "指挥 AI 搭场景：",
+          "startMs": 202701,
+          "endMs": 204048
+        },
+        {
+          "word": "第一步，决定要哪几层—",
+          "startMs": 204048,
+          "endMs": 206069
+        },
+        {
+          "word": "—背景加内容是最小集",
+          "startMs": 206069,
+          "endMs": 208090
+        }
+      ]
+    },
+    {
+      "startMs": 208090,
+      "endMs": 210111,
+      "words": [
+        {
+          "word": "全息屏和主持人可选",
+          "startMs": 208090,
+          "endMs": 210111
+        }
+      ]
+    },
+    {
+      "startMs": 210457,
+      "endMs": 212757,
+      "words": [
+        {
+          "word": "第二步，选背景构建方式",
+          "startMs": 210457,
+          "endMs": 212757
+        }
+      ]
+    },
+    {
+      "startMs": 213089,
+      "endMs": 216189,
+      "words": [
+        {
+          "word": "第三步，按语义让 AI 填场景配置",
+          "startMs": 213089,
+          "endMs": 216189
+        }
+      ]
+    },
+    {
+      "startMs": 216502,
+      "endMs": 218382,
+      "words": [
+        {
+          "word": "第四步，需要主持人？",
+          "startMs": 216502,
+          "endMs": 218382
+        }
+      ]
+    },
+    {
+      "startMs": 218670,
+      "endMs": 220060,
+      "words": [
+        {
+          "word": "加 avatar 配置块",
+          "startMs": 218670,
+          "endMs": 220060
+        }
+      ]
+    },
+    {
+      "startMs": 220551,
+      "endMs": 222471,
+      "words": [
+        {
+          "word": "第五步，需要全息屏？",
+          "startMs": 220551,
+          "endMs": 222471
+        }
+      ]
+    },
+    {
+      "startMs": 222865,
+      "endMs": 224835,
+      "words": [
+        {
+          "word": "给房间素材和屏幕坐标",
+          "startMs": 222865,
+          "endMs": 224835
+        }
+      ]
+    },
+    {
+      "startMs": 225103,
+      "endMs": 227513,
+      "words": [
+        {
+          "word": "第六步，现成场景不够？",
+          "startMs": 225103,
+          "endMs": 227513
+        }
+      ]
+    },
+    {
+      "startMs": 227863,
+      "endMs": 229673,
+      "words": [
+        {
+          "word": "让 AI 扩展，你验收",
+          "startMs": 227863,
+          "endMs": 229673
+        }
+      ]
+    },
+    {
+      "startMs": 230133,
+      "endMs": 234883,
+      "words": [
+        {
+          "word": "适合的场景：",
+          "startMs": 230133,
+          "endMs": 231213
+        },
+        {
+          "word": "模板化讲解、",
+          "startMs": 231213,
+          "endMs": 232292
+        },
+        {
+          "word": "数据图表、有主持人的教学片",
+          "startMs": 232292,
+          "endMs": 234883
+        }
+      ]
+    },
+    {
+      "startMs": 235325,
+      "endMs": 238165,
+      "words": [
+        {
+          "word": "不适合的：实拍真人，该拍就拍",
+          "startMs": 235325,
+          "endMs": 238165
+        }
+      ]
+    },
+    {
+      "startMs": 238467,
+      "endMs": 240527,
+      "words": [
+        {
+          "word": "写实数字人，恐怖谷",
+          "startMs": 238467,
+          "endMs": 240527
+        }
+      ]
+    },
+    {
+      "startMs": 240856,
+      "endMs": 243476,
+      "words": [
+        {
+          "word": "高自由度影视特效，",
+          "startMs": 240856,
+          "endMs": 242468
+        },
+        {
+          "word": "交专业工具",
+          "startMs": 242468,
+          "endMs": 243476
+        }
+      ]
+    },
+    {
+      "startMs": 243913,
+      "endMs": 248600,
+      "words": [
+        {
+          "word": "画面分层原理：",
+          "startMs": 243913,
+          "endMs": 245393
+        },
+        {
+          "word": "视频场景就是从底到顶叠图层",
+          "startMs": 245393,
+          "endMs": 248600
+        }
+      ]
+    },
+    {
+      "startMs": 248600,
+      "endMs": 250573,
+      "words": [
+        {
+          "word": "背景、内容、叠层、角色",
+          "startMs": 248600,
+          "endMs": 250573
+        }
+      ]
+    },
+    {
+      "startMs": 250912,
+      "endMs": 253132,
+      "words": [
+        {
+          "word": "可迁移的通用认知，",
+          "startMs": 250912,
+          "endMs": 252212
+        },
+        {
+          "word": "不限于 Remotion",
+          "startMs": 252212,
+          "endMs": 253132
+        }
+      ]
+    },
+    {
+      "startMs": 254144,
+      "endMs": 259280,
+      "words": [
+        {
+          "word": "本视频就是实例：",
+          "startMs": 254144,
+          "endMs": 255642
+        },
+        {
+          "word": "背景层用 3D 场景视频，",
+          "startMs": 255642,
+          "endMs": 257568
+        },
+        {
+          "word": "内容层用场景模板",
+          "startMs": 257568,
+          "endMs": 259280
+        }
+      ]
+    },
+    {
+      "startMs": 259280,
+      "endMs": 261634,
+      "words": [
+        {
+          "word": "加一个角落模式的主持人",
+          "startMs": 259280,
+          "endMs": 261634
+        }
+      ]
+    },
+    {
+      "startMs": 262108,
+      "endMs": 266248,
+      "words": [
+        {
+          "word": "核心判断：特色在分层组合，",
+          "startMs": 262108,
+          "endMs": 264385
+        },
+        {
+          "word": "不在写更花哨的组件",
+          "startMs": 264385,
+          "endMs": 266248
+        }
+      ]
+    },
+    {
+      "startMs": 266701,
+      "endMs": 271671,
+      "words": [
+        {
+          "word": "人决定要哪几层、",
+          "startMs": 266701,
+          "endMs": 268440
+        },
+        {
+          "word": "选风格、给素材，",
+          "startMs": 268440,
+          "endMs": 269931
+        },
+        {
+          "word": "AI 填配置、写扩展",
+          "startMs": 269931,
+          "endMs": 271671
+        }
+      ]
+    },
+    {
+      "startMs": 272073,
+      "endMs": 275803,
+      "words": [
+        {
+          "word": "会讲需求、会判断验收，",
+          "startMs": 272073,
+          "endMs": 274048
+        },
+        {
+          "word": "就能指挥 AI 搭场景",
+          "startMs": 274048,
+          "endMs": 275803
+        }
+      ]
+    },
+    {
+      "startMs": 276157,
+      "endMs": 280492,
+      "words": [
+        {
+          "word": "下期 EP04 字幕匹配：",
+          "startMs": 276157,
+          "endMs": 278027
+        },
+        {
+          "word": "TTS 时间戳 vs WhisperX 转录",
+          "startMs": 278027,
+          "endMs": 280492
+        }
+      ]
+    },
+    {
+      "startMs": 280492,
+      "endMs": 283807,
+      "words": [
+        {
+          "word": "两条路怎么选，",
+          "startMs": 280492,
+          "endMs": 282022
+        },
+        {
+          "word": "弹跳字幕怎么做",
+          "startMs": 282022,
+          "endMs": 283807
+        }
+      ]
+    }
+  ],
+  "avatar": {
+    "enabled": true,
+    "layer": "background",
+    "clip": "avatars/Sitting.fbx",
+    "clipSpeed": 0.6,
+    "bgModelX": 2.1,
+    "bgModelY": -1.35,
+    "bgCameraZ": 5.9,
+    "bgModelYawDeg": 50,
+    "bgScale": 1.43,
+    "bgOffsetYpx": 50
+  },
+  "unityBackground": {
+    "enabled": true,
+    "image": "UnityBG.mp4",
+    "screenQuad": {
+      "tl": [
+        13,
+        142
+      ],
+      "tr": [
+        1194,
+        275
+      ],
+      "br": [
+        1194,
+        791
+      ],
+      "bl": [
+        13,
+        919
+      ]
+    },
+    "screenOpacity": 0.4,
+    "screenTint": "#0b2a52"
+  },
+  "audio": {
+    "narration": {
+      "src": "audio/ep03-narration.mp3",
+      "volume": 1
+    }
+  }
+}

@@ -20,13 +20,9 @@ alwaysApply: true
 
 ## 常用角色映射
 
-- 选题分析师：`shared/roles/content/topic-analyst(选题分析师).md`
-  - 选题可行性判断、标题候选、受众与传播分析。
-  - 只负责"判断值不值得做"，不做导演分镜和模板设计。
-
 - 内容策划师：`shared/roles/content/strategist(内容策划师).md`
-  - 导演分镜、视觉策略、Demo 设计、模板动态声明。
-  - 只负责"想清楚怎么做"，不写完整脚本，不做技术验证。
+  - 技术调研与选型对比，按黄金样例风格写 tutorial.final.md（含必讲要点清单）。
+  - 只负责"把选题写成观众能懂、能动手的教学软文"，不写分镜口播稿，不改代码。
 
 - 分镜口播导演：`shared/roles/content/script-director(分镜口播导演).md`
   - 一体产出「画面（Remotion 组件映射/Props/动画/录屏 zoom 指令）+ 口播台词」的分镜口播稿（合并原视听策划师 + 文案撰稿人），并派生知乎/小红书改写稿。

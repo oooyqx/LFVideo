@@ -34,12 +34,11 @@
 
 ## 角色清单
 
-### 视频生产线（11个）
+### 视频生产线（12个）
 
 | 角色 | 何时使用 | 状态 |
 |------|---------|------|
-| [选题分析师](./content/topic-analyst(选题分析师).md) | 选题可行性判断、标题候选、受众与传播分析 | ✅ 可用 |
-| [内容策划师](./content/strategist(内容策划师).md) | 导演分镜、Demo 设计、故事大纲（苏格拉底协同） | ✅ 可用 |
+| [内容策划师](./content/strategist(内容策划师).md) | 技术调研与选型对比，按黄金样例风格写 tutorial.final.md（含必讲要点清单） | ✅ 可用 |
 | [分镜口播导演](./content/script-director(分镜口播导演).md) | 一体产出「画面（Remotion 组件映射/Props/动画 Cue/录屏 zoom 指令）+ 口播台词」的分镜口播稿（合并原视听策划师 + 文案撰稿人） | ✅ 可用 |
 | [屏幕录制导演](./content/screen-capture-director(屏幕录制导演).md) | 按 04 分镜口播稿录制 IDE/终端操作演示（录屏素材） | ✅ 可用 |
 | [语音合成工程师](./content/tts-engineer(语音合成工程师).md) | TTS 引擎选型、口播文本转语音音频 | ✅ 可用 |
@@ -109,7 +108,7 @@
 ### 1. 契约校验 (JSON Schema)
 在每个阶段工作流执行完毕并产出 Markdown README 时，末尾必须包含一个 ` ```json ` 结构块，该结构块会被以下 Schema 物理校验：
 - **选题阶段 (01)**：[`shared/schemas/01-topic.schema.json`](../schemas/01-topic.schema.json)（强制要求 `ai_limitations` 和 `judgment_layer`）
-- **策划阶段 (02)**：[`shared/schemas/02-plan.schema.json`](../schemas/02-plan.schema.json)（强制要求 `demo_design.pitfalls_to_expose`）
+- **策划阶段 (02)**：已简化为 AI 直接写 tutorial.final.md，不再走 Schema 契约校验（工作流定义见 `shared/workflows/02-content-planning.md`）
 - **分镜口播稿阶段 (04)**：[`shared/schemas/04-script.schema.json`](../schemas/04-script.schema.json)（强制要求 `sections[]` / `judgment_layer_coverage`；自 03+04 合并后，画面蓝图字段 `video_spec` / `zoom_crop_directives` / 各 section 的 `scene_template`·`props` 一并落在此处）
 - **（已退役）B站视听编排阶段 (03)**：视听蓝图已并入上方 04 契约，不再单独产出 03，也不再保留独立 03 schema。
 

@@ -57,11 +57,13 @@ TEMPLATE_TO_TYPE = {
     "@BulletScene": "bullet_scene",
     "@QuoteScene": "quote_scene",
     "@CalloutScene": "callout_scene",
+    "@ChatScene": "chat_scene",
+    "@ArchitectureScene": "architecture_scene",
+    "@ChartScene": "chart_scene",
+    "@StatScene": "stat_scene",
+    "@TimelineScene": "timeline_scene",
+    "@SectionScene": "section_scene",
 }
-
-# Scene types that manage their own full-bleed layout (no 'holo' background).
-NO_HOLO_TYPES = {"comparison_scene", "quote_scene", "code_scene"}
-
 
 # ---------------------------------------------------------------------------
 # Episode configuration dataclass
@@ -78,7 +80,6 @@ class EpisodeConfig:
         unity_background: Unity background configuration dict (or None to skip).
         shot_overrides: Per-shot overrides {shot_id: {key: value}}.
         theme: Theme string for the composition.
-        no_holo_types: Scene types that should not get 'holo' background.
     """
 
     script_md: Path
@@ -88,7 +89,6 @@ class EpisodeConfig:
     unity_background: dict[str, Any] | None = None
     shot_overrides: dict[str, dict[str, Any]] = field(default_factory=dict)
     theme: str = "flat-motion-graphics"
-    no_holo_types: set[str] = field(default_factory=lambda: set(NO_HOLO_TYPES))
 
 
 # ---------------------------------------------------------------------------
@@ -118,7 +118,6 @@ def build_cuts(
     sections: list[dict[str, Any]],
     tts: dict[str, Any] | None,
     shot_overrides: dict[str, dict[str, Any]],
-    no_holo_types: set[str],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], float]:
     """Map SSOT shots to Explainer cuts + flat word captions.
 
@@ -161,8 +160,7 @@ def build_cuts(
                     {k: v for k, v in s.items() if v is not None}
                     for s in content["steps"]
                 ]
-            if ctype not in no_holo_types:
-                content.setdefault("background", "holo")
+            content.setdefault("background", "video")
             content.update(shot_overrides.get(sid, {}))
             dur = tts_dur.get(sid, float(shot["duration_seconds"]))
             cut = {
@@ -182,6 +180,35 @@ def build_cuts(
                     "startMs": cap["startMs"] + offset_ms,
                     "endMs": cap["endMs"] + offset_ms,
                 })
+            # Fallback: no TTS — generate estimated captions from voice_slice
+            # Split by punctuation into natural phrases (matching TTS caption style)
+            if not tts:
+                voice_text = shot.get("voice_slice") or shot.get("voice") or ""
+                voice_text = voice_text.strip()
+                if voice_text:
+                    tokens = re.split(r'([，。；！？、,;!?])', voice_text)
+                    phrases: list[str] = []
+                    buf = ""
+                    for tok in tokens:
+                        if not tok:
+                            continue
+                        if re.fullmatch(r'[，。；！？、,;!?]', tok):
+                            buf += tok
+                            phrases.append(buf)
+                            buf = ""
+                        else:
+                            buf += tok
+                    if buf.strip():
+                        phrases.append(buf)
+                    if phrases:
+                        dur_ms = int(round(dur * 1000))
+                        per_phrase = dur_ms / len(phrases)
+                        for pi, phrase in enumerate(phrases):
+                            captions.append({
+                                "word": phrase,
+                                "startMs": offset_ms + int(round(pi * per_phrase)),
+                                "endMs": offset_ms + int(round((pi + 1) * per_phrase)),
+                            })
             cursor += dur
     return cuts, captions, cursor
 
@@ -226,7 +253,7 @@ def build_props(config: EpisodeConfig) -> None:
     sections = load_ssot_sections(config.script_md)
     tts = load_tts_manifest(config.tts_manifest)
     cuts, captions, total = build_cuts(
-        sections, tts, config.shot_overrides, config.no_holo_types
+        sections, tts, config.shot_overrides
     )
     caption_pages = paginate_captions(captions)
 

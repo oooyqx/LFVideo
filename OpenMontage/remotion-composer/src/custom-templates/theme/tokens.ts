@@ -19,6 +19,11 @@ import {PALETTES} from './palettes';
 
 export const COLORS = PALETTES['warm-glass'];
 
+// ---- 字幕安全区 ----
+// 屏幕底部预留给字幕叠加层的像素高度。SceneRenderer 用此值约束场景内容的
+// 垂直范围，使 flex 居中的场景内容不会延伸到字幕区域。
+export const CAPTION_SAFE_ZONE = 110;
+
 // ---- 间距 ----
 export const SPACING = {
 	xs: 8,
@@ -47,14 +52,23 @@ export const SPRING = {
 // 「全息投影感」的单一开关：文字 / 描边 / Icon / 强调光条的辉光强度。
 // 改这里即可让全片的辉光同步增减；各场景一律读 useTheme().GLOW，禁止内联辉光。
 export const GLOW = {
-	// 标题文字辉光：accent 色弥散 + 暗色描边保可读。
-	text: {blur: 18, alpha: 0.5},
+	// 文字辉光 4 级体系（textStyles.ts 读取这些值，全片文字统一走 SSOT）：
+	// L1 最强：片头大标题 / 场景主标题 / 金句
+	textL1: {blur: 40, alpha: 0.75, outerBlur: 48, outerAlpha: 0.25, shadowBlur: 12, shadowAlpha: 0.6},
+	// L2 强：卡片标题 / eyebrow / 章节序号
+	textL2: {blur: 35, alpha: 0.65, shadowBlur: 8, shadowAlpha: 0.5},
+	// L3 中：正文 / 副文
+	textL3: {blur: 30, alpha: 0.55, shadowBlur: 6, shadowAlpha: 0.5},
+	// L4 弱：角标 / 说明小字
+	textL4: {blur:24, alpha: 0.45, shadowBlur: 4, shadowAlpha: 0.5},
+	// 标题文字辉光（holoTextShadow 兼容引用，= textL1 的 blur/alpha）
+	text: {blur: 24, alpha: 0.5},
 	// 元素框（techPanel）描边的「常驻」辉光基线（呼吸辉光在此之上叠加）。
-	border: {blur: 16, alpha: 0.34},
+	border: {blur: 24, alpha: 0.75},
 	// Icon / 序号方片的 accent 辉光。
-	icon: {blur: 18, alpha: 0.45},
+	icon: {blur: 24, alpha: 0.45},
 	// 强调光条（标题下划线 / 分隔条）的 accent 辉光。
-	bar: {blur: 14, alpha: 0.6},
+	bar: {blur: 20, alpha: 0.6},
 	// 标题解码入场时长（帧）。统一所有 HoloTitle 的入场节奏。
 	decodeFrames: 20,
 } as const;

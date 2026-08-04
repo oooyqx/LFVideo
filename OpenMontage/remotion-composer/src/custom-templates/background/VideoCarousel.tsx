@@ -70,6 +70,9 @@ const Clip: React.FC<{
 			<VideoComp
 				src={src}
 				muted
+				onError={() => {}}
+				delayRenderTimeoutInMilliseconds={60000}
+				delayRenderRetries={3}
 				style={{
 					width: '100%',
 					height: '100%',

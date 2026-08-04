@@ -10,14 +10,11 @@
 
 ## 前置依赖
 
-本工作流假设已完成 `/02-content-planning`，已具备：
-- 处于 `approved` 状态的 `content-library/<epNN-slug>/02-plan/README.md`（故事大纲 `outline_sections` 与分镜结构，用于对齐段落与画面意图）
-- **【必读·内容真相源】处于 `approved` 状态的 `content-library/<epNN-slug>/02-plan/tutorial.final.md`（人工修订定稿）**：口播台词的内容与深度、以及画面 Props 承载的数据均以此为准；文件末尾的「必讲要点覆盖清单」是本阶段必须逐条覆盖的硬性清单。若该文件缺失或仍为 `draft`（人工未定稿），先提示用户回到 02 完成人工定稿，**不要仅凭 README 大纲就开写**（会漏掉 tutorial 里的细节料）。
+本工作流假设已具备：
+- **【必读·内容真相源】`content-library/<epNN-slug>/02-plan/tutorial.final.md`**：口播台词的内容与深度、以及画面 Props 承载的数据均以此为准；文件末尾的「必讲要点覆盖清单」是本阶段必须逐条覆盖的硬性清单。若该文件缺失，先提示用户完成 02 阶段内容撰写。
 - **必须读取并遵循组件说明书**：`shared/docs/remotion-spec.md`（约束画面编写，防止写出无法生成的空想效果）
 
-如果缺少上述输入，先提示用户回到上游工作流。
-
-> ❗ **关键前提**：`tutorial.final.md` 必须已被人工修订并置 `status: approved`，否则缺少「必讲要点」真相源，禁止继续。
+如果缺少上述输入，先提示用户完成 02 阶段内容撰写。
 
 ---
 
@@ -34,19 +31,16 @@
   - Remotion 绝对无法自动生成的画面（真实 IDE 报错弹窗、复杂编写过程）必须用 `@VideoSlot` 并打上 `[录屏占位替换提醒：请用户在此补充 xxx 录屏/截图]`。
   - **录屏兜底**：含录屏的场景，脚本中必须同时给出 `[录屏画面]`（`@VideoSlot` + `zoom_crop_directives`）和 `[自动渲染兜底]`（对应 Remotion 组件渲染，如 `@TerminalScene` + 代码 Props），确保录屏缺失时有可渲染的自动渲染替代画面。
 
-### 2. 加载上游资产与内容真相源
-
-从 `02-plan/README.md` 获取：
-- 定稿标题、`outline_sections`（段落与抽象视觉描述）、视觉隐喻与画面自动渲染/录屏划分、演示路径 `demo_design`。
-- Demo 实操设计：AI 的报错原因与避坑卡点（口播里的「痛点/卡点」）、解决卡点所需的 Rules 规则。
+### 2. 加载内容真相源
 
 从 `02-plan/tutorial.final.md`（人工定稿）获取**内容真相源**：
 - 通读全文，按其章节深度撰写口播；Props 数据（对比矩阵/选型理由/实操示例）须对齐其实际内容。
+- 从文章结构自行提取段落划分与视觉意图（不再依赖上游 README 大纲）。
 - **逐条对照文件末尾的「必讲要点覆盖清单」**，确保每一条都在脚本里有对应表达（公式/伪代码/对照表/选型理由等不得遗漏）。
 
 ### 3. 逐段一体编排 + 撰稿（写入 `04-script/README.md`）
 
-按 `02-plan/README.md` 声明的视觉模版和大纲，对每个 section **同时**产出画面与口播：
+按 `tutorial.final.md` 的章节结构，对每个 section **同时**产出画面与口播：
 
 > 🎬 **段 (section) 是叙事单位，镜头 (shot) 才是画面单位**。一个 section = 大纲里的一个叙事节拍 + 一整段连续口播；真正上屏的是**镜头**。一段 90 秒的口播不能配一个组件硬撑全场，必须按语义/标点把这段口播切成多个**镜头 `shots[]`**，每个镜头 = 一个组件实例 + 它的 Props + 它覆盖的那截口播 (`voice_slice`) + 自己的时长 (`duration_seconds`)，让画面每 ≤~12 秒就换一次。**`scene_template`/`props` 优先写在 shot 上**；只有当整段 ≤15 秒、确属单镜头时，才允许写在 section 级。多组件接力（如 讲流向 `@ConceptScene` → 展示配置 `@TerminalScene` → 对照 `@SplitLayout`）天然就是多个 shot，**严禁把多个组件塞进一个 section 的 `scene_template` 字段或 `visual_instructions` 散文里**。
 
@@ -109,6 +103,9 @@ source_workflow: /04-script-draft
 - ❌ **录屏兜底完整性**：含录屏的场景，脚本是否同时给出了 `[录屏画面]`（含 `zoom_crop_directives`）和 `[自动渲染兜底]` 画面指示？缺一即判不合格。
 - ❌ **列表型组件踩点**：`@ConceptScene` / `@BulletScene` / `@FlowScene` / `@TimelineScene` 的某一条若在口播里有明确「念到这条才出现」的对应句，是否给该条 props 标了 `atSec`（相对镜头起点的秒，不超过 `duration_seconds`）？只有「同时一起出现」或节奏无关时才允许省略 `atSec` 走均匀 stagger。
 - ❌ **语义-场景匹配**：口播含「N 步/流程/对比/清单/大数字」等结构信号的镜头，是否都用了对应的结构化场景（见 remotion-spec §2.1.5 决策表）？有没有用 `@IntroScene`/`@OutroScene`/`@QuoteScene` 纯文字硬扛结构化信息？
+- ❌ **场景密度下限**：`@ConceptScene` items ≥2、`@FlowScene` steps ≥2、`@BulletScene` items ≥2？单条内容用 `@CalloutScene`/`@QuoteScene`（教训：ep02 shot 2.1/2.3/5.5 单卡片 ConceptScene 空旷）。口播出现「问 AI / 让 AI 回答 / AI 给出答案」等对话交互信号时，是否用了 `@ChatScene` 展示问答过程而非 `@ConceptScene` 文字概述？
+- ❌ **数字过场增节奏**：口播提到「N 条路线 / N 个理由 / N 种模板」等可量化数字、且后续用 `@TableScene`/`@BulletScene` 展开详情时，是否在详情场景前插了一个 3-5 秒 `@StatScene` 做数字弹入过场？`stat` 是否放了数字+关键词组合（如 "6现成路线"）而非纯数字？`label` 选填用于补充说明、`subtitle` 选填作为下方副标题？（教训：ep02 S2「六条路线」直接进 TableScene 缺少节奏停顿）
+- ❌ **禁止无声镜头**：每个 shot 是否都有非空 `voice_slice`？口播是时间轴主驱动，无声镜头（空 `voice_slice`）会在时间轴上制造死时间——画面停住、语音也停住，观众体验断裂。`@StatScene` 数字弹入时口播要念出数字和关键词（如「六条现成路线」），`@QuoteScene` 金句要口播念出金句内容，不允许只靠画面文字承载而口播静默。（教训：ep02 shot 2.2/4.2/5.3 StatScene 和 4.5/6.4 QuoteScene 曾为无声镜头，导致 narration 音频与时间轴错位 22 秒）
 - ❌ **相邻镜头去重**：相邻/同段镜头是否用同一场景重放了几乎相同的 props（如同一张表连播两屏）？「全景→聚焦」是否改用不同场景递进（矩阵 → 聚焦赢家 SplitLayout/高亮）？
 - ❌ **首尾呼应**：开场给出的结构骨架（如三步法）在结尾回顾时是否用同一结构场景复现？
 - ❌ **props 字段名对照 schema**：每个镜头的 props 字段名是否逐字段对照过 `scene-types.json` 的 required/optional？（错名不报错，会静默回退成纯文字——如 FlowScene step 用 `label` 不是 `title`。）
@@ -217,6 +214,6 @@ source_workflow: /04-script-draft
 ## 关联文件
 
 - 角色：`shared/roles/content/script-director(分镜口播导演).md`
-- 上游：`02-content-planning.md`
+- 上游：`02-plan/tutorial.final.md`（人工定稿）
 - 内容真相源：`content-library/<epNN-slug>/02-plan/tutorial.final.md`
 - 下游：`05-b-roll-recording.md`、`06-tts-synthesis.md`

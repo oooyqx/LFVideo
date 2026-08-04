@@ -217,15 +217,29 @@ const PageRenderer: React.FC<{
       style={{
         justifyContent: "flex-end",
         alignItems: "center",
-        paddingBottom: 40,
+        paddingBottom: 16,
       }}
     >
+      {/* Gradient backdrop for readability over any scene content */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: 100,
+          background: "linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.7) 100%)",
+          pointerEvents: "none",
+        }}
+      />
       <div
         style={{
           opacity: wrapperOpacity,
           transform: wrapperTransform,
           maxWidth: "90%",
           textAlign: "center",
+          position: "relative",
+          zIndex: 1,
         }}
       >        {animation === "scramble" ? (
           <span
@@ -347,10 +361,7 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({
           <Sequence
             key={i}
             from={fromFrame}
-            durationInFrames={duration}
-            style={{
-              translate: "54.7px -60.8px"
-            }}>
+            durationInFrames={duration}>
             <PageRenderer
               page={page}
               fontSize={fontSize}

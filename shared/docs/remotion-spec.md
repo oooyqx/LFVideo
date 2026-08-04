@@ -92,7 +92,7 @@
         *   `eyebrow`: 小标题（如“AI IDE 三层认知”）
         *   `title`: 大标题
         *   `background`: 背景类型（默认 `'gradient'`）
-        *   `items`: 概念卡片数组（最大支持 3 个，超出会溢出），每个 Item 包含：
+        *   `items`: 概念卡片数组（**建议 2-4 张卡为最佳密度**；5-9 条切双列、>9 条切三列自适应；**仅 1 条时不应使用 ConceptScene**，改用 `@CalloutScene` 或 `@QuoteScene`），每个 Item 包含：
             *   `label`: 卡片分类（如 `EDITOR`）
             *   `title`: 卡片小标题（如 `编辑模式`）
             *   `desc`: 卡片具体描述（如 `手拿螺丝刀，你指哪它改哪`）
@@ -110,14 +110,15 @@
 | 「N 步 / 流程 / 先…再…最后…」 | `@FlowScene` | `steps[]`：每步 `label`（**不是 title**）+ `desc` + `icon`（Emoji） |
 | 多方案矩阵对比（≥3 行 × ≥2 维度） | `@TableScene` | `headers` / `rows` / `highlightCell` |
 | 两方 / 两面对照（A vs B、优势 vs 劣势） | `@SplitLayout` | `leftLabel/leftValue/rightLabel/rightValue` |
-| 概念拆解、认知框架（≤3 张卡） | `@ConceptScene` | `items[]`：`label/title/desc/icon` |
+| 概念拆解、认知框架（**2-4 张卡**；仅 1 条时改用 `@CalloutScene`/`@QuoteScene`） | `@ConceptScene` | `items[]`：`label/title/desc/icon` |
 | 平铺要点清单（可有序） | `@BulletScene` | `items[]`、`ordered`；条目 ≥5 自动切 2 列矩阵（2×3/2×4） |
 | 按时间/版本推进的事件 | `@TimelineScene` | `events[]` |
-| 单个核心大数字 | `@StatScene` | `stat` |
+| 单个核心大数字 / 硬指标 | `@StatScene` | `stat`（数字+关键词，如 "6现成路线"）、`label`（补充说明，选填）、`subtitle`（下方副标题，选填） |
 | 量化数据（跑分/占比） | `@ChartScene` | `kind` / `data` |
 | 强调一句警示/铁律（可带小清单） | `@CalloutScene` | `text`、`items[]`（扁平字符串） |
 | 金句收束 | `@QuoteScene` | `text` |
 | 章节分隔 | `@SectionScene` | `title` / `index` |
+| 「问 AI / 让 AI 回答 / AI 给出答案」等对话交互 | `@ChatScene` | `messages[]`：每条 `{role: "user"\|"assistant", text, code?}` |
 | 开场点题 / 片尾 CTA / 命令与报错 | `@IntroScene` / `@OutroScene` / `@TerminalScene` | 见 §2.1 |
 
 **选型硬规则（04 撰稿与自检必过）**：
@@ -126,6 +127,9 @@
 2. **相邻镜头去重**：相邻或同段镜头**禁止用同一场景重放几乎相同的 props**。语义是「先全景 → 再聚焦」时，用不同场景递进表达（如 `@TableScene` 全景矩阵 → `@SplitLayout` 聚焦赢家优势/劣势），而不是把整表再播一遍（教训：ep02 3.1/3.2 曾连播两张相同对比表，返工去重）。
 3. **首尾呼应**：开场给出的结构骨架（如三步法），结尾回顾时用**同一结构场景**复现一遍（如都用 `@FlowScene` 同一套三步卡），形成记忆锚点。
 4. **props 字段名逐字段核对 schema**：字段名写错不会报错，而是**静默校验失败、整卡回退成纯文字**（教训：FlowScene step 的标题字段是 `label`，写成 `title` 导致全部流程卡悄悄退化）。落盘前对照 scene-types.json 的 required/optional 逐字段核对。
+5. **场景密度与内容形态匹配**：`items`/`steps`/`events` 只有 1 条时，用 `@CalloutScene`/`@QuoteScene` 而非 `@ConceptScene`/`@FlowScene`/`@BulletScene`（单条概念撑不起卡片墙的视觉密度，教训：ep02 shot 2.1/2.3/5.5 单卡片 ConceptScene 空旷）；口播出现「问 AI / 让 AI 回答 / AI 给出答案」等对话交互信号时，用 `@ChatScene` 展示问答过程，而非用 `@ConceptScene` 文字概述（教训：ep02 shot 2.1「把问题丢给 AI」本应用 ChatScene）。
+6. **数字过场增节奏**：口播提到「N 条路线 / N 个理由 / N 种模板」等可量化的数字、且后续用 `@TableScene`/`@BulletScene` 展开详情时，在详情场景**前插一个 3-5 秒的 `@StatScene`** 做数字弹入过场，打破连续卡片/表格的视觉疲劳，增加画面节奏感（教训：ep02 S2「六条路线」直接进 TableScene 缺少节奏停顿，插入 StatScene "6" 后画面更有活力）。`@StatScene` 的 `stat` 放数字+关键词组合（如 "6现成路线"、"4条理由"），不要只放纯数字；`label` 选填、用于补充说明（如列出具体是哪几条），`subtitle` 选填、作为下方副标题。
+7. **禁止无声镜头（硬性约束）**：每个 shot 必须有非空 `voice_slice`，不允许口播静默、只靠画面文字承载的镜头。口播是时间轴主驱动——TTS 实测时长决定每个镜头时长，无声镜头（空 `voice_slice`）会在时间轴上制造死时间（画面停住、语音也停住），且导致 narration 音频与时间轴错位。`@StatScene` 数字弹入时口播要念出数字和关键词（如「六条现成路线」），`@QuoteScene` 金句要口播念出金句内容，不允许只靠画面文字承载而口播静默。（教训：ep02 shot 2.2/4.2/5.3 StatScene 和 4.5/6.4 QuoteScene 曾为无声镜头，导致 narration 音频与时间轴错位 22 秒）
 
 ### 2.2 基础布局组件 (Primitives)
 

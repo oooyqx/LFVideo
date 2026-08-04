@@ -145,7 +145,7 @@ build_props(config)
 
 ### 10. 交付与下一步
 输出交付清单（成片 MP4 + 源工程路径 + 字幕），并提示：
-> 成片满意（看板标 `approved`）后可执行 `/08-subtitle-gen` 生成字幕，再经 `/09-bgm-mix`、`/10-cover-gen`、`/11-qa-review` 完成后期，最后 `/12-distribute-adapt` 做多平台分发。
+> 成片满意（看板标 `approved`）后可执行 `/08-subtitle-gen` 生成字幕，再经 `/09-bgm-mix`、`/10-cover-gen` 完成后期，封面就绪后即可发布。
 
 ---
 

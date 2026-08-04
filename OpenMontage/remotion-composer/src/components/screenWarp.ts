@@ -14,7 +14,7 @@ export interface ScreenQuad {
 
 export interface UnityBackgroundConfig {
   enabled?: boolean;
-  /** public/-relative path to the Unity room screenshot, e.g. "UnityBG.png". */
+  /** public/-relative path to the Unity room background image or video, e.g. "UnityBG.mp4". */
   image?: string;
   /** Green-screen quad the page is warped into. */
   screenQuad?: ScreenQuad;

@@ -5,7 +5,7 @@ import {AutoFit} from '../../primitives';
 import {useTheme} from '../../theme/ThemeContext';
 import {withAlpha} from '../../theme/util';
 import {TechPanel, techIconChip} from '../../theme/surfaces';
-import {textStyles} from '../../theme/textStyles';
+import {textStyles, glowL2} from '../../theme/textStyles';
 import {Animated} from '../../animation';
 import {osc01, proportionalTiming} from '../../animation/presence';
 import {TRANSITION_IDS, type TransitionId} from '../../animation/types';
@@ -41,7 +41,7 @@ const Connector: React.FC<{vertical: boolean; color: string; delay: number}> = (
 				color,
 				transform: vertical ? 'rotate(90deg)' : 'none',
 				lineHeight: 1,
-				textShadow: `0 0 16px ${withAlpha(color, 0.5)}`,
+				textShadow: glowL2(color),
 			}}
 		>
 			→
@@ -82,7 +82,7 @@ const StepCard: React.FC<{
 				style={{
 					flex: 1,
 					minWidth: vertical ? 560 : 220,
-					minHeight: vertical ? 0 : 320,
+					minHeight: vertical ? 0 : [440, 360, 280][tier],
 					padding: `${PAD}px`,
 					display: 'flex',
 					flexDirection: vertical ? 'row' : 'column',
@@ -135,6 +135,8 @@ export const FlowScene: React.FC<FlowProps> = ({
 
 	const vertical = orientation === 'vertical';
 	const tier: 0 | 1 | 2 = steps.length <= 3 ? 0 : steps.length <= 4 ? 1 : 2;
+	// 步骤少时增大间距，让内容在竖向铺开。
+	const stepGap = [SPACING.lg, SPACING.md, SPACING.sm][tier];
 	// 比例化：首步 5% 处开始，全部步骤在 40% 处完成入场。
 	const auto = proportionalTiming(durationInFrames, steps.length);
 	const startFrame = auto.start;
@@ -160,7 +162,8 @@ export const FlowScene: React.FC<FlowProps> = ({
 					flexDirection: vertical ? 'column' : 'row',
 					alignItems: vertical ? 'stretch' : 'stretch',
 					justifyContent: 'center',
-					gap: SPACING.sm,
+					gap: stepGap,
+					height: '100%',
 				}}
 			>
 				{steps.map((step, i) => {
